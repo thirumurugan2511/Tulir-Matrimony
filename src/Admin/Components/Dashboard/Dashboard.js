@@ -8,10 +8,14 @@ import '../Css/Scrol.css';
 import '../Css/Boxicon.css';
 import '../Css/Theme.css';
 import '../Css/Select.css';
+import Aside from '../Aside/Aside';
 
 const Dashoard = () => {
   return (
    <>
+   <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+    <Aside />
          <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
@@ -258,6 +262,8 @@ const Dashoard = () => {
                 </div>
             </a>
         </div>
+    </div>
+    </div>
     </div>
     </div>
     </div>
