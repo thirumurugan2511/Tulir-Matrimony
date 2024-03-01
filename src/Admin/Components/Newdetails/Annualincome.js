@@ -1,5 +1,11 @@
 import React from 'react'
 import Aside from '../Aside/Aside'
+import { MdManageHistory } from "react-icons/md";
+import { GrUserAdmin } from "react-icons/gr";
+import { MdPostAdd } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
+import { MdModeEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 const Annualincome = () => {
   return (
@@ -17,12 +23,12 @@ const Annualincome = () => {
                </div>
                <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                    <ol class="breadcrumb breadcrumb-style2 mb-0">
-                       <li class="breadcrumb-item"><a href="javascript:void(0);"></a></li>
-                       <li class="breadcrumb-item active">  Manage Annual Income </li>
+                   <li><MdManageHistory  class="bx bx-user me-2"/></li>
+<li class="breadcrumb-item active" style={{padding: '2px 10px'}}>  Manage Annual Income </li>
                    </ol>
                    <ul class="navbar-nav flex-row align-items-center ms-auto">
                        <li class="nav-item lh-1 me-3">
-                                                       <i class="bx bx-user me-2"></i><span class="align-middle">Administrator</span>
+                       <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
                                                    </li>
                                                <li class="nav-item navbar-dropdown dropdown-user dropdown">
                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -102,21 +108,21 @@ const Annualincome = () => {
        </div>
    </div>
    <div class="row  justify-content-between">
-   <div class="col-md-2">
-               <a href="/Annualincomeadd" class="fw-bold mb-4 btn btn-info"> <i class="bx bx-plus-circle"></i> Add New</a>
-           </div>
-  
-   <div class="col-md-4">
-               <div class="search-container">
-           <input type="text" class="search-box form-control" id="searchText" placeholder="Search"/>
-           <button class="search-button btn btn-info searchMainBtn" id="commonSearch"><i class="bx bx-search-alt-2"></i></button>
-       </div>
-           </div>
+<div class="col-md-2">
+            <a href="/Annualaddincomeadd" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
+        </div>
+
+<div class="col-md-4">
+            <div class="search-container">
+        <input type="text" class="search-box form-control" id="searchText" placeholder="Search"/>
+        <button class="search-button btn btn-info searchMainBtn" id="commonSearch"><FaSearch class="bx bx-search-alt-2" /></button>
+    </div>
+        </div>
 </div>
    
 
    <div class="card text-start">
-       <h5 class="card-header">Manage Annualincome</h5>
+       <h5 class="card-header">Manage Annual Income</h5>
        <div class="table-responsive text-nowrap" id="resultData"><table class="table">
    <caption class="d-none">&nbsp;&nbsp; Result Data</caption>
    <thead className='text-start'>
@@ -130,23 +136,23 @@ const Annualincome = () => {
                
               <tr>
                <td>Farmer</td>       
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
+               <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
               </tr>
               <tr>
                <td>Software Engineer</td>       
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
+               <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
               </tr>
               <tr>
                <td>Doctor</td>       
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
+               <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
               </tr>
               <tr>
                <td>Police</td>       
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
+               <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
               </tr>
               
                

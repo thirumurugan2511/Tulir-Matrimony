@@ -22,6 +22,8 @@ import Educationadd from './Admin/Components/Newdetails/Addnew/Educationadd';
 import Moonsignadd from './Admin/Components/Newdetails/Addnew/Moonsignadd';
 import Mothertongueadd from './Admin/Components/Newdetails/Addnew/Mothertongueadd';
 import Staradd from './Admin/Components/Newdetails/Addnew/Staradd';
+import Addmember from './Admin/Components/Member/Addmember';
+import Sitesettings from './Admin/Components/Sitesettings/Sitesettings';
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
           <Route path="/Moonsignadd" element={<Moonsignadd />} /> 
           <Route path="/Mothertongueadd" element={<Mothertongueadd />} />  
           <Route path="/Staradd" element={<Staradd />} />
+          <Route path="/Addmember" element={<Addmember />} />
+          <Route path="/Sitesettings" element={<Sitesettings />} />
 
 
         </Routes>

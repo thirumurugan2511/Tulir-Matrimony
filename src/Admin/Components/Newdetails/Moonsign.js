@@ -1,5 +1,9 @@
 import React from 'react'
 import Aside from '../Aside/Aside'
+import { MdManageHistory } from "react-icons/md";
+import { GrUserAdmin } from "react-icons/gr";
+import { MdPostAdd } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
 
 const Moonsign = () => {
   return (
@@ -17,12 +21,12 @@ const Moonsign = () => {
                </div>
                <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                    <ol class="breadcrumb breadcrumb-style2 mb-0">
-                       <li class="breadcrumb-item"><a href="javascript:void(0);"></a></li>
-                       <li class="breadcrumb-item active">  Manage Moonsign </li>
+                   <li><MdManageHistory  class="bx bx-user me-2"/></li>
+<li class="breadcrumb-item active" style={{padding: '2px 10px'}}>  Manage Moonsign </li>
                    </ol>
                    <ul class="navbar-nav flex-row align-items-center ms-auto">
                        <li class="nav-item lh-1 me-3">
-                                                       <i class="bx bx-user me-2"></i><span class="align-middle">Administrator</span>
+                       <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
                                                    </li>
                                                <li class="nav-item navbar-dropdown dropdown-user dropdown">
                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">

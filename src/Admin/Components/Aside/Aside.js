@@ -12,6 +12,18 @@ import '../Css/Theme.css';
 import '../Css/Select.css';
 import Navbar from '../Navbar/Navbar';
 import Dashoard from '../Dashboard/Dashboard';
+import Addmember from '../Member/Addmember';
+import { MdDashboard  } from "react-icons/md";
+import { IoMdSettings } from "react-icons/io";
+import { RiContactsFill } from "react-icons/ri";
+import { IoIosAddCircle } from "react-icons/io";
+import { IoPeople } from "react-icons/io5" 
+import { FaCheckCircle } from "react-icons/fa";
+import { RiSecurePaymentFill } from "react-icons/ri";
+import { GiLovers } from "react-icons/gi";
+
+
+
 
 const Aside = () => {
 
@@ -44,47 +56,25 @@ const Aside = () => {
                 {/* Dashboard */}
                                 <li class="menu-item active open">
                     <Link to="/Dashboard" class="menu-link">
-                        <i class="menu-icon tf-icons bx bxs-dashboard"></i>
+                        {/* <i class="menu-icon tf-icons bx bxs-dashboard"></i> */}
+                        <MdDashboard class="menu-icon tf-icons bx bxs-dashboard" />
                         <div data-i18n="Analytics">Dashboard</div>
                     </Link>
                 </li>
                 {/* Basic Site Settings */}
                                 <li class="menu-item ">
-                    <Link to="javascript:void(0);" class="menu-link menu-toggle" onClick={() => toggleSubMenu('siteSettings')}>
-                        <i class="menu-icon tf-icons bx bxs-cog"></i>
+                    <Link to="/Sitesettings" class="menu-link menu-toggle" onClick={() => toggleSubMenu('siteSettings')}>
+                        {/* <i class="menu-icon tf-icons bx bxs-cog"></i> */}
+                        <IoMdSettings class="menu-icon tf-icons bx bxs-cog" />
                         <div data-i18n="Site Settings">Site Settings</div>
                     </Link>
-                    {subMenuStates['siteSettings'] && (
-                    <ul class="menu-sub">
-                        <li class="menu-item ">
-                            <Link to="https://gloriousmatrimonial.com/admin/logo-favicon" class="menu-link">
-                                <div data-i18n="Without menu">Username</div>
-                            </Link>
-                        </li>
-                        <li class="menu-item matriPrefixAddEditForm ">
-                            <Link to="https://gloriousmatrimonial.com/admin/matri-prefix" class="menu-link">
-                                <div data-i18n="Without menu">Password </div>
-                            </Link>
-                        </li>
-                        <li class="menu-item ">
-                            <Link to="https://gloriousmatrimonial.com/admin/email" class="menu-link">
-                                <div data-i18n="Without navbar">Email</div>
-                            </Link>
-                        </li>
-                        <li class="menu-item ">
-                            <Link to="https://gloriousmatrimonial.com/admin/basic-site-setting" class="menu-link">
-                                <div data-i18n="Container">Description</div>
-                            </Link>
-                        </li>
-                        
-                       
-                        
-                    </ul> )}
+                 
                 </li>
 
             <li className="menu-item">
       <div className="menu-link menu-toggle"  onClick={() => toggleSubMenu('contactUs')} >
-        <i className="menu-icon tf-icons bx bxs-book-content"></i>
+        {/* <i className="menu-icon tf-icons bx bxs-book-content"></i> */}
+        <RiContactsFill className="menu-icon tf-icons bx bxs-book-content" />
         <div data-i18n="HomePageManagement">Contact Us</div>
       </div>
       {subMenuStates['contactUs'] && (
@@ -111,7 +101,8 @@ const Aside = () => {
                 {/* Add New Details */}
                                 <li class="menu-item ">
                     <Link to="javascript:void(0);" class="menu-link menu-toggle" onClick={() => toggleSubMenu('newDetails')}>
-                        <i class="menu-icon tf-icons bx bxs-add-to-queue"></i>
+                        {/* <i class="menu-icon tf-icons bx bxs-add-to-queue"></i> */}
+                        <IoIosAddCircle class="menu-icon tf-icons bx bxs-add-to-queue" />
                         <div data-i18n="AddNewDetails">Add New Details</div>
                     </Link>
                     {subMenuStates['newDetails'] && (
@@ -165,13 +156,15 @@ const Aside = () => {
                 
                                                 <li class="menu-item ">
                     <Link to="javascript:void(0);" class="menu-link menu-toggle" onClick={() => toggleSubMenu('member')}>
-                        <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+                        {/* <i class="menu-icon tf-icons bx bxs-user-detail"></i> */}
+                       
+                        <IoPeople class="menu-icon tf-icons bx bxs-user-detail" />
                         <div data-i18n="Member">Member</div>
                     </Link>
                     {subMenuStates['member'] && (
                     <ul class="menu-sub">
                         <li class="menu-item ">
-                            <Link to="https://gloriousmatrimonial.com/admin/member" class="menu-link">
+                            <Link to="/Addmember" class="menu-link">
                                 <div data-i18n="Without menu">All Member</div>
                             </Link>
                         </li>
@@ -182,7 +175,8 @@ const Aside = () => {
                                 {/* Approval */}
                                                 <li class="menu-item ">
                     <Link to="javascript:void(0);" class="menu-link menu-toggle" onClick={() => toggleSubMenu('approval')}>
-                        <i class="menu-icon tf-icons bx bxs-photo-album"></i>
+                        {/* <i class="menu-icon tf-icons bx bxs-photo-album"></i> */}
+                        <FaCheckCircle class="menu-icon tf-icons bx bxs-photo-album" />
                         <div data-i18n="Approval">Approval</div>
                     </Link>
                     {subMenuStates['approval'] && (
@@ -264,7 +258,8 @@ const Aside = () => {
                 {/* MemberShip Plan */}
                                 <li class="menu-item ">
                     <Link to="javascript:void(0);" class="menu-link menu-toggle" onClick={() => toggleSubMenu('payment')}>
-                        <i class="menu-icon tf-icons bx bxs-credit-card-front"></i>
+                     
+                        <RiSecurePaymentFill class="menu-icon tf-icons bx bxs-credit-card-front" />
                         <div data-i18n="MemberShipPlan">Payment Option</div>
                     </Link>
                     {subMenuStates['payment'] && (
@@ -345,7 +340,8 @@ const Aside = () => {
                 {/* Success Stories */}
                                                 <li class="menu-item ">
                     <Link to="javascript:void(0);" class="menu-link menu-toggle" onClick={() => toggleSubMenu('stories')}>
-                        <i class="menu-icon tf-icons bx bxs-book-alt"></i>
+
+                        <GiLovers class="menu-icon tf-icons bx bxs-book-alt" />
                         <div data-i18n="SuccessStory">Success Stories</div>
                     </Link>
                     {subMenuStates['stories'] && (

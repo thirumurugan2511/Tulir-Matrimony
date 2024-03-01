@@ -1,6 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Aside from '../Aside/Aside'
+import { MdManageHistory } from "react-icons/md";
+import { GrUserAdmin } from "react-icons/gr";
+import { MdPostAdd } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
+import { MdModeEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+
 
 const Payment = () => {
   return (
@@ -18,12 +25,12 @@ const Payment = () => {
                 </div>
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                     <ol class="breadcrumb breadcrumb-style2 mb-0">
-                        <li class="breadcrumb-item"><Link to="javascript:void(0);"></Link></li>
-                        <li class="breadcrumb-item active"> Manage Membership Plan</li>
+                    <li><MdManageHistory  class="bx bx-user me-2"/></li>
+<li class="breadcrumb-item active" style={{padding: '2px 10px'}}>  Manage Membership Plan </li>
                     </ol>
                     <ul class="navbar-nav flex-row align-items-center ms-auto">
                         <li class="nav-item lh-1 me-3">
-                                                        <i class="bx bx-user me-2"></i><span class="align-middle">Administrator</span>
+                        <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
                                                     </li>
                                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <Link class="nav-link dropdown-toggle hide-arrow" to="javascript:void(0);"
@@ -109,21 +116,18 @@ const Payment = () => {
                             </select>
                         </div>
                     </div>
-                    <div class="row justify-content-between">
-                    <div class="col-md-2">
-                                <Link to="/Storiesadd" class="fw-bold mb-4 btn btn-info"> <i
-                                class="bx bx-plus-circle"></i> Add New</Link>
-                            </div>
+                    <div class="row  justify-content-between">
+<div class="col-md-2">
+            <a href="/Religionadd" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
+        </div>
 
-                    <div class="col-md-4">
-                                <div class="search-container">
-                            <input type="text" class="search-box form-control" id="searchText" placeholder="Search"/>
-                            <button class="search-button btn btn-info searchMainBtn" id="commonSearch"><i
-                                    class="bx bx-search-alt-2"></i></button>
-                        </div>
-                            </div>
-                </div>
-   
+<div class="col-md-4">
+            <div class="search-container">
+        <input type="text" class="search-box form-control" id="searchText" placeholder="Search"/>
+        <button class="search-button btn btn-info searchMainBtn" id="commonSearch"><FaSearch class="bx bx-search-alt-2" /></button>
+    </div>
+        </div>
+</div>
 
     {/* <!-- Basic Layout --> */}
     <div class="card">
@@ -145,27 +149,26 @@ const Payment = () => {
             <td>10</td>
             <td>30 Days</td>
             <td>Lorem 1500s</td>
-            <td><a href="/edit/3"><i class="bx bxs-edit"></i> Edit</a> /
-            <a href="/edit/3"><i class="bx bxs-edit"></i> Delete</a>
-            </td>
+            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
+           
         </tr>
         <tr>            
             <td>Sliver</td>
             <td>2500</td>
             <td>60 Days</td>
             <td>Lorem 1500s</td>
-            <td><a href="/edit/3"><i class="bx bxs-edit"></i> Edit</a> /
-            <a href="/edit/3"><i class="bx bxs-edit"></i> Delete</a>
-            </td>
+            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
+           
         </tr>
         <tr>            
             <td>Gold</td>
             <td>3000</td>
             <td>120 Days</td>
             <td>Lorem 1500s</td>
-            <td><a href="/edit/3"><i class="bx bxs-edit"></i> Edit</a> /
-            <a href="/edit/3"><i class="bx bxs-edit"></i> Delete</a>
-            </td>
+            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
         </tr>
                 
           
