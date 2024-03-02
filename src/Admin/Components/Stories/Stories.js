@@ -145,85 +145,63 @@ const Stories = () => {
     <caption class="d-none">&nbsp;&nbsp; Result Data</caption>
     <thead>
         <tr class="text-nowrap">
-            <th scope="col"><input class="all_check pointer" type="checkbox"/></th>
-            <th scope="col">Status</th>
-            <th scope="col">Action</th>
             <th scope="col">Images</th>
             <th scope="col">Bride Name</th>
             <th scope="col">Bride Id</th>
             <th scope="col">Groom Name</th>
             <th scope="col">Groom Id</th>
             <th scope="col">Marriage Date</th>
-            <th scope="col">Created On</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
            
-                <tr>
-            <th scope="row"><input type="checkbox" class="checkboxId" id="ps5" name="id[]" value="5"/></th>
-                        <td><span class="badge bg-label-success me-1">APPROVED</span></td>
-                                    <td><Link to="https://gloriousmatrimonial.com/admin/success-story/edit/5"><i class="bx bxs-edit"></i>
-                    Edit</Link></td>
+            <tr>
             <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
             <td>Astha</td>
             <td>NI-327945</td>
             <td>Aporva</td>
             <td>NI-327946</td>
             <td>2023-12-22</td>
-            <td></td>
+            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
         </tr>
-                <tr>
-            <th scope="row"><input type="checkbox" class="checkboxId" id="ps4" name="id[]" value="4"/></th>
-                        <td><span class="badge bg-label-success me-1">APPROVED</span></td>
-                                    <td><Link to="https://gloriousmatrimonial.com/admin/success-story/edit/4"><i class="bx bxs-edit"></i>
-                    Edit</Link></td>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/5890381706797641.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Astha</td>
+                
+        <tr>
+            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
+            <td>Sai</td>
+            <td>NI-327645</td>
+            <td>Santhya</td>
+            <td>NI-677946</td>
+            <td>2023-12-22</td>
+            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
+        </tr>
+
+           <tr>
+            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
+            <td>Praveen</td>
+            <td>NI-320045</td>
+            <td>Ramya</td>
+            <td>NI-987946</td>
+            <td>2023-09-22</td>
+            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
+        </tr>
+
+           <tr>
+            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
+            <td>Hari</td>
             <td>NI-327945</td>
-            <td>Aporva</td>
+            <td>Nivetha</td>
             <td>NI-327946</td>
             <td>2023-12-22</td>
-            <td></td>
+            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
         </tr>
-                <tr>
-            <th scope="row"><input type="checkbox" class="checkboxId" id="ps3" name="id[]" value="3"/></th>
-                        <td><span class="badge bg-label-success me-1">APPROVED</span></td>
-                                    <td><Link to="https://gloriousmatrimonial.com/admin/success-story/edit/3"><i class="bx bxs-edit"></i>
-                    Edit</Link></td>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/7840861706797632.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Astha</td>
-            <td>NI-327945</td>
-            <td>Aporva</td>
-            <td>NI-327946</td>
-            <td>2023-12-22</td>
-            <td></td>
-        </tr>
-                <tr>
-            <th scope="row"><input type="checkbox" class="checkboxId" id="ps2" name="id[]" value="2"/></th>
-                        <td><span class="badge bg-label-success me-1">APPROVED</span></td>
-                                    <td><Link to="https://gloriousmatrimonial.com/admin/success-story/edit/2"><i class="bx bxs-edit"></i>
-                    Edit</Link></td>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/4899721706797624.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Astha</td>
-            <td>NI-327945</td>
-            <td>Aporva</td>
-            <td>NI-327946</td>
-            <td>2023-12-22</td>
-            <td></td>
-        </tr>
-                <tr>
-            <th scope="row"><input type="checkbox" class="checkboxId" id="ps1" name="id[]" value="1"/></th>
-                        <td><span class="badge bg-label-success me-1">APPROVED</span></td>
-                                    <td><Link to="https://gloriousmatrimonial.com/admin/success-story/edit/1"><i class="bx bxs-edit"></i>
-                    Edit</Link></td>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/1984731706797617.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Astha</td>
-            <td>NI-327945</td>
-            <td>Aporva</td>
-            <td>NI-327946</td>
-            <td>2023-12-22</td>
-            <td></td>
-        </tr>
+
+                
+               
             </tbody>
 </table>
 </div>

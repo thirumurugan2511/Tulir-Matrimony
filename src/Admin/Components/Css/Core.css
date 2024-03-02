@@ -981,11 +981,18 @@ progress {
     flex: 0 0 auto;
     width: 100%;
   }
-
+  .logo-text{
+    color: white;
+  }
   .offset-sm-0 {
     margin-left: 0;
   }
-
+  .menu-item.active {
+    /* Your active styles here */
+    background-color: #f0f0f0;
+    color: red;
+    /* Add any other styles as needed */
+  }
   .offset-sm-1 {
     margin-left: 8.33333333%;
   }

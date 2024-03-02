@@ -30,6 +30,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          
           <Route path="/Admin" element={<Admin />} />
           <Route path="/Stories" element={<Stories />} />
           <Route path="/Dashboard" element={<Dashboard />} />
@@ -53,6 +54,7 @@ function App() {
           <Route path="/Staradd" element={<Staradd />} />
           <Route path="/Addmember" element={<Addmember />} />
           <Route path="/Sitesettings" element={<Sitesettings />} />
+          
 
 
         </Routes>

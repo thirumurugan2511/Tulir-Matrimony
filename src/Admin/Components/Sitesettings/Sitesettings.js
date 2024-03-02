@@ -2,7 +2,8 @@ import React from 'react'
 import Aside from '../Aside/Aside'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
-
+import { MdModeEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 const Sitesettings = () => {
   return (
@@ -90,28 +91,28 @@ const Sitesettings = () => {
                         
                         <div class="mb-3 text-start">
 
-                                        <label class="form-label" for="religion_name">Username <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="religion_name">பயனர் பெயர் <span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="User Name" value=""/>
 
                                     </div>
                                     <div class="mb-3 text-start">
 
-                                        <label class="form-label" for="religion_name">Password <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="religion_name">கடவுச்சொல் <span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Password" value=""/>
 
                                     </div>
                                     <div class="mb-3 text-start">
 
-<label class="form-label" for="religion_name">Email <span class="Form__Error">*</span></label>
+<label class="form-label" for="religion_name">மின்னஞ்சல் <span class="Form__Error">*</span></label>
 
 <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Email" value=""/>
 
 </div>
 <div class="mb-3 text-start">
 
-<label class="form-label" for="religion_name">Description <span class="Form__Error">*</span></label>
+<label class="form-label" for="religion_name">விளக்கம் <span class="Form__Error">*</span></label>
 
 <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Description" value=""/>
 
@@ -139,12 +140,12 @@ const Sitesettings = () => {
    <tbody className='text-start'>
                
               <tr>
-               <td>abishek</td> 
+               <td>murugan</td> 
                <td>*********</td>  
-               <td>abishek@gmail.com</td>     
+               <td>murugan@gmail.com</td>     
                <td>Admin</td>
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
+               <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
               </tr>
               
                

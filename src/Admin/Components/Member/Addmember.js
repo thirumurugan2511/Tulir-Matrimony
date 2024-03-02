@@ -128,43 +128,31 @@ const Addmember = () => {
             <div class="form_content_data">
               <form id="formSubmitBtn1" name="addEditForm1" action="https://gloriousmatrimonial.com/admin/member/addEdit" method="POST" enctype="multipart/form-data">
                 <div class="row">
-                  <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3"> <label class="form-label">Gender <span class="Form__Error">*</span>&nbsp;&nbsp;</label><div class="radio_mainDivGroups"><div class="form-check d-inline-block me-3 mt-2"><input required="" name="gender" id="Male" class="form-check-input required" type="radio" value="Male"/>
+                  <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start "> <label class="form-label">Gender <span class="Form__Error">*</span>&nbsp;&nbsp;</label><div class="radio_mainDivGroups"><div class="form-check d-inline-block me-3 mt-2"><input required="" name="gender" id="Male" class="form-check-input required" type="radio" value="Male"/>
 
-                                <label class="form-label" for="Male">Male</label> &nbsp;</div><div class="form-check d-inline-block me-3 mt-2"><input required="" name="gender" id="Female" class="form-check-input required" type="radio" value="Female"/>
+                                <label class="form-label" for="Male">ஆண்</label> &nbsp;</div><div class="form-check d-inline-block me-3 mt-2"><input required="" name="gender" id="Female" class="form-check-input required" type="radio" value="Female"/>
 
-                                <label class="form-label" for="Female">Female</label> &nbsp;</div></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                <label class="form-label" for="Female">பெண்</label> &nbsp;</div></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="fullname">Full Name <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="fullname">முழு பெயர்<span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control required" id="fullname" name="fullname" placeholder="Full Name" value=""/>
 
-                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="email">Enter Your Email Id <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="email">மின்னஞ்சல் <span class="Form__Error">*</span></label>
 
                                         <input type="email" required="" class="form-control required" id="email" name="email" placeholder="Enter Your Email Id" value=""/>
 
                                     </div></div></div><div class="col-lg-6 col-md-6 mb-4"><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="mobile">Mobile Number <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="mobile">கைபேசி எண் <span class="Form__Error">*</span></label>
 
                                     <div class="row">
 
-                                        <div class="col-md-3">
-
-                                            <select required="" name="mobilemobile_country_code" class="form-select single select2-hidden-accessible" id="mobilemobile_country_code" data-select2-id="mobilemobile_country_code" tabindex="-1" aria-hidden="true">
-
-                                                <option value="" data-select2-id="2">Select Country Code</option><option value="+376">+376</option><option value="+971">+971</option><option value="+93">+93</option><option value="+1268">+1268</option><option value="+355">+355</option><option value="+374">+374</option><option value="+244">+244</option><option value="+672">+672</option><option value="+54">+54</option>
-                                                <option value="+1684">+1684</option><option value="+43">+43</option><option value="+61">+61</option><option value="+297">+297</option><option value="+263">+263</option><option value="+994">+994</option><option value="+387">+387</option><option value="+1246">+1246</option><option value="+880">+880</option><option value="+32">+32</option><option value="+226">+226</option><option value="+359">+359</option><option value="+973">+973</option><option value="+257">+257</option><option value="+229">+229</option><option value="+1441">+1441</option><option value="+673">+673</option><option value="+591">+591</option><option value="+263">+263</option><option value="+55">+55</option><option value="+1242">+1242</option><option value="+975">+975</option><option value="+47">+47</option><option value="+267">+267</option><option value="+375">+375</option><option value="+501">+501</option><option value="+1">+1</option><option value="+242">+242</option><option value="+236">+236</option><option value="+242">+242</option><option value="+41">+41</option><option value="+225">+225</option><option value="+56">+56</option><option value="+237">+237</option><option value="+86">+86</option><option value="+57">+57</option><option value="+506">+506</option><option value="+53">+53</option><option value="+238">+238</option><option value="+357">+357</option><option value="+420">+420</option><option value="+49">+49</option><option value="+253">+253</option><option value="+45">+45</option><option value="+1767">+1767</option><option value="+1809">+1809</option><option value="+213">+213</option><option value="+593">+593</option><option value="+372">+372</option>
-                                                <option value="+20">+20</option><option value="+212">+212</option><option value="+291">+291</option><option value="+34">+34</option><option value="+251">+251</option><option value="+358">+358</option><option value="+679">+679</option><option value="+691">+691</option><option value="+298">+298</option><option value="+33">+33</option><option value="+241">+241</option><option value="+44">+44</option><option value="+1473">+1473</option><option value="+995">+995</option><option value="+594">+594</option><option value="+263">+263</option><option value="+233">+233</option><option value="+299">+299</option><option value="+220">+220</option><option value="+224">+224</option><option value="+590">+590</option><option value="+240">+240</option><option value="+30">+30</option><option value="+502">+502</option><option value="+1671">+1671</option><option value="+245">+245</option><option value="+592">+592</option><option value="+852">+852</option><option value="+504">+504</option><option value="+385">+385</option><option value="+509">+509</option><option value="+36">+36</option><option value="+62">+62</option><option value="+353">+353</option><option value="+972">+972</option><option value="+263">+263</option><option value="+91">+91</option><option value="+246">+246</option><option value="+964">+964</option><option value="+98">+98</option><option value="+354">+354</option><option value="+39">+39</option><option value="+263">+263</option><option value="+1876">+1876</option>
-                                                <option value="+962">+962</option><option value="+81">+81</option><option value="+254">+254</option><option value="+996">+996</option><option value="+855">+855</option><option value="+686">+686</option><option value="+269">+269</option><option value="+1869">+1869</option><option value="+850">+850</option><option value="+82">+82</option><option value="+965">+965</option><option value="+7">+7</option><option value="+856">+856</option><option value="+961">+961</option><option value="+1758">+1758</option><option value="+423">+423</option><option value="+94">+94</option><option value="+231">+231</option><option value="+266">+266</option><option value="+370">+370</option><option value="+352">+352</option><option value="+371">+371</option><option value="+218">+218</option><option value="+212">+212</option><option value="+377">+377</option><option value="+373">+373</option><option value="+263">+263</option><option value="+261">+261</option><option value="+692">+692</option><option value="+389">+389</option><option value="+223">+223</option><option value="+95">+95</option><option value="+976">+976</option><option value="+853">+853</option><option value="+1670">+1670</option><option value="+596">+596</option><option value="+222">+222</option><option value="+1664">+1664</option><option value="+230">+230</option><option value="+960">+960</option><option value="+265">+265</option><option value="+52">+52</option><option value="+60">+60</option><option value="+258">+258</option><option value="+264">+264</option><option value="+687">+687</option><option value="+227">+227</option><option value="+234">+234</option>
-                                                <option value="+505">+505</option><option value="+31">+31</option><option value="+47">+47</option><option value="+977">+977</option><option value="+674">+674</option><option value="+64">+64</option><option value="+968">+968</option><option value="+507">+507</option><option value="+51">+51</option><option value="+689">+689</option><option value="+675">+675</option><option value="+63">+63</option><option value="+92">+92</option><option value="+48">+48</option><option value="+508">+508</option><option value="+1787">+1787</option><option value="+970">+970</option><option value="+351">+351</option><option value="+680">+680</option><option value="+595">+595</option><option value="+974">+974</option><option value="+262">+262</option><option value="+40">+40</option><option value="+263">+263</option><option value="+70">+70</option><option value="+250">+250</option><option value="+966">+966</option><option value="+677">+677</option><option value="+248">+248</option><option value="+249">+249</option><option value="+46">+46</option><option value="+65">+65</option><option value="+290">+290</option><option value="+386">+386</option><option value="+47">+47</option><option value="+421">+421</option><option value="+232">+232</option><option value="+378">+378</option><option value="+221">+221</option><option value="+252">+252</option><option value="+597">+597</option><option value="+263">+263</option><option value="+239">+239</option><option value="+503">+503</option><option value="+963">+963</option><option value="+268">+268</option><option value="+235">+235</option><option value="+260">+260</option><option value="+228">+228</option><option value="+66">+66</option><option value="+992">+992</option><option value="+690">+690</option><option value="+670">+670</option><option value="+7370">+7370</option>
-                                                <option value="+216">+216</option><option value="+676">+676</option><option value="+90">+90</option><option value="+1868">+1868</option><option value="+688">+688</option><option value="+886">+886</option><option value="+255">+255</option><option value="+380">+380</option><option value="+256">+256</option><option value="+1">+1</option><option value="+1">+1</option><option value="+598">+598</option><option value="+998">+998</option><option value="+1784">+1784</option><option value="+58">+58</option><option value="+1340">+1340</option><option value="+84">+84</option><option value="+678">+678</option><option value="+681">+681</option><option value="+684">+684</option><option value="+263">+263</option><option value="+967">+967</option><option value="+269">+269</option><option value="+27">+27</option><option value="+260">+260</option><option value="+263">+263</option><option value="+914">+914</option><option value="+44">+44</option>
-                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style={{width: '79.0483px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-mobilemobile_country_code-container"><span class="select2-selection__rendered" id="select2-mobilemobile_country_code-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-
-                                        </div> 
+                                    
 
                                         <div class="col-md-9">
 
@@ -174,38 +162,38 @@ const Addmember = () => {
 
                                     </div>
 
-                                </div></div></div></div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3">
+                                </div></div></div></div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="password">Password <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="password">கடவுச்சொல் <span class="Form__Error">*</span></label>
 
                                     <input password="" required="" class="form-control Password" id="password" name="password" placeholder="Password"/>
 
                                 </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="mother_tongue">Mother Tongue <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="mother_tongue">தாய் மொழி<span class="Form__Error">*</span></label>
 
                                     <select required="" class="form-select single not_reset required select2-hidden-accessible" id="mother_tongue" name="mother_tongue" aria-label="Select Mother Tongue" data-select2-id="mother_tongue" tabindex="-1" aria-hidden="true">
 
                                     <option selected="" value="" data-select2-id="4">Select Mother Tongue</option><option value="65">Aka</option><option value="66">Arabic</option><option value="67">Assamese</option><option value="19">Awadhi</option><option value="68">Bengali</option><option value="69">Bhojpuri</option><option value="21">Bhutia</option><option value="70">Chattisgarhi</option><option value="71">Chinese</option><option value="72">Coorgi</option><option value="73">Dogri</option><option value="74">English</option><option value="75">French</option><option value="76">Garhwali</option><option value="27">Garo</option><option value="77">Gujarati</option><option value="78">Haryanavi</option><option value="79">Himachali/Pahari</option><option value="80">Hindi</option><option value="29">Kakbarak</option><option value="30">Kanauji</option><option value="81">Kannada</option><option value="82">Kashmiri</option><option value="32">Khandesi</option><option value="33">Khasi</option><option value="83">Konkani</option><option value="34">Koshali</option><option value="35">Kumoani</option><option value="84">Kutchi</option><option value="37">Lepcha</option><option value="38">Magahi</option><option value="85">Maithili</option><option value="86">Malay</option><option value="87">Malayalam</option><option value="88">Manipuri</option><option value="89">Marathi</option><option value="90">Marwari</option><option value="41">Miji</option><option value="42">Mizo</option><option value="43">Monpa</option><option value="91">Nepali</option><option value="92">Oriya</option><option value="93">Other</option><option value="45">Persian</option><option value="94">Punjabi</option><option value="95">Rajasthani</option><option value="96">Russian</option><option value="48">Sanskrit</option><option value="49">Santhali</option><option value="12">Sindhi</option><option value="98">Sourashtra</option><option value="99">Spanish</option><option value="51">Swedish</option><option value="52">Tagalog</option><option value="100">Tamil</option><option value="101">Telugu</option><option value="102">Tulu</option><option value="103">Urdu</option>
-                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="3" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-mother_tongue-container"><span class="select2-selection__rendered" id="select2-mother_tongue-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="3" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-mother_tongue-container"><span class="select2-selection__rendered" id="select2-mother_tongue-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="birthdate">Birthdate <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="birthdate">பிறந்த தேதி <span class="Form__Error">*</span></label>
 
                                         <input class="form-control required" type="date" value="" max="2006-03-01" id="birthdate" name="birthdate"/>
 
                                     </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="marital_status">Marital Status <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="marital_status">திருமண நிலை <span class="Form__Error">*</span></label>
 
                                     <select required="" class="form-select single select2-hidden-accessible" id="marital_status" name="marital_status" aria-label="Select Marital Status" data-select2-id="marital_status" tabindex="-1" aria-hidden="true">
 
                                     <option selected="" value="" data-select2-id="6">Select Marital Status</option><option value="Unmarried">Unmarried</option><option value="Widow/Widower">Widow/Widower</option><option value="Divorcee">Divorcee</option><option value="Separated">Separated</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="5" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-marital_status-container"><span class="select2-selection__rendered" id="select2-marital_status-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 total_children" style={{display:  'none'}}><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="total_children">Total Children <span class="Form__Error">*</span></label>
 
@@ -213,30 +201,30 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="8">Select Total Children</option><option value="None">None</option><option value="One">One</option><option value="Two">Two</option><option value="Three">Three</option><option value="Four and above">Four and above</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="7" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-total_children-container"><span class="select2-selection__rendered" id="select2-total_children-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 status_children" style={{display:  'none'}}><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="status_children">Status Children <span class="Form__Error">*</span></label>
 
                                     <select required="" class="form-select single select2-hidden-accessible" id="status_children" name="status_children" aria-label="Select Status Children" data-select2-id="status_children" tabindex="-1" aria-hidden="true">
 
-                                    <option selected="" value="" data-select2-id="10">Select Status Children</option><option value="Living with me">Living with me</option><option value="Not living with me">Not living with me</option><option value="I have no children">I have no children</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="9" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-status_children-container"><span class="select2-selection__rendered" id="select2-status_children-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.member.index"/>                  <h4 class="mb-4 text-primary font-medium">Religious Information</h4>
+                                    <option selected="" value="" data-select2-id="10">Select Status Children</option><option value="Living with me">Living with me</option><option value="Not living with me">Not living with me</option><option value="I have no children">I have no children</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="9" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-status_children-container"><span class="select2-selection__rendered" id="select2-status_children-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.member.index"/>                  <h4 class="mb-4 text-primary font-medium">மத தகவல்</h4>
                   <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="religion">Religion <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="religion">மதம் <span class="Form__Error">*</span></label>
 
                                     <select onchange="dropdownChange('religion','caste','caste_list')" required="" class="form-select single required select2-hidden-accessible" id="religion" name="religion" aria-label="Select Religion" data-select2-id="religion" tabindex="-1" aria-hidden="true">
 
                                     <option selected="" value="" data-select2-id="12">Select Religion</option><option value="12">Buddhist</option><option value="8">Christian</option><option value="5">Hindu</option><option value="9">Jain</option><option value="6">Muslim</option><option value="15">Others</option><option value="10">Parsi</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="11" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-religion-container"><span class="select2-selection__rendered" id="select2-religion-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="caste">Caste <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="caste">சாதி <span class="Form__Error">*</span></label>
 
                                     <select required="" class="form-select single required select2-hidden-accessible" id="caste" name="caste" aria-label="Select Caste" data-select2-id="caste" tabindex="-1" aria-hidden="true">
 
-                                    <option selected="" value="" data-select2-id="14">Select Caste</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="13" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-caste-container"><span class="select2-selection__rendered" id="select2-caste-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    <option selected="" value="" data-select2-id="14">Select Caste</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="13" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-caste-container"><span class="select2-selection__rendered" id="select2-caste-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                         <label class="form-label" for="subcaste">Sub Caste </label>
 
@@ -244,13 +232,13 @@ const Addmember = () => {
 
                                     </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="manglik">Manglik </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="manglik" name="manglik" aria-label="Select Manglik" data-select2-id="manglik" tabindex="-1" aria-hidden="true">
 
-                                    <option selected="" value="" data-select2-id="16">Select Manglik</option><option value="No">No</option><option value="Yes">Yes</option><option value="Maybe">Maybe</option><option value="Anshik">Anshik</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="15" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-manglik-container"><span class="select2-selection__rendered" id="select2-manglik-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    <option selected="" value="" data-select2-id="16">Select Manglik</option><option value="No">No</option><option value="Yes">Yes</option><option value="Maybe">Maybe</option><option value="Anshik">Anshik</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="15" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-manglik-container"><span class="select2-selection__rendered" id="select2-manglik-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                         <label class="form-label" for="gothra">Gothra </label>
 
@@ -258,7 +246,7 @@ const Addmember = () => {
 
                                     </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="moonsign">Moonsign </label>
 
@@ -266,19 +254,19 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="18">Select Moonsign</option><option value="9">Dhanu (Sagittarious)</option><option value="6">Kanya (Virgo)</option><option value="4">Karka (Cancer)</option><option value="11">Kumbha (Aquarious)</option><option value="10">Makar (Capricorn)</option><option value="12">Meen (Pisces)</option><option value="1">Mesh (Aries)</option><option value="3">Mithun (Gemini)</option><option value="5">Simha (Leo)</option><option value="7">Tula (Libra)</option><option value="8">Vrischika (Scorpio)</option><option value="2">Vrishabh (Taurus)</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="17" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-moonsign-container"><span class="select2-selection__rendered" id="select2-moonsign-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="star">Star </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="star" name="star" aria-label="Select Star" data-select2-id="star" tabindex="-1" aria-hidden="true">
 
-                                    <option selected="" value="" data-select2-id="20">Select Star</option><option value="1">Anurādhā (अनुराधा)/ANUSHAM</option><option value="22">Ārdrā (आर्द्रा)/THIRUVADIRAI</option><option value="4">Āshleshā (अश्लेषा)/AYILYAM</option><option value="2">Ashwini (अश्विनि)</option><option value="5">Bharani (भरणी)</option><option value="6">Chitra (चित्रा)</option><option value="7">Hasta (हस्त)</option><option value="8">Jyeshtha (ज्येष्ठा)/KETTAI</option><option value="9">Krittika (कृत्तिका)</option><option value="10">Maghā (मघा)</option><option value="12">Mrigashīrsha(मृगशीर्ष)</option><option value="11">Mula (मूल)</option><option value="14">Punarvasu (पुनर्वसु)/PUNARPUSAM</option><option value="15">Pūrva Āshādhā (पूर्व आषाढ़)/PURADAM</option><option value="17">Pūrva Bhādrapadā (पूर्व भाद्रपद)/PURATATHI</option><option value="16">Pūrva or Pūrva Phalgunī (पूर्व फल्गुनी)/PURAM</option><option value="13">Pushya (पुष्य)</option><option value="18">Revati (रेवती)</option><option value="19">Rohini(रोहिणी)</option><option value="20">Shatabhisha (शतभिषा)or Śatataraka/SADAYAM</option><option value="23">Śrāvaṇa (श्र‌ावण)/THIRUVONAM</option><option value="3">Śrāviṣṭha (श्रविष्ठा) or Dhanishta/AVITTAM</option><option value="21">Svātī (स्वाति)</option><option value="24">Uttara Āṣāḍhā (उत्तर आषाढ़)/UTHIRADAM</option><option value="26">Uttara Bhādrapadā (उत्तर भाद्रपद)/UTHIRATTADHI</option><option value="25">Uttara or Uttara Phalgunī (उत्तर फल्गुनी)/UTHIRAM</option><option value="27">Viśākhā (विशाखा)</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="19" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-star-container"><span class="select2-selection__rendered" id="select2-star-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    <option selected="" value="" data-select2-id="20">Select Star</option><option value="1">Anurādhā (अनुराधा)/ANUSHAM</option><option value="22">Ārdrā (आर्द्रा)/THIRUVADIRAI</option><option value="4">Āshleshā (अश्लेषा)/AYILYAM</option><option value="2">Ashwini (अश्विनि)</option><option value="5">Bharani (भरणी)</option><option value="6">Chitra (चित्रा)</option><option value="7">Hasta (हस्त)</option><option value="8">Jyeshtha (ज्येष्ठा)/KETTAI</option><option value="9">Krittika (कृत्तिका)</option><option value="10">Maghā (मघा)</option><option value="12">Mrigashīrsha(मृगशीर्ष)</option><option value="11">Mula (मूल)</option><option value="14">Punarvasu (पुनर्वसु)/PUNARPUSAM</option><option value="15">Pūrva Āshādhā (पूर्व आषाढ़)/PURADAM</option><option value="17">Pūrva Bhādrapadā (पूर्व भाद्रपद)/PURATATHI</option><option value="16">Pūrva or Pūrva Phalgunī (पूर्व फल्गुनी)/PURAM</option><option value="13">Pushya (पुष्य)</option><option value="18">Revati (रेवती)</option><option value="19">Rohini(रोहिणी)</option><option value="20">Shatabhisha (शतभिषा)or Śatataraka/SADAYAM</option><option value="23">Śrāvaṇa (श्र‌ावण)/THIRUVONAM</option><option value="3">Śrāviṣṭha (श्रविष्ठा) or Dhanishta/AVITTAM</option><option value="21">Svātī (स्वाति)</option><option value="24">Uttara Āṣāḍhā (उत्तर आषाढ़)/UTHIRADAM</option><option value="26">Uttara Bhādrapadā (उत्तर भाद्रपद)/UTHIRATTADHI</option><option value="25">Uttara or Uttara Phalgunī (उत्तर फल्गुनी)/UTHIRAM</option><option value="27">Viśākhā (विशाखा)</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="19" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-star-container"><span class="select2-selection__rendered" id="select2-star-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                         <label class="form-label" for="birthplace">Birth Place </label>
 
                                         <input type="text" class="form-control " id="birthplace" name="birthplace" placeholder="Birth Place" value=""/>
 
-                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                         <label class="form-label" for="birthtime">Birth Time </label>
 
@@ -287,13 +275,13 @@ const Addmember = () => {
                                     </div></div></div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.member.index"/>                  <h4 class="mb-4 text-primary font-medium">Education / Occupation Details</h4>
                   <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="education_level">Education <span class="Form__Error">*</span></label>
 
                                     <select required="" class="form-select single required select2-hidden-accessible" id="education_level" name="education_level" aria-label="Select Education" data-select2-id="education_level" tabindex="-1" aria-hidden="true">
 
-                                    <option selected="" value="" data-select2-id="22">Select Education</option><option value="1">Bachelor's</option><option value="2">Master's</option><option value="5">Other</option><option value="3">PHD</option><option value="4">Post Doc</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="21" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-education_level-container"><span class="select2-selection__rendered" id="select2-education_level-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    <option selected="" value="" data-select2-id="22">Select Education</option><option value="1">Bachelor's</option><option value="2">Master's</option><option value="5">Other</option><option value="3">PHD</option><option value="4">Post Doc</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="21" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-education_level-container"><span class="select2-selection__rendered" id="select2-education_level-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                         <label class="form-label" for="education_details">Education Details </label>
 
@@ -301,7 +289,7 @@ const Addmember = () => {
 
                                     </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="occupation">Occupation <span class="Form__Error">*</span></label>
 
@@ -309,7 +297,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="24">Select Occupation</option><option value="1">Agriculture</option><option value="2">Arts/Creative</option><option value="3">Automotive</option><option value="4">Business/Entrepreneurship</option><option value="5">Construction</option><option value="6">Consulting</option><option value="7">Education/Teaching</option><option value="8">Energy/Utilities</option><option value="9">Engineering</option><option value="10">Environmental Services</option><option value="33">Fashion Designer</option><option value="11">Finance/Banking</option><option value="12">Food Services/Hospitality</option><option value="13">Government/Public Service</option><option value="14">Healthcare/Medical</option><option value="16">Human Resources</option><option value="17">Information Technology (IT)</option><option value="32">Interior Designer</option><option value="18">Legal/Law</option><option value="34">Management/Administration</option><option value="19">Manufacturing</option><option value="20">Marketing/Advertising</option><option value="21">Media/Entertainment</option><option value="31">Others</option><option value="22">Pharmaceuticals</option><option value="23">Real Estate/Property</option><option value="24">Research/Science</option><option value="25">Retail</option><option value="26">Sales</option><option value="27">Seva/Non-Profit/NGO</option><option value="28">Sports/Fitness</option><option value="29">Telecommunications</option><option value="30">Transportation/Logistics</option><option value="15">Travel/Tourism</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="23" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-occupation-container"><span class="select2-selection__rendered" id="select2-occupation-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="employee_in">Employee In <span class="Form__Error">*</span></label>
 
@@ -317,7 +305,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="26">Select Employee In</option><option value="2">Development</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="25" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-employee_in-container"><span class="select2-selection__rendered" id="select2-employee_in-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="income">Annual Income <span class="Form__Error">*</span></label>
 
@@ -336,7 +324,7 @@ const Addmember = () => {
                 <div class="row">
                   <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="country_id">Country <span class="Form__Error">*</span></label>
 
@@ -350,7 +338,7 @@ const Addmember = () => {
                                     <option value="188">San Marino</option><option value="193">Sao Tome And Principe</option><option value="177">Saudi Arabia</option><option value="241">Scotland</option><option value="189">Senegal</option><option value="174">Serbia</option><option value="179">Seychelles</option><option value="187">Sierra Leone</option><option value="182">Singapore</option><option value="186">Slovakia</option><option value="184">Slovenia</option><option value="178">Solomon Islands</option><option value="190">Somalia</option><option value="228">South Africa</option><option value="112">South Korea</option><option value="192">South Sudan</option><option value="62">Spain</option><option value="119">Sri Lanka</option><option value="180">Sudan</option><option value="191">Suriname</option><option value="185">Svalbard And Jan Mayen</option><option value="196">Swaziland</option><option value="181">Sweden</option><option value="40">Switzerland</option><option value="195">Syria</option><option value="210">Taiwan</option><option value="201">Tajikistan</option><option value="211">Tanzania</option><option value="200">Thailand</option><option value="199">Togo</option><option value="202">Tokelau</option><option value="206">Tonga</option><option value="208">Trinidad And Tobago</option><option value="205">Tunisia</option><option value="207">Turkey</option><option value="204">Turkmenistan</option><option value="209">Tuvalu</option><option value="220">U.S. Virgin Islands</option><option value="213">Uganda</option><option value="212">Ukraine</option><option value="2">United Arab Emirates</option><option value="70">United Kingdom</option><option value="215">United States</option><option value="214">United States Minor Outlying Islands</option><option value="216">Uruguay</option><option value="217">Uzbekistan</option><option value="222">Vanuatu</option><option value="219">Venezuela</option><option value="221">Vietnam</option><option value="223">Wallis And Futuna</option><option value="60">Western Sahara</option><option value="226">Yemen</option><option value="229">Zambia</option><option value="230">Zimbabwe</option>
                                     </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="29" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-country_id-container"><span class="select2-selection__rendered" id="select2-country_id-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="state_id">State <span class="Form__Error">*</span></label>
 
@@ -358,7 +346,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="32">Select State</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="31" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-state_id-container"><span class="select2-selection__rendered" id="select2-state_id-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="city">City <span class="Form__Error">*</span></label>
 
@@ -366,25 +354,25 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="34">Select City</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="33" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-city-container"><span class="select2-selection__rendered" id="select2-city-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="residence_type">Residence Type </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="residence_type" name="residence_type" aria-label="Select Residence Type" data-select2-id="residence_type" tabindex="-1" aria-hidden="true">
 
-                                    <option selected="" value="" data-select2-id="36">Select Residence Type</option><option value="Citizen">Citizen</option><option value="Permanent Resident">Permanent Resident</option><option value="Student Visa">Student Visa</option><option value="Temporary Visa">Temporary Visa</option><option value="Work permit">Work permit</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="35" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-residence_type-container"><span class="select2-selection__rendered" id="select2-residence_type-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    <option selected="" value="" data-select2-id="36">Select Residence Type</option><option value="Citizen">Citizen</option><option value="Permanent Resident">Permanent Resident</option><option value="Student Visa">Student Visa</option><option value="Temporary Visa">Temporary Visa</option><option value="Work permit">Work permit</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="35" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-residence_type-container"><span class="select2-selection__rendered" id="select2-residence_type-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                         <label class="form-label" for="alternate_number">Alternate Number </label>
 
                                         <input type="text" class="form-control " id="alternate_number" name="alternate_number" placeholder="Alternate Number" value=""/>
 
-                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                         <label class="form-label" for="nri_country">If NRI Originated country </label>
 
                                         <input type="text" class="form-control " id="nri_country" name="nri_country" placeholder="If NRI Originated country" value=""/>
 
-                                    </div></div></div><div class="col-lg-12 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    </div></div></div><div class="col-lg-12 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="address">Address </label>
 
@@ -403,7 +391,7 @@ const Addmember = () => {
                 <div class="row">
                   <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="height">Height </label>
 
@@ -411,7 +399,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="38">Select Height</option><option value="50">4-2 ft</option><option value="51">4-3 ft</option><option value="52">4-4 ft</option><option value="53">4-5 ft</option><option value="54">4-6 ft</option><option value="55">4-7 ft</option><option value="56">4-8 ft</option><option value="57">4-9 ft</option><option value="58">4-10 ft</option><option value="59">4-11 ft</option><option value="60">153cm - 5</option><option value="61">5-1 ft</option><option value="62">5-2 ft</option><option value="63">5-3 ft</option><option value="64">5-4 ft</option><option value="65">5-5 ft</option><option value="66">5-6 ft</option><option value="67">5-7 ft</option><option value="68">5-8 ft</option><option value="69">5-9 ft</option><option value="70">5-10 ft</option><option value="71">5-11 ft</option><option value="72">183cm - 6</option><option value="73">6-1 ft</option><option value="74">6-2 ft</option><option value="75">6-3 ft</option><option value="76">6-4 ft</option><option value="77">6-5 ft</option><option value="78">6-6 ft</option><option value="79">6-7 ft</option><option value="80">6-8 ft</option><option value="81">6-9 ft</option><option value="82">6-10 ft</option><option value="83">6-11 ft</option><option value="84">214cm - 7</option><option value="85">7-1 ft</option><option value="86">7-2 ft</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="37" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-height-container"><span class="select2-selection__rendered" id="select2-height-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="weight">Weight </label>
 
@@ -441,7 +429,7 @@ const Addmember = () => {
                                     
                                     <span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="39" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-weight-container"><span class="select2-selection__rendered" id="select2-weight-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="diet">Eating Habits </label>
 
@@ -449,7 +437,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="42">Select Eating Habits</option><option value="Vegetarian">Vegetarian</option><option value="Non Vegetarian">Non Vegetarian</option><option value="Eggetarian">Eggetarian</option><option value="Vegan">Vegan</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="41" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-diet-container"><span class="select2-selection__rendered" id="select2-diet-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="smoke">Smoking </label>
 
@@ -457,7 +445,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="44">Select Smoking</option><option value="Yes">Yes</option><option value="No">No</option><option value="Planning to quit">Planning to quit</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="43" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-smoke-container"><span class="select2-selection__rendered" id="select2-smoke-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="drink">Drinking </label>
 
@@ -465,7 +453,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="46">Select Drinking</option><option value="Teetotaler">Teetotaler</option><option value="Occasionally">Occasionally</option><option value="Socially">Socially</option><option value="Regularly">Regularly</option><option value="Planning to quit">Planning to quit</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="45" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-drink-container"><span class="select2-selection__rendered" id="select2-drink-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="body_type">Body Type </label>
 
@@ -473,7 +461,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="48">Select Body Type</option><option value="Slim">Slim</option><option value="Average">Average</option><option value="Athletic">Athletic</option><option value="Heavy">Heavy</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="47" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-body_type-container"><span class="select2-selection__rendered" id="select2-body_type-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="skin_tone">Skin Tone </label>
 
@@ -482,13 +470,13 @@ const Addmember = () => {
                                     <option selected="" value="" data-select2-id="50">Select Skin Tone</option><option value="Wheatish">Wheatish</option><option value="Very Fair">Very Fair</option><option value="Fair">Fair</option><option value="Wheatish Brown">Wheatish Brown</option><option value="Dark">Dark</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="49" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-skin_tone-container"><span class="select2-selection__rendered" id="select2-skin_tone-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.member.index"/>                  <h4 class="mb-4 text-danger">About</h4>
                   <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="profileby">Profile By </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="profileby" name="profileby" aria-label="Select Profile By" data-select2-id="profileby" tabindex="-1" aria-hidden="true">
 
-                                    <option selected="" value="" data-select2-id="52">Select Profile By</option><option value="Self">Self</option><option value="Parents">Parents</option><option value="Guardian">Guardian</option><option value="Friends">Friends</option><option value="Sibling">Sibling</option><option value="Relatives">Relatives</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="51" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-profileby-container"><span class="select2-selection__rendered" id="select2-profileby-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-12 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    <option selected="" value="" data-select2-id="52">Select Profile By</option><option value="Self">Self</option><option value="Parents">Parents</option><option value="Guardian">Guardian</option><option value="Friends">Friends</option><option value="Sibling">Sibling</option><option value="Relatives">Relatives</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="51" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-profileby-container"><span class="select2-selection__rendered" id="select2-profileby-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-12 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="profile_text">About Me </label>
 
@@ -507,7 +495,7 @@ const Addmember = () => {
                 <div class="row">
                   <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="family_type">Family Type </label>
 
@@ -515,31 +503,31 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="54">Select Family Type</option><option value="Nuclear Family">Nuclear Family</option><option value="Joint Family">Joint Family</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="53" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-family_type-container"><span class="select2-selection__rendered" id="select2-family_type-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="family_status">Family Status </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="family_status" name="family_status" aria-label="Select Family Status" data-select2-id="family_status" tabindex="-1" aria-hidden="true">
 
-                                    <option selected="" value="" data-select2-id="56">Select Family Status</option><option value="Rich">Rich</option><option value="Upper Middle Class">Upper Middle Class</option><option value="Middle Class">Middle Class</option><option value="Lower Middle Class">Lower Middle Class</option><option value="Poor Family">Poor Family</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="55" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-family_status-container"><span class="select2-selection__rendered" id="select2-family_status-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    <option selected="" value="" data-select2-id="56">Select Family Status</option><option value="Rich">Rich</option><option value="Upper Middle Class">Upper Middle Class</option><option value="Middle Class">Middle Class</option><option value="Lower Middle Class">Lower Middle Class</option><option value="Poor Family">Poor Family</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="55" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-family_status-container"><span class="select2-selection__rendered" id="select2-family_status-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                         <label class="form-label" for="father_name">Father Name <span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control " id="father_name" name="father_name" placeholder="Father Name" value=""/>
 
-                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                         <label class="form-label" for="father_occupation">Father Occupation <span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control " id="father_occupation" name="father_occupation" placeholder="Father Occupation" value=""/>
 
-                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                         <label class="form-label" for="mother_name">Mother Name <span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control " id="mother_name" name="mother_name" placeholder="Mother Name" value=""/>
 
-                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                         <label class="form-label" for="mother_occupation">Mother Occupation <span class="Form__Error">*</span></label>
 
@@ -547,7 +535,7 @@ const Addmember = () => {
 
                                     </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="no_of_brother">No Of Brother </label>
 
@@ -555,13 +543,13 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="58">Select No Of Brother</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="4 +">4 +</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="57" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-no_of_brother-container"><span class="select2-selection__rendered" id="select2-no_of_brother-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="no_of_sister">No Of Sister </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="no_of_sister" name="no_of_sister" aria-label="Select No Of Sister" data-select2-id="no_of_sister" tabindex="-1" aria-hidden="true">
 
-                                    <option selected="" value="" data-select2-id="60">Select No Of Sister</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="4 +">4 +</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="59" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-no_of_sister-container"><span class="select2-selection__rendered" id="select2-no_of_sister-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-12 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3">
+                                    <option selected="" value="" data-select2-id="60">Select No Of Sister</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="4 +">4 +</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="59" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-no_of_sister-container"><span class="select2-selection__rendered" id="select2-no_of_sister-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-12 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="family_details">Family Details </label>
 
@@ -580,7 +568,7 @@ const Addmember = () => {
                 <div class="row">
                   <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_frm_age">Partner From Age </label>
 
@@ -588,7 +576,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="62">Select Partner From Age</option><option value="18">18 Year</option><option value="19">19 Year</option><option value="20">20 Year</option><option value="21">21 Year</option><option value="22">22 Year</option><option value="23">23 Year</option><option value="24">24 Year</option><option value="25">25 Year</option><option value="26">26 Year</option><option value="27">27 Year</option><option value="28">28 Year</option><option value="29">29 Year</option><option value="30">30 Year</option><option value="31">31 Year</option><option value="32">32 Year</option><option value="33">33 Year</option><option value="34">34 Year</option><option value="35">35 Year</option><option value="36">36 Year</option><option value="37">37 Year</option><option value="38">38 Year</option><option value="39">39 Year</option><option value="40">40 Year</option><option value="41">41 Year</option><option value="42">42 Year</option><option value="43">43 Year</option><option value="44">44 Year</option><option value="45">45 Year</option><option value="46">46 Year</option><option value="47">47 Year</option><option value="48">48 Year</option><option value="49">49 Year</option><option value="50">50 Year</option><option value="51">51 Year</option><option value="52">52 Year</option><option value="53">53 Year</option><option value="54">54 Year</option><option value="55">55 Year</option><option value="56">56 Year</option><option value="57">57 Year</option><option value="58">58 Year</option><option value="59">59 Year</option><option value="60">60 Year</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="61" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-part_frm_age-container"><span class="select2-selection__rendered" id="select2-part_frm_age-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_to_age">Partner To Age </label>
 
@@ -596,7 +584,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="64">Select Partner To Age</option><option value="18">18 Year</option><option value="19">19 Year</option><option value="20">20 Year</option><option value="21">21 Year</option><option value="22">22 Year</option><option value="23">23 Year</option><option value="24">24 Year</option><option value="25">25 Year</option><option value="26">26 Year</option><option value="27">27 Year</option><option value="28">28 Year</option><option value="29">29 Year</option><option value="30">30 Year</option><option value="31">31 Year</option><option value="32">32 Year</option><option value="33">33 Year</option><option value="34">34 Year</option><option value="35">35 Year</option><option value="36">36 Year</option><option value="37">37 Year</option><option value="38">38 Year</option><option value="39">39 Year</option><option value="40">40 Year</option><option value="41">41 Year</option><option value="42">42 Year</option><option value="43">43 Year</option><option value="44">44 Year</option><option value="45">45 Year</option><option value="46">46 Year</option><option value="47">47 Year</option><option value="48">48 Year</option><option value="49">49 Year</option><option value="50">50 Year</option><option value="51">51 Year</option><option value="52">52 Year</option><option value="53">53 Year</option><option value="54">54 Year</option><option value="55">55 Year</option><option value="56">56 Year</option><option value="57">57 Year</option><option value="58">58 Year</option><option value="59">59 Year</option><option value="60">60 Year</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="63" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-part_to_age-container"><span class="select2-selection__rendered" id="select2-part_to_age-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_height">Partner From Height </label>
 
@@ -604,7 +592,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="66">Select Partner From Height</option><option value="50">4-2 ft</option><option value="51">4-3 ft</option><option value="52">4-4 ft</option><option value="53">4-5 ft</option><option value="54">4-6 ft</option><option value="55">4-7 ft</option><option value="56">4-8 ft</option><option value="57">4-9 ft</option><option value="58">4-10 ft</option><option value="59">4-11 ft</option><option value="60">153cm - 5</option><option value="61">5-1 ft</option><option value="62">5-2 ft</option><option value="63">5-3 ft</option><option value="64">5-4 ft</option><option value="65">5-5 ft</option><option value="66">5-6 ft</option><option value="67">5-7 ft</option><option value="68">5-8 ft</option><option value="69">5-9 ft</option><option value="70">5-10 ft</option><option value="71">5-11 ft</option><option value="72">183cm - 6</option><option value="73">6-1 ft</option><option value="74">6-2 ft</option><option value="75">6-3 ft</option><option value="76">6-4 ft</option><option value="77">6-5 ft</option><option value="78">6-6 ft</option><option value="79">6-7 ft</option><option value="80">6-8 ft</option><option value="81">6-9 ft</option><option value="82">6-10 ft</option><option value="83">6-11 ft</option><option value="84">214cm - 7</option><option value="85">7-1 ft</option><option value="86">7-2 ft</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="65" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-part_height-container"><span class="select2-selection__rendered" id="select2-part_height-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_height_to">Partner To Height </label>
 
@@ -612,7 +600,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="68">Select Partner To Height</option><option value="50">4-2 ft</option><option value="51">4-3 ft</option><option value="52">4-4 ft</option><option value="53">4-5 ft</option><option value="54">4-6 ft</option><option value="55">4-7 ft</option><option value="56">4-8 ft</option><option value="57">4-9 ft</option><option value="58">4-10 ft</option><option value="59">4-11 ft</option><option value="60">153cm - 5</option><option value="61">5-1 ft</option><option value="62">5-2 ft</option><option value="63">5-3 ft</option><option value="64">5-4 ft</option><option value="65">5-5 ft</option><option value="66">5-6 ft</option><option value="67">5-7 ft</option><option value="68">5-8 ft</option><option value="69">5-9 ft</option><option value="70">5-10 ft</option><option value="71">5-11 ft</option><option value="72">183cm - 6</option><option value="73">6-1 ft</option><option value="74">6-2 ft</option><option value="75">6-3 ft</option><option value="76">6-4 ft</option><option value="77">6-5 ft</option><option value="78">6-6 ft</option><option value="79">6-7 ft</option><option value="80">6-8 ft</option><option value="81">6-9 ft</option><option value="82">6-10 ft</option><option value="83">6-11 ft</option><option value="84">214cm - 7</option><option value="85">7-1 ft</option><option value="86">7-2 ft</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="67" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-part_height_to-container"><span class="select2-selection__rendered" id="select2-part_height_to-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_religion">Partner Religion </label>
 
@@ -620,7 +608,7 @@ const Addmember = () => {
 
                                     <option value="Does Not Matter">Does Not Matter</option><option value="12">Buddhist</option><option value="8">Christian</option><option value="5">Hindu</option><option value="9">Jain</option><option value="6">Muslim</option><option value="15">Others</option><option value="10">Parsi</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="69" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Please Select" style={{width: '0px'}}/></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_caste">Partner Caste </label>
 
@@ -628,7 +616,7 @@ const Addmember = () => {
 
                                     <option value="Does Not Matter">Does Not Matter</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="70" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Please Select" style={{width: '0px'}} /></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_country">Country </label>
 
@@ -645,7 +633,7 @@ const Addmember = () => {
                                     <option value="215">United States</option><option value="214">United States Minor Outlying Islands</option><option value="216">Uruguay</option><option value="217">Uzbekistan</option><option value="222">Vanuatu</option><option value="219">Venezuela</option><option value="221">Vietnam</option><option value="223">Wallis And Futuna</option><option value="60">Western Sahara</option><option value="226">Yemen</option><option value="229">Zambia</option><option value="230">Zimbabwe</option>
                                     </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="71" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Please Select" style={{width: '0px'}} /></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_state">Partner State </label>
 
@@ -653,7 +641,7 @@ const Addmember = () => {
 
                                     <option value="Does Not Matter">Does Not Matter</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="72" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Please Select" style={{width: '0px'}}/></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_marital_status">Partner Marital Status </label>
 
@@ -661,7 +649,7 @@ const Addmember = () => {
 
                                     <option value="Does Not Matter">Does Not Matter</option><option value="Unmarried">Unmarried</option><option value="Widow/Widower">Widow/Widower</option><option value="Divorcee">Divorcee</option><option value="Separated">Separated</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="73" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Please Select" style={{width: '0px'}}/></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_income">Partner Annual Income </label>
 
@@ -669,7 +657,7 @@ const Addmember = () => {
 
                                     <option value="Does Not Matter">Does Not Matter</option><option value="1">Upto INR 1,00,000</option><option value="2">INR 1,00,000 to 2,00,000</option><option value="3">INR 2,00,000 to 4,00,000</option><option value="4">INR 4,00,000 to 7,00,000</option><option value="5">INR 7,00,000 to 10,00,000</option><option value="6">INR 10,00,000 to 15,00,000</option><option value="7">INR 15,00,000 to 20,00,000</option><option value="8">INR 20,00,000 to 30,00,000</option><option value="9">INR 30,00,000 to 50,00,000</option><option value="10">INR 50,00,000 to 75,00,000</option><option value="11">INR 75,00,000 to 1,00,00,000</option><option value="12">INR 1,00,00,000 to 3,00,00,000</option><option value="13">INR 3,00,00,000 and above</option><option value="14">Not applicable</option><option value="15">Don’t want to Specify</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="74" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Please Select" style={{width: '0px'}}/></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_education">Partner Education </label>
 
@@ -677,7 +665,7 @@ const Addmember = () => {
 
                                     <option value="Does Not Matter">Does Not Matter</option><option value="1">Bachelor's</option><option value="2">Master's</option><option value="5">Other</option><option value="3">PHD</option><option value="4">Post Doc</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="75" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Please Select" style={{width: '0px'}} /></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_occupation">Partner Occupation </label>
 
@@ -685,7 +673,7 @@ const Addmember = () => {
 
                                     <option value="Does Not Matter">Does Not Matter</option><option value="1">Agriculture</option><option value="2">Arts/Creative</option><option value="3">Automotive</option><option value="4">Business/Entrepreneurship</option><option value="5">Construction</option><option value="6">Consulting</option><option value="7">Education/Teaching</option><option value="8">Energy/Utilities</option><option value="9">Engineering</option><option value="10">Environmental Services</option><option value="33">Fashion Designer</option><option value="11">Finance/Banking</option><option value="12">Food Services/Hospitality</option><option value="13">Government/Public Service</option><option value="14">Healthcare/Medical</option><option value="16">Human Resources</option><option value="17">Information Technology (IT)</option><option value="32">Interior Designer</option><option value="18">Legal/Law</option><option value="34">Management/Administration</option><option value="19">Manufacturing</option><option value="20">Marketing/Advertising</option><option value="21">Media/Entertainment</option><option value="31">Others</option><option value="22">Pharmaceuticals</option><option value="23">Real Estate/Property</option><option value="24">Research/Science</option><option value="25">Retail</option><option value="26">Sales</option><option value="27">Seva/Non-Profit/NGO</option><option value="28">Sports/Fitness</option><option value="29">Telecommunications</option><option value="30">Transportation/Logistics</option><option value="15">Travel/Tourism</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="76" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Please Select" style={{width: '0px'}}/></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_mothertongue">Partner Mother Tongue </label>
 
@@ -694,7 +682,7 @@ const Addmember = () => {
                                     // <option value="Does Not Matter">Does Not Matter</option><option value="65">Aka</option><option value="66">Arabic</option><option value="67">Assamese</option><option value="19">Awadhi</option><option value="68">Bengali</option><option value="69">Bhojpuri</option><option value="21">Bhutia</option><option value="70">Chattisgarhi</option><option value="71">Chinese</option><option value="72">Coorgi</option><option value="73">Dogri</option><option value="74">English</option><option value="75">French</option><option value="76">Garhwali</option><option value="27">Garo</option><option value="77">Gujarati</option><option value="78">Haryanavi</option><option value="79">Himachali/Pahari</option><option value="80">Hindi</option><option value="29">Kakbarak</option><option value="30">Kanauji</option><option value="81">Kannada</option><option value="82">Kashmiri</option><option value="32">Khandesi</option><option value="33">Khasi</option><option value="83">Konkani</option><option value="34">Koshali</option><option value="35">Kumoani</option><option value="84">Kutchi</option><option value="37">Lepcha</option><option value="38">Magahi</option><option value="85">Maithili</option><option value="86">Malay</option><option value="87">Malayalam</option><option value="88">Manipuri</option><option value="89">Marathi</option><option value="90">Marwari</option><option value="41">Miji</option><option value="42">Mizo</option><option value="43">Monpa</option><option value="91">Nepali</option><option value="92">Oriya</option><option value="93">Other</option><option value="45">Persian</option><option value="94">Punjabi</option><option value="95">Rajasthani</option><option value="96">Russian</option><option value="48">Sanskrit</option><option value="49">Santhali</option><option value="12">Sindhi</option><option value="98">Sourashtra</option><option value="99">Spanish</option><option value="51">Swedish</option><option value="52">Tagalog</option><option value="100">Tamil</option><option value="101">Telugu</option><option value="102">Tulu</option><option value="103">Urdu</option>
                                     </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="77" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Please Select" style={{width: '0px'}}/></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_manglik">Partner Manglik </label>
 
@@ -712,7 +700,7 @@ const Addmember = () => {
               
                 <div class="row">
                   <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU" /> </div>                
-                   <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3">
+                   <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="photo1">Photo 1 <span class="Form__Error">*</span></label>
 
@@ -733,11 +721,11 @@ const Addmember = () => {
 
                                     
 
-                                </div><div class="mb-3"> <label class="form-label">Photo 1 Status &nbsp;&nbsp;</label><input checked="" name="photo1_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
+                                </div><div class="mb-3 text-start"> <label class="form-label">Photo 1 Status &nbsp;&nbsp;</label><input checked="" name="photo1_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
 
                                 <label class="form-label" for="Yes">APPROVED</label> &nbsp;<input name="photo1_approve" id="No" class="form-check-input " type="radio" value="No"/>
 
-                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3">
+                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="photo2">Photo 2 </label>
 
@@ -757,11 +745,11 @@ const Addmember = () => {
 
                                     
 
-                                </div><div class="mb-3"> <label class="form-label">Photo 2 Status &nbsp;&nbsp;</label><input checked="" name="photo2_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
+                                </div><div class="mb-3 text-start"> <label class="form-label">Photo 2 Status &nbsp;&nbsp;</label><input checked="" name="photo2_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
 
                                 <label class="form-label" for="Yes">APPROVED</label> &nbsp;<input name="photo2_approve" id="No" class="form-check-input " type="radio" value="No"/>
 
-                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3">
+                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="photo3">Photo 3 </label>
 
@@ -781,11 +769,11 @@ const Addmember = () => {
 
                                     
 
-                                </div><div class="mb-3"> <label class="form-label">Photo 3 Status &nbsp;&nbsp;</label><input checked="" name="photo3_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
+                                </div><div class="mb-3 text-start"> <label class="form-label">Photo 3 Status &nbsp;&nbsp;</label><input checked="" name="photo3_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
 
                                 <label class="form-label" for="Yes">APPROVED</label> &nbsp;<input name="photo3_approve" id="No" class="form-check-input " type="radio" value="No"/>
 
-                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3">
+                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="photo4">Photo 4 </label>
 
@@ -805,11 +793,11 @@ const Addmember = () => {
 
                                     
 
-                                </div><div class="mb-3"> <label class="form-label">Photo 4 Status &nbsp;&nbsp;</label><input checked="" name="photo4_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
+                                </div><div class="mb-3 text-start"> <label class="form-label">Photo 4 Status &nbsp;&nbsp;</label><input checked="" name="photo4_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
 
                                 <label class="form-label" for="Yes">APPROVED</label> &nbsp;<input name="photo4_approve" id="No" class="form-check-input " type="radio" value="No"/>
 
-                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3">
+                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="id_proof_front">Id Proof Front <span class="Form__Error">*</span></label>
 
@@ -829,7 +817,7 @@ const Addmember = () => {
 
                                     
 
-                                </div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3">
+                                </div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="id_proof_back">Id Proof Back <span class="Form__Error">*</span></label>
 
@@ -849,7 +837,7 @@ const Addmember = () => {
 
                                     
 
-                                </div><div class="mb-3"> <label class="form-label">ID Proof Status &nbsp;&nbsp;</label><input name="id_proof_approve" id="APPROVED" class="form-check-input " type="radio" value="APPROVED"/>
+                                </div><div class="mb-3 text-start"> <label class="form-label">ID Proof Status &nbsp;&nbsp;</label><input name="id_proof_approve" id="APPROVED" class="form-check-input " type="radio" value="APPROVED"/>
 
                                 <label class="form-label" for="APPROVED">APPROVED</label> &nbsp;<input name="id_proof_approve" id="UNAPPROVED" class="form-check-input " type="radio" value="UNAPPROVED"/>
 
