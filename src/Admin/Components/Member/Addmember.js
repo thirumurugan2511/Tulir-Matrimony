@@ -13,7 +13,9 @@ const Addmember = () => {
     <>
      <div class="layout-wrapper layout-content-navbar">
    <div class="layout-container">
+    <div>
    <Aside />
+   </div>
     <div class="layout-page">
             <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached
             align-items-center bg-navbar-theme" id="layout-navbar">
@@ -102,22 +104,22 @@ const Addmember = () => {
       <div class="iiner_bg_echange px-4">
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Basic Detail</button>
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">அடிப்படை விவரம்</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Residence</button>
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">குடியிருப்பு</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-other-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-other-profile" type="button" role="tab" aria-controls="pills-other-profile" aria-selected="false">Physical Info</button>
+            <button class="nav-link" id="pills-other-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-other-profile" type="button" role="tab" aria-controls="pills-other-profile" aria-selected="false">உடல் தகவல்</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-family-details-tab" data-bs-toggle="pill" data-bs-target="#pills-family-details" type="button" role="tab" aria-controls="pills-family-details" aria-selected="false">Family Details</button>
+            <button class="nav-link" id="pills-family-details-tab" data-bs-toggle="pill" data-bs-target="#pills-family-details" type="button" role="tab" aria-controls="pills-family-details" aria-selected="false">குடும்ப விவரங்கள்</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-partner-preference-tab" data-bs-toggle="pill" data-bs-target="#pills-partner-preference" type="button" role="tab" aria-controls="pills-partner-preference" aria-selected="false">Partner Preference</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-upload-photo-tab" data-bs-toggle="pill" data-bs-target="#pills-upload-photo" type="button" role="tab" aria-controls="pills-upload-photo" aria-selected="false">Upload Photos</button>
+            <button class="nav-link" id="pills-upload-photo-tab" data-bs-toggle="pill" data-bs-target="#pills-upload-photo" type="button" role="tab" aria-controls="pills-upload-photo" aria-selected="false">புகைப்படங்களைப் பதிவேற்றவும்</button>
           </li>
         </ul>
       </div>
@@ -128,7 +130,7 @@ const Addmember = () => {
             <div class="form_content_data">
               <form id="formSubmitBtn1" name="addEditForm1" action="https://gloriousmatrimonial.com/admin/member/addEdit" method="POST" enctype="multipart/form-data">
                 <div class="row">
-                  <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start "> <label class="form-label">Gender <span class="Form__Error">*</span>&nbsp;&nbsp;</label><div class="radio_mainDivGroups"><div class="form-check d-inline-block me-3 mt-2"><input required="" name="gender" id="Male" class="form-check-input required" type="radio" value="Male"/>
+                  <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start "> <label class="form-label">பாலினம் <span class="Form__Error">*</span>&nbsp;&nbsp;</label><div class="radio_mainDivGroups"><div class="form-check d-inline-block me-3 mt-2"><input required="" name="gender" id="Male" class="form-check-input required" type="radio" value="Male"/>
 
                                 <label class="form-label" for="Male">ஆண்</label> &nbsp;</div><div class="form-check d-inline-block me-3 mt-2"><input required="" name="gender" id="Female" class="form-check-input required" type="radio" value="Female"/>
 
@@ -226,7 +228,7 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="14">Select Caste</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="13" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-caste-container"><span class="select2-selection__rendered" id="select2-caste-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="subcaste">Sub Caste </label>
+                                        <label class="form-label" for="subcaste">துணை சாதி </label>
 
                                         <input type="text" class="form-control " id="subcaste" name="subcaste" placeholder="Sub Caste" value=""/>
 
@@ -234,13 +236,13 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="manglik">Manglik </label>
+                                    <label class="form-label" for="manglik">செவ்வாய் கிரகம் </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="manglik" name="manglik" aria-label="Select Manglik" data-select2-id="manglik" tabindex="-1" aria-hidden="true">
 
                                     <option selected="" value="" data-select2-id="16">Select Manglik</option><option value="No">No</option><option value="Yes">Yes</option><option value="Maybe">Maybe</option><option value="Anshik">Anshik</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="15" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-manglik-container"><span class="select2-selection__rendered" id="select2-manglik-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="gothra">Gothra </label>
+                                        <label class="form-label" for="gothra">கோத்திரம் </label>
 
                                         <input type="text" class="form-control " id="gothra" name="gothra" placeholder="Gothra" value=""/>
 
@@ -248,7 +250,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="moonsign">Moonsign </label>
+                                    <label class="form-label" for="moonsign">ராசி </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="moonsign" name="moonsign" aria-label="Select Moonsign" data-select2-id="moonsign" tabindex="-1" aria-hidden="true">
 
@@ -277,13 +279,13 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="education_level">Education <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="education_level">கல்வி <span class="Form__Error">*</span></label>
 
                                     <select required="" class="form-select single required select2-hidden-accessible" id="education_level" name="education_level" aria-label="Select Education" data-select2-id="education_level" tabindex="-1" aria-hidden="true">
 
                                     <option selected="" value="" data-select2-id="22">Select Education</option><option value="1">Bachelor's</option><option value="2">Master's</option><option value="5">Other</option><option value="3">PHD</option><option value="4">Post Doc</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="21" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-education_level-container"><span class="select2-selection__rendered" id="select2-education_level-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="education_details">Education Details </label>
+                                        <label class="form-label" for="education_details">கல்வி விவரங்கள் </label>
 
                                         <input type="text" class="form-control " id="education_details" name="education_details" placeholder="Education Details" value=""/>
 
@@ -291,7 +293,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="occupation">Occupation <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="occupation">தொழில் <span class="Form__Error">*</span></label>
 
                                     <select required="" class="form-select single required select2-hidden-accessible" id="occupation" name="occupation" aria-label="Select Occupation" data-select2-id="occupation" tabindex="-1" aria-hidden="true">
 
@@ -299,7 +301,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="employee_in">Employee In <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="employee_in">ஊழியர் <span class="Form__Error">*</span></label>
 
                                     <select required="" class="form-select single required select2-hidden-accessible" id="employee_in" name="employee_in" aria-label="Select Employee In" data-select2-id="employee_in" tabindex="-1" aria-hidden="true">
 
@@ -307,7 +309,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="income">Annual Income <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="income">ஆண்டு வருமானம் <span class="Form__Error">*</span></label>
 
                                     <select required="" class="form-select single required select2-hidden-accessible" id="income" name="income" aria-label="Select Annual Income" data-select2-id="income" tabindex="-1" aria-hidden="true">
 
@@ -326,7 +328,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="country_id">Country <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="country_id">நாடு <span class="Form__Error">*</span></label>
 
                                     <select onchange="dropdownChange('country_id','state_id','state_list')" required="" class="form-select single not_reset required select2-hidden-accessible" id="country_id" name="country_id" aria-label="Select Country" data-select2-id="country_id" tabindex="-1" aria-hidden="true">
 
@@ -340,7 +342,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="state_id">State <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="state_id">மாநிலம் <span class="Form__Error">*</span></label>
 
                                     <select onchange="dropdownChange('state_id','city','city_list')" required="" class="form-select single required select2-hidden-accessible" id="state_id" name="state_id" aria-label="Select State" data-select2-id="state_id" tabindex="-1" aria-hidden="true">
 
@@ -348,7 +350,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="city">City <span class="Form__Error">*</span></label>
+                                    <label class="form-label" for="city">நகரம் <span class="Form__Error">*</span></label>
 
                                     <select required="" class="form-select single required select2-hidden-accessible" id="city" name="city" aria-label="Select City" data-select2-id="city" tabindex="-1" aria-hidden="true">
 
@@ -356,7 +358,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="residence_type">Residence Type </label>
+                                    <label class="form-label" for="residence_type">குடியிருப்பு </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="residence_type" name="residence_type" aria-label="Select Residence Type" data-select2-id="residence_type" tabindex="-1" aria-hidden="true">
 
@@ -374,7 +376,7 @@ const Addmember = () => {
 
                                     </div></div></div><div class="col-lg-12 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="address">Address </label>
+                                    <label class="form-label" for="address">முகவரி </label>
 
                                     <textarea minlength="Minlength" id="address" name="address" class="form-control form-textarea" placeholder="Address"></textarea>
 
@@ -393,7 +395,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="height">Height </label>
+                                    <label class="form-label" for="height">உயரம் </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="height" name="height" aria-label="Select Height" data-select2-id="height" tabindex="-1" aria-hidden="true">
 
@@ -401,7 +403,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="weight">Weight </label>
+                                    <label class="form-label" for="weight">எடை </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="weight" name="weight" aria-label="Select Weight" data-select2-id="weight" tabindex="-1" aria-hidden="true">
 
@@ -431,7 +433,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="diet">Eating Habits </label>
+                                    <label class="form-label" for="diet">உணவு பழக்கம் </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="diet" name="diet" aria-label="Select Eating Habits" data-select2-id="diet" tabindex="-1" aria-hidden="true">
 
@@ -439,7 +441,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="smoke">Smoking </label>
+                                    <label class="form-label" for="smoke">புகைபிடித்தல் </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="smoke" name="smoke" aria-label="Select Smoking" data-select2-id="smoke" tabindex="-1" aria-hidden="true">
 
@@ -447,7 +449,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="drink">Drinking </label>
+                                    <label class="form-label" for="drink">குடிப்பழக்கம் </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="drink" name="drink" aria-label="Select Drinking" data-select2-id="drink" tabindex="-1" aria-hidden="true">
 
@@ -455,7 +457,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="body_type">Body Type </label>
+                                    <label class="form-label" for="body_type">உடல் அமைப்பு </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="body_type" name="body_type" aria-label="Select Body Type" data-select2-id="body_type" tabindex="-1" aria-hidden="true">
 
@@ -463,7 +465,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="skin_tone">Skin Tone </label>
+                                    <label class="form-label" for="skin_tone">தோல் நிறம் </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="skin_tone" name="skin_tone" aria-label="Select Skin Tone" data-select2-id="skin_tone" tabindex="-1" aria-hidden="true">
 
@@ -505,31 +507,31 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="family_status">Family Status </label>
+                                    <label class="form-label" for="family_status">குடும்ப நிலை </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="family_status" name="family_status" aria-label="Select Family Status" data-select2-id="family_status" tabindex="-1" aria-hidden="true">
 
                                     <option selected="" value="" data-select2-id="56">Select Family Status</option><option value="Rich">Rich</option><option value="Upper Middle Class">Upper Middle Class</option><option value="Middle Class">Middle Class</option><option value="Lower Middle Class">Lower Middle Class</option><option value="Poor Family">Poor Family</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="55" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-family_status-container"><span class="select2-selection__rendered" id="select2-family_status-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="father_name">Father Name <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="father_name">தந்தையின் பெயர் <span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control " id="father_name" name="father_name" placeholder="Father Name" value=""/>
 
                                     </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="father_occupation">Father Occupation <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="father_occupation">தந்தை தொழில் <span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control " id="father_occupation" name="father_occupation" placeholder="Father Occupation" value=""/>
 
                                     </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="mother_name">Mother Name <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="mother_name">தாய் பெயர் <span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control " id="mother_name" name="mother_name" placeholder="Mother Name" value=""/>
 
                                     </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="mother_occupation">Mother Occupation <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="mother_occupation">தாய் தொழில் <span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control " id="mother_occupation" name="mother_occupation" placeholder="Mother Occupation" value=""/>
 
@@ -537,7 +539,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="no_of_brother">No Of Brother </label>
+                                    <label class="form-label" for="no_of_brother">சகோதரர் </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="no_of_brother" name="no_of_brother" aria-label="Select No Of Brother" data-select2-id="no_of_brother" tabindex="-1" aria-hidden="true">
 
@@ -545,13 +547,13 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="no_of_sister">No Of Sister </label>
+                                    <label class="form-label" for="no_of_sister">சகோதரி </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="no_of_sister" name="no_of_sister" aria-label="Select No Of Sister" data-select2-id="no_of_sister" tabindex="-1" aria-hidden="true">
 
                                     <option selected="" value="" data-select2-id="60">Select No Of Sister</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="4 +">4 +</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="59" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-no_of_sister-container"><span class="select2-selection__rendered" id="select2-no_of_sister-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-12 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="family_details">Family Details </label>
+                                    <label class="form-label" for="family_details">குடும்ப விவரங்கள் </label>
 
                                     <textarea minlength="Minlength" id="family_details" name="family_details" class="form-control form-textarea" placeholder="Family Details"></textarea>
 

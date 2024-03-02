@@ -24,6 +24,7 @@ import Mothertongueadd from './Admin/Components/Newdetails/Addnew/Mothertonguead
 import Staradd from './Admin/Components/Newdetails/Addnew/Staradd';
 import Addmember from './Admin/Components/Member/Addmember';
 import Sitesettings from './Admin/Components/Sitesettings/Sitesettings';
+import Signin from './Admin/Components/Regform/Signin';
 
 function App() {
   return (
@@ -54,7 +55,7 @@ function App() {
           <Route path="/Staradd" element={<Staradd />} />
           <Route path="/Addmember" element={<Addmember />} />
           <Route path="/Sitesettings" element={<Sitesettings />} />
-          
+          <Route path="/Signin" element={<Signin />} />
 
 
         </Routes>
