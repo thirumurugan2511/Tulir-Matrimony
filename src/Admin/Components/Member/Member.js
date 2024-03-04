@@ -3,7 +3,9 @@ import {Link} from 'react-router-dom'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import { MdPostAdd } from "react-icons/md";
+import { FaEye } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
+import Aside from '../Aside/Aside';
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
@@ -117,7 +119,7 @@ const Member = () => {
                     </div>
                     <div class="row  justify-content-between">
 <div class="col-md-2">
-            <a href="/Religionadd" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
+            <a href="/Addmember" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
         </div>
 
 <div class="col-md-4">
@@ -131,68 +133,80 @@ const Member = () => {
 
     {/* <!-- Basic Layout --> */}
     <div class="card">
-        <h5 class="card-header">Manage Success Stories</h5>
+        <h5 class="card-header">Manage Member List</h5>
         <div class="table-responsive text-nowrap" id="resultData"><table class="table">
     <caption class="d-none">&nbsp;&nbsp; Result Data</caption>
     <thead>
         <tr class="text-nowrap">
-            <th scope="col">Images</th>
-            <th scope="col">Bride Name</th>
-            <th scope="col">Bride Id</th>
-            <th scope="col">Groom Name</th>
-            <th scope="col">Groom Id</th>
-            <th scope="col">Marriage Date</th>
-            <th scope="col">Action</th>
+        <th scope="col">Reg ID</th>
+        <th scope="col">Name</th>          
+        <th scope="col">Status</th>
+        <th scope="col">Plan Name</th>
+        <th scope="col">Marriage Date</th>
+        <th scope="col">Images</th>
+        <th scope="col">View</th>
+        <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
            
             <tr>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Astha</td>
             <td>NI-327945</td>
-            <td>Aporva</td>
-            <td>NI-327946</td>
+            <td>Astha</td>
+            <td className='txt-success'>Completed</td>
+            <td>Gold</td>
             <td>2023-12-22</td>
+            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
+            <td><Link to="/Viewmember"><FaEye  class="bx bxs-edit"/></Link></td>
             <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
         </tr>
                 
         <tr>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Sai</td>
-            <td>NI-327645</td>
-            <td>Santhya</td>
-            <td>NI-677946</td>
-            <td>2023-12-22</td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>
-
-           <tr>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Praveen</td>
-            <td>NI-320045</td>
-            <td>Ramya</td>
-            <td>NI-987946</td>
-            <td>2023-09-22</td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>
-
-           <tr>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
+            <td>NI-377945</td>
             <td>Hari</td>
-            <td>NI-327945</td>
-            <td>Nivetha</td>
-            <td>NI-327946</td>
+            <td className='txt-danger'>Pending</td>
+            <td>Basic</td>
             <td>2023-12-22</td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
+            <td><Link to="/Viewmember"><FaEye  class="bx bxs-edit"/></Link></td>
+                        <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
         </tr>
 
-                
-               
+        <tr>
+            <td>MI-327945</td>
+            <td>Ramya</td>
+            <td className='txt-success'>Completed</td>
+            <td>Sliver</td>
+            <td>2023-12-22</td>
+            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
+            <td><Link to="/Viewmember"><FaEye  class="bx bxs-edit"/></Link></td>
+            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
+        </tr>
+        <tr>
+            <td>NI-327945</td>
+            <td>Astha</td>
+            <td className='txt-danger'>Pending</td>
+            <td>Gold</td>
+            <td>2023-12-22</td>
+            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
+            <td><Link to="/Viewmember"><FaEye  class="bx bxs-edit"/></Link></td>
+            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
+        </tr>
+        <tr>
+            <td>NI-327945</td>
+            <td>Astha</td>
+            <td className='txt-success'>Completed</td>
+            <td>Gold</td>
+            <td>2023-12-22</td>
+            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
+            <td><Link to="/Viewmember"><FaEye  class="bx bxs-edit"/></Link></td>
+            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
+        </tr>    
             </tbody>
 </table>
 </div>

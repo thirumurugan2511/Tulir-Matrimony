@@ -25,6 +25,9 @@ import Staradd from './Admin/Components/Newdetails/Addnew/Staradd';
 import Addmember from './Admin/Components/Member/Addmember';
 import Sitesettings from './Admin/Components/Sitesettings/Sitesettings';
 import Signin from './Admin/Components/Regform/Signin';
+import Member from './Admin/Components/Member/Member';
+import Signup from './Admin/Components/Regform/Signup';
+import Viewmember from './Admin/Components/Member/Viewmember'; 
 
 function App() {
   return (
@@ -56,6 +59,9 @@ function App() {
           <Route path="/Addmember" element={<Addmember />} />
           <Route path="/Sitesettings" element={<Sitesettings />} />
           <Route path="/Signin" element={<Signin />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Member" element={<Member />} />
+          <Route path="/Viewmember" element={<Viewmember />} />
 
 
         </Routes>

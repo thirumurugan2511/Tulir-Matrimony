@@ -126,20 +126,20 @@ const Aside = () => {
                         )}
                     </li>
                     {/* Member */}
-                    <li className={`menu-item ${activeMenuItem === 'member' ? 'active open' : ''}`}>
-                        <Link to="javascript:void(0);" className="menu-link menu-toggle" onClick={() => toggleSubMenu('member')}>
+                    <li className='menu-item'>
+                        <Link to="/Member" className="menu-link menu-toggle" >
                             <IoPeople className="menu-icon tf-icons bx bxs-user-detail" />
                             <div data-i18n="Member">Member</div>
                         </Link>
-                        {subMenuStates['member'] && (
+                        {/* {subMenuStates['member'] && (
                             <ul className="menu-sub">
                                 <li className="menu-item ">
-                                    <Link to="/Addmember" className="menu-link">
+                                    <Link to="" className="menu-link">
                                         <div data-i18n="Without menu">All Member</div>
                                     </Link>
                                 </li>
-                            </ul>
-                        )}
+                            </ul> 
+                        )} */}
                     </li>
                     {/* Approval */}
                     <li className={`menu-item ${activeMenuItem === 'approval' ? 'active open' : ''}`}>
@@ -178,28 +178,28 @@ const Aside = () => {
                         )}
                     </li>
                     {/* MemberShip Plan */}
-                    <li className={`menu-item ${activeMenuItem === 'payment' ? 'active open' : ''}`}>
-                        <Link to="javascript:void(0);" className="menu-link menu-toggle" onClick={() => toggleSubMenu('payment')}>
+                    <li className='menu-item' >
+                        <Link to="/Payment" className="menu-link menu-toggle" >
                             <RiSecurePaymentFill className="menu-icon tf-icons bx bxs-credit-card-front" />
-                            <div data-i18n="MemberShipPlan">Payment Option</div>
+                            <div data-i18n="MemberShipPlan">Membership Plan</div>
                         </Link>
-                        {subMenuStates['payment'] && (
+                        {/* {subMenuStates['payment'] && (
                             <ul className="menu-sub">
                                 <li className="menu-item ">
-                                    <Link to="/Payment" className="menu-link">
+                                    <Link to="/" className="menu-link">
                                         <div data-i18n="Without menu">Membership Plan</div>
                                     </Link>
                                 </li>
                             </ul>
-                        )}
+                        )} */}
                     </li>
                     {/* Success Stories */}
-                    <li className={`menu-item ${activeMenuItem === 'stories' ? 'active open' : ''}`}>
-                        <Link to="javascript:void(0);" className="menu-link menu-toggle" onClick={() => toggleSubMenu('stories')}>
+                    <li className='menu-item'>
+                        <Link to="/Stories" className="menu-link menu-toggle" >
                             <GiLovers className="menu-icon tf-icons bx bxs-book-alt" />
                             <div data-i18n="SuccessStory">Success Stories</div>
                         </Link>
-                        {subMenuStates['stories'] && (
+                        {/* {subMenuStates['stories'] && (
                             <ul className="menu-sub">
                                 <li className="menu-item ">
                                     <Link to="/Stories" className="menu-link">
@@ -207,7 +207,7 @@ const Aside = () => {
                                     </Link>
                                 </li>
                             </ul>
-                        )}
+                        )} */}
                     </li>
                 </ul>
             </aside>

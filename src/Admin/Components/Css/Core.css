@@ -2362,7 +2362,12 @@ textarea.form-control-lg {
   height: 1.53em;
   border-radius: 0.375rem;
 }
-
+.txt-success{
+  color: green;
+}
+.txt-danger{
+  color: red;
+}
 .form-select {
   display: block;
   width: 100%;
@@ -16677,7 +16682,7 @@ html:not(.layout-footer-fixed) .content-wrapper {
     font-size: 14px;
     font-weight: 400;
     color: #000;
-    margin: 0px;
+    margin: auto;
 }
 .singleviewlsudgfvs table thead tr th{
   border-right: 1px solid rgb(225, 225, 225);

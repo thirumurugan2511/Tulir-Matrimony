@@ -1,7 +1,7 @@
-import {Link} from 'react-router-dom'
 import React from 'react'
+import {Link} from 'react-router-dom'
 
-const Signin = () => {
+const Signup = () => {
   return (
     <>
     <div class="container">
@@ -17,7 +17,7 @@ const Signin = () => {
                   <i class="bx bx-chevron-left bx-sm align-middle"></i>
                 </a>
             </div>
-            <p class="mb-4">Welcome to RTS Matrimony. Please sign in to your account</p>
+            <p class="mb-4">Welcome to RTS Matrimony. Please create an new account</p>
                         <form id="formAuthentication" class="mb-3" action="https://gloriousmatrimonial.com/admin/authenticate" method="POST">
               <input type="hidden" name="_token" value="RiYE39oDnRr2BvE3Hq8Ofqt7RPsF4jYozyM9t91O"/>              <div class="mb-3 text-start">
                 <label for="email" class="form-label">Email or Username</label>
@@ -35,13 +35,13 @@ const Signin = () => {
                 </div>
               </div>
               <div class="mb-3">
-                <button class="btn btn-primary d-grid w-100 p-3" type="submit">Sign in</button>
+                <button class="btn btn-primary d-grid w-100 p-3" type="submit">Sign up</button>
               </div>
             </form>
             <div class=" overflow-auto mt-3 mt-lg-4">
               <div class="male_femaleusersets">
                 <div class="singleviewlsudgfvs d-flex text-center">
-                  <p>Don't Have an Account? <Link to="/Signup" className='mx-2'>Create New Account</Link></p>
+                  <p>Already Have an Account? <Link to="/Signin" className='mx-2'>Sign In </Link></p>
                   {/* <table class="w-100">
                     <thead>
                       <tr>
@@ -63,4 +63,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default Signup
