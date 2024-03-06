@@ -1,7 +1,10 @@
 import React from 'react'
 import Aside from '../Aside/Aside'
-import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
+import { IoMdSettings } from "react-icons/io";
+import { MdManageHistory } from "react-icons/md";
+import { LuLogOut } from "react-icons/lu";
+import { Link } from "react-router-dom";
 import { MdPostAdd } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
@@ -13,9 +16,7 @@ const Addmember = () => {
     <>
      <div class="layout-wrapper layout-content-navbar">
    <div class="layout-container">
-    <div>
    <Aside />
-   </div>
     <div class="layout-page">
             <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached
             align-items-center bg-navbar-theme" id="layout-navbar">
@@ -58,25 +59,21 @@ const Addmember = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/basic-site-setting">
-                                        <i class="bx bx-cog me-2"></i>
+                                    <Link class="dropdown-item" to="/Sitesetting">
+                                        <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>
-                                    </a>
+                                    </Link>
                                 </li>
-                                <li>
-                                    <a class="dropdown-item" target="_blank" href="https://gloriousmatrimonial.com" rel="noopener">
-                                        <i class="bx bx-slideshow me-2"></i>
-                                        <span class="align-middle">Front End</span>
-                                    </a>
-                                </li>
+                               
                                 <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/logout">
-                                        <i class="bx bx-power-off me-2"></i>
+                                                                        <Link class="dropdown-item" href="/Signin">
+                                    
+                                        <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </li>
@@ -104,22 +101,22 @@ const Addmember = () => {
       <div class="iiner_bg_echange px-4">
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">அடிப்படை விவரம்</button>
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Basic Details</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">குடியிருப்பு</button>
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Residence</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-other-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-other-profile" type="button" role="tab" aria-controls="pills-other-profile" aria-selected="false">உடல் தகவல்</button>
+            <button class="nav-link" id="pills-other-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-other-profile" type="button" role="tab" aria-controls="pills-other-profile" aria-selected="false">Physical Info</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-family-details-tab" data-bs-toggle="pill" data-bs-target="#pills-family-details" type="button" role="tab" aria-controls="pills-family-details" aria-selected="false">குடும்ப விவரங்கள்</button>
+            <button class="nav-link" id="pills-family-details-tab" data-bs-toggle="pill" data-bs-target="#pills-family-details" type="button" role="tab" aria-controls="pills-family-details" aria-selected="false">Family Details </button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-partner-preference-tab" data-bs-toggle="pill" data-bs-target="#pills-partner-preference" type="button" role="tab" aria-controls="pills-partner-preference" aria-selected="false">Partner Preference</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-upload-photo-tab" data-bs-toggle="pill" data-bs-target="#pills-upload-photo" type="button" role="tab" aria-controls="pills-upload-photo" aria-selected="false">புகைப்படங்களைப் பதிவேற்றவும்</button>
+            <button class="nav-link" id="pills-upload-photo-tab" data-bs-toggle="pill" data-bs-target="#pills-upload-photo" type="button" role="tab" aria-controls="pills-upload-photo" aria-selected="false">Upload Photos</button>
           </li>
         </ul>
       </div>

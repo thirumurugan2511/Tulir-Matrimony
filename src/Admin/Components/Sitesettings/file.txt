@@ -1,0 +1,46 @@
+import { IoMdSettings } from "react-icons/io";
+import { LuLogOut } from "react-icons/lu";
+import { Link } from "react-router-dom";
+
+
+               <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar avatar-online">
+                                                    <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt="" class="w-px-40 h-auto rounded-circle"/>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <span class="fw-semibold d-block mt-2">Admin</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                    <Link class="dropdown-item" to="/Sitesetting">
+                                        <IoMdSettings class="bx bx-cog me-2" />
+                                        <span class="align-middle">Settings</span>
+                                    </Link>
+                                </li>
+                                {/* <li>
+                                    <a class="dropdown-item" target="_blank" href="https://gloriousmatrimonial.com" rel="noopener">
+                                        <i class="bx bx-slideshow me-2"></i>
+                                        <span class="align-middle">Front End</span>
+                                    </a>
+                                </li> */}
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                                                        <Link class="dropdown-item" href="/Signin">
+                                    
+                                        <LuLogOut class="bx bx-power-off me-2" />
+                                        <span class="align-middle">Log Out</span>
+                                    </Link>
+                                </li>
+                            </ul>

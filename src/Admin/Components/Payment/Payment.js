@@ -103,7 +103,7 @@ const Payment = () => {
                         <div class="col-md-11">
                             <h4 class="fw-bold py-3 mb-4"></h4>
                         </div>
-                        <div class="col-md-1">
+                        {/* <div class="col-md-1">
                             <select name="basic-datatables_length" id="recordLimit" aria-controls="basic-datatables"
                                 class="form-select">
                                 <option value="1">1</option>
@@ -114,7 +114,7 @@ const Payment = () => {
                                 <option value="50">50</option>
                                 <option value="100">100</option>
                             </select>
-                        </div>
+                        </div> */}
                     </div>
                     <div class="row  justify-content-between">
 <div class="col-md-2">

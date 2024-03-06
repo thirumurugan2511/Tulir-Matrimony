@@ -126,7 +126,7 @@ const Stories = () => {
                     </div>
                     <div class="row  justify-content-between">
 <div class="col-md-2">
-            <a href="/Religionadd" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
+            <a href="/Storiesadd" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
         </div>
 
 <div class="col-md-4">
@@ -146,10 +146,10 @@ const Stories = () => {
     <thead>
         <tr class="text-nowrap">
             <th scope="col">Images</th>
-            <th scope="col">Bride Name</th>
             <th scope="col">Bride Id</th>
-            <th scope="col">Groom Name</th>
+            <th scope="col">Bride Name</th>
             <th scope="col">Groom Id</th>
+            <th scope="col">Groom Name</th>
             <th scope="col">Marriage Date</th>
             <th scope="col">Action</th>
         </tr>
@@ -158,10 +158,10 @@ const Stories = () => {
            
             <tr>
             <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Astha</td>
             <td>NI-327945</td>
-            <td>Aporva</td>
+            <td>Astha</td>
             <td>NI-327946</td>
+            <td>Aporva</td>
             <td>2023-12-22</td>
             <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
@@ -169,10 +169,10 @@ const Stories = () => {
                 
         <tr>
             <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Sai</td>
             <td>NI-327645</td>
-            <td>Santhya</td>
+            <td>Sai</td>
             <td>NI-677946</td>
+            <td>Santhya</td>
             <td>2023-12-22</td>
             <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
@@ -180,10 +180,10 @@ const Stories = () => {
 
            <tr>
             <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Praveen</td>
             <td>NI-320045</td>
-            <td>Ramya</td>
+            <td>Praveen</td>
             <td>NI-987946</td>
+            <td>Ramya</td>
             <td>2023-09-22</td>
             <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
@@ -191,10 +191,11 @@ const Stories = () => {
 
            <tr>
             <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Hari</td>
             <td>NI-327945</td>
-            <td>Nivetha</td>
+            <td>Hari</td>
             <td>NI-327946</td>
+            <td>Nivetha</td>
+           
             <td>2023-12-22</td>
             <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>

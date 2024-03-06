@@ -1,21 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Aside from '../Aside/Aside'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
+import { IoMdSettings } from "react-icons/io";
+import { LuLogOut } from "react-icons/lu";
+import { Link } from "react-router-dom";
+
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
 const Sitesettings = () => {
+    const [showMenu, setShowMenu] = useState(false);
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    };
   return (
     <>
     <div class="layout-wrapper layout-content-navbar">
    <div class="layout-container">
-   <Aside />
+   <Aside showMenu/>
     <div class="layout-page">
             <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached
             align-items-center bg-navbar-theme" id="layout-navbar">
                 <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                    <a class="nav-item nav-link px-0 me-xl-4">
                         <i class="bx bx-menu bx-sm"></i>
                     </a>
                 </div>
@@ -53,25 +62,26 @@ const Sitesettings = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/basic-site-setting">
-                                        <i class="bx bx-cog me-2"></i>
+                                    <Link class="dropdown-item" to="/Sitesetting">
+                                        <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>
-                                    </a>
+                                    </Link>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <a class="dropdown-item" target="_blank" href="https://gloriousmatrimonial.com" rel="noopener">
                                         <i class="bx bx-slideshow me-2"></i>
                                         <span class="align-middle">Front End</span>
                                     </a>
-                                </li>
+                                </li> */}
                                 <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/logout">
-                                        <i class="bx bx-power-off me-2"></i>
+                                                                        <Link class="dropdown-item" href="/Signin">
+                                    
+                                        <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </li>
@@ -91,28 +101,28 @@ const Sitesettings = () => {
                         
                         <div class="mb-3 text-start">
 
-                                        <label class="form-label" for="religion_name">பயனர் பெயர் <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="religion_name">Username <span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="User Name" value=""/>
 
                                     </div>
                                     <div class="mb-3 text-start">
 
-                                        <label class="form-label" for="religion_name">கடவுச்சொல் <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="religion_name">Password <span class="Form__Error">*</span></label>
 
                                         <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Password" value=""/>
 
                                     </div>
                                     <div class="mb-3 text-start">
 
-<label class="form-label" for="religion_name">மின்னஞ்சல் <span class="Form__Error">*</span></label>
+<label class="form-label" for="religion_name">Email ID <span class="Form__Error">*</span></label>
 
 <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Email" value=""/>
 
 </div>
 <div class="mb-3 text-start">
 
-<label class="form-label" for="religion_name">விளக்கம் <span class="Form__Error">*</span></label>
+<label class="form-label" for="religion_name">Description <span class="Form__Error">*</span></label>
 
 <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Description" value=""/>
 
