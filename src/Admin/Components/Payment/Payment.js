@@ -88,37 +88,9 @@ const Payment = () => {
             <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
                     {/* <!-- Toast with Placements --> */}
-                    <div class="bs-toast toast toast-placement-ex m-2" role="alert" aria-live="assertive" aria-atomic="true"
-                        data-delay="2000">
-                        <div class="toast-header">
-                            <i class="bx bx-bell me-2"></i>
-                            <div class="me-auto fw-semibold toast-title">Bootstrap</div>
-                            <small>Now</small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                        </div>
-                        <div class="toast-body">Fruitcake chocolate bar tootsie roll gummies gummies jelly beans cake.</div>
-                    </div>
-                    {/* <!-- Toast with Placements --> */}
-                    <div class="row">
-                        <div class="col-md-11">
-                            <h4 class="fw-bold py-3 mb-4"></h4>
-                        </div>
-                        {/* <div class="col-md-1">
-                            <select name="basic-datatables_length" id="recordLimit" aria-controls="basic-datatables"
-                                class="form-select">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="5">5</option>
-                                <option selected value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select>
-                        </div> */}
-                    </div>
                     <div class="row  justify-content-between">
 <div class="col-md-2">
-            <a href="/Religionadd" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
+            <a href="/" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
         </div>
 
 <div class="col-md-4">

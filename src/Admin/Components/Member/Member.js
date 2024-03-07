@@ -6,9 +6,11 @@ import { MdPostAdd } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import Aside from '../Aside/Aside';
+import { IoMdSettings } from "react-icons/io";
+import { LuLogOut } from "react-icons/lu";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-
+import { IoMdAdd } from "react-icons/io";
 
 const Member = () => {
   return (
@@ -27,7 +29,7 @@ const Member = () => {
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                     <ol class="breadcrumb breadcrumb-style2 mb-0">
                     <li><MdManageHistory  class="bx bx-user me-2"/></li>
-<li class="breadcrumb-item active" style={{padding: '2px 10px'}}>  Manage Member </li>
+      <li class="breadcrumb-item active" style={{padding: '2px 10px'}}>  Manage Member </li>
                     </ol>
                     <ul class="navbar-nav flex-row align-items-center ms-auto">
                         <li class="nav-item lh-1 me-3">
@@ -42,42 +44,35 @@ const Member = () => {
                             </Link>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <Link class="dropdown-item" to="#">
+                                    <a class="dropdown-item" href="#">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt
-                                                        class="w-px-40 h-auto rounded-circle" />
+                                                    <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt="" class="w-px-40 h-auto rounded-circle"/>
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
                                                 <span class="fw-semibold d-block mt-2">Admin</span>
                                             </div>
                                         </div>
-                                    </Link>
+                                    </a>
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <Link class="dropdown-item" to="https://gloriousmatrimonial.com/admin/basic-site-setting">
-                                        <i class="bx bx-cog me-2"></i>
+                                    <Link class="dropdown-item" to="/Sitesetting">
+                                        <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link class="dropdown-item" target="_blank" to="https://gloriousmatrimonial.com"
-                                        rel="noopener">
-                                        <i class='bx bx-slideshow me-2'></i>
-                                        <span class="align-middle">Front End</span>
-                                    </Link>
-                                </li>
-                                <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <Link class="dropdown-item" to="https://gloriousmatrimonial.com/admin/logout">
-                                        <i class="bx bx-power-off me-2"></i>
+                                         <Link class="dropdown-item" href="/Signin">
+                                    
+                                        <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
                                     </Link>
                                 </li>
@@ -88,23 +83,13 @@ const Member = () => {
             </nav>
             <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
+        
                     {/* <!-- Toast with Placements --> */}
-                    <div class="bs-toast toast toast-placement-ex m-2" role="alert" aria-live="assertive" aria-atomic="true"
-                        data-delay="2000">
-                        <div class="toast-header">
-                            <i class="bx bx-bell me-2"></i>
-                            <div class="me-auto fw-semibold toast-title">Bootstrap</div>
-                            <small>Now</small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                        </div>
-                        <div class="toast-body">Fruitcake chocolate bar tootsie roll gummies gummies jelly beans cake.</div>
-                    </div>
-                    {/* <!-- Toast with Placements --> */}
-                    <div class="row">
-                        <div class="col-md-11">
-                            <h4 class="fw-bold py-3 mb-4"></h4>
-                        </div>
-                        <div class="col-md-1">
+                    <div class="row  justify-content-between">
+<div class="col-md-2">
+            <a href="/Addmember" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
+        </div>
+        <div class="col-md-1">
                             <select name="basic-datatables_length" id="recordLimit" aria-controls="basic-datatables"
                                 class="form-select">
                                 <option value="1">1</option>
@@ -116,12 +101,6 @@ const Member = () => {
                                 <option value="100">100</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="row  justify-content-between">
-<div class="col-md-2">
-            <a href="/Addmember" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
-        </div>
-
 <div class="col-md-4">
             <div class="search-container">
         <input type="text" class="search-box form-control" id="searchText" placeholder="Search"/>

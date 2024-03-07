@@ -47,17 +47,27 @@ const Aside = (props) => {
                 <ul className="menu-inner mt-4 py-1">
                     {/* Dashboard */}
                     <li className={`menu-item ${activeMenuItem === 'dashboard' ? 'active open' : ''}`}>
-                        <Link to="/Dashboard" className="menu-link p-3" onClick={() => setActiveMenuItem('dashboard')}>
+                        <Link to="/Dashboard" className="menu-link p-3 menu-toggle" onClick={() => toggleSubMenu('dashboard')}>
                             <MdDashboard className="menu-icon tf-icons bx bxs-dashboard" />
                             <div data-i18n="Analytics">Dashboard</div>
                         </Link>
+                        {subMenuStates['dashboard'] && (
+                            <ul className="menu-sub">
+                                <li className="menu-item">
+                                    <Link to="" className="menu-link ">
+                                        <div data-i18n="Blank">Banner</div>
+                                    </Link>
+                                </li>           
+                                
+                            </ul>
+                        )}
                     </li>
                    
                     {/* Contact Us */}
                     <li className={`menu-item ${activeMenuItem === 'contactUs' ? 'active' : ''}`}>
                         <div className="menu-link p-3 menu-toggle" onClick={() => { toggleSubMenu('contactUs'); }}>
                             <RiContactsFill className="menu-icon tf-icons bx bxs-book-content" />
-                            <div data-i18n="HomePageManagement">Contact Us</div>
+                            <div data-i18n="HomePageManagement">Content Management</div>
                         </div>
                         {subMenuStates['contactUs'] && (
                             <ul className="menu-sub">

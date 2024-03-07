@@ -6,10 +6,6 @@ import { MdManageHistory } from "react-icons/md";
 import { LuLogOut } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import { MdPostAdd } from "react-icons/md";
-import { FaSearch } from "react-icons/fa";
-import { MdModeEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
-
 
 const Addmember = () => {
   return (
@@ -206,7 +202,7 @@ const Addmember = () => {
 
                                     <select required="" class="form-select single select2-hidden-accessible" id="status_children" name="status_children" aria-label="Select Status Children" data-select2-id="status_children" tabindex="-1" aria-hidden="true">
 
-                                    <option selected="" value="" data-select2-id="10">Select Status Children</option><option value="Living with me">Living with me</option><option value="Not living with me">Not living with me</option><option value="I have no children">I have no children</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="9" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-status_children-container"><span class="select2-selection__rendered" id="select2-status_children-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.member.index"/>                  <h4 class="mb-4 text-primary font-medium">மத தகவல்</h4>
+                                    <option selected="" value="" data-select2-id="10">Select Status Children</option><option value="Living with me">Living with me</option><option value="Not living with me">Not living with me</option><option value="I have no children">I have no children</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="9" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-status_children-container"><span class="select2-selection__rendered" id="select2-status_children-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.member.index"/>                  <h4 class="mb-4 text-primary font-medium">Religion Information</h4>
                   <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
@@ -255,19 +251,19 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="star">Star </label>
+                                    <label class="form-label" for="star">நட்சத்திரம் </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="star" name="star" aria-label="Select Star" data-select2-id="star" tabindex="-1" aria-hidden="true">
 
                                     <option selected="" value="" data-select2-id="20">Select Star</option><option value="1">Anurādhā (अनुराधा)/ANUSHAM</option><option value="22">Ārdrā (आर्द्रा)/THIRUVADIRAI</option><option value="4">Āshleshā (अश्लेषा)/AYILYAM</option><option value="2">Ashwini (अश्विनि)</option><option value="5">Bharani (भरणी)</option><option value="6">Chitra (चित्रा)</option><option value="7">Hasta (हस्त)</option><option value="8">Jyeshtha (ज्येष्ठा)/KETTAI</option><option value="9">Krittika (कृत्तिका)</option><option value="10">Maghā (मघा)</option><option value="12">Mrigashīrsha(मृगशीर्ष)</option><option value="11">Mula (मूल)</option><option value="14">Punarvasu (पुनर्वसु)/PUNARPUSAM</option><option value="15">Pūrva Āshādhā (पूर्व आषाढ़)/PURADAM</option><option value="17">Pūrva Bhādrapadā (पूर्व भाद्रपद)/PURATATHI</option><option value="16">Pūrva or Pūrva Phalgunī (पूर्व फल्गुनी)/PURAM</option><option value="13">Pushya (पुष्य)</option><option value="18">Revati (रेवती)</option><option value="19">Rohini(रोहिणी)</option><option value="20">Shatabhisha (शतभिषा)or Śatataraka/SADAYAM</option><option value="23">Śrāvaṇa (श्र‌ावण)/THIRUVONAM</option><option value="3">Śrāviṣṭha (श्रविष्ठा) or Dhanishta/AVITTAM</option><option value="21">Svātī (स्वाति)</option><option value="24">Uttara Āṣāḍhā (उत्तर आषाढ़)/UTHIRADAM</option><option value="26">Uttara Bhādrapadā (उत्तर भाद्रपद)/UTHIRATTADHI</option><option value="25">Uttara or Uttara Phalgunī (उत्तर फल्गुनी)/UTHIRAM</option><option value="27">Viśākhā (विशाखा)</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="19" style={{width: '394.205px'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-star-container"><span class="select2-selection__rendered" id="select2-star-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="birthplace">Birth Place </label>
+                                        <label class="form-label" for="birthplace">பிறந்த இடம்</label>
 
                                         <input type="text" class="form-control " id="birthplace" name="birthplace" placeholder="Birth Place" value=""/>
 
                                     </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="birthtime">Birth Time </label>
+                                        <label class="form-label" for="birthtime">பிறந்த நேரம் </label>
 
                                         <input class="form-control " type="time" value="" id="birthtime" name="birthtime"/>
 
@@ -361,13 +357,13 @@ const Addmember = () => {
 
                                     <option selected="" value="" data-select2-id="36">Select Residence Type</option><option value="Citizen">Citizen</option><option value="Permanent Resident">Permanent Resident</option><option value="Student Visa">Student Visa</option><option value="Temporary Visa">Temporary Visa</option><option value="Work permit">Work permit</option></select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="35" style={{width: 'auto'}}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-residence_type-container"><span class="select2-selection__rendered" id="select2-residence_type-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Please Select</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="alternate_number">Alternate Number </label>
+                                        <label class="form-label" for="alternate_number">மாற்று தொலைபேசி எண் </label>
 
                                         <input type="text" class="form-control " id="alternate_number" name="alternate_number" placeholder="Alternate Number" value=""/>
 
                                     </div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
-                                        <label class="form-label" for="nri_country">If NRI Originated country </label>
+                                        <label class="form-label" for="nri_country">உருவான நாடு </label>
 
                                         <input type="text" class="form-control " id="nri_country" name="nri_country" placeholder="If NRI Originated country" value=""/>
 
@@ -496,7 +492,7 @@ const Addmember = () => {
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
-                                    <label class="form-label" for="family_type">Family Type </label>
+                                    <label class="form-label" for="family_type">குடும்ப வகை </label>
 
                                     <select class="form-select single select2-hidden-accessible" id="family_type" name="family_type" aria-label="Select Family Type" data-select2-id="family_type" tabindex="-1" aria-hidden="true">
 

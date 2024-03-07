@@ -14,6 +14,17 @@ import { Link } from "react-router-dom";
 import Aside from '../Aside/Aside';
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
+import { IoIosPeople } from "react-icons/io";
+import { FaMale } from "react-icons/fa";
+import { FaFemale } from "react-icons/fa";
+import { TbCashBanknote } from "react-icons/tb";
+import { TbCashBanknoteOff } from "react-icons/tb";
+import { MdCancelPresentation } from "react-icons/md";
+
+
+
+
+
 
 const Dashoard = () => {
   return (
@@ -68,12 +79,6 @@ const Dashoard = () => {
                                         <span class="align-middle">Settings</span>
                                     </Link>
                                 </li>
-                                {/* <li>
-                                    <a class="dropdown-item" target="_blank" href="https://gloriousmatrimonial.com" rel="noopener">
-                                        <i class="bx bx-slideshow me-2"></i>
-                                        <span class="align-middle">Front End</span>
-                                    </a>
-                                </li> */}
                                 <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
@@ -100,7 +105,7 @@ const Dashoard = () => {
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-primary">
-                                        <i class="bx bxs-user"></i>
+                                        <IoIosPeople class="bx bxs-user" />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -127,7 +132,7 @@ const Dashoard = () => {
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-info">
-                                        <i class='bx bx-male-sign'></i>
+                                        <FaMale  class='bx bx-male-sign' />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -154,7 +159,7 @@ const Dashoard = () => {
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-info">
-                                        <i class='bx bx-female-sign'></i>
+                                        <FaFemale class='bx bx-female-sign' />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -181,7 +186,7 @@ const Dashoard = () => {
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-success">
-                                        <i class='bx bx-credit-card'></i>
+                                        <TbCashBanknote class='bx bx-credit-card' />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -208,7 +213,7 @@ const Dashoard = () => {
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-warning">
-                                        <i class='bx bx-credit-card'></i>
+                                        <TbCashBanknoteOff class='bx bx-credit-card' />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -235,7 +240,7 @@ const Dashoard = () => {
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-danger">
-                                        <i class='bx bx-credit-card'></i>
+                                        <MdCancelPresentation class='bx bx-credit-card' />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
