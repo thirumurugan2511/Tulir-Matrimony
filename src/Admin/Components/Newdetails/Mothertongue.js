@@ -84,7 +84,7 @@ const Mothertongue = () => {
                <div class="container-xxl flex-grow-1 container-p-y">
    <div class="row  justify-content-between">
 <div class="col-md-2">
-            <a href="/Religionadd" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
+            <a href="/Religionadd" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
         </div>
 
 <div class="col-md-4">
