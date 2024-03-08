@@ -8,9 +8,23 @@ import '../Css/Scrol.css';
 import '../Css/Boxicon.css';
 import '../Css/Theme.css';
 import '../Css/Select.css';
+import { IoMdSettings } from "react-icons/io";
+import { LuLogOut } from "react-icons/lu";
+import { Link } from "react-router-dom";
 import Aside from '../Aside/Aside';
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
+import { IoIosPeople } from "react-icons/io";
+import { FaMale } from "react-icons/fa";
+import { FaFemale } from "react-icons/fa";
+import { TbCashBanknote } from "react-icons/tb";
+import { TbCashBanknoteOff } from "react-icons/tb";
+import { MdCancelPresentation } from "react-icons/md";
+
+
+
+
+
 
 const Dashoard = () => {
   return (
@@ -60,25 +74,20 @@ const Dashoard = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/basic-site-setting">
-                                        <i class="bx bx-cog me-2"></i>
+                                    <Link class="dropdown-item" to="/Sitesetting">
+                                        <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" target="_blank" href="https://gloriousmatrimonial.com" rel="noopener">
-                                        <i class="bx bx-slideshow me-2"></i>
-                                        <span class="align-middle">Front End</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/logout">
-                                        <i class="bx bx-power-off me-2"></i>
+                                                                        <Link class="dropdown-item" href="/Signin">
+                                    
+                                        <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </li>
@@ -89,14 +98,14 @@ const Dashoard = () => {
                 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-md-6 col-lg-4 order-2">
-            <a href="https://gloriousmatrimonial.com/admin/member" class="dashboard_animation dashboard_animation__new">
+            <a href="" class="dashboard_animation dashboard_animation__new">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">
                         <ul class="p-0 m-0">
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-primary">
-                                        <i class="bx bxs-user"></i>
+                                        <IoIosPeople class="bx bxs-user" />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -123,7 +132,7 @@ const Dashoard = () => {
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-info">
-                                        <i class='bx bx-male-sign'></i>
+                                        <FaMale  class='bx bx-male-sign' />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -150,7 +159,7 @@ const Dashoard = () => {
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-info">
-                                        <i class='bx bx-female-sign'></i>
+                                        <FaFemale class='bx bx-female-sign' />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -177,7 +186,7 @@ const Dashoard = () => {
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-success">
-                                        <i class='bx bx-credit-card'></i>
+                                        <TbCashBanknote class='bx bx-credit-card' />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -204,7 +213,7 @@ const Dashoard = () => {
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-warning">
-                                        <i class='bx bx-credit-card'></i>
+                                        <TbCashBanknoteOff class='bx bx-credit-card' />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -231,7 +240,7 @@ const Dashoard = () => {
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     <span class="avatar-initial rounded bg-label-danger">
-                                        <i class='bx bx-credit-card'></i>
+                                        <MdCancelPresentation class='bx bx-credit-card' />
                                     </span>
                                 </div>
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
@@ -250,7 +259,7 @@ const Dashoard = () => {
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-4 order-2">
+        {/* <div class="col-md-6 col-lg-4 order-2">
             <a href="#" class="dashboard_animation dashboard_animation__new" onclick="getDashboardData('status','APPROVED')">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">
@@ -276,8 +285,8 @@ const Dashoard = () => {
                     </div>
                 </div>
             </a>
-        </div>
-        <div class="col-md-6 col-lg-4 order-2">
+        </div> */}
+        {/* <div class="col-md-6 col-lg-4 order-2">
             <a href="#" class="dashboard_animation dashboard_animation__new" onclick="getDashboardData('status','UNAPPROVED')">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">
@@ -330,7 +339,7 @@ const Dashoard = () => {
                     </div>
                 </div>
             </a>
-        </div>
+        </div> */}
     </div>
     </div>
     </div>

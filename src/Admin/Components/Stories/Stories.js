@@ -12,10 +12,10 @@ import Aside from '../Aside/Aside';
 import {Link} from 'react-router-dom'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
-import { MdPostAdd } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import { IoMdAdd } from "react-icons/io";
 
 const Stories = () => {
   return (
@@ -67,23 +67,16 @@ const Stories = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <Link class="dropdown-item" to="https://gloriousmatrimonial.com/admin/basic-site-setting">
+                                    <Link class="dropdown-item" to="/Sitesettings">
                                         <i class="bx bx-cog me-2"></i>
                                         <span class="align-middle">Settings</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link class="dropdown-item" target="_blank" to="https://gloriousmatrimonial.com"
-                                        rel="noopener">
-                                        <i class='bx bx-slideshow me-2'></i>
-                                        <span class="align-middle">Front End</span>
                                     </Link>
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <Link class="dropdown-item" to="https://gloriousmatrimonial.com/admin/logout">
+                            <Link class="dropdown-item" to="/Signin">
                                         <i class="bx bx-power-off me-2"></i>
                                         <span class="align-middle">Log Out</span>
                                     </Link>
@@ -95,38 +88,9 @@ const Stories = () => {
             </nav>
             <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    {/* <!-- Toast with Placements --> */}
-                    <div class="bs-toast toast toast-placement-ex m-2" role="alert" aria-live="assertive" aria-atomic="true"
-                        data-delay="2000">
-                        <div class="toast-header">
-                            <i class="bx bx-bell me-2"></i>
-                            <div class="me-auto fw-semibold toast-title">Bootstrap</div>
-                            <small>Now</small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                        </div>
-                        <div class="toast-body">Fruitcake chocolate bar tootsie roll gummies gummies jelly beans cake.</div>
-                    </div>
-                    {/* <!-- Toast with Placements --> */}
-                    <div class="row">
-                        <div class="col-md-11">
-                            <h4 class="fw-bold py-3 mb-4"></h4>
-                        </div>
-                        <div class="col-md-1">
-                            <select name="basic-datatables_length" id="recordLimit" aria-controls="basic-datatables"
-                                class="form-select">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="5">5</option>
-                                <option selected value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="row  justify-content-between">
 <div class="col-md-2">
-            <a href="/Religionadd" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
+            <a href="/Storiesadd" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
         </div>
 
 <div class="col-md-4">
@@ -146,10 +110,10 @@ const Stories = () => {
     <thead>
         <tr class="text-nowrap">
             <th scope="col">Images</th>
-            <th scope="col">Bride Name</th>
             <th scope="col">Bride Id</th>
-            <th scope="col">Groom Name</th>
+            <th scope="col">Bride Name</th>
             <th scope="col">Groom Id</th>
+            <th scope="col">Groom Name</th>
             <th scope="col">Marriage Date</th>
             <th scope="col">Action</th>
         </tr>
@@ -158,10 +122,10 @@ const Stories = () => {
            
             <tr>
             <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Astha</td>
             <td>NI-327945</td>
-            <td>Aporva</td>
+            <td>Astha</td>
             <td>NI-327946</td>
+            <td>Aporva</td>
             <td>2023-12-22</td>
             <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
@@ -169,10 +133,10 @@ const Stories = () => {
                 
         <tr>
             <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Sai</td>
             <td>NI-327645</td>
-            <td>Santhya</td>
+            <td>Sai</td>
             <td>NI-677946</td>
+            <td>Santhya</td>
             <td>2023-12-22</td>
             <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
@@ -180,10 +144,10 @@ const Stories = () => {
 
            <tr>
             <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Praveen</td>
             <td>NI-320045</td>
-            <td>Ramya</td>
+            <td>Praveen</td>
             <td>NI-987946</td>
+            <td>Ramya</td>
             <td>2023-09-22</td>
             <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
@@ -191,10 +155,11 @@ const Stories = () => {
 
            <tr>
             <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>Hari</td>
             <td>NI-327945</td>
-            <td>Nivetha</td>
+            <td>Hari</td>
             <td>NI-327946</td>
+            <td>Nivetha</td>
+           
             <td>2023-12-22</td>
             <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>

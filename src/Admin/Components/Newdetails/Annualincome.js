@@ -2,10 +2,10 @@ import React from 'react'
 import Aside from '../Aside/Aside'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
-import { MdPostAdd } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import { IoMdAdd } from "react-icons/io";
 
 const Annualincome = () => {
   return (
@@ -61,12 +61,6 @@ const Annualincome = () => {
                                    </a>
                                </li>
                                <li>
-                                   <a class="dropdown-item" target="_blank" href="https://gloriousmatrimonial.com" rel="noopener">
-                                       <i class="bx bx-slideshow me-2"></i>
-                                       <span class="align-middle">Front End</span>
-                                   </a>
-                               </li>
-                               <li>
                                    <div class="dropdown-divider"></div>
                                </li>
                                <li>
@@ -82,34 +76,9 @@ const Annualincome = () => {
            </nav>
            <div class="content-wrapper">
                <div class="container-xxl flex-grow-1 container-p-y">
-   <div class="bs-toast toast toast-placement-ex m-2" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
-       <div class="toast-header">
-           <i class="bx bx-bell me-2"></i>
-           <div class="me-auto fw-semibold toast-title">Bootstrap</div>
-           <small>Now</small>
-           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-       </div>
-       <div class="toast-body">Fruitcake chocolate bar tootsie roll gummies gummies jelly beans cake.</div>
-   </div>
-   <div class="row">
-       <div class="col-md-11">
-           <h4 class="fw-bold py-3 mb-4"></h4>
-       </div>
-       <div class="col-md-1">
-           <select name="basic-datatables_length" id="recordLimit" aria-controls="basic-datatables" class="form-select">
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="5">5</option>
-               <option selected="" value="10">10</option>
-               <option value="25">25</option>
-               <option value="50">50</option>
-               <option value="100">100</option>
-           </select>
-       </div>
-   </div>
    <div class="row  justify-content-between">
 <div class="col-md-2">
-            <a href="/Annualaddincomeadd" class="fw-bold mb-4 btn btn-info"><MdPostAdd class="bx bx-plus-circle" /> Add New</a>
+            <a href="/Annualaddincomeadd" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
         </div>
 
 <div class="col-md-4">
