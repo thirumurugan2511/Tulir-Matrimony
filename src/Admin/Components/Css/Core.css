@@ -3363,6 +3363,7 @@ textarea.form-control-lg {
 }
 .tab-content > .active {
   display: block;
+  background-color: white !important;
 }
 
 .navbar {

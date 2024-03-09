@@ -21,6 +21,7 @@ import { TbCashBanknote } from "react-icons/tb";
 import { TbCashBanknoteOff } from "react-icons/tb";
 import { MdCancelPresentation } from "react-icons/md";
 import Smallicon from '../../Components/heart-icon.png'
+import { IoMenu } from "react-icons/io5";
 
 
 
@@ -38,7 +39,7 @@ const Dashoard = () => {
             align-items-center bg-navbar-theme" id="layout-navbar">
                 <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
                     <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                        <i class="bx bx-menu bx-sm"></i>
+                        <IoMenu class="bx bx-menu bx-sm" />
                     </a>
                 </div>
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">

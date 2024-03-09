@@ -98,19 +98,19 @@ const Paymentadd = () => {
 
                                         <label class="form-label" for="bridename">Plan Name <span class="Form__Error">*</span></label>
 
-                                        <input   type="text"  required  class="form-control required" id="bridename" name="bridename" placeholder="Plan Name" value=""  />
+                                        <input   type="text"  required  class="form-control required" id="bridename" name="bridename" placeholder="Plan Name"   />
 
                                     </div><div class="mb-3 text-start">
 
                                         <label class="form-label" for="brideid">Plan Amount <span class="Form__Error">*</span></label>
 
-                                        <input  onchange="return check_brideid_groomid(1);" type="text"  required  class="form-control required" id="brideid" name="brideid" placeholder="Plan Amount" value=""  />
+                                        <input  onchange="return check_brideid_groomid(1);" type="text"  required  class="form-control required" id="brideid" name="brideid" placeholder="Plan Amount"   />
 
                                     </div><div class="mb-3 text-start">
 
                                         <label class="form-label" for="groomname">Plan Validity <span class="Form__Error">*</span></label>
 
-                                        <input   type="text"  required  class="form-control required" id="groomname" name="groomname" placeholder="Plan Validity" value=""  />
+                                        <input   type="text"  required  class="form-control required" id="groomname" name="groomname" placeholder="Plan Validity"  />
 
                                     </div><div class="mb-3 text-start">
 

@@ -104,28 +104,28 @@ const Sitesettings = () => {
 
                                         <label class="form-label" for="religion_name">Username <span class="Form__Error">*</span></label>
 
-                                        <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="User Name" value=""/>
+                                        <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="User Name" />
 
                                     </div>
                                     <div class="mb-3 text-start">
 
                                         <label class="form-label" for="religion_name">Password <span class="Form__Error">*</span></label>
 
-                                        <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Password" value=""/>
+                                        <input type="password" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Password" />
 
                                     </div>
                                     <div class="mb-3 text-start">
 
 <label class="form-label" for="religion_name">Email ID <span class="Form__Error">*</span></label>
 
-<input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Email" value=""/>
+<input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Email" />
 
 </div>
 <div class="mb-3 text-start">
 
 <label class="form-label" for="religion_name">Description <span class="Form__Error">*</span></label>
 
-<input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Description" value=""/>
+<input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Description" />
 
 </div>
                                     

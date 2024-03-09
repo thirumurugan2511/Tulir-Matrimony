@@ -4,6 +4,8 @@ import Smallicon from '../../../Components/heart-icon.png'
 import { Link } from "react-router-dom";
 import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
+import { MdManageHistory } from "react-icons/md";
+import { GrUserAdmin } from "react-icons/gr";
 
 const Moonsignadd = () => {
   return (
@@ -20,21 +22,21 @@ const Moonsignadd = () => {
                     </a>
                 </div>
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                    <ol class="breadcrumb breadcrumb-style2 mb-0">
-                        <li class="breadcrumb-item"><a href="javascript:void(0);"></a></li>
-                        <li class="breadcrumb-item ">  Manage Moonsign </li>
-                    </ol>
-                    <ul class="navbar-nav flex-row align-items-center ms-auto">
-                        <li class="nav-item lh-1 me-3">
-                                                        <i class="bx bx-user me-2"></i><span class="align-middle">Administrator</span>
-                                                    </li>
-                                                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                                <div class="avatar avatar-online">
-                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
-                                </div>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
+                   <ol class="breadcrumb breadcrumb-style2 mb-0">
+                   <li><MdManageHistory  class="bx bx-user me-2"/></li>
+                   <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Moonsign </li>
+                   </ol>
+                   <ul class="navbar-nav flex-row align-items-center ms-auto">
+                       <li class="nav-item lh-1 me-3">
+                       <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
+                        </li>
+                                               <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                           <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                               <div class="avatar avatar-online">
+                                   <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
+                               </div>
+                           </a>
+                           <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
                                     <a class="dropdown-item" href="#">
                                         <div class="d-flex">
@@ -62,16 +64,16 @@ const Moonsignadd = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <Link class="dropdown-item" href="/Signin">
+                                <Link class="dropdown-item" href="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
                                     </Link>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
-                </div>
+                       </li>
+                   </ul>
+               </div>
             </nav>
             <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
@@ -88,7 +90,7 @@ const Moonsignadd = () => {
 
                                         <label class="form-label" for="Moonsign_name">Moonsign Name <span class="Form__Error">*</span></label>
 
-                                        <input type="text" required="" class="form-control required" id="Moonsign_name" name="Moonsign_name" placeholder="Moonsign Name" value=""/>
+                                        <input type="text" required="" class="form-control required" id="Moonsign_name" name="Moonsign_name" placeholder="Moonsign Name" />
 
                                     </div>
                                     

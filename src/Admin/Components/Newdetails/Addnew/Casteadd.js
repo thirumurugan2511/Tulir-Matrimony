@@ -4,6 +4,8 @@ import Smallicon from '../../../Components/heart-icon.png'
 import { Link } from "react-router-dom";
 import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
+import { MdManageHistory } from "react-icons/md";
+import { GrUserAdmin } from "react-icons/gr";
 
 const Casteadd = () => {
   return (
@@ -20,21 +22,21 @@ const Casteadd = () => {
                     </a>
                 </div>
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                    <ol class="breadcrumb breadcrumb-style2 mb-0">
-                        <li class="breadcrumb-item"><a href="javascript:void(0);"></a></li>
-                        <li class="breadcrumb-item ">  Manage Caste </li>
-                    </ol>
-                    <ul class="navbar-nav flex-row align-items-center ms-auto">
-                        <li class="nav-item lh-1 me-3">
-                                                        <i class="bx bx-user me-2"></i><span class="align-middle">Administrator</span>
-                                                    </li>
-                                                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                                <div class="avatar avatar-online">
-                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
-                                </div>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
+                   <ol class="breadcrumb breadcrumb-style2 mb-0">
+                   <li><MdManageHistory  class="bx bx-user me-2"/></li>
+                   <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Caste </li>
+                   </ol>
+                   <ul class="navbar-nav flex-row align-items-center ms-auto">
+                       <li class="nav-item lh-1 me-3">
+                       <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
+                        </li>
+                                               <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                           <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                               <div class="avatar avatar-online">
+                                   <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
+                               </div>
+                           </a>
+                           <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
                                     <a class="dropdown-item" href="#">
                                         <div class="d-flex">
@@ -62,16 +64,16 @@ const Casteadd = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <Link class="dropdown-item" href="/Signin">
+                                <Link class="dropdown-item" href="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
                                     </Link>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
-                </div>
+                       </li>
+                   </ul>
+               </div>
             </nav>
             <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
@@ -81,21 +83,21 @@ const Casteadd = () => {
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form id="addEditForm" name="addEditForm" action="https://gloriousmatrimonial.com/admin/religion/addEdit" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="_token" value="xsRbVQIcWzUtaB16B9EQu0T5IiltWdJYP6iUnE2Q"/>                        
+                    <form id="addEditForm" name="addEditForm" action="" method="POST" enctype="multipart/form-data">
+                                            
                         
                         <div class="mb-3 text-start">
 
                                         <label class="form-label" for="religion_name">Religion Name <span class="Form__Error">*</span></label>
 
-                                        <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Religion Name" value=""/>
+                                        <input type="text" required="" class="form-control  required" id="religion_name" name="religion_name" placeholder="Religion Name" />
 
                                     </div>
                                     <div class="mb-3 text-start">
 
                                         <label class="form-label" for="religion_name">Caste Name <span class="Form__Error">*</span></label>
 
-                                        <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Caste Name" value=""/>
+                                        <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Caste Name" />
 
                                     </div>
                                     

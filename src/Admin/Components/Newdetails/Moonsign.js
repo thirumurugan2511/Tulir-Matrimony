@@ -81,17 +81,17 @@ const Moonsign = () => {
            </nav>
            <div class="content-wrapper">
                <div class="container-xxl flex-grow-1 container-p-y">
-   <div class="row  justify-content-between">
-   <div class="col-md-2">
-               <a href="/Moonsignadd" class="fw-bold mb-4 btn btn-info"> <i class="bx bx-plus-circle"></i> Add New</a>
-           </div>
-  
-   <div class="col-md-4">
-               <div class="search-container">
-           <input type="text" class="search-box form-control" id="searchText" placeholder="Search"/>
-           <button class="search-button btn btn-info searchMainBtn" id="commonSearch"><i class="bx bx-search-alt-2"></i></button>
-       </div>
-           </div>
+               <div class="row  justify-content-between">
+<div class="col-md-2">
+            <a href="/Moonsignadd" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
+        </div>
+
+<div class="col-md-4">
+            <div class="search-container">
+        <input type="text" class="search-box form-control" id="searchText" placeholder="Search"/>
+        <button class="search-button btn btn-info searchMainBtn" id="commonSearch"><FaSearch class="bx bx-search-alt-2" /></button>
+    </div>
+        </div>
 </div>
    
 

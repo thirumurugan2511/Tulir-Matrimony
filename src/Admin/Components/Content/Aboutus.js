@@ -98,7 +98,7 @@ const Aboutus = () => {
 
                                         <label class="form-label" for="bridename">Title Name <span class="Form__Error">*</span></label>
 
-                                        <input   type="text"  required  class="form-control required" id="bridename" name="bridename" placeholder="Title Name" value=""  />
+                                        <input   type="text"  required  class="form-control required" id="bridename" name="bridename" placeholder="Title Name"   />
 
                                     </div>
                                     <div class="mb-3 text-start">

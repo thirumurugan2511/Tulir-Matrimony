@@ -94,7 +94,7 @@ const Storiesadd = () => {
 
                                     <input   required  name="weddingphoto" class="form-control required" placeholder="Upload Your Wedding Photo"  type="file" id="weddingphoto" />
 
-                                    <input type="hidden" name="weddingphoto_val" id="weddingphoto_val" value="" />
+                                    <input type="hidden" name="weddingphoto_val" id="weddingphoto_val"  />
 
                                     <input type="hidden" name="weddingphoto_path" id="weddingphoto_path" value="assets/success_story/" />
 
@@ -111,31 +111,31 @@ const Storiesadd = () => {
 
                                         <label class="form-label" for="bridename">Bride's Name <span class="Form__Error">*</span></label>
 
-                                        <input   type="text"  required  class="form-control required" id="bridename" name="bridename" placeholder="Bride's Name" value=""  />
+                                        <input   type="text"  required  class="form-control required" id="bridename" name="bridename" placeholder="Bride's Name"   />
 
                                     </div><div class="mb-3 text-start">
 
                                         <label class="form-label" for="brideid">Bride's ID <span class="Form__Error">*</span></label>
 
-                                        <input  onchange="return check_brideid_groomid(1);" type="text"  required  class="form-control required" id="brideid" name="brideid" placeholder="Bride's ID" value=""  />
+                                        <input  onchange="return check_brideid_groomid(1);" type="text"  required  class="form-control required" id="brideid" name="brideid" placeholder="Bride's ID"   />
 
                                     </div><div class="mb-3 text-start">
 
                                         <label class="form-label" for="groomname">Groom's Name <span class="Form__Error">*</span></label>
 
-                                        <input   type="text"  required  class="form-control required" id="groomname" name="groomname" placeholder="Groom's Name" value=""  />
+                                        <input   type="text"  required  class="form-control required" id="groomname" name="groomname" placeholder="Groom's Name"   />
 
                                     </div><div class="mb-3 text-start">
 
                                         <label class="form-label" for="groomid">Groom's Id <span class="Form__Error">*</span></label>
 
-                                        <input  onchange="return check_brideid_groomid(2);" type="text"  required  class="form-control required" id="groomid" name="groomid" placeholder="Groom's Id" value=""  />
+                                        <input  onchange="return check_brideid_groomid(2);" type="text"  required  class="form-control required" id="groomid" name="groomid" placeholder="Groom's Id"   />
 
                                     </div><div class="mb-3 text-start">
 
                                         <label class="form-label" for="marriagedate">Your Marriage Date <span class="Form__Error">*</span></label>
 
-                                        <input class="form-control required" type="date" value=""   id="marriagedate" name="marriagedate"/>
+                                        <input class="form-control required" type="date"    id="marriagedate" name="marriagedate"/>
 
                                     </div><div class="mb-3 text-start">
 

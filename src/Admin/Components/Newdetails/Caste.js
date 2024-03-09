@@ -33,7 +33,7 @@ const Caste = () => {
                    <ul class="navbar-nav flex-row align-items-center ms-auto">
                        <li class="nav-item lh-1 me-3">
                        <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
-                                                   </li>
+                        </li>
                                                <li class="nav-item navbar-dropdown dropdown-user dropdown">
                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                <div class="avatar avatar-online">
@@ -84,7 +84,7 @@ const Caste = () => {
 
    <div class="row  justify-content-between">
 <div class="col-md-2">
-            <a href="/Religionadd" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
+            <a href="/Casteadd" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
         </div>
 
 <div class="col-md-4">
