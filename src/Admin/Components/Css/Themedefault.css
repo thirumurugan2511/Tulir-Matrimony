@@ -556,9 +556,7 @@ html[dir=rtl] .border-primary {
   border-color: #696cff !important;
 }
 
-a {
-  color: #696cff;
-}
+
 a:hover {
   color: #787bff;
 }
@@ -677,6 +675,7 @@ a:hover {
 .bg-menu-theme .menu-item.open:not(.menu-item-closing) > .menu-toggle,
 .bg-menu-theme .menu-item.active > .menu-link {
   color: #fff;
+  background-color: #5c6bc0 !important;
 }
 .bg-menu-theme .menu-item.active > .menu-link:not(.menu-toggle) {
   background-color: #303f9f;

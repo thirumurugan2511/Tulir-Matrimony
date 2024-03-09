@@ -28,6 +28,9 @@ import Signin from './Admin/Components/Regform/Signin';
 import Member from './Admin/Components/Member/Member';
 import Signup from './Admin/Components/Regform/Signup';
 import Viewmember from './Admin/Components/Member/Viewmember'; 
+import Paymentadd from './Admin/Components/Payment/Paymentadd';
+import Banner from './Admin/Components/Dashboard/Banner';
+import Aboutus from './Admin/Components/Content/Aboutus';
 
 function App() {
   return (
@@ -62,6 +65,9 @@ function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Member" element={<Member />} />
           <Route path="/Viewmember" element={<Viewmember />} />
+          <Route path="/Paymentadd" element={<Paymentadd />} />
+          <Route path="/Banner" element={<Banner />} />
+          <Route path="/Aboutus" element={<Aboutus />} />
 
 
         </Routes>

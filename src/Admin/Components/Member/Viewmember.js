@@ -1,8 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Aside from '../Aside/Aside'
+import { IoMdSettings } from "react-icons/io";
+import { LuLogOut } from "react-icons/lu";
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
+import Smallicon from '../../Components/heart-icon.png'
+
 
 const Viewmember = () => {
   return (
@@ -21,7 +25,7 @@ const Viewmember = () => {
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                     <ol class="breadcrumb breadcrumb-style2 mb-0">
                     <li><MdManageHistory  class="bx bx-user me-2"/></li>
-                        <li class="breadcrumb-item active">  Manage Memberview </li>
+                        <li class="breadcrumb-item ">  Manage Memberview </li>
                     </ol>
                     <ul class="navbar-nav flex-row align-items-center ms-auto">
                         <li class="nav-item lh-1 me-3">
@@ -30,7 +34,7 @@ const Viewmember = () => {
                                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
-                                    <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt="" class="w-px-40 h-auto rounded-circle"/>
+                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
@@ -39,7 +43,7 @@ const Viewmember = () => {
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt="" class="w-px-40 h-auto rounded-circle"/>
+                                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
@@ -52,25 +56,20 @@ const Viewmember = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/basic-site-setting">
-                                        <i class="bx bx-cog me-2"></i>
+                                    <Link class="dropdown-item" to="/Sitesetting">
+                                        <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" target="_blank" href="https://gloriousmatrimonial.com" rel="noopener">
-                                        <i class="bx bx-slideshow me-2"></i>
-                                        <span class="align-middle">Front End</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/logout">
-                                        <i class="bx bx-power-off me-2"></i>
+                                         <Link class="dropdown-item" href="/Signin">
+                                    
+                                        <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </li>
@@ -86,15 +85,6 @@ const Viewmember = () => {
 
 <div class="content-wrapper">
   {/* <!-- Toast with Placements --> */}
-  <div class="bs-toast toast toast-placement-ex m-2" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
-    <div class="toast-header">
-      <i class="bx bx-bell me-2"></i>
-      <div class="me-auto fw-semibold toast-title">Bootstrap</div>
-      <small>Now</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">Fruitcake chocolate bar tootsie roll gummies gummies jelly beans cake.</div>
-  </div>
   {/* <!-- Toast with Placements -->
   <!-- Content --> */}
   <div class="container-xxl flex-grow-1 container-p-y">
@@ -156,30 +146,6 @@ const Viewmember = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-lg-2 pt-2 pt-lg-4 pt-md-4 pt-sm-4">
-                {/* <div class="view_profilebtn_sink">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-2 mb-3">
-                      <div class="side_viewsetOcpn">
-                        <div class="icon_boxviewsdsd" data-bs-toggle="collapse" data-bs-target="#connectActivity" aria-expanded="false" aria-controls="connectActivity" data-bs-placement="top" title="" data-bs-original-title="Activity" aria-label="Activity">
-                          <i class="bx bxs-factory text-danger"></i>
-                        </div>
-                        <h5 class="py-2">Activity</h5>
-                      </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-2 mb-3">
-                      <div class="side_viewsetOcpn">
-                        <a href="https://gloriousmatrimonial.com/admin/member/edit/1115">
-                          <div class="icon_boxviewsdsd" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit Profile" aria-label="Edit Profile">
-                            <i class="bx bxs-edit-alt text-primary fs-4"></i>
-                          </div>
-                          <h5 class="py-2">Edit Profile</h5>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
@@ -372,7 +338,7 @@ const Viewmember = () => {
     </div>
     <div class="main_secPUtabs_btns">
       <div class="row">
-        <div class="col-lg-4 mt-4 pe-0 d-none d-lg-block">
+        <div class="col-lg-6 mt-4 pe-0 d-none d-lg-block">
           <div class="tab_btncontrolPartners">
             <ul class="nav nav-pills mb-3 gap-2 w-100 justify-content-center justify-content-lg-start" id="pills-tab" role="tablist">
               <li class="nav-item w-75" role="presentation">
@@ -381,6 +347,9 @@ const Viewmember = () => {
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><img src="https://www.gloriousmatrimonial.com/public//admin/assets/img/images/partner_prefIcon.png" alt=""/>Partner
                   Preference</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="photo-profile" data-bs-toggle="photo" data-bs-target="#photo-profile" type="button" role="tab" aria-controls="photo-profile" aria-selected="false"><img src="https://www.gloriousmatrimonial.com/public//admin/assets/img/images/partner_prefIcon.png" alt=""/>Horoscope Image</button>
               </li>
             </ul>
           </div>
@@ -396,6 +365,9 @@ const Viewmember = () => {
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><img src="https://www.gloriousmatrimonial.com/public//admin/assets/img/images/partner_prefIcon.png" alt=""/>Partner Preference</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="photo-profile" data-bs-toggle="photo" data-bs-target="#photo-profile" type="button" role="tab" aria-controls="photo-profile" aria-selected="false"><img src="https://www.gloriousmatrimonial.com/public//admin/assets/img/images/partner_prefIcon.png" alt=""/>Horoscope Image</button>
               </li>
             </ul>
           </div>
@@ -822,6 +794,95 @@ const Viewmember = () => {
             </div>
           </div>
                   </div>
+
+                  <div class="tab-pane fade" id="photo-profile" role="tabpanel" aria-labelledby="photo-profile" tabindex="0">
+                    <div class="inner_collapse_userPartner mb-4">
+            <button class="collapbtn" type="button" data-bs-toggle="collapse" data-bs-target="#U_detailsDiv2" aria-expanded="false" aria-controls="U_detailsDiv2">
+              <div class="icon_usBox">
+                <div class="text_icons-vb"><img src="https://www.gloriousmatrimonial.com/public//admin/assets/img/images/TB1.svg" alt=""/></div> Heroscope Images
+              </div>
+            </button>
+            <div class="collapse show" id="U_detailsDiv2">
+              <div class="inner_views_detailsFGH">
+                <div class="row text-start">
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner From Age :</span> 22 Years
+                      </h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner To Age :</span> 23 Years
+                      </h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner From Height :</span> 133cm - 4ft 4in</h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner To Height :</span> 178cm - 5ft 10in</h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner Religion :</span> Muslim</h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner Caste :</span> Ahmadiyya, Bengali, Dawoodi Bohra, Ehle-Hadith, Memon, Rajput, Shia, Shia Imami Ismaili, Sunni</h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner Country :</span> Andorra, United Arab Emirates, Afghanistan, Antigua And Barbuda, Albania, Armenia, Angola, Antarctica, Argentina, American Samoa, Austria, Australia, Aruba, Aland Islands, Azerbaijan, Bosnia And Herzegovina, Barbados, Bangladesh, Belgium, Burkina Faso, Bulgaria, Bahrain, Burundi, Benin, Bermuda, Brunei, Bolivia, Bonaire, Saint Eustatius And Saba, Brazil, Bahamas, Bhutan, Bouvet Island, Botswana, Belarus, Belize, Canada, Democratic Republic Of The Congo, Central African Republic, Republic Of The Congo, Switzerland, Ivory Coast, Chile, Cameroon, China, Colombia, Costa Rica, Cuba, Cape Verde, Cyprus, Czech Republic, Germany, Djibouti, Denmark, Dominica, Dominican Republic, Algeria, Ecuador, Estonia, Egypt, Western Sahara, Eritrea, Spain, Ethiopia, Finland, Fiji, Micronesia, Faroe Islands, France, Gabon, United Kingdom, Grenada, Georgia, French Guiana, Guernsey, Ghana, Greenland, Gambia, Guinea, Guadeloupe, Equatorial Guinea, Greece, Guatemala, Guam, Guinea-Bissau, Guyana, Hong Kong, Honduras, Croatia, Haiti, Hungary, Indonesia, Ireland, Israel, Isle Of Man, India, British Indian Ocean Territory, Iraq, Iran, Iceland, Italy, Jersey, Jamaica, Jordan, Japan, Kenya, Kyrgyzstan, Cambodia, Kiribati, Comoros, Saint Kitts And Nevis, North Korea, South Korea, Kuwait, Kazakhstan, Laos, Lebanon, Saint Lucia, Liechtenstein, Sri Lanka, Liberia, Lesotho, Lithuania, Luxembourg, Latvia, Libya, Morocco, Monaco, Moldova, Montenegro, Madagascar, Marshall Islands, Macedonia, Mali, Myanmar, Mongolia, Macao, Northern Mariana Islands, Martinique, Mauritania, Montserrat, Mauritius, Maldives, Malawi, Mexico, Malaysia, Mozambique, Namibia, New Caledonia, Niger, Nigeria, Nicaragua, Netherlands, Norway, Nepal, Nauru, New Zealand, Oman, Panama, Peru, French Polynesia, Papua New Guinea, Philippines, Pakistan, Poland, Saint Pierre And Miquelon, Puerto Rico, Palestinian Territory, Portugal, Palau, Paraguay, Qatar, Reunion, Romania, Serbia, Russia, Rwanda, Saudi Arabia, Solomon Islands, Seychelles, Sudan, Sweden, Singapore, Saint Helena, Slovenia, Svalbard And Jan Mayen, Slovakia, Sierra Leone, San Marino, Senegal, Somalia, Suriname, South Sudan, Sao Tome And Principe, El Salvador, Syria, Swaziland, Chad, French Southern Territories, Togo, Thailand, Tajikistan, Tokelau, East Timor, Turkmenistan, Tunisia, Tonga, Turkey, Trinidad And Tobago, Tuvalu, Taiwan, Tanzania, Ukraine, Uganda, United States Minor Outlying Islands, United States, Uruguay, Uzbekistan, Saint Vincent And The Grenadines, Venezuela, U.S. Virgin Islands, Vietnam, Vanuatu, Wallis And Futuna, Yemen, Mayotte, South Africa, Zambia, Zimbabwe, New York, Scotland</h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner State :</span> Ash Shariqah, Al Fujairah, Ajman, Abu Dhabi, Zabul, Badghis, Badakhshan, Barbuda, Ararati Marz, Aragatsotni Marz, Armaviri Marz, Bengo Province, Antarctica (general), Carinthia, Burgenland, Australian Capital Territory, Aruba (general), Braendoe, Aland (general), Beylagan Rayon, Zangilan Rayon, Bilasuvar Rayon, Cabrayil Rayonu, Astara Rayon, Aghjabadi Rayon, Aghdam Rayon, Ali Bajramly, Zardab Rayon, Zaqatala Rayon, Balakan Rayon, Barda Rayon, Baku City, Absheron Rayon, Aghsu Rayon, Aghdash Rayon, Aghstafa Rayon, Brcko, Borishal, Brussels Capital Region, Boucle du Mouhoun, Cascades, Centre, Centre-Est, Centre-Nord, Centre-Ouest, Centre-Sud, Capital Governorate, Central Governorate, Bujumbura Mairie, Bujumbura Rural, Brunei and Muara District, Belait District, Bonaire, Amazonas, Berry Islands District, Cat Island District, Bimini District, Acklins Island District, Black Point District, Central Abaco District, Central Andros District, Central Eleuthera District, Bumthang Dzongkhag, Zhemgang Dzongkhag, Bouvetoya (general), Central District, Brestskaya Voblasts', Cayo District, Belize District, Alberta, British Columbia, Yukon, Canton de Vaud, Canton du Valais, Cantone Ticino, Canton de Neuchatel, Canton du Jura, Canton de Geneve, Canton de Fribourg, Basel-City, Centre Province, Adamaoua Province, Zhejiang Sheng, Yunnan, Anhui Sheng, Beijing Shi, C, Atlantico, Zlinsky kraj, Bremen, Brandenburg, Bavaria, Baden-Wuerttemberg, Capital Region, Central Jutland, Zealand, Alexandria, Zoba Anseba, Zoba Debub, Zoba Debubawi K'eyih Bahri, Zoba Gash-Barka, Zoba Ma'akel, Zoba Semenawi K'eyih Bahri, Ceuta, Balearic Islands, Andalusia, Canary Islands, Castille-La Mancha, Asturias, Cantabria, Aragon, Castille and Leon, Catalonia, Basque Country, Adis Abeba Astedader, Afar Regional State, Amhara Regional State, Beneshangual Gumz Regional State, Central, Champagne-Ardenne, Centre, Brittany, Bourgogne, Basse-Normandie, Auvergne, Aquitaine, Alsace, Carriacou and Petite Martinique, Ajaria, Abkhazia, Central Region, Brong-Ahafo, Ashanti Region, Central River Division, Capitale d'Etat-Zone Speciale de Conakry, Attiki, Central Greece, Anatoliki Makedonia kai Thraki, Agana Heights Municipality, Chalan Pago-Ordot Municipality, Asan-Maina Municipality, Agat Municipality, Barrigada Municipality, Cacheu, Bolama and Bijagos, Bissau Autonomous Region, Biombo, Bafata, Barima-Waini Region, Yuen Long District, Central and Western District, Bay Islands, Bjelovarsko-Bilogorska Zupanija, Brodsko-Posavska Zupanija, Zadarska Zupanija, Zagrebacka Zupanija, Borsod-Abauj-Zemplen, Bekes megye, Zala, Budapest fovaros, Baranya megye, Bacs-Kiskun, Central Sulawesi, Central Java, Bali, Bangka-Belitung, Central District, Bengal, Bihar, Assam, Arunachal Pradesh, Andhra Pradesh, British Indian Ocean Territory (general), Anbar, Zanjan, Bushehr, Capital Region, Calabria, Aosta Valley, Apulia, Campania, Basilicate, Abruzzo,  Elizabeth, Zarqa, Amman, Balqa, Ajlun, Aqaba, Aichi-ken, Akita-ken, Aomori-ken, Central Province, Batken Oblasty, Chagang-do, Busan, Al Farwaniyah, Batys Qazaqstan Oblysy, Atyrau Oblysy, Aktyubinskaya Oblast', Aqmola Oblysy, Zhambyl Oblysy, Yuzhno-Kazakhstanskaya Oblast', Almaty Qalasy, Almaty Oblysy, Bayqongyr Qalasy, Astana Qalasy, Central Province, Bong County, Bomi County, Butha-Buthe, Berea, Alytaus Apskritis, Cesu Rajons, Bauskas Rajons, Balvu Rajons, Aluksnes Rajons, Aizkraukles Rajons, Alsungas Novads, Aizputes Novads, Brocenu Novads, Auces Novads, Babites Novads, Baldones Novads, Carnikavas Novads, Adazu Novads, Aknistes Novads, Aglonas Novads, Zilupes Novads, Baltinavas Novads, Cesvaines Novads, Alojas Novads, Burtnieku Novads, Amatas Novads, Beverinas Novads, Apes Novads, Analanjirofo, Boeny, Betsiboka, Alaotra-Mangoro, Bongolava, Analamanga, Amoron'i Mania, Anosy, Androy, Ailinginae Atoll, Ailinglaplap Atoll, Ailuk Atoll, Arno Atoll, Aur Atoll, Bikar Atoll, Bikini Atoll, Bokak Atoll, Bago Division, Ayeyarwady Division, Bayan-Olgiy Aymag, Bayanhongor Aymag, Central Aimak, Bulgan Aymag, Arhangay Aymag, Agalega Islands, Black River District, Cargados Carajos, Baa Atholhu, Alifu Atholhu, Central Province, Central Region, Yucatan, Campeche, Zacatecas, Baja California Sur, Aguascalientes, Caprivi, Zinder, Agadez, Borno State, Benue State, Bauchi, Anambra, Akwa Ibom State, Abuja Federal Capital Territory, Abia State, Adamawa State, Bayelsa State, Buskerud Fylke, Aust-Agder Fylke, Akershus Fylke, Central Region, Buada, Boe, Baiti, Anibare, Anetan, Anabar, Aiwo, Bay of Plenty, Canterbury, Auckland, Al Mintaqah ad Dakhiliyah, Al Mintaqah al Wusta, Al Mintaqah ash Sharqiyah, Bougainville, Central Province, Autonomous Region in Muslim Mindanao, Cagayan Valley, Caraga, Calabarzon, Central Luzon, Central Visayas, Zamboanga Peninsula, Bicol, Balochistan, Azad Kashmir, Adjuntas, Aguada, Aguadilla, Aguas Buenas, Aibonito, Anasco, Arecibo, Arroyo, Barceloneta, Barranquitas, Bayamon Municipio, Cabo Rojo Municipio, Caguas Municipio, Camuy Municipio, Canovanas Municipio, Carolina Municipio, Catano Municipio, Cayey Municipio, Ceiba Municipio, Braganca, Aveiro, Aimeliik, Airai, Angaur, Asuncion, Baladiyat ash Shamal, Baladiyat al Ghuwayriyah, Baladiyat al Khawr wa adh Dhakhirah, Baladiyat Umm Salal, Baladiyat al Jumayliyah, Baladiyat ar Rayyan, Baladiyat ad Dawhah, Baladiyat al Wakrah, Baladiyat Jarayan al Batinah, Baladiyat Umm Sa`id, Baladiyat az Za`ayin, Bucuresti, Autonomna Pokrajina Vojvodina, Central Serbia, Bryanskaya Oblast', Belgorodskaya Oblast', Astrakhanskaya Oblast', Arkhangelskaya, Altayskiy Kray, Amurskaya Oblast', Zabaykal'skiy Kray, Al Mintaqah ash Sharqiyah, Central Province, Cascade, Bel Ombre, Bel Air, Beau Vallon, Baie Sainte Anne, Baie Lazare, Anse Royale, Anse Etoile, Anse Boileau, Anse aux Pins, Au Cap, Blue Nile State, Blekinge, Central Singapore Community Development Council, Ascension, Bohinj, Zilinsky Kraj, Banskobystricky Kraj, Bratislavsky Kraj, Castello di Serravalle, Castello di San Marino Citta, Castello di Acquaviva, Castello di Borgo Maggiore, Castello di Domagnano, Castello di Faetano, Castello di Fiorentino, Castello di Montegiardino, Central Equatoria, Aleppo, As-Suwayda, Ar-Raqqah, Al-Hasakah, Archipel des Crozet, Archipel des Kerguelen, Changwat Ratchaburi, Changwat Ranong, Changwat Prachuap Khiri Khan, Changwat Phetchaburi, Changwat Phangnga, Changwat Mae Hong Son, Changwat Lamphun, Changwat Lampang, Changwat Krabi, Changwat Kanchanaburi, Changwat Kamphaeng Phet, Changwat Chumphon, Changwat Chiang Rai, Changwat Roi Et, Changwat Rayong, Changwat Phra Nakhon Si Ayutthaya, Changwat Phrae, Changwat Phitsanulok, Changwat Phichit, Changwat Phetchabun, Changwat Phayao, Changwat Phatthalung, Changwat Pattani, Changwat Pathum Thani, Changwat Nonthaburi, Changwat Nong Khai, Changwat Narathiwat, Changwat Nan, Changwat Nakhon Si Thammarat, Changwat Nakhon Sawan, Changwat Nakhon Ratchasima, Changwat Nakhon Phanom, Changwat Nakhon Pathom, Changwat Nakhon Nayok, Changwat Mukdahan, Changwat Maha Sarakham, Changwat Lop Buri, Changwat Loei, Bangkok, Changwat Khon Kaen, Changwat Kalasin, Changwat Chon Buri, Changawat Chanthaburi, Changwat Chaiyaphum, Changwat Chai Nat, Changwat Chachoengsao, Changwat Buriram, Changwat Ang Thong, Changwat Prachin Buri, Changwat Amnat Charoen, Changwat Nong Bua Lamphu, Atafu, Bobonaro, Balkan Welayaty, Ahal Welayaty, Yozgat, Burdur, Bitlis, Bingoel, Bilecik, Balikesir, Aydin, Antalya, Ankara, Agri, Afyonkarahisar, Adiyaman, Adana, Aksaray, Batman, Cankiri, Canakkale, Bursa, Bolu, Artvin, Amasya, Bartin, Ardahan, Bayburt, Arima, Chaguanas, Zanzibar Urban/West Region, Zanzibar North Region, Zanzibar Central/South Region, Arusha Region, Zhytomyrs'ka Oblast', Zaporiz'ka Oblast', Zakarpats'ka Oblast', Avtonomna Respublika Krym, Bukedea, Apac District, Arua District, Bundibugyo District, Bushenyi District, Adjumani District, Bugiri District, Busia District, Abim District, Amolatar District, Amuria District, Amuru District, Budaka District, Bududa District, Bulisa District, Butaleja District, Bukwa District, Butambala District, Amudat District, Zombo District, Agago District, Alebtong District, Buyende District, Bulambuli District, Buvuma District, Buikwe District, Bukomansimbi District, Buhweju District, Baker Island, Arkansas, Alabama, California, Arizona, Alaska, Cerro Largo, Canelones, Artigas, Buxoro Viloyati, Andijon Viloyati, Aden, Amanat Al Asimah, Acoua, Bandraboua, Bandrele, Boueni, Central Province, Bulawayo Province, Albany</h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                                        <h5 class="py-2"><span>Partner Annual Income :</span> Upto INR 1,00,000, INR 1,00,000 to 2,00,000, INR 2,00,000 to 4,00,000, INR 4,00,000 to 7,00,000, INR 7,00,000 to 10,00,000, INR 10,00,000 to 15,00,000, INR 15,00,000 to 20,00,000, INR 20,00,000 to 30,00,000, INR 30,00,000 to 50,00,000, INR 50,00,000 to 75,00,000, INR 75,00,000 to 1,00,00,000, INR 1,00,00,000 to 3,00,00,000, INR 3,00,00,000 and above, Not applicable, Don’t want to Specify
+                      </h5>
+                                                                                      </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner Marital Status :</span> Unmarried,Widow/Widower,Divorcee,Separated</h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner Education :</span> Bachelor's, Master's, PHD, Post Doc, Other</h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner Occupation :</span> Agriculture, Arts/Creative, Automotive, Business/Entrepreneurship, Construction, Consulting, Education/Teaching, Energy/Utilities, Engineering, Environmental Services, Finance/Banking, Food Services/Hospitality, Government/Public Service, Healthcare/Medical, Travel/Tourism, Human Resources, Information Technology (IT), Legal/Law, Manufacturing, Marketing/Advertising, Media/Entertainment, Pharmaceuticals, Real Estate/Property, Research/Science, Retail, Sales, Seva/Non-Profit/NGO, Sports/Fitness, Telecommunications, Transportation/Logistics, Others, Interior Designer, Fashion Designer, Management/Administration</h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner Mother Tongue :</span> Sindhi, Awadhi, Bhutia, Garo, Kakbarak, Kanauji, Khandesi, Khasi, Koshali, Kumoani, Lepcha, Magahi, Miji, Mizo, Monpa, Persian, Sanskrit, Santhali, Swedish, Tagalog, Aka, Arabic, Assamese, Bengali, Bhojpuri, Chattisgarhi, Chinese, Coorgi, Dogri, English, French, Garhwali, Gujarati, Haryanavi, Himachali/Pahari, Hindi, Kannada, Kashmiri, Konkani, Kutchi, Maithili, Malay, Malayalam, Manipuri, Marathi, Marwari, Nepali, Oriya, Other, Punjabi, Rajasthani, Russian, Sourashtra, Spanish, Tamil, Telugu, Tulu, Urdu</h5>
+                                                                </div>
+                  </div>
+                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="detalistsleg">
+                                                                  <h5 class="py-2"><span>Partner Manglik :</span> No,Yes,Maybe,Anshik</h5>
+                                                                </div>
+                  </div>
+                                  </div>
+              </div>
+            </div>
+          </div>
+                  </div>
       </div>
     </div>
   </div>
@@ -834,7 +895,7 @@ const Viewmember = () => {
                 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link fw-bolder">© Copyright 2023-2024 By Marriage Bureau Script. All Rights Reserved.</a>
+                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link">© Copyright 2023-2024 By Aathesh Soft. All Rights Reserved.</a>
                         </div>
                     </div>
                 </footer>

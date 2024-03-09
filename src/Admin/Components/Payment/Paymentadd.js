@@ -1,32 +1,34 @@
 import React from 'react'
-import Aside from '../../Aside/Aside'
-import Smallicon from '../../../Components/heart-icon.png'
-import { Link } from "react-router-dom";
+import { MdManageHistory } from "react-icons/md";
+import { GrUserAdmin } from "react-icons/gr";
+import Aside from '../Aside/Aside'
+import {Link} from 'react-router-dom'
+import Smallicon from '../../Components/heart-icon.png'
 import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 
-const Occupationadd = () => {
+const Paymentadd = () => {
   return (
     <>
-    <div class="layout-wrapper layout-content-navbar">
-   <div class="layout-container">
-   <Aside />
+      <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+    <Aside />
     <div class="layout-page">
             <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached
             align-items-center bg-navbar-theme" id="layout-navbar">
                 <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                    <Link class="nav-item nav-link px-0 me-xl-4" to="javascript:void(0)">
                         <i class="bx bx-menu bx-sm"></i>
-                    </a>
+                    </Link>
                 </div>
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                     <ol class="breadcrumb breadcrumb-style2 mb-0">
-                        <li class="breadcrumb-item"><a href="javascript:void(0);"></a></li>
-                        <li class="breadcrumb-item ">  Manage Occupation </li>
+                        <li><MdManageHistory class="breadcrumb-item "/></li>
+                        <li style={{padding: '2px 10px'}}>Manage MemberShip Plan</li>
                     </ol>
                     <ul class="navbar-nav flex-row align-items-center ms-auto">
                         <li class="nav-item lh-1 me-3">
-                                                        <i class="bx bx-user me-2"></i><span class="align-middle">Administrator</span>
+                        <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
                                                     </li>
                                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -62,7 +64,7 @@ const Occupationadd = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <Link class="dropdown-item" href="/Signin">
+                                                                        <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
@@ -73,45 +75,75 @@ const Occupationadd = () => {
                     </ul>
                 </div>
             </nav>
-            <div class="content-wrapper">
+    <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
     
-      
+        
     <div class="row">
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form id="addEditForm" name="addEditForm" action="https://gloriousmatrimonial.com/admin/religion/addEdit" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="_token" value="xsRbVQIcWzUtaB16B9EQu0T5IiltWdJYP6iUnE2Q"/>                        
-                        
+                    <form id="addEditForm" name="addEditForm" action="https://gloriousmatrimonial.com/admin/success-story/addEdit" method="POST"
+                        enctype="multipart/form-data">
+                        <input type="hidden" name="_token" value="QmQajZaby0jhK1w27Zi2q032b38lFxQusYolpel3"/>                        
                         <div class="mb-3 text-start">
 
-                                        <label class="form-label" for="religion_name">Occupation Name <span class="Form__Error">*</span></label>
+                                </div>
 
-                                        <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Occupation Name" value=""/>
+                                <div class="col-sm-4">
 
-                                    </div>
                                     
-                                    <input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.religion.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn" id="formSubmitBtn">Submit</button>
+
+                                </div><div class="mb-3 text-start">
+
+                                        <label class="form-label" for="bridename">Plan Name <span class="Form__Error">*</span></label>
+
+                                        <input   type="text"  required  class="form-control required" id="bridename" name="bridename" placeholder="Plan Name" value=""  />
+
+                                    </div><div class="mb-3 text-start">
+
+                                        <label class="form-label" for="brideid">Plan Amount <span class="Form__Error">*</span></label>
+
+                                        <input  onchange="return check_brideid_groomid(1);" type="text"  required  class="form-control required" id="brideid" name="brideid" placeholder="Plan Amount" value=""  />
+
+                                    </div><div class="mb-3 text-start">
+
+                                        <label class="form-label" for="groomname">Plan Validity <span class="Form__Error">*</span></label>
+
+                                        <input   type="text"  required  class="form-control required" id="groomname" name="groomname" placeholder="Plan Validity" value=""  />
+
+                                    </div><div class="mb-3 text-start">
+
+                                    <label class="form-label" for="successmessage">Plan Description </label>
+
+                                    <textarea  minlength="Success Message"  id="successmessage" name="successmessage" class="form-control " placeholder="Plan Description"></textarea>
+
+                                </div>
+                                {/* <div class="mb-3 text-start"> <label class="form-label">Status &nbsp;&nbsp;</label><input     name="status" id="APPROVED" class="form-check-input " type="radio" value="APPROVED" />
+
+                                <label class="form-label" for="APPROVED">APPROVED</label> &nbsp;<input     name="status" id="UNAPPROVED" class="form-check-input " type="radio" value="UNAPPROVED" />
+
+                                <label class="form-label" for="UNAPPROVED">UNAPPROVED</label> &nbsp;</div> */}
+                                <input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.successStory.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn"
+                            id="formSubmitBtn">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-                <footer class="content-footer footer bg-footer-theme">
+           </div>
+           <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link fw-bolder">© Copyright 2023-2024 By Marriage Bureau Script. All Rights Reserved.</a>
+                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link">© Copyright 2023-2024 By Aathesh Soft. All Rights Reserved.</a>
                         </div>
                     </div>
                 </footer>
-                <div class="content-backdrop fade"></div>
-            </div>
-        </div>
-        </div> </div>
+           </div></div></div>
+          
     </>
   )
 }
 
-export default Occupationadd
+export default Paymentadd

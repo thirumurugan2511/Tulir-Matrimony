@@ -6,6 +6,10 @@ import { FaSearch } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
+import Smallicon from '../../Components/heart-icon.png'
+import { Link } from "react-router-dom";
+import { IoMdSettings } from "react-icons/io";
+import { LuLogOut } from "react-icons/lu";
 
 const Education = () => {
   return (
@@ -24,7 +28,7 @@ const Education = () => {
                <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                    <ol class="breadcrumb breadcrumb-style2 mb-0">
                    <li><MdManageHistory  class="bx bx-user me-2"/></li>
-   <li class="breadcrumb-item active" style={{padding: '2px 10px'}}>  Manage Education </li>
+   <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Education </li>
                    </ol>
                    <ul class="navbar-nav flex-row align-items-center ms-auto">
                        <li class="nav-item lh-1 me-3">
@@ -33,49 +37,44 @@ const Education = () => {
                                                <li class="nav-item navbar-dropdown dropdown-user dropdown">
                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                <div class="avatar avatar-online">
-                                   <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt="" class="w-px-40 h-auto rounded-circle"/>
+                                   <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
                                </div>
                            </a>
                            <ul class="dropdown-menu dropdown-menu-end">
-                               <li>
-                                   <a class="dropdown-item" href="#">
-                                       <div class="d-flex">
-                                           <div class="flex-shrink-0 me-3">
-                                               <div class="avatar avatar-online">
-                                                   <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt="" class="w-px-40 h-auto rounded-circle"/>
-                                               </div>
-                                           </div>
-                                           <div class="flex-grow-1">
-                                               <span class="fw-semibold d-block mt-2">Admin</span>
-                                           </div>
-                                       </div>
-                                   </a>
-                               </li>
-                               <li>
-                                   <div class="dropdown-divider"></div>
-                               </li>
-                               <li>
-                                   <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/basic-site-setting">
-                                       <i class="bx bx-cog me-2"></i>
-                                       <span class="align-middle">Settings</span>
-                                   </a>
-                               </li>
-                               <li>
-                                   <a class="dropdown-item" target="_blank" href="https://gloriousmatrimonial.com" rel="noopener">
-                                       <i class="bx bx-slideshow me-2"></i>
-                                       <span class="align-middle">Front End</span>
-                                   </a>
-                               </li>
-                               <li>
-                                   <div class="dropdown-divider"></div>
-                               </li>
-                               <li>
-                                                                       <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/logout">
-                                       <i class="bx bx-power-off me-2"></i>
-                                       <span class="align-middle">Log Out</span>
-                                   </a>
-                               </li>
-                           </ul>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar avatar-online">
+                                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <span class="fw-semibold d-block mt-2">Admin</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                    <Link class="dropdown-item" to="/Sitesettings">
+                                        <IoMdSettings class="bx bx-cog me-2" />
+                                        <span class="align-middle">Settings</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                                                        <Link class="dropdown-item" href="/Signin">
+                                    
+                                        <LuLogOut class="bx bx-power-off me-2" />
+                                        <span class="align-middle">Log Out</span>
+                                    </Link>
+                                </li>
+                            </ul>
                        </li>
                    </ul>
                </div>
@@ -140,13 +139,13 @@ const Education = () => {
 <input type="hidden" name="_token" value="xsRbVQIcWzUtaB16B9EQu0T5IiltWdJYP6iUnE2Q"/><input type="hidden" name="ajaxRequestUrl" id="ajaxRequestUrl" value="https://gloriousmatrimonial.com/admin/religion/getAjaxPaginationData"/>
 <input type="hidden" name="changeStatusUrl" id="changeStatusUrl" value="https://gloriousmatrimonial.com/admin/religion/changeStatus"/>
 <input type="hidden" name="page" id="page" value="1"/>
-               <footer class="content-footer footer bg-footer-theme">
-                   <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                       <div class="mb-2 mb-md-0">
-                           <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link fw-bolder">© Copyright 2023-2024 By Marriage Bureau Script. All Rights Reserved.</a>
-                       </div>
-                   </div>
-               </footer>
+<footer class="content-footer footer bg-footer-theme">
+                    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                        <div class="mb-2 mb-md-0">
+                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link">© Copyright 2023-2024 By Aathesh Soft. All Rights Reserved.</a>
+                        </div>
+                    </div>
+                </footer>
                <div class="content-backdrop fade"></div>
            </div>
        </div>

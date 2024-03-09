@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { MdDashboard  } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 import { RiContactsFill } from "react-icons/ri";
@@ -23,12 +23,7 @@ const Aside = (props) => {
             ...prevState,
             [menuItem]: !prevState[menuItem] // Toggle the state for the given menu item
         }));
-    // const [showMenu, setShowMenu] = useState(false);
-
-    // const toggleMenu = () => {
-    //     setShowMenu(!showMenu);
-    //     };
-       
+    
     };
 
     return (
@@ -47,14 +42,14 @@ const Aside = (props) => {
                 <ul className="menu-inner mt-4 py-1">
                     {/* Dashboard */}
                     <li className={`menu-item ${activeMenuItem === 'dashboard' ? 'active open' : ''}`}>
-                        <Link to="/Dashboard" className="menu-link p-3 menu-toggle" onClick={() => toggleSubMenu('dashboard')}>
+                        <NavLink to="/Dashboard" className="menu-link p-3 menu-toggle" onClick={() => toggleSubMenu('dashboard')}>
                             <MdDashboard className="menu-icon tf-icons bx bxs-dashboard" />
                             <div data-i18n="Analytics">Dashboard</div>
-                        </Link>
+                        </NavLink>
                         {subMenuStates['dashboard'] && (
                             <ul className="menu-sub">
                                 <li className="menu-item">
-                                    <Link to="" className="menu-link ">
+                                    <Link to="/Banner" className="menu-link ">
                                         <div data-i18n="Blank">Banner</div>
                                     </Link>
                                 </li>           
@@ -65,16 +60,16 @@ const Aside = (props) => {
                    
                     {/* Contact Us */}
                     <li className={`menu-item ${activeMenuItem === 'contactUs' ? 'active' : ''}`}>
-                        <div className="menu-link p-3 menu-toggle" onClick={() => { toggleSubMenu('contactUs'); }}>
+                        <Link to='' className="menu-link p-3 menu-toggle" onClick={() => { toggleSubMenu('contactUs'); }}>
                             <RiContactsFill className="menu-icon tf-icons bx bxs-book-content" />
-                            <div data-i18n="HomePageManagement">Content Management</div>
-                        </div>
+                            <div data-i18n="ContentManagement">Content Management</div>
+                        </Link>
                         {subMenuStates['contactUs'] && (
                             <ul className="menu-sub">
                                 <li className="menu-item">
-                                    <Link to="" className="menu-link ">
+                                    <NavLink to="/Aboutus" className="menu-link ">
                                         <div data-i18n="Blank">About Us</div>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="menu-item">
                                     <Link to="" className="menu-link">
@@ -96,7 +91,7 @@ const Aside = (props) => {
                     </li>
                     {/* Add New Details */}
                     <li className={`menu-item ${activeMenuItem === 'newDetails' ? 'active open' : ''}`}>
-                        <Link to="javascript:void(0);" className="menu-link p-3 menu-toggle" onClick={() => toggleSubMenu('newDetails')}>
+                        <Link to="" className="menu-link p-3 menu-toggle" onClick={() => toggleSubMenu('newDetails')}>
                             <IoIosAddCircle className="menu-icon tf-icons bx bxs-add-to-queue" />
                             <div data-i18n="AddNewDetails">Add New Details</div>
                         </Link>
@@ -147,10 +142,10 @@ const Aside = (props) => {
                     </li>
                     {/* Member */}
                     <li className='menu-item'>
-                        <Link to="/Member" className="menu-link p-3 menu-toggle" >
+                        <NavLink to="/Member" className="menu-link p-3 menu-toggle" >
                             <IoPeople className="menu-icon tf-icons bx bxs-user-detail" />
                             <div data-i18n="Member">Member</div>
-                        </Link>
+                        </NavLink>
                         {/* {subMenuStates['member'] && (
                             <ul className="menu-sub">
                                 <li className="menu-item ">
@@ -165,10 +160,10 @@ const Aside = (props) => {
           
                     {/* MemberShip Plan */}
                     <li className='menu-item' >
-                        <Link to="/Payment" className="menu-link p-3 menu-toggle" >
+                        <NavLink to="/Payment" className="menu-link p-3 menu-toggle" >
                             <RiSecurePaymentFill className="menu-icon tf-icons bx bxs-credit-card-front" />
                             <div data-i18n="MemberShipPlan">Membership Plan</div>
-                        </Link>
+                        </NavLink>
                         {/* {subMenuStates['payment'] && (
                             <ul className="menu-sub">
                                 <li className="menu-item ">
@@ -181,10 +176,10 @@ const Aside = (props) => {
                     </li>
                     {/* Success Stories */}
                     <li className='menu-item'>
-                        <Link to="/Stories" className="menu-link p-3 menu-toggle" >
+                        <NavLink to="/Stories" className="menu-link p-3 menu-toggle" >
                             <GiLovers className="menu-icon tf-icons bx bxs-book-alt" />
                             <div data-i18n="SuccessStory">Success Stories</div>
-                        </Link>
+                        </NavLink>
                         {/* {subMenuStates['stories'] && (
                             <ul className="menu-sub">
                                 <li className="menu-item ">

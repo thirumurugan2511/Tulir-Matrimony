@@ -498,9 +498,6 @@ p, h1, h2, h3, h4, h5, h6{
     color: #000;
     font-family: 'Outfit-Regular', sans-serif;
 }
-.right_bordermv {
-    border-right: 1px solid #d1d1d1;
-}
 .photo_dvMultie_mainsd {
     padding: 28px 24px 10px 14px;
     background: #fff;

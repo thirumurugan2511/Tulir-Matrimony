@@ -6,6 +6,7 @@ import { MdManageHistory } from "react-icons/md";
 import { LuLogOut } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import { MdPostAdd } from "react-icons/md";
+import Smallicon from '../../Components/heart-icon.png'
 
 const Addmember = () => {
   return (
@@ -24,7 +25,7 @@ const Addmember = () => {
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                     <ol class="breadcrumb breadcrumb-style2 mb-0">
                     <li><MdManageHistory  class="bx bx-user me-2"/></li>
-<li class="breadcrumb-item active" style={{padding: '2px 10px'}}>  Manage Member </li>
+<li class="breadcrumb-item" style={{padding: '2px 10px'}}>  Manage Member </li>
                     </ol>
                     <ul class="navbar-nav flex-row align-items-center ms-auto">
                         <li class="nav-item lh-1 me-3">
@@ -33,7 +34,7 @@ const Addmember = () => {
                                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
-                                    <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt="" class="w-px-40 h-auto rounded-circle"/>
+                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
@@ -42,7 +43,7 @@ const Addmember = () => {
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt="" class="w-px-40 h-auto rounded-circle"/>
+                                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
@@ -694,7 +695,9 @@ const Addmember = () => {
             <div class="form_content_data">
               
                 <div class="row">
-                  <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU" /> </div>                
+                <p class="help-block">Allowed Maximum File size up to 10MB. File type jpg , png , jpeg , gif , bmp.</p>
+                  <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU" /> </div>     
+                  <div className='row col-lg-12 col-md-12 mb-8 d-flex'    >      
                    <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="photo1">Photo 1 <span class="Form__Error">*</span></label>
@@ -707,136 +710,53 @@ const Addmember = () => {
 
                                     <input type="hidden" name="photo1_ext" id="photo1_ext" value="jpg,png,jpeg,gif,bmp"/>
 
-                                    <p class="help-block">Allowed Maximum File size up to 10MB. File type jpg , png , jpeg , gif , bmp.</p>
+                                  
 
                                 </div>
                                 </div></div>
-
-                                <div class="col-sm-4">
-
-                                    
-
-                                </div><div class="mb-3 text-start"> <label class="form-label">Photo 1 Status &nbsp;&nbsp;</label><input checked="" name="photo1_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
-
-                                <label class="form-label" for="Yes">APPROVED</label> &nbsp;<input name="photo1_approve" id="No" class="form-check-input " type="radio" value="No"/>
-
-                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
+<div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="photo2">Photo 2 </label>
 
                                     <input name="photo2" class="form-control " placeholder="Photo 2" type="file" id="photo2"/>
 
-                                    <input type="hidden" name="photo2_val" id="photo2_val" value=""/>
-
-                                    <input type="hidden" name="photo2_path" id="photo2_path" value="assets/photos/"/>
-
-                                    <input type="hidden" name="photo2_ext" id="photo2_ext" value="jpg,png,jpeg,gif,bmp"/>
-
-                                    <p class="help-block">Allowed Maximum File size up to 10MB. File type jpg , png , jpeg , gif , bmp.</p>
 
                                 </div></div></div>
+                                </div> 
+                                <div className='row col-lg-12 col-md-12 mb-8 d-flex'    > 
+                                <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr">
+                                <div class="mb-3 text-start">
 
-                                <div class="col-sm-4">
+                                    <label class="form-label" for="id_proof_back">Id Proof 1 <span class="Form__Error">*</span></label>
 
-                                    
+                                    <input required="" name="id_proof_back" class="form-control required" placeholder="Id Proof 1" type="file" id="id_proof_back"/>
 
-                                </div><div class="mb-3 text-start"> <label class="form-label">Photo 2 Status &nbsp;&nbsp;</label><input checked="" name="photo2_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
 
-                                <label class="form-label" for="Yes">APPROVED</label> &nbsp;<input name="photo2_approve" id="No" class="form-check-input " type="radio" value="No"/>
 
-                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
+                                </div>
+                                </div>
+                                </div>
+                               
 
-                                    <label class="form-label" for="photo3">Photo 3 </label>
+                           
 
-                                    <input name="photo3" class="form-control " placeholder="Photo 3" type="file" id="photo3"/>
+                               
 
-                                    <input type="hidden" name="photo3_val" id="photo3_val" value=""/>
+                              <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr">
+                                <div class="mb-3 text-start">
 
-                                    <input type="hidden" name="photo3_path" id="photo3_path" value="assets/photos/"/>
+                                    <label class="form-label" for="id_proof_back">Id Proof 2 <span class="Form__Error">*</span></label>
 
-                                    <input type="hidden" name="photo3_ext" id="photo3_ext" value="jpg,png,jpeg,gif,bmp"/>
+                                    <input required="" name="id_proof_back" class="form-control required" placeholder="Id Proof 2" type="file" id="id_proof_back"/>
 
-                                    <p class="help-block">Allowed Maximum File size up to 10MB. File type jpg , png , jpeg , gif , bmp.</p>
 
-                                </div></div></div>
 
-                                <div class="col-sm-4">
+                                </div>
+                                </div>
+                                </div>
+                                </div>
 
-                                    
-
-                                </div><div class="mb-3 text-start"> <label class="form-label">Photo 3 Status &nbsp;&nbsp;</label><input checked="" name="photo3_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
-
-                                <label class="form-label" for="Yes">APPROVED</label> &nbsp;<input name="photo3_approve" id="No" class="form-check-input " type="radio" value="No"/>
-
-                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
-
-                                    <label class="form-label" for="photo4">Photo 4 </label>
-
-                                    <input name="photo4" class="form-control " placeholder="Photo 4" type="file" id="photo4"/>
-
-                                    <input type="hidden" name="photo4_val" id="photo4_val" value=""/>
-
-                                    <input type="hidden" name="photo4_path" id="photo4_path" value="assets/photos/"/>
-
-                                    <input type="hidden" name="photo4_ext" id="photo4_ext" value="jpg,png,jpeg,gif,bmp"/>
-
-                                    <p class="help-block">Allowed Maximum File size up to 10MB. File type jpg , png , jpeg , gif , bmp.</p>
-
-                                </div></div></div>
-
-                                <div class="col-sm-4">
-
-                                    
-
-                                </div><div class="mb-3 text-start"> <label class="form-label">Photo 4 Status &nbsp;&nbsp;</label><input checked="" name="photo4_approve" id="Yes" class="form-check-input " type="radio" value="Yes"/>
-
-                                <label class="form-label" for="Yes">APPROVED</label> &nbsp;<input name="photo4_approve" id="No" class="form-check-input " type="radio" value="No"/>
-
-                                <label class="form-label" for="No">UNAPPROVED</label> &nbsp;</div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
-
-                                    <label class="form-label" for="id_proof_front">Id Proof Front <span class="Form__Error">*</span></label>
-
-                                    <input required="" name="id_proof_front" class="form-control required" placeholder="Id Proof Front" type="file" id="id_proof_front"/>
-
-                                    <input type="hidden" name="id_proof_front_val" id="id_proof_front_val" value=""/>
-
-                                    <input type="hidden" name="id_proof_front_path" id="id_proof_front_path" value="assets/id_proof/"/>
-
-                                    <input type="hidden" name="id_proof_front_ext" id="id_proof_front_ext" value="jpg,png,jpeg,gif,bmp"/>
-
-                                    <p class="help-block">Allowed Maximum File size up to 10MB. File type jpg , png , jpeg , gif , bmp.</p>
-
-                                </div></div></div>
-
-                                <div class="col-sm-4">
-
-                                    
-
-                                </div><div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
-
-                                    <label class="form-label" for="id_proof_back">Id Proof Back <span class="Form__Error">*</span></label>
-
-                                    <input required="" name="id_proof_back" class="form-control required" placeholder="Id Proof Back" type="file" id="id_proof_back"/>
-
-                                    <input type="hidden" name="id_proof_back_val" id="id_proof_back_val" value=""/>
-
-                                    <input type="hidden" name="id_proof_back_path" id="id_proof_back_path" value="assets/id_proof"/>
-
-                                    <input type="hidden" name="id_proof_back_ext" id="id_proof_back_ext" value="jpg,png,jpeg,gif,bmp"/>
-
-                                    <p class="help-block">Allowed Maximum File size up to 10MB. File type jpg , png , jpeg , gif , bmp.</p>
-
-                                </div></div></div>
-
-                                <div class="col-sm-4">
-
-                                    
-
-                                </div><div class="mb-3 text-start"> <label class="form-label">ID Proof Status &nbsp;&nbsp;</label><input name="id_proof_approve" id="APPROVED" class="form-check-input " type="radio" value="APPROVED"/>
-
-                                <label class="form-label" for="APPROVED">APPROVED</label> &nbsp;<input name="id_proof_approve" id="UNAPPROVED" class="form-check-input " type="radio" value="UNAPPROVED"/>
-
-                                <label class="form-label" for="UNAPPROVED">UNAPPROVED</label> &nbsp;</div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.member.index"/>                
+                         
                                 </div>
                 <input type="hidden" name="step" id="step" value="6"/>
                 <button type="button" class="btn btn-primary formSubmitBtn" data-formid="formSubmitBtn6" id="formSubmitBtn6">Submit</button>

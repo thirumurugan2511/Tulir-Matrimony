@@ -2,6 +2,11 @@ import React from 'react'
 // import {Link} from 'react-router-dom'
 import Aside from '../Aside/Aside'
 import {Link} from 'react-router-dom'
+import Smallicon from '../../Components/heart-icon.png'
+import { IoMdSettings } from "react-icons/io";
+import { MdManageHistory } from "react-icons/md";
+import { GrUserAdmin } from "react-icons/gr";
+import { LuLogOut } from "react-icons/lu";
 
 
 const Storiesadd = () => {
@@ -20,58 +25,50 @@ const Storiesadd = () => {
                 </div>
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                     <ol class="breadcrumb breadcrumb-style2 mb-0">
-                        <li class="breadcrumb-item"><Link to="javascript:void(0);"></Link></li>
-                        <li class="breadcrumb-item active">  Manage Success Stories </li>
+                        <li><MdManageHistory class="breadcrumb-item "/></li>
+                        <li style={{padding: '2px 10px'}}>Manage Success Stories</li>
                     </ol>
                     <ul class="navbar-nav flex-row align-items-center ms-auto">
                         <li class="nav-item lh-1 me-3">
-                                                        <i class="bx bx-user me-2"></i><span class="align-middle">Administrator</span>
+                        <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
                                                     </li>
                                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                            <Link class="nav-link dropdown-toggle hide-arrow" to="javascript:void(0);"
-                                data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
-                                    <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt class="w-px-40 h-auto rounded-circle" />
+                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
                                 </div>
-                            </Link>
+                            </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
-                                    <Link class="dropdown-item" to="#">
+                                    <a class="dropdown-item" href="#">
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt
-                                                        class="w-px-40 h-auto rounded-circle" />
+                                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
                                                 <span class="fw-semibold d-block mt-2">Admin</span>
                                             </div>
                                         </div>
-                                    </Link>
+                                    </a>
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <Link class="dropdown-item" to="https://gloriousmatrimonial.com/admin/basic-site-setting">
-                                        <i class="bx bx-cog me-2"></i>
+                                    <Link class="dropdown-item" to="/Sitesettings">
+                                        <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link class="dropdown-item" target="_blank" to="https://gloriousmatrimonial.com"
-                                        rel="noopener">
-                                        <i class='bx bx-slideshow me-2'></i>
-                                        <span class="align-middle">Front End</span>
-                                    </Link>
-                                </li>
-                                <li>
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <Link class="dropdown-item" to="https://gloriousmatrimonial.com/admin/logout">
-                                        <i class="bx bx-power-off me-2"></i>
+                                                                        <Link class="dropdown-item" to="/Signin">
+                                    
+                                        <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
                                     </Link>
                                 </li>
@@ -104,7 +101,7 @@ const Storiesadd = () => {
                                     <input type="hidden" name="weddingphoto_ext" id="weddingphoto_ext" value="jpg,png,jpeg,gif,bmp" />
 
 
-                                </div>
+                        </div>
 
                                 <div class="col-sm-4">
 

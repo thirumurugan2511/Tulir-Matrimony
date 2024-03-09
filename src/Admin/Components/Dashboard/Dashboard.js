@@ -20,6 +20,7 @@ import { FaFemale } from "react-icons/fa";
 import { TbCashBanknote } from "react-icons/tb";
 import { TbCashBanknoteOff } from "react-icons/tb";
 import { MdCancelPresentation } from "react-icons/md";
+import Smallicon from '../../Components/heart-icon.png'
 
 
 
@@ -42,7 +43,7 @@ const Dashoard = () => {
                 </div>
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                     <ol class="breadcrumb breadcrumb-style2 mb-0">
-                        <li><MdManageHistory class="breadcrumb-item active"/></li>
+                        <li><MdManageHistory class="breadcrumb-item"/></li>
                         <li style={{padding: '2px 10px'}}>Manage Dashboard</li>
                     </ol>
                     <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -52,7 +53,7 @@ const Dashoard = () => {
                                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
-                                    <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt="" class="w-px-40 h-auto rounded-circle"/>
+                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
@@ -61,7 +62,7 @@ const Dashoard = () => {
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="https://www.gloriousmatrimonial.com/public//assets/logo/8917801707308920.png" alt="" class="w-px-40 h-auto rounded-circle"/>
+                                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
@@ -74,7 +75,7 @@ const Dashoard = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <Link class="dropdown-item" to="/Sitesetting">
+                                    <Link class="dropdown-item" to="/Sitesettings">
                                         <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>
                                     </Link>
@@ -83,7 +84,7 @@ const Dashoard = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <Link class="dropdown-item" href="/Signin">
+                                                                        <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
