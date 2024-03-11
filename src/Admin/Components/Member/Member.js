@@ -89,10 +89,19 @@ const Member = () => {
         
                     {/* <!-- Toast with Placements --> */}
                     <div class="row  justify-content-between">
-<div class="col-md-2">
-            <a href="/Addmember" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
-        </div>
-        <div class="col-md-1">
+                         <div class="col-md-2">
+                            <a href="/Addmember" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="search-container">
+                                <input type="text" class="search-box form-control" id="searchText" placeholder="Search"/>
+                                <button class="search-button btn btn-info searchMainBtn" id="commonSearch"><FaSearch class="bx bx-search-alt-2" /></button>
+                            </div>
+                        </div>
+                        <div class="col-md-5 text-end mt-1">
+                            <label>Display Rows : </label> 
+                        </div>
+                        <div class="col-md-1">
                             <select name="basic-datatables_length" id="recordLimit" aria-controls="basic-datatables"
                                 class="form-select">
                                 <option value="1">1</option>
@@ -103,14 +112,9 @@ const Member = () => {
                                 <option value="50">50</option>
                                 <option value="100">100</option>
                             </select>
+                          
                         </div>
-<div class="col-md-4">
-            <div class="search-container">
-        <input type="text" class="search-box form-control" id="searchText" placeholder="Search"/>
-        <button class="search-button btn btn-info searchMainBtn" id="commonSearch"><FaSearch class="bx bx-search-alt-2" /></button>
-    </div>
-        </div>
-</div>
+                    </div>
    
 
     {/* <!-- Basic Layout --> */}

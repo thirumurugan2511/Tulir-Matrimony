@@ -33,7 +33,7 @@ const Banner = () => {
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                     <ol class="breadcrumb breadcrumb-style2 mb-0">
                     <li><MdManageHistory  class="bx bx-user me-2"/></li>
-<li class="breadcrumb-item active" style={{padding: '2px 10px'}}>  Manage Banner </li>
+<li class="breadcrumb-item" style={{padding: '2px 10px'}}>  Manage Banner </li>
                     </ol>
                     <ul class="navbar-nav flex-row align-items-center ms-auto">
                         <li class="nav-item lh-1 me-3">

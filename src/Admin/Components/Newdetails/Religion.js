@@ -98,11 +98,11 @@ const Religion = () => {
 </div>
     
 
-    <div class="card text-start">
+    <div class="card">
         <h5 class="card-header">Manage Religion</h5>
         <div class="table-responsive text-nowrap" id="resultData"><table class="table">
     <caption class="d-none">&nbsp;&nbsp; Result Data</caption>
-    <thead className='text-start'>
+    <thead >
         <tr class="text-nowrap">
             <th scope="col">Religion Name</th>
             <th scope="col">Action</th>
@@ -110,7 +110,7 @@ const Religion = () => {
            
         </tr>
     </thead>
-    <tbody className='text-start'>
+    <tbody>
                 
                <tr>
                 <td>Hindu</td>       

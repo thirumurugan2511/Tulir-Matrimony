@@ -719,6 +719,38 @@ const Addmember = () => {
                                 </div>
                                 </div>
                                 </div>
+                                <div className='row col-lg-12 col-md-12 mb-8 d-flex'    > 
+                                <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr">
+                                <div class="mb-3 text-start">
+
+                                    <label class="form-label" for="id_proof_back">Horoscope Image<span class="Form__Error">*</span></label>
+
+                                    <input required="" name="id_proof_back" class="form-control required" placeholder="Id Proof 1" type="file" id="id_proof_back"/>
+
+
+
+                                </div>
+                                </div>
+                                </div>
+                               
+
+                           
+
+                               
+
+                              <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr">
+                                {/* <div class="mb-3 text-start">
+
+                                    <label class="form-label" for="id_proof_back">Id Proof 2 <span class="Form__Error">*</span></label>
+
+                                    <input required="" name="id_proof_back" class="form-control required" placeholder="Id Proof 2" type="file" id="id_proof_back"/>
+
+
+
+                                </div> */}
+                                </div>
+                                </div>
+                                </div>
 
                          
                                 </div>
