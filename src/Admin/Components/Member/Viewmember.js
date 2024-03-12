@@ -6,6 +6,7 @@ import { LuLogOut } from "react-icons/lu";
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import Smallicon from '../../Components/heart-icon.png'
+import Astrology from './astrology.png'
 
 
 const Viewmember = () => {
@@ -349,7 +350,7 @@ const Viewmember = () => {
                   Preference</button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="photo-profile" data-bs-toggle="photo" data-bs-target="#photo-profile" type="button" role="tab" aria-controls="photo-profile" aria-selected="false"><img src="https://www.gloriousmatrimonial.com/public//admin/assets/img/images/partner_prefIcon.png" alt=""/>Horoscope Image</button>
+                <button class="nav-link" id="pills-horescope-tab" data-bs-toggle="pill" data-bs-target="#pills-horescope" type="button" role="tab" aria-controls="pills-horescope" aria-selected="false"><img src="https://www.gloriousmatrimonial.com/public//admin/assets/img/images/partner_prefIcon.png" alt=""/>Horoscope Image</button>
               </li>
             </ul>
           </div>
@@ -367,7 +368,7 @@ const Viewmember = () => {
                 <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><img src="https://www.gloriousmatrimonial.com/public//admin/assets/img/images/partner_prefIcon.png" alt=""/>Partner Preference</button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="photo-profile" data-bs-toggle="photo" data-bs-target="#photo-profile" type="button" role="tab" aria-controls="photo-profile" aria-selected="false"><img src="https://www.gloriousmatrimonial.com/public//admin/assets/img/images/partner_prefIcon.png" alt=""/>Horoscope Image</button>
+                <button class="nav-link" id="pills-horescope-tab" data-bs-toggle="pill" data-bs-target="#pills-horescope" type="button" role="tab" aria-controls="pills-horescope" aria-selected="false"><img src="https://www.gloriousmatrimonial.com/public//admin/assets/img/images/partner_prefIcon.png" alt=""/>Horoscope Image</button>
               </li>
             </ul>
           </div>
@@ -799,7 +800,7 @@ const Viewmember = () => {
           </div>
                   </div>
 
-                  <div class="tab-pane fade" id="photo-profile" role="tabpanel" aria-labelledby="photo-profile" tabindex="0">
+                  <div class="tab-pane fade" id="pills-horescope" role="tabpanel" aria-labelledby="pills-horescope" tabindex="0">
                     <div class="inner_collapse_userPartner mb-4">
             <button class="collapbtn" type="button" data-bs-toggle="collapse" data-bs-target="#U_detailsDiv2" aria-expanded="false" aria-controls="U_detailsDiv2">
               <div class="icon_usBox">
@@ -808,76 +809,11 @@ const Viewmember = () => {
             </button>
             <div class="collapse show" id="U_detailsDiv2">
               <div class="inner_views_detailsFGH">
-                <div class="row text-start">
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner From Age :</span> 22 Years
-                      </h5>
-                                                                </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner To Age :</span> 23 Years
-                      </h5>
-                                                                </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner From Height :</span> 133cm - 4ft 4in</h5>
-                                                                </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner To Height :</span> 178cm - 5ft 10in</h5>
-                                                                </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner Religion :</span> Muslim</h5>
-                                                                </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner Caste :</span> Ahmadiyya, Bengali, Dawoodi Bohra, Ehle-Hadith, Memon, Rajput, Shia, Shia Imami Ismaili, Sunni</h5>
-                                                                </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner Country : India</span> 
-                                                                  </h5>
-                                                                </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                                        <h5 class="py-2"><span>Partner Annual Income :</span> Upto INR 1,00,000, Not applicable, Don’t want to Specify
-                      </h5>
-                                                                                      </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner Marital Status :</span> Unmarried,Widow/Widower,Divorcee,Separated</h5>
-                                                                </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner Education :</span> Bachelor's, Master's, PHD, Post Doc, Other</h5>
-                                                                </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner Occupation :</span> Agriculture, Arts/Creative, Automotive, Business/Entrepreneurship, </h5>
-                                                                </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner Mother Tongue :</span> Tamil, Telugu, Tulu, Urdu</h5>
-                                                                </div>
-                  </div>
-                                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-                    <div class="detalistsleg">
-                                                                  <h5 class="py-2"><span>Partner Manglik :</span> No,Yes,Maybe,Anshik</h5>
-                                                                </div>
-                  </div>
+                <div class="row mx-auto col-md-6">
+                                
+                     
+                             
+                            <img src={Astrology} alt=""  width={200} height={200}/>
                                   </div>
               </div>
             </div>

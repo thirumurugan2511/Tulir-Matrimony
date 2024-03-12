@@ -12,6 +12,8 @@ import './Aside.css';
 import '../Css/Themedefault.css';
 import Logo from '../../Components/rgt-matrimony-logo.png'
 import '../Css/Select.css';
+import { IoMdPhotos } from "react-icons/io";
+
 
 const Aside = (props) => {
     const [activeMenuItem, setActiveMenuItem] = useState(null); // State to manage active menu item
@@ -46,16 +48,13 @@ const Aside = (props) => {
                             <MdDashboard className="menu-icon tf-icons bx bxs-dashboard" />
                             <div data-i18n="Analytics">Dashboard</div>
                         </NavLink>
-                        {subMenuStates['dashboard'] && (
-                            <ul className="menu-sub">
-                                <li className="menu-item">
-                                    <Link to="/Banner" className="menu-link ">
-                                        <div data-i18n="Blank">Banner</div>
-                                    </Link>
-                                </li>           
-                                
-                            </ul>
-                        )}
+                    </li>
+
+                    <li className='menu-item'>
+                        <NavLink to="/Banner" className="menu-link p-3 menu-toggle" >
+                            <IoMdPhotos className="menu-icon tf-icons bx bxs-user-detail" />
+                            <div data-i18n="Member">Banner</div>
+                        </NavLink>
                     </li>
                    
                     {/* Contact Us */}
@@ -146,15 +145,6 @@ const Aside = (props) => {
                             <IoPeople className="menu-icon tf-icons bx bxs-user-detail" />
                             <div data-i18n="Member">Member</div>
                         </NavLink>
-                        {/* {subMenuStates['member'] && (
-                            <ul className="menu-sub">
-                                <li className="menu-item ">
-                                    <Link to="" className="menu-link">
-                                        <div data-i18n="Without menu">All Member</div>
-                                    </Link>
-                                </li>
-                            </ul> 
-                        )} */}
                     </li>
                     {/* Approval */}
           
@@ -164,15 +154,7 @@ const Aside = (props) => {
                             <RiSecurePaymentFill className="menu-icon tf-icons bx bxs-credit-card-front" />
                             <div data-i18n="MemberShipPlan">Membership Plan</div>
                         </NavLink>
-                        {/* {subMenuStates['payment'] && (
-                            <ul className="menu-sub">
-                                <li className="menu-item ">
-                                    <Link to="/" className="menu-link">
-                                        <div data-i18n="Without menu">Membership Plan</div>
-                                    </Link>
-                                </li>
-                            </ul>
-                        )} */}
+                      
                     </li>
                     {/* Success Stories */}
                     <li className='menu-item'>
@@ -180,15 +162,6 @@ const Aside = (props) => {
                             <GiLovers className="menu-icon tf-icons bx bxs-book-alt" />
                             <div data-i18n="SuccessStory">Success Stories</div>
                         </NavLink>
-                        {/* {subMenuStates['stories'] && (
-                            <ul className="menu-sub">
-                                <li className="menu-item ">
-                                    <Link to="/Stories" className="menu-link">
-                                        <div data-i18n="Without menu">Success Stories</div>
-                                    </Link>
-                                </li>
-                            </ul>
-                        )} */}
                     </li>
                 </ul>
             </aside>

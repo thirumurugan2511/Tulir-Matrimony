@@ -687,7 +687,7 @@ const Addmember = () => {
 
                                 </div></div></div>
                                 </div> 
-                                <div className='row col-lg-12 col-md-12 mb-8 d-flex'    > 
+                                <div className='row col-lg-12 col-md-12 mb-8 d-flex'> 
                                 <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr">
                                 <div class="mb-3 text-start">
 
@@ -719,7 +719,7 @@ const Addmember = () => {
                                 </div>
                                 </div>
                                 </div>
-                                <div className='row col-lg-12 col-md-12 mb-8 d-flex'    > 
+                                <div className='row col-lg-12 col-md-12 mb-8 d-flex'> 
                                 <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr">
                                 <div class="mb-3 text-start">
 
