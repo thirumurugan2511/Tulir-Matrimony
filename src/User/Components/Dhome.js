@@ -3,7 +3,7 @@ import Slider1 from './Home/Slider1.jpg'
 import Slider2 from './Home/Slider2.jpg'
 import Aboutimg from './Home/about-img.jpg'
 import Logo from './rgt-matrimony-logo.png'
-// import Slider from './Home/Slider'
+import Slider from './Home/Slider'
 const Dhome = () => {
 
   return (
@@ -45,14 +45,14 @@ const Dhome = () => {
 						
                             <ul class="navigation clearfix">
 							
-                                <li class="current dropdown"><a href="index">Home</a></li>
+                                {/* <li class="current dropdown"><a href="index">Home</a></li> */}
 								
-                                <li class="dropdown"><a href="about-us">About</a>
+                                {/* <li class="dropdown"><a href="about-us">About</a> */}
 								
 							
-                                </li>
+                                {/* </li> */}
                                 
-                                <li class="dropdown"><a href="my_offer">Membership </a></li>
+                                <li class="dropdown"><a href="my_offer">Membership Plan </a></li>
                                 {/* <!--<li class="dropdown"><a href="success_story">Happy Story</a></li>--> */}
                               
 								
@@ -508,7 +508,7 @@ const Dhome = () => {
     </section>
     {/* <!--End About Section --> */}
     {/* <!-- Features Section Two --> */}
-    {/* <Slider /> */}
+    <Slider />
 
 
 
