@@ -31,13 +31,14 @@ import Viewmember from './Admin/Components/Member/Viewmember';
 import Paymentadd from './Admin/Components/Payment/Paymentadd';
 import Banner from './Admin/Components/Dashboard/Banner';
 import Aboutus from './Admin/Components/Content/Aboutus';
+// import Dhome from './User/Components/Dhome'
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          
+        {/* <Route path="/Dhome" element={<Dhome />} /> */}
           <Route path="/Admin" element={<Admin />} />
           <Route path="/Stories" element={<Stories />} />
           <Route path="/Dashboard" element={<Dashboard />} />
