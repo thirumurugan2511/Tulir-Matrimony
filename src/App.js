@@ -33,6 +33,7 @@ import Banner from './Admin/Components/Dashboard/Banner';
 import Aboutus from './Admin/Components/Content/Aboutus';
 import Dhome from './User/Components/Dhome'
 import Sresult from './User/Sresult'
+import Plans from './User/Components/Plans'
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
           <Route path="/Banner" element={<Banner />} />
           <Route path="/Aboutus" element={<Aboutus />} />
           <Route path="/Sresult" element={<Sresult />} />
+          <Route path="/Plans" element={<Plans />} />
 
         </Routes>
       </Router>
