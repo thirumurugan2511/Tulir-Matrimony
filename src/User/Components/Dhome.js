@@ -4,6 +4,7 @@ import Slider2 from './Home/Slider2.jpg'
 import Aboutimg from './Home/about-img.jpg'
 import Logo from './rgt-matrimony-logo.png'
 import Slider from './Home/Slider'
+import Hstories from './Hstories'
 const Dhome = () => {
 
   return (
@@ -509,6 +510,7 @@ const Dhome = () => {
     {/* <!--End About Section --> */}
     {/* <!-- Features Section Two --> */}
     <Slider />
+    <Hstories />
 
 
 
