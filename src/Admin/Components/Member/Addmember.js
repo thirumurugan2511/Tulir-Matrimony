@@ -177,14 +177,16 @@ const Addmember = () => {
                                     </div>
                                     </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 mb-4 "><div class="edit_inputMain-sltr">
+                                    <div class="col-lg-6 col-md-6 mb-4 ">
+                                      <div class="edit_inputMain-sltr">
                                       <div class="mb-3 text-start">
 
                                         <label class="form-label" for="birthdate">பிறந்த தேதி <span class="Form__Error">*</span></label>
 
                                         <input class="form-control required" type="date" value="" max="2006-03-01" id="birthdate" name="birthdate"/>
 
-                                    </div></div>
+                                    </div>
+                                    </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
@@ -207,7 +209,7 @@ const Addmember = () => {
                                     </div>
                                     </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 mb-4 status_children" style={{display:  'none'}}><div class="custom-select2-div">
+                                    <div class="col-lg-6 col-md-6 mb-4 status_children"><div class="custom-select2-div">
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group">
                                 <div class="mb-3 text-start">
@@ -607,21 +609,32 @@ const Addmember = () => {
                                     <label class="form-label" for="part_state">Partner State </label>
 
                                     <input type="text" required="" class="form-control required" id="fullname" name="Height " placeholder="Tamilnadu" />
-                                    </div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
+                                    </div></div></div></div>
+                                    <div class="col-lg-6 col-md-6 mb-4 ">
+                                      <div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group">
+                                <div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_marital_status">Partner Marital Status </label>
 
-                                    <input type="text" required="" class="form-control required" id="fullname" name="Height " placeholder="Single" />
-                                    </div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
+                                    <select type="text" required="" class="form-select required" id="fullname" name="Height ">
+                                      <option>Unmarried</option>
+                                      <option>Divorced</option>
+                                      <option>Widowed</option>
+                                    </select>
+                                    </div>
+                                    </div>
+                                    
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_income">Partner Annual Income </label>
 
                                     <input type="text" required="" class="form-control required" id="fullname" name="Height " placeholder="Above 30k" />
-                                    </div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
+                                    </div></div></div></div>
+                                    
+                                    <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
@@ -641,14 +654,53 @@ const Addmember = () => {
                                     <label class="form-label" for="part_mothertongue">Partner Mother Tongue </label>
 
                                     <input type="text" required="" class="form-control required" id="fullname" name="Height " placeholder="Tamil / Telungu" />
-                                    </div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
+                                    </div></div></div></div>
+                                    <div class="col-lg-6 col-md-6 mb-4 ">
+                                      <div class="custom-select2-div">
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_manglik">Partner Manglik </label>
 
                                     <input type="text" required="" class="form-control required" id="fullname" name="Height " placeholder="Partner Manglik" />
-                                    </div></div></div></div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.member.index"/>                </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                      
+                                    <div class="col-lg-6 col-md-6 mb-4 ">
+                                      <div class="custom-select2-div">
+
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
+
+                                    <label class="form-label" for="part_manglik">Partner's Children Gender </label>
+
+   
+                                    <select type="text" required="" class="form-select required" id="fullname" name="Height ">
+                                      <option>Male</option>
+                                      <option>Female</option>
+                                    </select>
+                                    </div>
+                                
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 mb-4 ">
+                                      <div class="custom-select2-div">
+
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
+
+                                    <label class="form-label" for="part_manglik">Partner's Children Age </label>
+
+                                    <input type="text" required="" class="form-control required" id="fullname" name="Height " placeholder="Children Age" />
+                                    </div>
+                                    </div>
+                                    </div>
+                                  
+                                    </div>
+                                    
+
+                                    <input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.member.index"/>                </div>
                 <input type="hidden" name="step" id="step" value="5"/>
                 <button type="button" class="btn btn-primary formSubmitBtn" data-formid="formSubmitBtn5" id="formSubmitBtn5">Submit</button>
               </form>
