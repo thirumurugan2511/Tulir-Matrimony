@@ -123,7 +123,7 @@ const Addmember = () => {
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
             <div class="form_content_data">
               <form id="formSubmitBtn1" name="addEditForm1" action="https://gloriousmatrimonial.com/admin/member/addEdit" method="POST" enctype="multipart/form-data">
-                <div class="row">
+                <div class="row p-4">
                   <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start "> <label class="form-label">பாலினம் <span class="Form__Error">*</span>&nbsp;&nbsp;</label><div class="radio_mainDivGroups"><div class="form-check d-inline-block me-3 mt-2"><input required="" name="gender" id="Male" class="form-check-input required" type="radio" value="Male"/>
 
                                 <label class="form-label" for="Male">ஆண்</label> &nbsp;</div><div class="form-check d-inline-block me-3 mt-2"><input required="" name="gender" id="Female" class="form-check-input required" type="radio" value="Female"/>
@@ -353,7 +353,7 @@ const Addmember = () => {
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
             <div class="form_content_data">
               <form id="formSubmitBtn2" name="addEditForm2" action="https://gloriousmatrimonial.com/admin/member/addEdit" method="POST" enctype="multipart/form-data">
-                <div class="row">
+                <div class="row p-4">
                   <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
@@ -414,7 +414,7 @@ const Addmember = () => {
           <div class="tab-pane fade" id="pills-other-profile" role="tabpanel" aria-labelledby="pills-other-profile-tab" tabindex="0">
             <div class="form_content_data">
               <form id="formSubmitBtn3" name="addEditForm3" action="https://gloriousmatrimonial.com/admin/member/addEdit" method="POST" enctype="multipart/form-data">
-                <div class="row">
+                <div class="row p-4">
                   <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
@@ -491,7 +491,7 @@ const Addmember = () => {
           <div class="tab-pane fade" id="pills-family-details" role="tabpanel" aria-labelledby="pills-family-details-tab" tabindex="0">
             <div class="form_content_data">
               <form id="formSubmitBtn4" name="addEditForm4" action="https://gloriousmatrimonial.com/admin/member/addEdit" method="POST" enctype="multipart/form-data">
-                <div class="row">
+                <div class="row p-4">
                   <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
@@ -558,7 +558,7 @@ const Addmember = () => {
           <div class="tab-pane fade" id="pills-partner-preference" role="tabpanel" aria-labelledby="pills-partner-preference-tab" tabindex="0">
             <div class="form_content_data">
               <form id="formSubmitBtn5" name="addEditForm5" action="https://gloriousmatrimonial.com/admin/member/addEdit" method="POST" enctype="multipart/form-data">
-                <div class="row">
+                <div class="row p-4">
                   <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU"/>                  <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
                               <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
@@ -602,14 +602,20 @@ const Addmember = () => {
 
                                     <input type="text" required="" class="form-control required" id="fullname" name="Height " placeholder="India" />
                                     
-                                    </div></div></div></div><div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
+                                    </div></div></div></div>
+                                    <div class="col-lg-6 col-md-6 mb-4 ">
+                                    <div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group">
+                                <div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_state">Partner State </label>
 
                                     <input type="text" required="" class="form-control required" id="fullname" name="Height " placeholder="Tamilnadu" />
-                                    </div></div></div></div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
                                     <div class="col-lg-6 col-md-6 mb-4 ">
                                       <div class="custom-select2-div">
 
@@ -627,12 +633,7 @@ const Addmember = () => {
                                     </div>
                                     
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
-
-                                    <label class="form-label" for="part_income">Partner Annual Income </label>
-
-                                    <input type="text" required="" class="form-control required" id="fullname" name="Height " placeholder="Above 30k" />
-                                    </div></div></div></div>
+                             </div></div>
                                     
                                     <div class="col-lg-6 col-md-6 mb-4 "><div class="custom-select2-div">
 
@@ -667,6 +668,19 @@ const Addmember = () => {
                                     </div>
                                     </div>
                                     </div>
+
+                                    <div class="col-lg-6 col-md-6 mb-4 ">
+                                      <div class="custom-select2-div">
+
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
+
+                                    <label class="form-label" for="part_manglik">Partner Salary </label>
+
+                                    <input type="text" required="" class="form-control required" id="fullname" name="Height " placeholder="Above 30k" />
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
                       
                                     <div class="col-lg-6 col-md-6 mb-4 ">
                                       <div class="custom-select2-div">
@@ -688,7 +702,8 @@ const Addmember = () => {
                                     <div class="col-lg-6 col-md-6 mb-4 ">
                                       <div class="custom-select2-div">
 
-                              <div class="edit_inputMain-sltr select2Part w-100 floating-group"><div class="mb-3 text-start">
+                              <div class="edit_inputMain-sltr select2Part w-100 floating-group">
+                                <div class="mb-3 text-start">
 
                                     <label class="form-label" for="part_manglik">Partner's Children Age </label>
 
@@ -698,6 +713,7 @@ const Addmember = () => {
                                     </div>
                                   
                                     </div>
+                                    
                                     
 
                                     <input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.member.index"/>                </div>
@@ -710,10 +726,10 @@ const Addmember = () => {
           <div class="tab-pane fade" id="pills-upload-photo" role="tabpanel" aria-labelledby="pills-upload-photo-tab" tabindex="0">
             <div class="form_content_data">
               
-                <div class="row">
+                <div class="row p-4">
                 <p class="help-block">Allowed Maximum File size up to 10MB. File type jpg , png , jpeg , gif , bmp.</p>
                   <input type="hidden" name="_token" value="HzTT0wIMebo7XZX7qQA7c4cxCjKSx33wqCW5LSAU" /> </div>     
-                  <div className='row col-lg-12 col-md-12 mb-8 d-flex'    >      
+                  <div className='row p-4 col-lg-12 col-md-12 mb-8 d-flex'    >      
                    <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr"><div class="mb-3 text-start">
 
                                     <label class="form-label" for="photo1">Photo 1 <span class="Form__Error">*</span></label>
@@ -739,7 +755,7 @@ const Addmember = () => {
 
                                 </div></div></div>
                                 </div> 
-                                <div className='row col-lg-12 col-md-12 mb-8 d-flex'> 
+                                <div className='row p-4 col-lg-12 col-md-12 mb-8 d-flex'> 
                                 <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr">
                                 <div class="mb-3 text-start">
 
@@ -771,7 +787,7 @@ const Addmember = () => {
                                 </div>
                                 </div>
                                 </div>
-                                <div className='row col-lg-12 col-md-12 mb-8 d-flex'> 
+                                <div className='row p-4 col-lg-12 col-md-12 mb-8 d-flex'> 
                                 <div class="col-lg-6 col-md-6 mb-4"><div class="edit_inputMain-sltr">
                                 <div class="mb-3 text-start">
 

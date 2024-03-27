@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Hstories = () => {
+
   return (
     <>
     <section class="news-section d-none d-md-block d-lg-block d-xl-block">
@@ -19,7 +20,14 @@ const Hstories = () => {
        
         <div class="row">
 
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
+
+
+
+
+
+
+        <div id="carouselExampleDark" class="carousel carousel-dark slide row" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -42,11 +50,11 @@ const Hstories = () => {
 
 
 
-                                <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInRight animated" >
+     <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInRight animated" >
               <div class="inner-box">
                 <div class="image-box">
                   <figure class="image"><a href="success_story">
-            <img src="https://www.matrimonysoftware.in/photoprocess.php?image=success/2021_04_29_10_18_24happy6.jpg&square=500&amp;square=500" alt=""/></a></figure>
+            <img className='w-30' src="https://www.matrimonysoftware.in/photoprocess.php?image=success/2021_04_29_10_18_24happy6.jpg&square=500&amp;square=500"  alt=""/></a></figure>
 
                 </div>
                 <div class="lower-content">
@@ -64,7 +72,7 @@ const Hstories = () => {
                 </div>
               </div>
             </div>
-                                    <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInRight animated" >
+        <div class="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInRight animated" >
               <div class="inner-box">
                 <div class="image-box">
                   <figure class="image"><a href="success_story">

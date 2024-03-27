@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom'
 import React from 'react'
+import Logo from '../rgt-matrimony-logo.png'
 
 const Signin = () => {
   return (
@@ -11,13 +12,13 @@ const Signin = () => {
           <div class="card-body">
             <div class="app-brand justify-content-center">
               <a href="https://gloriousmatrimonial.com/admin/login" class="app-brand-link gap-2">
-                <img src="https://www.gloriousmatrimonial.com/public//assets/logo/4605841707816766.png" alt="" class="w-100"/>
+                <img src={Logo} alt="" class="w-100"/>
                     {/* <h3>RTS Matrimony</h3> */}
                 </a><a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                   <i class="bx bx-chevron-left bx-sm align-middle"></i>
                 </a>
             </div>
-            <p class="mb-4">Welcome to RTS Matrimony. Please sign in to your account</p>
+            <p class="mb-4 mt-2">Welcome to RTS Matrimony.</p>
                         <form id="formAuthentication" class="mb-3" action="https://gloriousmatrimonial.com/admin/authenticate" method="POST">
               <input type="hidden" name="_token" value="RiYE39oDnRr2BvE3Hq8Ofqt7RPsF4jYozyM9t91O"/>              <div class="mb-3 text-start">
                 <label for="email" class="form-label">Email or Username</label>
