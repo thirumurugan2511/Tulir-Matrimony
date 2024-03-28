@@ -98,8 +98,8 @@ const Dashoard = () => {
             </nav>
          <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="row">
-        <div class="col-md-6 col-lg-4 order-2">
+    <div class="row ">
+        <div class="col-md-6 col-lg-4 order-2" style={{height:'100'}} >
             <a href="" class="dashboard_animation dashboard_animation__new">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">
@@ -126,7 +126,7 @@ const Dashoard = () => {
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-4 order-2">
+        <div class="col-md-6 col-lg-4 order-2" style={{height:'100'}}>
             <a href="#" class="dashboard_animation dashboard_animation__new" onclick="getDashboardData('gender','Male')">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">
@@ -153,7 +153,7 @@ const Dashoard = () => {
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-4 order-2">
+        <div class="col-md-6 col-lg-4 order-2" style={{height:'100'}}>
             <a href="#" class="dashboard_animation dashboard_animation__new" onclick="getDashboardData('gender','Female')">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">
@@ -180,7 +180,7 @@ const Dashoard = () => {
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-4 order-2">
+        <div class="col-md-6 col-lg-4 order-2" style={{height:'100'}}>
             <a href="#" class="dashboard_animation dashboard_animation__new" onclick="getDashboardData('plan_status','Paid')">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">
@@ -207,7 +207,7 @@ const Dashoard = () => {
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-4 order-2">
+        <div class="col-md-6 col-lg-4 order-2" style={{height:'100'}}>
             <a href="#" class="dashboard_animation dashboard_animation__new" onclick="getDashboardData('plan_status','Not Paid')">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">
@@ -234,7 +234,7 @@ const Dashoard = () => {
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-4 order-2">
+        <div class="col-md-6 col-lg-4 order-2" style={{height:'100'}}>
             <a href="https://gloriousmatrimonial.com/admin/renewal-member" class="dashboard_animation dashboard_animation__new" onclick="getDashboardData('plan_status','Expired')">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">
@@ -261,7 +261,7 @@ const Dashoard = () => {
                 </div>
             </a>
         </div>
-        {/* <div class="col-md-6 col-lg-4 order-2">
+        {/* <div class="col-md-6 col-lg-4 order-2" style={{height:'100'}}>
             <a href="#" class="dashboard_animation dashboard_animation__new" onclick="getDashboardData('status','APPROVED')">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">
@@ -288,7 +288,7 @@ const Dashoard = () => {
                 </div>
             </a>
         </div> */}
-        {/* <div class="col-md-6 col-lg-4 order-2">
+        {/* <div class="col-md-6 col-lg-4 order-2" style={{height:'100'}}>
             <a href="#" class="dashboard_animation dashboard_animation__new" onclick="getDashboardData('status','UNAPPROVED')">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">
@@ -315,7 +315,7 @@ const Dashoard = () => {
                 </div>
             </a>
         </div>
-        <div class="col-md-6 col-lg-4 order-2">
+        <div class="col-md-6 col-lg-4 order-2" style={{height:'100'}}>
             <a href="#" class="dashboard_animation dashboard_animation__new" onclick="getDashboardData('status','Suspended')">
                 <div class="card h-100 w-100 dashboard-box-color">
                     <div class="card-body">

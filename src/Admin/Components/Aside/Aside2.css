@@ -1,0 +1,39 @@
+.layout-menu {
+    width: 260px; /* Set initial width for the menu */
+    position: fixed;
+    top: 0;
+    left: -260px; /* Initially hide the menu off-screen */
+    bottom: 0;
+    overflow-y: auto;
+    background: #fff;
+    transition: left 0.3s ease; /* Add transition for smooth animation */
+}
+
+.layout-menu.show {
+    left: 0; /* Slide in the menu when it's shown */
+}
+
+.menu-inner {
+    padding: 0;
+    list-style: none;
+}
+
+.menu-item {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* Add more styles as needed */
+
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+    .layout-menu {
+        width: 100%; /* Set menu width to full screen on smaller devices */
+        left: -100%; /* Initially hide the menu off-screen */
+    }
+
+    .layout-menu.show {
+        left: 0; /* Slide in the menu when it's shown */
+    }
+}

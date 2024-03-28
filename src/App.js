@@ -34,6 +34,7 @@ import Aboutus from './Admin/Components/Content/Aboutus';
 import Dhome from './User/Components/Dhome'
 import Sresult from './User/Sresult'
 import Plans from './User/Components/Plans'
+import Aside from './Admin/Components/Aside/Aside';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Dhome />} />
           <Route path="/Admin" element={<Admin />} />
+          <Route path="/Aside" element={<Aside />} />
           <Route path="/Stories" element={<Stories />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Storiesadd" element={<Storiesadd />} />
