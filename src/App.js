@@ -32,6 +32,9 @@ import Paymentadd from './Admin/Components/Payment/Paymentadd';
 import Banner from './Admin/Components/Dashboard/Banner';
 import Aboutus from './Admin/Components/Content/Aboutus';
 import Dhome from './User/Components/Dhome'
+import Sresult from './User/Sresult'
+import Plans from './User/Components/Plans'
+import Aside from './Admin/Components/Aside/Aside';
 
 function App() {
   return (
@@ -40,6 +43,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Dhome />} />
           <Route path="/Admin" element={<Admin />} />
+          <Route path="/Aside" element={<Aside />} />
           <Route path="/Stories" element={<Stories />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/Storiesadd" element={<Storiesadd />} />
@@ -69,7 +73,8 @@ function App() {
           <Route path="/Paymentadd" element={<Paymentadd />} />
           <Route path="/Banner" element={<Banner />} />
           <Route path="/Aboutus" element={<Aboutus />} />
-
+          <Route path="/Sresult" element={<Sresult />} />
+          <Route path="/Plans" element={<Plans />} />
 
         </Routes>
       </Router>

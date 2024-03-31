@@ -495,6 +495,7 @@ const Dhome = () => {
     {/* <!--End About Section --> */}
     {/* <!-- Features Section Two --> */}
     <Slider />
+    <Hstories />
 
     <Hstories />
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Aside from '../Aside/Aside'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
@@ -14,6 +14,24 @@ import Smallicon from '../../Components/heart-icon.png'
 
 
 const Religion = () => {
+    
+    const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/religion');
+        const result = await response.json();
+        console.log(result)
+        setData(result.body);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+}, []);
+
   return (
     <>
      <div class="layout-wrapper layout-content-navbar">
@@ -111,27 +129,14 @@ const Religion = () => {
         </tr>
     </thead>
     <tbody>
-                
-               <tr>
-                <td>Hindu</td>       
+    {data.map(item => (
+            <tr key={item.id}>
+                <td>{item.name}</td>       
                 <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
                 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
                </tr>
-               <tr>
-                <td>Muslium</td>       
-                <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-                <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-               </tr>
-               <tr>
-                <td>Christian</td>       
-                <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-                <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-               </tr>
-               <tr>
-                <td>Others</td>       
-                <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-                <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-               </tr>
+                ))}
+               
                
                 
           

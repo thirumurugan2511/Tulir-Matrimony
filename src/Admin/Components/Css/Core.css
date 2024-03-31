@@ -9433,6 +9433,7 @@ button.list-group-item-gray.active {
 
 .order-2 {
   order: 2 !important;
+  height: 130px!important;
 }
 
 .order-3 {
