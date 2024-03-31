@@ -98,7 +98,7 @@ const Dashoard = () => {
             </nav>
          <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="row ">
+    <div class="row mt-4">
         <div class="col-md-6 col-lg-4 order-2" style={{height:'100'}} >
             <a href="" class="dashboard_animation dashboard_animation__new">
                 <div class="card h-100 w-100 dashboard-box-color">

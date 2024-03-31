@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import Aside from '../Aside/Aside'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
@@ -6,11 +6,76 @@ import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import Smallicon from '../../Components/heart-icon.png'
-
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
+
 const Sitesettings = () => {
+
+   
+
+    const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/data');
+        const result = await response.json();
+        console.log(result)
+        setData(result.body);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+
+  }, []);
+  const [formData, setFormData] = useState({
+    username:"",
+password:"",
+email:"",
+description:""
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData)
+    
+    fetch('http://localhost:8000/controlapi/adduser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+      
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); // handle response from the server
+      // Reset form fields after successful submission if needed
+      setFormData({
+        username: '',
+        password: '',
+        email: '',
+        description: ''
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  };
+
+
+
     const [showMenu, setShowMenu] = useState(false);
 
     const toggleMenu = () => {
@@ -97,35 +162,35 @@ const Sitesettings = () => {
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form id="addEditForm" name="addEditForm" action="https://gloriousmatrimonial.com/admin/religion/addEdit" method="POST" enctype="multipart/form-data">
+                    <form id="addEditForm" name="addEditForm" onSubmit={handleSubmit} method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="xsRbVQIcWzUtaB16B9EQu0T5IiltWdJYP6iUnE2Q"/>                        
                         
                         <div class="mb-3 text-start">
 
-                                        <label class="form-label" for="religion_name">Username <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="user_name">Username <span class="Form__Error">*</span></label>
 
-                                        <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="User Name" />
-
-                                    </div>
-                                    <div class="mb-3 text-start">
-
-                                        <label class="form-label" for="religion_name">Password <span class="Form__Error">*</span></label>
-
-                                        <input type="password" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Password" />
+                                        <input type="text" required class="form-control required" id="user_name" name="username" value={formData.username} onChange={handleChange} placeholder="User Name" />
 
                                     </div>
                                     <div class="mb-3 text-start">
 
-<label class="form-label" for="religion_name">Email ID <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="password">Password <span class="Form__Error">*</span></label>
 
-<input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Email" />
+                                        <input type="password" required="" class="form-control required" id="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+
+                                    </div>
+                                    <div class="mb-3 text-start">
+
+<label class="form-label" for="email">Email ID <span class="Form__Error">*</span></label>
+
+<input type="text" required="" class="form-control required" id="religionemail_name" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
 
 </div>
 <div class="mb-3 text-start">
 
-<label class="form-label" for="religion_name">Description <span class="Form__Error">*</span></label>
+<label class="form-label" for="desc">Description <span class="Form__Error">*</span></label>
 
-<input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Description" />
+<input type="text" required="" class="form-control required" id="desc" name="description" value={formData.description} onChange={handleChange} placeholder="Description" />
 
 </div>
                                     
@@ -150,15 +215,17 @@ const Sitesettings = () => {
    </thead>
    <tbody className='text-start'>
                
-              <tr>
-               <td>murugan</td> 
-               <td>*********</td>  
-               <td>murugan@gmail.com</td>     
-               <td>Admin</td>
+   {data.map(item => (
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.username}</td>
+              <td>{item.email}</td>
+              <td>{item.description}</td>
                <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
 <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-              </tr>
-              
+</tr>
+
+          ))}
                
          
            </tbody>
