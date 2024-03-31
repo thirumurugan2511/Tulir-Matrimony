@@ -6,7 +6,6 @@ import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import Smallicon from '../../Components/heart-icon.png'
-
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
