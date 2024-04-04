@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import Aside from '../Aside/Aside'
@@ -8,6 +8,22 @@ import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 
 const Aboutus = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch('https://tulirmatrimony.com/controlapi/contentlist.php');
+          const result = await response.json();
+          console.log(result)
+          setData(result.body);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData();
+  }, []);
   return (
     <>
       <div class="layout-wrapper layout-content-navbar">

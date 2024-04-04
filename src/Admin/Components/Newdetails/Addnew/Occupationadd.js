@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react';
 import Aside from '../../Aside/Aside'
 import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
@@ -8,6 +8,36 @@ import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 
 const Occupationadd = () => {
+    const [occupation, setOccupation] = useState('');
+    const formRef = useRef(null);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('https://tulirmatrimony.com/controlapi/addoccupation.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: occupation }),
+                
+            });
+            formRef.current.reset();
+    const successAlert = document.getElementById('success-alert');
+      successAlert.style.display = 'block';
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        successAlert.style.display = 'none';
+      }, 5000);
+   
+            const data = await response.json();
+            console.log(data);
+            // Handle success or error response here
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
   return (
     <>
     <div class="layout-wrapper layout-content-navbar">
@@ -83,19 +113,22 @@ const Occupationadd = () => {
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form id="addEditForm" name="addEditForm" action="https://gloriousmatrimonial.com/admin/religion/addEdit" method="POST" enctype="multipart/form-data">
+                    <form id="addEditForm" ref={formRef} name="addEditForm"  onSubmit={handleSubmit} method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="xsRbVQIcWzUtaB16B9EQu0T5IiltWdJYP6iUnE2Q"/>                        
                         
                         <div class="mb-3 text-start">
 
-                                        <label class="form-label" for="religion_name">Occupation Name <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="occupaion_name">Occupation Name <span class="Form__Error">*</span></label>
 
-                                        <input type="text" required="" class="form-control required" id="religion_name" name="religion_name" placeholder="Occupation Name" />
+                                        <input type="text" required="" class="form-control required" id="occupaion_name" name="occupaion_name" value={occupation} onChange={(e) => setOccupation(e.target.value)} placeholder="Occupation Name" />
 
                                     </div>
                                     
                                     <input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.religion.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn" id="formSubmitBtn">Submit</button>
                     </form>
+                </div>
+                <div id="success-alert" className="alert m-4 alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
+    Record added successfully.
                 </div>
             </div>
         </div>

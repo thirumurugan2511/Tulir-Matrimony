@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Aside from '../Aside/Aside'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import { MdPostAdd } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
+import { MdModeEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import Smallicon from '../../Components/heart-icon.png'
 import { Link } from "react-router-dom";
@@ -12,6 +14,22 @@ import { LuLogOut } from "react-icons/lu";
 
 
 const Moonsign = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch('https://tulirmatrimony.com/controlapi/moonsignlist.php');
+          const result = await response.json();
+          console.log(result)
+          setData(result.body);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData();
+  }, []);
   return (
     <>
     <div class="layout-wrapper layout-content-navbar">
@@ -107,66 +125,13 @@ const Moonsign = () => {
    </thead>
    <tbody className='text-start'>
                
-              <tr>
-               <td>Meen (Pisces)</td>     
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
-              <tr>
-               <td>Kumbha (Aquarious)</td>  
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
-              <tr>
-               <td>Makar (Capricorn)</td>
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
-              <tr>
-               <td>Dhanu (Sagittarious)</td>  
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
-              <tr>
-               <td>Vrischika (Scorpio)</td>     
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
-              <tr>
-               <td>Tula (Libra)</td>  
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
-              <tr>
-               <td>Kanya (Virgo)</td>
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
-              <tr>
-               <td>Simha (Leo)</td>  
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
-              <tr>
-               <td>Karka (Cancer)</td>     
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
-              <tr>
-               <td>Mithun (Gemini)</td>  
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
-              <tr>
-               <td>Vrishabh (Taurus)</td>
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
-              <tr>
-               <td>Mesh (Aries)</td>  
-               <td><a href="/religion/edit/15"><i class="bx bxs-edit"></i>Edit</a> /
-               <a href="/religion/edit/15"><i class="bx bxs-edit"></i>Delete</a></td>
-              </tr>
+   {data.map(item => (
+            <tr key={item.id}>
+                <td>{item.name}</td>       
+                <td><a href="/religion/edit/15" className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+                <a href="/religion/edit/15" className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</a></td>
+               </tr>
+                ))}
            </tbody>
 </table>
 </div>

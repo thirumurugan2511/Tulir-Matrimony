@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 // import {Link} from 'react-router-dom'
 import Aside from '../Aside/Aside'
 import {Link} from 'react-router-dom'
@@ -10,6 +10,51 @@ import { LuLogOut } from "react-icons/lu";
 
 
 const Storiesadd = () => {
+    const [formData, setFormData] = useState({
+        username:"",
+        password:"",
+        email:"",
+        description:""
+          });
+        
+          const handleChange = (e) => {
+            const { name, value } = e.target;
+            setFormData(prevState => ({
+              ...prevState,
+              [name]: value
+            }));
+          };
+        
+          const handleSubmit = (e) => {
+            e.preventDefault();
+            console.log(formData)
+            
+            fetch('https://tulirmatrimony.com/controlapi/adduser.php', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(formData)
+              
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data); // handle response from the server
+              // Reset form fields after successful submission if needed
+              setFormData({
+                username: '',
+                password: '',
+                email: '',
+                description: ''
+              });
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+          };
+        
+        
+        
   return (
     <>
      <div class="layout-wrapper layout-content-navbar">
@@ -152,8 +197,12 @@ const Storiesadd = () => {
                                 <input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.successStory.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn"
                             id="formSubmitBtn">Submit</button>
                     </form>
+                 
                 </div>
             </div>
+    <div id="success-alert" className="alert mt-4 alert-success" style={{ display: 'block', backgroundColor: '#28a745', color:'white' }} role="alert">
+    Record added successfully.
+  </div>
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import '../Css/Charts.css';
 import '../Css/Common.css';
 import '../Css/Core.css';
@@ -21,6 +21,23 @@ import { IoMdAdd } from "react-icons/io";
 import Smallicon from '../../Components/heart-icon.png'
 
 const Stories = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch('https://tulirmatrimony.com/controlapi/successist.php');
+          const result = await response.json();
+          console.log(result)
+          setData(result.body);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData();
+  }, []);
+    
   return (
     <>
     <div class="layout-wrapper layout-content-navbar">
@@ -118,55 +135,25 @@ const Stories = () => {
             <th scope="col">Groom Id</th>
             <th scope="col">Groom Name</th>
             <th scope="col">Marriage Date</th>
+            <th scope="col">Message</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
            
-            <tr>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>NI-327945</td>
-            <td>Astha</td>
-            <td>NI-327946</td>
-            <td>Aporva</td>
-            <td>2023-12-22</td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>
-                
-        <tr>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>NI-327645</td>
-            <td>Sai</td>
-            <td>NI-677946</td>
-            <td>Santhya</td>
-            <td>2023-12-22</td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>
-
-           <tr>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>NI-320045</td>
-            <td>Praveen</td>
-            <td>NI-987946</td>
-            <td>Ramya</td>
-            <td>2023-09-22</td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>
-
-           <tr>
-            <td><img src="https://www.gloriousmatrimonial.com/public//assets/success_story/3725631706797647.png" alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td>NI-327945</td>
-            <td>Hari</td>
-            <td>NI-327946</td>
-            <td>Nivetha</td>
-           
-            <td>2023-12-22</td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>
+    {data.map(item => (
+            <tr key={item.id}>
+                <td>{item.image}</td>     
+                <td>{item.bridename}</td>   
+                <td>{item.bride_id}</td> 
+                <td>{item.groom_name}</td> 
+                <td>{item.groom_id}</td> 
+                <td>{item.marriage_date}</td> 
+                <td>{item.message}</td> 
+                <td><a href="/religion/edit/15" className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+                <a href="/religion/edit/15" className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</a></td>
+               </tr>
+                ))}
 
                 
                

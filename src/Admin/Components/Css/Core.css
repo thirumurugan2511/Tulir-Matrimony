@@ -10260,7 +10260,12 @@ button.list-group-item-gray.active {
   .d-sm-grid {
     display: grid !important;
   }
-
+ .bxs-edit{
+  color: #f30863 !important;
+ }
+ .text-ed{
+  color: #f30863 !important;
+ }
   .d-sm-table {
     display: table !important;
   }

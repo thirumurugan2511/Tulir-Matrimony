@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react';
 import Aside from '../../Aside/Aside'
 import Smallicon from '../../../Components/heart-icon.png'
 import { Link } from "react-router-dom";
@@ -8,6 +8,37 @@ import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 
 const Staradd = () => {
+    const [star, setStar] = useState('');
+    const formRef = useRef(null);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('https://tulirmatrimony.com/controlapi/addstar.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: star }),
+                
+            });
+            formRef.current.reset();
+    const successAlert = document.getElementById('success-alert');
+      successAlert.style.display = 'block';
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        successAlert.style.display = 'none';
+      }, 5000);
+   
+            const data = await response.json();
+            console.log(data);
+            // Handle success or error response here
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
   return (
     <>
     <div class="layout-wrapper layout-content-navbar">
@@ -83,15 +114,18 @@ const Staradd = () => {
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form id="addEditForm" name="addEditForm" action="https://gloriousmatrimonial.com/admin/Star/addEdit" method="POST" enctype="multipart/form-data">
+                    <form id="addEditForm" ref={formRef} name="addEditForm"  onSubmit={handleSubmit} method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="xsRbVQIcWzUtaB16B9EQu0T5IiltWdJYP6iUnE2Q"/>                        <div class="mb-3 text-start">
 
                                         <label class="form-label" for="Star_name">Star Name <span class="Form__Error">*</span></label>
 
-                                        <input type="text" required="" class="form-control required" id="Star_name" name="Star_name" placeholder="Star Name"/>
+                                        <input type="text" required="" class="form-control required" id="Star_name" name="Star_name" value={star} onChange={(e) => setStar(e.target.value)} placeholder="Star Name"/>
 
                                     </div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.Star.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn" id="formSubmitBtn">Submit</button>
                     </form>
+                </div>
+                <div id="success-alert" className="alert m-4 alert-success" style={{ display: 'block', backgroundColor: '#28a745', color:'white' }} role="alert">
+    Record added successfully.
                 </div>
             </div>
         </div>

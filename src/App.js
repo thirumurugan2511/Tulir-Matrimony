@@ -35,6 +35,7 @@ import Dhome from './User/Components/Dhome'
 import Sresult from './User/Sresult'
 import Plans from './User/Components/Plans'
 import Aside from './Admin/Components/Aside/Aside';
+import Religionedit from './Admin/Components/Newdetails/Edit/Religionedit';
 
 function App() {
   return (
@@ -75,6 +76,9 @@ function App() {
           <Route path="/Aboutus" element={<Aboutus />} />
           <Route path="/Sresult" element={<Sresult />} />
           <Route path="/Plans" element={<Plans />} />
+          <Route path="/Religionedit" element={<Religionedit />} />
+
+
 
         </Routes>
       </Router>

@@ -1,43 +1,79 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Aside from '../../Aside/Aside'
 import Smallicon from '../../../Components/heart-icon.png'
 import { Link } from "react-router-dom";
 import { IoMdSettings } from "react-icons/io";
-import { LuLogOut } from "react-icons/lu";
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
+import { LuLogOut } from "react-icons/lu";
 
-const Annualincomeadd = () => {
-    const [income, setIncome] = useState('');
-    const formRef = useRef(null);
+function Religionedit() {
+    const { id } = useParams(); // Get the user ID from URL params
+    const [userData, setUserData] = useState({});
+    const [formData, setFormData] = useState({
+        religion_name: ''
+    });
+    const [successMsg, setSuccessMsg] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch('https://tulirmatrimony.com/controlapi/addincome.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name: income }),
-                
+    useEffect(() => {
+        // Fetch user data using the provided ID
+        fetch(`https://tulirmatrimony.com/controlapi/singleuser.php?id=${id}`)
+            .then(response => response.json())
+            .then(data => {
+                // Set the retrieved user data to state
+                setUserData(data);
+                // Set the form data to match the retrieved user data
+                setFormData({
+                    religion_name: data.name || ''
+                    // Add other form fields as needed
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
             });
-            formRef.current.reset();
-    const successAlert = document.getElementById('success-alert');
-      successAlert.style.display = 'block';
-      
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        successAlert.style.display = 'none';
-      }, 5000);
-   
-            const data = await response.json();
-            console.log(data);
-            // Handle success or error response here
-        } catch (error) {
-            console.error('Error:', error);
-        }
+    }, [id]); // Fetch data when the ID changes
+
+    const handleChange = e => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
     };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        // Prepare data to send to the server
+        const requestData = {
+            id: id,
+            religion_name: formData.name
+            // Add other form fields as needed
+        };
+
+        // Make API call to update user data
+        fetch('https://tulirmatrimony.com/controlapi/editreligion.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Data updated successfully:', data);
+            setSuccessMsg('Record updated successfully.');
+            // Redirect to Religionlist page after 1 second
+            setTimeout(() => {
+                
+                window.location.href = "/Religionlist";
+            }, 1000);
+        })
+        .catch(error => {
+            console.error('Error updating user data:', error);
+        });
+    };
+
   return (
     <>
     <div class="layout-wrapper layout-content-navbar">
@@ -47,14 +83,14 @@ const Annualincomeadd = () => {
             <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached
             align-items-center bg-navbar-theme" id="layout-navbar">
                 <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                    <a class="nav-item nav-link px-0 me-xl-4" href="">
+                    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
                         <i class="bx bx-menu bx-sm"></i>
                     </a>
                 </div>
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                    <ol class="breadcrumb breadcrumb-style2 mb-0">
                    <li><MdManageHistory  class="bx bx-user me-2"/></li>
-                   <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Annualincome </li>
+                   <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Religion </li>
                    </ol>
                    <ul class="navbar-nav flex-row align-items-center ms-auto">
                        <li class="nav-item lh-1 me-3">
@@ -113,19 +149,23 @@ const Annualincomeadd = () => {
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form id="addEditForm" ref={formRef} name="addEditForm" onSubmit={handleSubmit}  method="POST" enctype="multipart/form-data">
+                    <form id="addEditForm"  name="addEditForm" onSubmit={handleSubmit}  method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="xsRbVQIcWzUtaB16B9EQu0T5IiltWdJYP6iUnE2Q"/>                        <div class="mb-3 text-start">
 
-                                        <label class="form-label" for="income_name">Annual Income <span class="Form__Error">*</span></label>
+                                        <label class="form-label" for="religion_name">Religion Name <span class="Form__Error">*</span></label>
 
-                                        <input type="text" required="" class="form-control required" id="income_name" name="income_name"  value={income} onChange={(e) => setIncome(e.target.value)} placeholder="Annual Income " />
-
-                                    </div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.religion.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn" id="formSubmitBtn">Submit</button>
+                                        <input type="text" className="form-control required" id="religion_name" value={userData.name || ''} name="religion_name" onChange={handleChange} placeholder="Religion Name"  />
+                                    </div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.religion.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn" id="formSubmitBtn">Update</button>
                     </form>
                 </div>
-                <div id="success-alert" className="alert m-4 alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
+                {/* <div id="success-alert" className="alert m-4 alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
     Record added successfully.
+                </div> */}
+                 {successMsg && (
+                <div className="alert alert-success" role="alert">
+                    {successMsg}
                 </div>
+            )}
             </div>
         </div>
     </div>
@@ -133,7 +173,7 @@ const Annualincomeadd = () => {
                 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link fw-bolder">© Copyright 2023-2024 By Marriage Bureau Script. All Rights Reserved.</a>
+                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link fw-bolder">© Copyright 2023-2024 By Aathesh soft. All Rights Reserved.</a>
                         </div>
                     </div>
                 </footer>
@@ -145,4 +185,4 @@ const Annualincomeadd = () => {
   )
 }
 
-export default Annualincomeadd
+export default Religionedit

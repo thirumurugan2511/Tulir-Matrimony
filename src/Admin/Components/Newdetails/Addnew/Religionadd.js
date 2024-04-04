@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react';
 import Aside from '../../Aside/Aside'
 import Smallicon from '../../../Components/heart-icon.png'
 import { Link } from "react-router-dom";
@@ -8,6 +8,38 @@ import { GrUserAdmin } from "react-icons/gr";
 import { LuLogOut } from "react-icons/lu";
 
 const Religionadd = () => {
+    const [religionName, setReligionName] = useState('');
+    const [submitting, setSubmitting] = useState(false); // State to track form submission
+    const formRef = useRef(null);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (submitting) return; // Prevent duplicate submissions
+        setSubmitting(true); // Set submitting state to true
+        try {
+            const response = await fetch('https://tulirmatrimony.com/controlapi/addreligion.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: religionName }),
+            });
+            formRef.current.reset();
+            const data = await response.json();
+            console.log(data);
+            // Handle success or error response here
+            // Reset form and set submitting state to false after 5 seconds
+            setTimeout(() => {
+                setReligionName(''); // Clear the form field
+                setSubmitting(false); // Reset submitting state
+            }, 1000);
+        } catch (error) {
+            console.error('Error:', error);
+            setSubmitting(false); // Reset submitting state
+        }
+    };
+
+
   return (
     <>
     <div class="layout-wrapper layout-content-navbar">
@@ -83,15 +115,17 @@ const Religionadd = () => {
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form id="addEditForm" name="addEditForm" action="https://gloriousmatrimonial.com/admin/religion/addEdit" method="POST" enctype="multipart/form-data">
+                    <form id="addEditForm" ref={formRef} name="addEditForm" onSubmit={handleSubmit} method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="xsRbVQIcWzUtaB16B9EQu0T5IiltWdJYP6iUnE2Q"/>                        <div class="mb-3 text-start">
 
                                         <label class="form-label" for="religion_name">Religion Name <span class="Form__Error">*</span></label>
 
-                                        <input type="text"  class="form-control required" id="religion_name" name="religion_name" placeholder="Religion Name" />
-
-                                    </div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.religion.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn" id="formSubmitBtn">Submit</button>
+                                        <input type="text" className="form-control required" id="religion_name" name="religion_name" placeholder="Religion Name" value={religionName} onChange={(e) => setReligionName(e.target.value)} />
+                                    </div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.religion.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn" disabled={submitting} id="formSubmitBtn">Submit</button>
                     </form>
+                </div>
+                <div id="success-alert" className="alert m-4 alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
+    Record added successfully.
                 </div>
             </div>
         </div>

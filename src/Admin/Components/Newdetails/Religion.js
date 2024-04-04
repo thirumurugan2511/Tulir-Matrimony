@@ -3,7 +3,6 @@ import Aside from '../Aside/Aside'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import { Link } from "react-router-dom";
-
 import { FaSearch } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
@@ -17,20 +16,35 @@ const Religion = () => {
     
     const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:8000/api/religion');
-        const result = await response.json();
-        console.log(result)
-        setData(result.body);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://tulirmatrimony.com/controlapi/religionlist.php');
+                const result = await response.json();
+                setData(result.body);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
-    fetchData();
-}, []);
+        fetchData();
+    }, []);
+
+    const handleDelete = async (id) => {
+        try {
+            await fetch(`https://tulirmatrimony.com/controlapi/deletereligion.php`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id }),
+            });
+            // Assuming successful deletion, update the state to reflect the changes
+            setData(data.filter(item => item.id !== id));
+        } catch (error) {
+            console.error('Error deleting data:', error);
+        }
+    };
 
   return (
     <>
@@ -132,8 +146,8 @@ const Religion = () => {
     {data.map(item => (
             <tr key={item.id}>
                 <td>{item.name}</td>       
-                <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-                <a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
+                <td><Link to={`/Religionedit?id=${item.id}`} className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
+                <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
                 ))}
                
@@ -157,8 +171,8 @@ const Religion = () => {
                 </footer>
                 <div class="content-backdrop fade"></div>
             </div>
-        </div>
-        </div>
+    </div>
+</div>
         </div>
     
     </>

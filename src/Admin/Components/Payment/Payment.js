@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom'
 import Aside from '../Aside/Aside'
 import { MdManageHistory } from "react-icons/md";
@@ -7,7 +7,6 @@ import { MdPostAdd } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
-
 import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 import { MdDelete } from "react-icons/md";
@@ -15,6 +14,23 @@ import Smallicon from '../../Components/heart-icon.png'
 
 
 const Payment = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch('https://tulirmatrimony.com/controlapi/listplan.php');
+          const result = await response.json();
+          console.log(result)
+          setData(result.body);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData();
+  }, []);
+    
   return (
     <>
       <div class="layout-wrapper layout-content-navbar">
@@ -114,33 +130,16 @@ const Payment = () => {
         </tr>
     </thead>
     <tbody>
-         <tr>            
-            <td>Basic</td>
-            <td>10</td>
-            <td>30 Days</td>
-            <td>Lorem 1500s</td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-           
-        </tr>
-        <tr>            
-            <td>Sliver</td>
-            <td>2500</td>
-            <td>60 Days</td>
-            <td>Lorem 1500s</td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-           
-        </tr>
-        <tr>            
-            <td>Gold</td>
-            <td>3000</td>
-            <td>120 Days</td>
-            <td>Lorem 1500s</td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>
-                
+    {data.map(item => (
+            <tr key={item.id}>
+                <td>{item.name}</td>     
+                <td>{item.amount}</td>   
+                <td>{item.validity}</td> 
+                <td>{item.description}</td> 
+                <td><a href="/religion/edit/15" className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+                <a href="/religion/edit/15" className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</a></td>
+               </tr>
+                ))}
           
             </tbody>
 </table>

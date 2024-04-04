@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Aside from '../Aside/Aside'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
@@ -12,6 +12,22 @@ import { IoMdAdd } from "react-icons/io";
 import Smallicon from '../../Components/heart-icon.png'
 
 const Caste = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch('http://tulirmatrimony.com/controlapi/languagelist.php');
+          const result = await response.json();
+          console.log(result)
+          setData(result.body);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData();
+  }, []);
   return (
     <>
     <div class="layout-wrapper layout-content-navbar">
@@ -114,8 +130,8 @@ const Caste = () => {
               <tr>
                <td>Hindu</td> 
                <td>Panjabi</td>       
-               <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
+               <td><a href="/religion/edit/15" className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15" className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</a></td>
               </tr>
               <tr>
                <td>Muslium</td>

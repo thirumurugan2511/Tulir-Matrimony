@@ -19,7 +19,7 @@ const Sitesettings = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/data');
+        const response = await fetch('https://tulirmatrimony.com/controlapi/listuser.php');
         const result = await response.json();
         console.log(result)
         setData(result.body);
@@ -32,7 +32,7 @@ const Sitesettings = () => {
 
   }, []);
   const [formData, setFormData] = useState({
-    username:"",
+username:"",
 password:"",
 email:"",
 description:""
@@ -50,7 +50,7 @@ description:""
     e.preventDefault();
     console.log(formData)
     
-    fetch('http://localhost:8000/controlapi/adduser', {
+    fetch('https://tulirmatrimony.com/controlapi/adduser.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -68,7 +68,15 @@ description:""
         email: '',
         description: ''
       });
+      const successAlert = document.getElementById('success-alert');
+      successAlert.style.display = 'block';
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        successAlert.style.display = 'none';
+      }, 5000);
     })
+    
     .catch(error => {
       console.error('Error:', error);
     });
@@ -197,6 +205,9 @@ description:""
                                     <input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.religion.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn" id="formSubmitBtn">Submit</button>
                     </form>
                 </div>
+                <div id="success-alert" className="mt-4 alert alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
+    Record added successfully.
+  </div>
             </div>
         </div>
     </div>
@@ -217,12 +228,11 @@ description:""
                
    {data.map(item => (
             <tr key={item.id}>
-              <td>{item.id}</td>
               <td>{item.username}</td>
               <td>{item.email}</td>
               <td>{item.description}</td>
-               <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
+               <td><a href="/religion/edit/15"  className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+<a href="/religion/edit/15" className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</a></td>
 </tr>
 
           ))}
