@@ -20,6 +20,7 @@ const Sitesettings = () => {
     const fetchData = async () => {
       try {
         const response = await fetch('https://tulirmatrimony.com/controlapi/listuser.php');
+        const response = await fetch('http://tulirmatrimony.com/controlapi/listuser.php');
         const result = await response.json();
         console.log(result)
         setData(result.body);
@@ -50,6 +51,7 @@ description:""
     e.preventDefault();
     console.log(formData)
     
+    fetch('https://tulirmatrimony.com/controlapi/adduser.php', {
     fetch('https://tulirmatrimony.com/controlapi/adduser.php', {
       method: 'POST',
       headers: {
