@@ -142,7 +142,7 @@ const Religion = () => {
            
         </tr>
     </thead>
-    <tbody>
+    <tbody className='text-start'>
     {data.map(item => (
             <tr key={item.id}>
                 <td>{item.name}</td>       

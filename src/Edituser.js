@@ -2,77 +2,103 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-
-function EditUser({ userId }) {
-   const {id} = useParams();
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    
-         axios.get('http://localhost:8000/api/data/' + id)
-         .then(res => setData(res.data))
-         .catch(err => console.log(err))
-       console.log(data);
-    
-}, []);
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    email: "",
-    description: ""
+function EditUser() {
+  const [userData, setUserData] = useState({
+    username: '',
+    password: '',
+    email: '',
+    description: ''
   });
+  const [successMessage, setSuccessMessage] = useState('');
+  const { userId } = useParams();
 
   useEffect(() => {
-    // Fetch user details by userId and update formData
-    // Example: fetchUserDetails(userId).then(data => setFormData(data));
+    axios.get(`https://tulirmatrimony.com/controlapi/singleuser.php?id=${userId}`)
+      .then(response => {
+        setUserData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching user data:', error);
+      });
   }, [userId]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
+    setUserData(prevData => ({
+      ...prevData,
       [name]: value
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch(`http://localhost:8000/controlapi/edituser/${userId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+    axios.post('https://tulirmatrimony.com/controlapi/edituser.php', {
+      id: userId,
+      ...userData
+    })
+      .then(response => {
+        setSuccessMessage('Record updated');
+      })
+      .catch(error => {
+        console.error('Error updating user data:', error);
       });
-      const responseData = await response.json();
-      console.log(responseData);
-    } catch (error) {
-      console.error('Error:', error);
-    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="editUsername">Username</label>
-        <input type="text" className="form-control" id="editUsername" name="username" value={data.username} onChange={handleChange} />
-      </div>
-      <div className="form-group">
-        <label htmlFor="editPassword">Password</label>
-        <input type="password" className="form-control" id="editPassword" name="password" value={data.password} onChange={handleChange} />
-      </div>
-      <div className="form-group">
-        <label htmlFor="editEmail">Email</label>
-        <input type="email" className="form-control" id="editEmail" name="email" value={data.email} onChange={handleChange} />
-      </div>
-      <div className="form-group">
-        <label htmlFor="editDescription">Description</label>
-        <input type="text" className="form-control" id="editDescription" name="description" value={data.description} onChange={handleChange} />
-      </div>
-      <button type="submit" className="btn btn-primary">Update</button>
-    </form>
+    <div>
+      {successMessage && (
+        <div className="alert alert-success" role="alert">
+          {successMessage}
+        </div>
+      )}
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="editUsername">Username</label>
+          <input
+            type="text"
+            className="form-control"
+            id="editUsername"
+            name="username"
+            value={userData.username}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="editPassword">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            id="editPassword"
+            name="password"
+            value={userData.password}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="editEmail">Email</label>
+          <input
+            type="email"
+            className="form-control"
+            id="editEmail"
+            name="email"
+            value={userData.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="editDescription">Description</label>
+          <input
+            type="text"
+            className="form-control"
+            id="editDescription"
+            name="description"
+            value={userData.description}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Update</button>
+      </form>
+    </div>
   );
 }
 
