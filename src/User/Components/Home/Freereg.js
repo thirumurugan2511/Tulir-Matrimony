@@ -3,6 +3,8 @@ import Logo from '../rgt-matrimony-logo.png'
 
 const Freereg = () => {
   const [regId, setRegId] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
+
   const [formData, setFormData] = useState({
       "reg_id": "",
       "gender": "male",
@@ -71,7 +73,7 @@ const Freereg = () => {
       "patner_salary": "",
       "patner_child_count": "",
       "image": "",
-      "image1": "",
+      "image2": "",
       "id_image": "",
       "id_image1": "",
       "rasiimage": "",
@@ -97,16 +99,18 @@ const Freereg = () => {
     setRegId(newRegId);
 
     const requestData = {
-      "reg_id": regId,
+      "reg_id": newRegId,
       "name": formData.name,
       "gender": formData.gender,
-      "email": formData.emailAddress,
-      "phonenumber": formData.phoneNumber,
+      "email": formData.email,
+      "phonenumber": formData.phonenumber,
       "password": formData.password,
       "dob": formData.dob,
       "mother_tongue": "",
       "marriage_type": "",
       "status_children": "",
+      "child_count": "",
+      "child_age": "",
       "religion": "",
       "cast": "",
       "subcast": "",
@@ -165,8 +169,11 @@ const Freereg = () => {
       "patner_child_count": "",
       "patner_child_gender": "",
       "patner_child_age": "",
+      "patner_child_count": "",
+      "patner_child_age": "",
+      "patner_child_gender": "",
       "image": "",
-      "image1":"",
+      "image2":"",
       "id_image":"",
       "id_image1":"",
       "rasiimage":""
@@ -191,6 +198,10 @@ const Freereg = () => {
         const responseData = await response.json();
         console.log('Registration successful');
         console.log(responseData);
+        setShowAlert(true); // Show alert box
+        setTimeout(() => setShowAlert(false), 1000);
+        window.location.href = '/Thankyou'; // Hide alert box after 3 seconds
+        resetForm(); // Reset form data
       } else {
         // Handle errors
         console.error('Registration failed');
@@ -198,6 +209,19 @@ const Freereg = () => {
     } catch (error) {
       console.error('Error:', error);
     }
+  };
+  const resetForm = () => {
+    formData({
+      // Set each form field to an empty string
+      reg_id: '',
+      gender: '', // Assuming male is the default value
+      name: '',
+      email: '',
+      phonenumber: '',
+      password: '',
+      dob: '',
+      // Add other form fields here
+    });
   };
 
   // Function to handle input changes
@@ -294,7 +318,12 @@ const Freereg = () => {
               <div class="mt-4 pt-2">
                 <input data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Submit" />
               </div>
-
+              {showAlert && (
+        <div className="alert alert-success mt-3 alert-dismissible fade show" role="alert">
+          Thank you for Registration! 
+          <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      )}
             </form>
           </div>
         </div>

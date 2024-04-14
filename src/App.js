@@ -43,6 +43,8 @@ import Location from './Admin/Components/Newdetails/Location';
 import Locationadd from './Admin/Components/Newdetails/Addnew/Locationadd';
 import Addusers from './Addusers';
 import Freereg from './User/Components/Home/Freereg';
+import Thankyou from './User/Components/Home/Thankyou';
+
 
 function App() {
   return (
@@ -91,6 +93,7 @@ function App() {
           <Route path="/Locationadd" element={<Locationadd />} />
           <Route path="/Addusers" element={<Addusers />} />
           <Route path="/" element={<Freereg />} />
+          <Route path="/Thankyou" element={<Thankyou />} />
 
 
         </Routes>

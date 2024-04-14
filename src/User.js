@@ -60,6 +60,14 @@ const User = () => {
     { value: 'Slim', label: 'Slim' },
     { value: 'Average', label: 'Average' },
     { value: 'Fat', label: 'Fat' }  
+    
+  ],
+  resideceOptions : [
+    { value: 'Citizen', label: 'Citizen' },
+    { value: 'Permanent Resident', label: 'Permanent Resident' },
+    { value: 'Temporary Visa', label: 'Temporary Visa' },
+    { value: 'Work Permit', label: 'Work Permit' }
+    
   ],
   skin_toneOptions : [
     { value: 'Wheatish', label: 'Wheatish' },
@@ -222,7 +230,7 @@ const User = () => {
 
   const initialFormData = {
     "section1": {
-      "reg_id": "",
+      // "reg_id": "",
       "gender": "",
       "name": "",
       "email": "",
@@ -348,8 +356,8 @@ const User = () => {
     "height": "உயரம்",
     "weight": "எடை",
     "food_habits": "உணவு நன்மைகள்",
-    "smoking": "புகைப்படுத்தும் அலட்சியம்",
-    "drinking": "குடிப்பதம்",
+    "smoking": "புகைபிடிக்கும் பழக்கம்",
+    "drinking": "குடிபழக்கம்",
     "body_type": "உடல் வடிவம்",
     "skin_tone": "தோல் நிறம்",
     "profile_by": "பட்டியல்",
@@ -383,9 +391,9 @@ const User = () => {
     "patner_child_age": "குழந்தைகளின் வயது",
     "patner_child_gender": "குழந்தைகளின் பாலினம்",
     "image": "சுயசாதாரண படம்",
-    "image1": "சுயசாதாரண படம் - 2",
+    "image2": "சுயசாதாரண படம் - 2",
     "id_image": "அடையாள படம்",
-    "id_image2": "அடையாள படம் - 2",
+    "id_image1": "அடையாள படம் - 2",
     "rasiimage": "ஜாதகப் படம்"
   };
   const statesInIndia = [
@@ -451,6 +459,24 @@ const User = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [currentSection, setCurrentSection] = useState('section1');
   const [customerData, setCustomerData] = useState({});
+  const [casteList, setCasteList] = useState([]);
+
+  useEffect(() => {
+    if (formData.currentSection === 'cast' || formData.currentSection === 'patner_cast') {
+      fetchCasteList();
+    }
+  }, [formData.currentSection]);
+
+  const fetchCasteList = () => {
+    fetch('https://tulirmatrimony.com/controlapi/castelist.php')
+      .then(response => response.json())
+      .then(data => {
+        setCasteList(data); // Assuming the API returns an array of caste list
+      })
+      .catch(error => {
+        console.error('Error fetching caste list:', error);
+      });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -558,6 +584,20 @@ const User = () => {
                 ]
             }));
           break;
+          case 'residece':
+              // Options for marriage type dropdown
+              setOptions(prevOptions => ({
+                ...prevOptions,
+                [fieldName + 'Options']: [
+                  { value: 'Citizen', label: 'Citizen' },
+                  { value: 'Permanent Resident', label: 'Permanent Resident' },
+                  { value: 'Temporary Visa', label: 'Temporary Visa' },
+                  { value: 'Work Permit', label: 'Work Permit' },   
+                    ]
+                }));
+              break;
+
+          
               case 'body_type':
                 // Options for marriage type dropdown
                 setOptions(prevOptions => ({
@@ -670,10 +710,12 @@ const User = () => {
         //https://tulirmatrimony.com/controlapi/religionlist.php
         endpoint = 'https://tulirmatrimony.com/controlapi/religionlist.php';
         break;
+
       case 'cast':
-        // Fetch options from different API for caste
-        endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
-        break;
+      case 'patner_cast':
+      // Set the appropriate endpoint for fetching caste list based on currentSection
+      endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
+      break;
       case 'moonsign':
         // Fetch options from different API for moonsign
         endpoint = 'https://tulirmatrimony.com/controlapi/moonsignlist.php';
@@ -753,6 +795,8 @@ const User = () => {
   }
 };
 
+
+
   const handleSubmit = async () => {
     try {
       // Combine all section data into one object
@@ -776,7 +820,7 @@ const User = () => {
       },
       body: JSON.stringify(combinedData)
     });
-
+     console.log(combinedData);
     // Handle the response from your Node.js server
     if (response.ok) {
       const responseData = await response.json();
@@ -914,61 +958,75 @@ const User = () => {
 
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
-                    ['gender', 'marriage_type', 'sevaikiragam', 'religion', 'cast', 'moonsign','mother_tongue', 'star', 'education', 'occupaction','annual_income', 
-                    'smoking', 'drinking','country','state', 'father_occupation', 'mother_occupation','sister_married','brother_married','patner_religion',
-                    'patner_cast','patner_country','patner_state', 'patner_matrial_status','patner_education','patner_occupation','patner_mother_tongue',
-                    'patner_salary','patner_child_gender','patner_manglik','food_habits','body_type','skin_tone','profile_by','family_type','family_status','patner_from_age',
-                    'patner_to_age'
-                  
-                  ].includes(fieldName) ?
-                      <div key={fieldName} className="col-lg-6 col-md-6 mb-4 text-start">
-                        <label htmlFor={fieldName} style={{ color: 'black' }}>{labelTranslations[fieldName]} </label>
-                        <select
-                          id={fieldName}
-                          name={fieldName}
-                          className="form-select"
-                          value={formData[currentSection][fieldName] || ''}
-                          onChange={handleChange}
-                        >
-                          <option value="" selected>Select your {` ${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}</option>
-                          {/* Render options dynamically */}
-                          {options[fieldName + 'Options'] && options[fieldName + 'Options'].map(option => (
-                            <option key={option.value} value={option.value}>{option.label}</option>
-                          ))}
-                        </select>
-                      </div>
-                      :
-                      // Render input field for non-dropdown fields
-                      <div key={fieldName} className="col-lg-6 col-md-6 mb-4 text-start">
-                      <label htmlFor={fieldName} style={{ color: 'black' }}>
-                          {labelTranslations[fieldName]}
-                          {['name', 'email', 'phonenumber', 'password', 'dob'].includes(fieldName) && <span style={{ color: 'red' }}>*</span>}
-                      </label>
-                      {['image', 'image1','id_image', 'id_image1', 'rasiimage'].includes(fieldName) ? (
-                          <input
-                              type="file"
-                              id={fieldName}
-                              name={fieldName}
-                              // Add this if you want to restrict file selection to images
-                              className="form-control"
-                              autoSave='off'
-                              onChange={handleChange}
-                          />
-                      ) : (
-                          <input
-                              type={fieldTypeMapping[fieldName] || 'text'}
-                              id={fieldName}
-                              name={fieldName}
-                              placeholder={` ${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}
-                              className="form-control"
-                              value={formData[currentSection][fieldName] || ''}
-                              autoSave='off'
-                              onChange={handleChange}
-                          />
-                      )}
-                  </div>
-                  
-                  ))}
+        ['gender', 'marriage_type', 'sevaikiragam', 'religion',  'moonsign', 'mother_tongue', 'star', 'education', 'occupaction', 'annual_income',
+          'smoking', 'drinking', 'country', 'state', 'father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'patner_religion',
+           'patner_country', 'patner_state', 'patner_matrial_status', 'patner_education', 'patner_occupation', 'patner_mother_tongue',
+          'patner_salary', 'patner_child_gender', 'patner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'patner_from_age',
+          'patner_to_age','residece'
+        ].includes(fieldName) ?
+          <div key={fieldName} className="col-lg-6 col-md-6 mb-4 text-start">
+            <label htmlFor={fieldName} style={{ color: 'black' }}>{labelTranslations[fieldName]} </label>
+            {fieldName === 'cast' || fieldName === 'patner_cast' ? (
+              <select
+                id={fieldName}
+                name={fieldName}
+                className="form-select"
+                value={formData[currentSection][fieldName] || ''}
+                onChange={handleChange}
+              >
+                <option value="" selected>Select your {` ${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}</option>
+                {/* Render caste options */}
+                {casteList.map(caste => (
+                  <option key={caste.caste_id} value={caste.caste_name}>{caste.caste_name}</option>
+                ))}
+              </select>
+            ) : (
+              <select
+                id={fieldName}
+                name={fieldName}
+                className="form-select"
+                value={formData[currentSection][fieldName] || ''}
+                onChange={handleChange}
+              >
+                <option value="" selected>Select your {` ${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}</option>
+                {/* Render options dynamically */}
+                {options[fieldName + 'Options'] && options[fieldName + 'Options'].map(option => (
+                  <option key={option.value} value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            )}
+          </div>
+          :
+          // Render input field for non-dropdown fields
+          <div key={fieldName} className="col-lg-6 col-md-6 mb-4 text-start">
+            <label htmlFor={fieldName} style={{ color: 'black' }}>
+              {labelTranslations[fieldName]}
+              {['name', 'email', 'phonenumber', 'password', 'dob'].includes(fieldName) && <span style={{ color: 'red' }}>*</span>}
+            </label>
+            {['image', 'image1', 'id_image', 'id_image1', 'rasiimage'].includes(fieldName) ? (
+              <input
+                type="file"
+                id={fieldName}
+                name={fieldName}
+                // Add this if you want to restrict file selection to images
+                className="form-control"
+                autoSave='off'
+                onChange={handleChange}
+              />
+            ) : (
+              <input
+                type={fieldTypeMapping[fieldName] || 'text'}
+                id={fieldName}
+                name={fieldName}
+                placeholder={` ${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}
+                className="form-control"
+                value={formData[currentSection][fieldName] || ''}
+                autoSave='off'
+                onChange={handleChange}
+              />
+            )}
+          </div>
+      ))}
                 </div>
 
 {/* Render Back button for sections 2, 3, 4, and 5 */}

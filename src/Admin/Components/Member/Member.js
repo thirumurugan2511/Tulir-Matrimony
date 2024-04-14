@@ -17,8 +17,16 @@ import Men from './men.jpg'
 
 const Member = () => {
         const [data, setData] = useState([]);
+        const [plans, setPlans] = useState([]);
+        const [selectedPlans, setSelectedPlans] = useState({});
+
+
+
         //('https://tulirmatrimony.com/controlapi/customerlist.php');
-        //http://localhost:8000/customerlist
+        //http://localhost:8000/data/memlist
+        //http://localhost:8000/data/planlist
+
+
         useEffect(() => {
           const fetchData = async () => {
             try {
@@ -33,24 +41,26 @@ const Member = () => {
       
           fetchData();
       }, []);
-        const [plans, setPlans] = useState([]);
+       
+      useEffect(() => {
+        const fetchPlans = async () => {
+            try {
+                const response = await fetch('https://tulirmatrimony.com/controlapi/planlist.php');
+                const result = await response.json();
+                setPlans(result.body);
+            } catch (error) {
+                console.error('Error fetching plans:', error);
+            }
+        };
 
-        useEffect(() => {
-            // Fetch plan list from the API
-            fetch('https://tulirmatrimony.com/controlapi/planlist.php')
-            .then(response => response.json())
-            .then(data => {
-                // Extracting the plan names from the response
-                const planNames = data.map(plan => plan.name);
-                setPlans(planNames);
-            })
-            .catch(error => console.error('Error fetching plan list:', error));
-        }, []);
-
-        const handlePlanChange = (itemId, selectedPlan) => {
-            // Handle plan change here, you can update the state or perform any other actions
-            console.log(`Item ID: ${itemId}, Selected Plan: ${selectedPlan}`);
-          };
+        fetchPlans();
+    }, []);
+     
+    const handlePlanChange = (userId, e) => {
+        const newSelectedPlans = { ...selectedPlans, [userId]: e.target.value };
+        setSelectedPlans(newSelectedPlans);
+    };
+  
     
       const handleDelete = async (id) => {
         try {
@@ -193,16 +203,12 @@ const Member = () => {
             <td>{item.name}</td>
             <td><img src={item.image} height={40} alt="User Profile" class="w-px-40 rounded-circle"/></td>
             <td>
-            <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id={`dropdownMenuButton${item.id}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {item.plan}
-                </button>
-                <div className="dropdown-menu" aria-labelledby={`dropdownMenuButton${item.id}`}>
-                  {plans.map(plan => (
-                    <button key={plan} className="dropdown-item" onClick={() => handlePlanChange(item.id, plan)}>{plan}</button>
-                  ))}
-                </div>
-              </div>
+            <select className='form-select' value={selectedPlans[item.id] || ''} onChange={(e) => handlePlanChange(item.id, e)}>
+                    <option value="">Select Plan</option>
+                    {plans.map(plan => (
+                        <option key={plan.id} value={plan.id}>{plan.name}</option>
+                    ))}
+                </select>
             </td>
             <td className='txt-success'>{item.status}</td>
             <td><Link to={`/Viewmember/${item.id}`}><FaEye  class="bx bxs-edit"/></Link></td>
