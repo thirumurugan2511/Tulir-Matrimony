@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
@@ -16,6 +16,57 @@ import Lady from './lady.jpg'
 import Men from './men.jpg'
 
 const Member = () => {
+        const [data, setData] = useState([]);
+        //('https://tulirmatrimony.com/controlapi/customerlist.php');
+        //http://localhost:8000/customerlist
+        useEffect(() => {
+          const fetchData = async () => {
+            try {
+              const response = await fetch('https://tulirmatrimony.com/controlapi/customerlist.php');
+              const result = await response.json();
+              console.log(result)
+              setData(result.body);
+            } catch (error) {
+              console.error('Error fetching data:', error);
+            }
+          };
+      
+          fetchData();
+      }, []);
+        const [plans, setPlans] = useState([]);
+
+        useEffect(() => {
+            // Fetch plan list from the API
+            fetch('https://tulirmatrimony.com/controlapi/planlist.php')
+            .then(response => response.json())
+            .then(data => {
+                // Extracting the plan names from the response
+                const planNames = data.map(plan => plan.name);
+                setPlans(planNames);
+            })
+            .catch(error => console.error('Error fetching plan list:', error));
+        }, []);
+
+        const handlePlanChange = (itemId, selectedPlan) => {
+            // Handle plan change here, you can update the state or perform any other actions
+            console.log(`Item ID: ${itemId}, Selected Plan: ${selectedPlan}`);
+          };
+    
+      const handleDelete = async (id) => {
+        try {
+            await fetch(`https://tulirmatrimony.com/controlapi/deletecustomer.php`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id }),
+            });
+            // Assuming successful deletion, update the state to reflect the changes
+            setData(data.filter(item => item.id !== id));
+        } catch (error) {
+            console.error('Error deleting data:', error);
+        }
+    };
   return (
     <>
     <div class="layout-wrapper layout-content-navbar">
@@ -64,7 +115,7 @@ const Member = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <Link class="dropdown-item" to="/Sitesetting">
+                                    <Link class="dropdown-item" to="/Sitesettings">
                                         <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>
                                     </Link>
@@ -90,7 +141,7 @@ const Member = () => {
                     {/* <!-- Toast with Placements --> */}
                     <div class="row  justify-content-between">
                          <div class="col-md-2">
-                            <a href="/Addmember" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
+                            <Link to="/User"  class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</Link>
                         </div>
                         <div class="col-md-4">
                             <div class="search-container">
@@ -120,79 +171,45 @@ const Member = () => {
     {/* <!-- Basic Layout --> */}
     <div class="card">
         <h5 class="card-header">Manage Member List</h5>
-        <div class="table-responsive text-nowrap" id="resultData"><table class="table">
+        <div class="table-responsive text-nowrap" id="resultData">
+            <table class="table">
     <caption class="d-none">&nbsp;&nbsp; Result Data</caption>
     <thead>
         <tr class="text-nowrap">
         <th scope="col">Reg ID</th>
-        <th scope="col">Name</th>          
-        <th scope="col">Status</th>
+        <th scope="col">Name</th> 
+        <th scope="col">Images</th>         
         <th scope="col">Plan Name</th>
-        <th scope="col">Marriage Date</th>
-        <th scope="col">Images</th>
+        <th scope="col">Status</th>
         <th scope="col">View</th>
         <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
            
-            <tr>
-            <td>NI-327945</td>
-            <td>Astha</td>
-            <td className='txt-success'>Completed</td>
-            <td>Gold</td>
-            <td>2023-12-22</td>
-            <td><img src={Lady} height={40} alt="" class="w-px-40 rounded-circle"/></td>
-            <td><Link to="/Viewmember"><FaEye  class="bx bxs-edit"/></Link></td>
+    {data.map(item => (
+        <tr key={item.id}>
+            <td>{item.reg_id}</td>
+            <td>{item.name}</td>
+            <td><img src={item.image} height={40} alt="User Profile" class="w-px-40 rounded-circle"/></td>
+            <td>
+            <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" type="button" id={`dropdownMenuButton${item.id}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {item.plan}
+                </button>
+                <div className="dropdown-menu" aria-labelledby={`dropdownMenuButton${item.id}`}>
+                  {plans.map(plan => (
+                    <button key={plan} className="dropdown-item" onClick={() => handlePlanChange(item.id, plan)}>{plan}</button>
+                  ))}
+                </div>
+              </div>
+            </td>
+            <td className='txt-success'>{item.status}</td>
+            <td><Link to={`/Viewmember/${item.id}`}><FaEye  class="bx bxs-edit"/></Link></td>
             <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>
-                
-        <tr>
-            <td>NI-377945</td>
-            <td>Hari</td>
-            <td className='txt-danger'>Pending</td>
-            <td>Basic</td>
-            <td>2023-12-22</td>
-            <td><img src={Men} height={40} alt="" class="w-px-40 rounded-circle"/></td>
-            <td><Link to="/Viewmember"><FaEye  class="bx bxs-edit"/></Link></td>
-                        <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>
-
-        <tr>
-            <td>MI-327945</td>
-            <td>Ramya</td>
-            <td className='txt-success'>Completed</td>
-            <td>Sliver</td>
-            <td>2023-12-22</td>
-            <td><img src={Lady} height={40} alt="" class="w-px-40 rounded-circle"/></td>
-            <td><Link to="/Viewmember"><FaEye  class="bx bxs-edit"/></Link></td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>
-        <tr>
-            <td>NI-327945</td>
-            <td>Astha</td>
-            <td className='txt-danger'>Pending</td>
-            <td>Gold</td>
-            <td>2023-12-22</td>
-            <td><img src={Lady}  height={40} alt="" class="w-px-40 rounded-circle"/></td>
-            <td><Link to="/Viewmember"><FaEye  class="bx bxs-edit"/></Link></td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>
-        <tr>
-            <td>NI-327945</td>
-            <td>Astha</td>
-            <td className='txt-success'>Completed</td>
-            <td>Gold</td>
-            <td>2023-12-22</td>
-            <td><img src={Men} alt="" class="w-px-40 h-auto rounded-circle"/></td>
-            <td><Link to="/Viewmember"><FaEye  class="bx bxs-edit"/></Link></td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15"> <MdDelete class="bx bxs-edit" />Delete</a></td>
-        </tr>    
+            <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
+               </tr>
+                ))}   
             </tbody>
 </table>
 </div>

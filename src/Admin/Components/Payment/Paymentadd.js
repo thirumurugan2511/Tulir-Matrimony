@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import Aside from '../Aside/Aside'
@@ -8,6 +8,49 @@ import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 
 const Paymentadd = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        amount: '',
+        validity: '',
+        description: ''
+      });
+      const [showAlert, setShowAlert] = useState(false);
+    
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+          ...prevState,
+          [name]: value
+        }));
+      };
+    
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          const response = await fetch('https://tulirmatrimony.com/controlapi/addplan.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          });
+          setFormData(''); 
+          setShowAlert(true);
+          setTimeout(() => {
+              setShowAlert(false);
+          }, 2000);
+
+          const data = await response.json();
+          console.log(data);
+          // Handle success or error response here
+
+      } catch (error) {
+          console.error('Error:', error);
+      }
+  };
+  const handleGoBack = () => {
+    window.history.back();
+};
   return (
     <>
       <div class="layout-wrapper layout-content-navbar">
@@ -83,60 +126,43 @@ const Paymentadd = () => {
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form id="addEditForm" name="addEditForm" action="https://gloriousmatrimonial.com/admin/success-story/addEdit" method="POST"
-                        enctype="multipart/form-data">
-                        <input type="hidden" name="_token" value="QmQajZaby0jhK1w27Zi2q032b38lFxQusYolpel3"/>                        
-                        <div class="mb-3 text-start">
-
-                                </div>
-
-                                <div class="col-sm-4">
-
-                                    
-
-                                </div><div class="mb-3 text-start">
-
-                                        <label class="form-label" for="bridename">Plan Name <span class="Form__Error">*</span></label>
-
-                                        <input   type="text"  required  class="form-control required" id="bridename" name="bridename" placeholder="Plan Name"   />
-
-                                    </div><div class="mb-3 text-start">
-
-                                        <label class="form-label" for="brideid">Plan Amount <span class="Form__Error">*</span></label>
-
-                                        <input  onchange="return check_brideid_groomid(1);" type="text"  required  class="form-control required" id="brideid" name="brideid" placeholder="Plan Amount"   />
-
-                                    </div><div class="mb-3 text-start">
-
-                                        <label class="form-label" for="groomname">Plan Validity <span class="Form__Error">*</span></label>
-
-                                        <input   type="text"  required  class="form-control required" id="groomname" name="groomname" placeholder="Plan Validity"  />
-
-                                    </div><div class="mb-3 text-start">
-
-                                    <label class="form-label" for="successmessage">Plan Description </label>
-
-                                    <textarea  minlength="Success Message"  id="successmessage" name="successmessage" class="form-control " placeholder="Plan Description"></textarea>
-
-                                </div>
-                                {/* <div class="mb-3 text-start"> <label class="form-label">Status &nbsp;&nbsp;</label><input     name="status" id="APPROVED" class="form-check-input " type="radio" value="APPROVED" />
-
-                                <label class="form-label" for="APPROVED">APPROVED</label> &nbsp;<input     name="status" id="UNAPPROVED" class="form-check-input " type="radio" value="UNAPPROVED" />
-
-                                <label class="form-label" for="UNAPPROVED">UNAPPROVED</label> &nbsp;</div> */}
-                                <input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.successStory.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn"
-                            id="formSubmitBtn">Submit</button>
+                <form onSubmit={handleSubmit}>
+                      <div className="mb-3 text-start">
+                        <label className="form-label" htmlFor="name">Plan Name <span className="Form__Error">*</span></label>
+                        <input type="text" required className="form-control required" id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Plan Name" />
+                      </div>
+                      <div className="mb-3 text-start">
+                        <label className="form-label" htmlFor="amount">Plan Amount <span className="Form__Error">*</span></label>
+                        <input type="text" required className="form-control required" id="amount" name="amount" value={formData.amount} onChange={handleChange} placeholder="Plan Amount" />
+                      </div>
+                      <div className="mb-3 text-start">
+                        <label className="form-label" htmlFor="validity">Plan Validity <span className="Form__Error">*</span></label>
+                        <input type="text" required className="form-control required" id="validity" name="validity" value={formData.validity} onChange={handleChange} placeholder="Plan Validity" />
+                      </div>
+                      <div className="mb-3 text-start">
+                        <label className="form-label" htmlFor="description">Plan Description</label>
+                        <textarea id="description" name="description" className="form-control" value={formData.description} onChange={handleChange} placeholder="Plan Description"></textarea>
+                      </div>
+                      <button type="submit" className="btn btn-primary">Submit</button>
                     </form>
                 </div>
+                {showAlert && (
+                     <div id="success-alert" className="alert m-4 alert-success m-auto mb-3" style={{ backgroundColor: '#28a745', color: 'white', width:'70%' }} role="alert">
+                                                    Record added successfully.
+                     </div>
+                )}
+                                           
             </div>
         </div>
     </div>
 </div>
+<Link to="#" className="btn btn-secondary m-4" onClick={handleGoBack}> Go Back PaymentList </Link>
+
            </div>
            <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link">© Copyright 2023-2024 By Aathesh Soft. All Rights Reserved.</a>
+                            <a href="" class="footer-link">© Copyright 2023-2024 By Aathesh Soft. All Rights Reserved.</a>
                         </div>
                     </div>
                 </footer>

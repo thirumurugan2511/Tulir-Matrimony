@@ -26,7 +26,7 @@ const Stories = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch('https://tulirmatrimony.com/controlapi/successist.php');
+          const response = await fetch('https://tulirmatrimony.com/controlapi/successlist.php');
           const result = await response.json();
           console.log(result)
           setData(result.body);
@@ -37,6 +37,22 @@ const Stories = () => {
   
       fetchData();
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+        await fetch(`https://tulirmatrimony.com/controlapi/deletesuccess.php`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id }),
+        });
+        // Assuming successful deletion, update the state to reflect the changes
+        setData(data.filter(item => item.id !== id));
+    } catch (error) {
+        console.error('Error deleting data:', error);
+    }
+};
     
   return (
     <>
@@ -95,7 +111,7 @@ const Stories = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <Link class="dropdown-item" href="/Signin">
+                                                                        <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
@@ -151,7 +167,7 @@ const Stories = () => {
                 <td>{item.marriage_date}</td> 
                 <td>{item.message}</td> 
                 <td><a href="/religion/edit/15" className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-                <a href="/religion/edit/15" className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</a></td>
+                <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
                 ))}
 

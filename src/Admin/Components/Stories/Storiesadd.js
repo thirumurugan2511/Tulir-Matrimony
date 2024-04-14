@@ -11,49 +11,48 @@ import { LuLogOut } from "react-icons/lu";
 
 const Storiesadd = () => {
     const [formData, setFormData] = useState({
-        username:"",
-        password:"",
-        email:"",
-        description:""
-          });
-        
-          const handleChange = (e) => {
-            const { name, value } = e.target;
-            setFormData(prevState => ({
-              ...prevState,
-              [name]: value
-            }));
-          };
-        
-          const handleSubmit = (e) => {
-            e.preventDefault();
-            console.log(formData)
-            
-            fetch('https://tulirmatrimony.com/controlapi/adduser.php', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(formData)
-              
-            })
-            .then(response => response.json())
-            .then(data => {
-              console.log(data); // handle response from the server
-              // Reset form fields after successful submission if needed
-              setFormData({
-                username: '',
-                password: '',
-                email: '',
-                description: ''
-              });
-            })
-            .catch(error => {
-              console.error('Error:', error);
+        weddingphoto: '',
+        bridename: '',
+        brideid: '',
+        groomname: '',
+        groomid: '',
+        marriagedate: '',
+        successmessage: ''
+    });
+    const [showAlert, setShowAlert] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('https://tulirmatrimony.com/controlapi/addsuccess.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
             });
-          };
-        
-        
+            setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 2000);
+
+            const data = await response.json();
+            console.log(data);
+            // Handle success or error response here
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+   
         
   return (
     <>
@@ -111,7 +110,7 @@ const Storiesadd = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <Link class="dropdown-item" to="/Signin">
+                                <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
@@ -130,77 +129,47 @@ const Storiesadd = () => {
         <div class="col-xl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form id="addEditForm" name="addEditForm" action="https://gloriousmatrimonial.com/admin/success-story/addEdit" method="POST"
-                        enctype="multipart/form-data">
-                        <input type="hidden" name="_token" value="QmQajZaby0jhK1w27Zi2q032b38lFxQusYolpel3"/>                        
-                        <div class="mb-3 text-start">
-
-                                    <label class="form-label" for="weddingphoto">Upload Your Wedding Photo <span class="Form__Error">*</span></label>
-
-                                    <input   required  name="weddingphoto" class="form-control required" placeholder="Upload Your Wedding Photo"  type="file" id="weddingphoto" />
-
-                                    <input type="hidden" name="weddingphoto_val" id="weddingphoto_val"  />
-
-                                    <input type="hidden" name="weddingphoto_path" id="weddingphoto_path" value="assets/success_story/" />
-
-                                    <input type="hidden" name="weddingphoto_ext" id="weddingphoto_ext" value="jpg,png,jpeg,gif,bmp" />
-
-
-                        </div>
-
-                                <div class="col-sm-4">
-
-                                    
-
-                                </div><div class="mb-3 text-start">
-
-                                        <label class="form-label" for="bridename">Bride's Name <span class="Form__Error">*</span></label>
-
-                                        <input   type="text"  required  class="form-control required" id="bridename" name="bridename" placeholder="Bride's Name"   />
-
-                                    </div><div class="mb-3 text-start">
-
-                                        <label class="form-label" for="brideid">Bride's ID <span class="Form__Error">*</span></label>
-
-                                        <input  onchange="return check_brideid_groomid(1);" type="text"  required  class="form-control required" id="brideid" name="brideid" placeholder="Bride's ID"   />
-
-                                    </div><div class="mb-3 text-start">
-
-                                        <label class="form-label" for="groomname">Groom's Name <span class="Form__Error">*</span></label>
-
-                                        <input   type="text"  required  class="form-control required" id="groomname" name="groomname" placeholder="Groom's Name"   />
-
-                                    </div><div class="mb-3 text-start">
-
-                                        <label class="form-label" for="groomid">Groom's Id <span class="Form__Error">*</span></label>
-
-                                        <input  onchange="return check_brideid_groomid(2);" type="text"  required  class="form-control required" id="groomid" name="groomid" placeholder="Groom's Id"   />
-
-                                    </div><div class="mb-3 text-start">
-
-                                        <label class="form-label" for="marriagedate">Your Marriage Date <span class="Form__Error">*</span></label>
-
-                                        <input class="form-control required" type="date"    id="marriagedate" name="marriagedate"/>
-
-                                    </div><div class="mb-3 text-start">
-
-                                    <label class="form-label" for="successmessage">Success Message </label>
-
-                                    <textarea  minlength="Success Message"  id="successmessage" name="successmessage" class="form-control " placeholder="Success Message"></textarea>
-
-                                </div>
-                                {/* <div class="mb-3 text-start"> <label class="form-label">Status &nbsp;&nbsp;</label><input     name="status" id="APPROVED" class="form-check-input " type="radio" value="APPROVED" />
-
-                                <label class="form-label" for="APPROVED">APPROVED</label> &nbsp;<input     name="status" id="UNAPPROVED" class="form-check-input " type="radio" value="UNAPPROVED" />
-
-                                <label class="form-label" for="UNAPPROVED">UNAPPROVED</label> &nbsp;</div> */}
-                                <input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.successStory.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn"
-                            id="formSubmitBtn">Submit</button>
-                    </form>
+                <form onSubmit={handleSubmit}>
+                                                    <div className="mb-3 text-start">
+                                                        <label className="form-label" htmlFor="weddingphoto">Upload Your Wedding Photo <span className="Form__Error">*</span></label>
+                                                        <input required name="weddingphoto" className="form-control required" placeholder="Upload Your Wedding Photo" type="file" id="weddingphoto" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="mb-3 text-start">
+                                                        <label className="form-label" htmlFor="bridename">Bride's Name <span className="Form__Error">*</span></label>
+                                                        <input type="text" required className="form-control required" id="bridename" name="bridename" placeholder="Bride's Name" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="mb-3 text-start">
+                                                        <label className="form-label" htmlFor="brideid">Bride's ID <span className="Form__Error">*</span></label>
+                                                        <input type="text" required className="form-control required" id="brideid" name="brideid" placeholder="Bride's ID" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="mb-3 text-start">
+                                                        <label className="form-label" htmlFor="groomname">Groom's Name <span className="Form__Error">*</span></label>
+                                                        <input type="text" required className="form-control required" id="groomname" name="groomname" placeholder="Groom's Name" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="mb-3 text-start">
+                                                        <label className="form-label" htmlFor="groomid">Groom's Id <span className="Form__Error">*</span></label>
+                                                        <input type="text" required className="form-control required" id="groomid" name="groomid" placeholder="Groom's Id" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="mb-3 text-start">
+                                                        <label className="form-label" htmlFor="marriagedate">Your Marriage Date <span className="Form__Error">*</span></label>
+                                                        <input className="form-control required" type="date" id="marriagedate" name="marriagedate" onChange={handleChange} />
+                                                    </div>
+                                                    <div className="mb-3 text-start">
+                                                        <label className="form-label" htmlFor="successmessage">Success Message</label>
+                                                        <textarea id="successmessage" name="successmessage" className="form-control" placeholder="Success Message" onChange={handleChange}></textarea>
+                                                    </div>
+                                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                                </form>
+                                                {/* Success alert */}
+                                                {showAlert && (
+                                                    <div id="success-alert" className="alert m-4 alert-success" style={{ backgroundColor: '#28a745', color: 'white' }} role="alert">
+                                                        Record added successfully.
+                                                    </div>
+                                                )}
                  
                 </div>
             </div>
-    <div id="success-alert" className="alert mt-4 alert-success" style={{ display: 'block', backgroundColor: '#28a745', color:'white' }} role="alert">
+    <div id="success-alert" className="alert m-4 alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
     Record added successfully.
   </div>
         </div>

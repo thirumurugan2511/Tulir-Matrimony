@@ -30,6 +30,24 @@ const Religion = () => {
         fetchData();
     }, []);
 
+    //Localhost 
+
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await fetch('http://localhost:8000/api/religionlist');
+    //             const result = await response.json();
+    //             console.log(result);
+    //             setData(result.body);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
+
+    //     fetchData();
+    // }, []);
+
     const handleDelete = async (id) => {
         try {
             await fetch(`https://tulirmatrimony.com/controlapi/deletereligion.php`, {
@@ -135,11 +153,9 @@ const Religion = () => {
         <div class="table-responsive text-nowrap" id="resultData"><table class="table">
     <caption class="d-none">&nbsp;&nbsp; Result Data</caption>
     <thead >
-        <tr class="text-nowrap">
+        <tr class="text-nowrap text-start">
             <th scope="col">Religion Name</th>
             <th scope="col">Action</th>
-
-           
         </tr>
     </thead>
     <tbody className='text-start'>
@@ -165,7 +181,7 @@ const Religion = () => {
 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link">© Copyright 2023-2024 By Aathesh Soft. All Rights Reserved.</a>
+                            <a href="" class="footer-link">© Copyright 2023-2024 By Aathesh Soft. All Rights Reserved.</a>
                         </div>
                     </div>
                 </footer>

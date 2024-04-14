@@ -31,6 +31,24 @@ const Sitesettings = () => {
     fetchData();
 
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+        await fetch(`https://tulirmatrimony.com/controlapi/deleteuser.php`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id }),
+        });
+        // Assuming successful deletion, update the state to reflect the changes
+        setData(data.filter(item => item.id !== id));
+    } catch (error) {
+        console.error('Error deleting data:', error);
+    }
+};
+
+
   const [formData, setFormData] = useState({
 username:"",
 password:"",
@@ -137,7 +155,7 @@ description:""
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <Link class="dropdown-item" to="/Sitesetting">
+                                    <Link class="dropdown-item" to="/Sitesettings">
                                         <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>
                                     </Link>
@@ -152,7 +170,7 @@ description:""
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <Link class="dropdown-item" href="/Signin">
+                                                                        <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
@@ -206,7 +224,7 @@ description:""
                                     <input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.religion.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn" id="formSubmitBtn">Submit</button>
                     </form>
                 </div>
-                <div id="success-alert" className="mt-4 alert alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
+                <div id="success-alert" className="m-4 alert alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
     Record added successfully.
   </div>
             </div>
@@ -220,9 +238,10 @@ description:""
    <thead className='text-start'>
        <tr class="text-nowrap">
            <th scope="col">Username</th>
-           <th scope="col">Password</th>
            <th scope="col">Email</th>
+           
            <th scope="col">Description</th>
+           <th scope="col">Action</th>
        </tr>
    </thead>
    <tbody className='text-start'>
@@ -233,7 +252,7 @@ description:""
               <td>{item.email}</td>
               <td>{item.description}</td>
                <td><a href="/religion/edit/15"  className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-<a href="/religion/edit/15" className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</a></td>
+               <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
 </tr>
 
           ))}

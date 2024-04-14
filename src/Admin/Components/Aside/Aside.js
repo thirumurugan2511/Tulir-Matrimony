@@ -136,6 +136,11 @@ const Aside = (props) => {
                                         <div data-i18n="Without menu">Moonsign</div>
                                     </Link>
                                 </li>
+                                <li className="menu-item ">
+                                    <Link to="/Location" className="menu-link ">
+                                        <div data-i18n="Without menu">Location</div>
+                                    </Link>
+                                </li>
                             </ul>
                         )}
                     </li>

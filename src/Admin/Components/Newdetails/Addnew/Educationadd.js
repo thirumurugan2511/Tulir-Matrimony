@@ -22,14 +22,14 @@ const Educationadd = () => {
                 body: JSON.stringify({ name: education }),
                 
             });
-            formRef.current.reset();
+            setEducation('');
     const successAlert = document.getElementById('success-alert');
-      successAlert.style.display = 'block';
+    successAlert.style.display = 'block';
 
       // Hide success message after 5 seconds
       setTimeout(() => {
         successAlert.style.display = 'none';
-      }, 5000);
+      }, 2000);
    
             const data = await response.json();
             console.log(data);
@@ -37,6 +37,9 @@ const Educationadd = () => {
         } catch (error) {
             console.error('Error:', error);
         }
+    };
+    const handleGoBack = () => {
+        window.history.back();
     };
 
   return (
@@ -95,7 +98,7 @@ const Educationadd = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                <Link class="dropdown-item" href="/Signin">
+                                <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
@@ -130,11 +133,12 @@ const Educationadd = () => {
             </div>
         </div>
     </div>
+    <Link to="#" className="btn btn-secondary m-4" onClick={handleGoBack}> Go Back EducationList </Link>
 </div>
                 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link fw-bolder">© Copyright 2023-2024 By Marriage Bureau Script. All Rights Reserved.</a>
+                            <a href="" class="footer-link fw-bolder">© Copyright 2023-2024 By Marriage Bureau Script. All Rights Reserved.</a>
                         </div>
                     </div>
                 </footer>

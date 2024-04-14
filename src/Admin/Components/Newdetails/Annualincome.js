@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom'
 import Aside from '../Aside/Aside'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
@@ -7,6 +8,8 @@ import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import Smallicon from '../../Components/heart-icon.png'
+import { IoMdSettings } from "react-icons/io";
+import { LuLogOut } from "react-icons/lu";
 
 const Annualincome = () => {
     const [data, setData] = useState([]);
@@ -25,6 +28,22 @@ const Annualincome = () => {
   
       fetchData();
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+        await fetch(`https://tulirmatrimony.com/controlapi/deleteincome.php`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id }),
+        });
+        // Assuming successful deletion, update the state to reflect the changes
+        setData(data.filter(item => item.id !== id));
+    } catch (error) {
+        console.error('Error deleting data:', error);
+    }
+};
     
   return (
     <>
@@ -73,20 +92,21 @@ const Annualincome = () => {
                                    <div class="dropdown-divider"></div>
                                </li>
                                <li>
-                                   <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/basic-site-setting">
-                                       <i class="bx bx-cog me-2"></i>
-                                       <span class="align-middle">Settings</span>
-                                   </a>
-                               </li>
-                               <li>
-                                   <div class="dropdown-divider"></div>
-                               </li>
-                               <li>
-                                                                       <a class="dropdown-item" href="https://gloriousmatrimonial.com/admin/logout">
-                                       <i class="bx bx-power-off me-2"></i>
-                                       <span class="align-middle">Log Out</span>
-                                   </a>
-                               </li>
+                                    <Link class="dropdown-item" to="/Sitesettings">
+                                        <IoMdSettings class="bx bx-cog me-2" />
+                                        <span class="align-middle">Settings</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                <Link class="dropdown-item" to="/Signin">
+                                    
+                                        <LuLogOut class="bx bx-power-off me-2" />
+                                        <span class="align-middle">Log Out</span>
+                                    </Link>
+                                </li>
                            </ul>
                        </li>
                    </ul>
@@ -125,7 +145,7 @@ const Annualincome = () => {
             <tr key={item.id}>
                 <td>{item.name}</td>       
                 <td><a href="/religion/edit/15" className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-                <a href="/religion/edit/15" className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</a></td>
+                <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
                 ))}
               
@@ -142,7 +162,7 @@ const Annualincome = () => {
 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link">© Copyright 2023-2024 By Aathesh Soft. All Rights Reserved.</a>
+                            <a href="" class="footer-link">© Copyright 2023-2024 By Aathesh Soft. All Rights Reserved.</a>
                         </div>
                     </div>
                 </footer>

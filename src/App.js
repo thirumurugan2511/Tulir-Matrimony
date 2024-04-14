@@ -39,14 +39,18 @@ import Religionedit from './Admin/Components/Newdetails/Edit/Religionedit';
 import Data from './data'
 import Edituser from './Edituser'
 import User from './User'
+import Location from './Admin/Components/Newdetails/Location';
+import Locationadd from './Admin/Components/Newdetails/Addnew/Locationadd';
+import Addusers from './Addusers';
+import Freereg from './User/Components/Home/Freereg';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-        <Route path="/" element={<Dhome />} />
-          <Route path="/Admin" element={<Admin />} />
+        <Route path="/Dhome" element={<Dhome />} />
+          <Route path="/Admin" element={<Signin />} />
           <Route path="/Aside" element={<Aside />} />
           <Route path="/Stories" element={<Stories />} />
           <Route path="/Dashboard" element={<Dashboard />} />
@@ -73,7 +77,7 @@ function App() {
           <Route path="/Signin" element={<Signin />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Member" element={<Member />} />
-          <Route path="/Viewmember" element={<Viewmember />} />
+          <Route path="/Viewmember/:id" element={<Viewmember />} />
           <Route path="/Paymentadd" element={<Paymentadd />} />
           <Route path="/Banner" element={<Banner />} />
           <Route path="/Aboutus" element={<Aboutus />} />
@@ -82,8 +86,11 @@ function App() {
           <Route path="/data" element={<Data />} />
           <Route path="/Edituser:userId" element={<Edituser />} />
           <Route path="/User" element={<User />} />
-          <Route path="/Religionedit" element={<Religionedit />} />
-
+          <Route path="/Religionedit:userId" element={<Religionedit />} />
+          <Route path="/Location" element={<Location />} />
+          <Route path="/Locationadd" element={<Locationadd />} />
+          <Route path="/Addusers" element={<Addusers />} />
+          <Route path="/" element={<Freereg />} />
 
 
         </Routes>

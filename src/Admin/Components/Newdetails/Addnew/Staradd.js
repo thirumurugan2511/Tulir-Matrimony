@@ -22,7 +22,7 @@ const Staradd = () => {
                 body: JSON.stringify({ name: star }),
                 
             });
-            formRef.current.reset();
+            setStar(''); 
     const successAlert = document.getElementById('success-alert');
       successAlert.style.display = 'block';
 
@@ -37,6 +37,9 @@ const Staradd = () => {
         } catch (error) {
             console.error('Error:', error);
         }
+    };
+    const handleGoBack = () => {
+        window.history.back();
     };
 
   return (
@@ -95,7 +98,7 @@ const Staradd = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                <Link class="dropdown-item" href="/Signin">
+                                <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
@@ -124,17 +127,18 @@ const Staradd = () => {
                                     </div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.Star.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn" id="formSubmitBtn">Submit</button>
                     </form>
                 </div>
-                <div id="success-alert" className="alert m-4 alert-success" style={{ display: 'block', backgroundColor: '#28a745', color:'white' }} role="alert">
+                <div id="success-alert" className="alert m-4 alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
     Record added successfully.
                 </div>
             </div>
         </div>
     </div>
+    <Link to="#" className="btn btn-secondary m-4" onClick={handleGoBack}> Go Back StarList </Link>
 </div>
                 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link fw-bolder">© Copyright 2023-2024 By Marriage Bureau Script. All Rights Reserved.</a>
+                            <a href="" class="footer-link fw-bolder">© Copyright 2023-2024 By Marriage Bureau Script. All Rights Reserved.</a>
                         </div>
                     </div>
                 </footer>

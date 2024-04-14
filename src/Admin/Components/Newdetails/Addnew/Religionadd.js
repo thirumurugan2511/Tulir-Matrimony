@@ -9,13 +9,11 @@ import { LuLogOut } from "react-icons/lu";
 
 const Religionadd = () => {
     const [religionName, setReligionName] = useState('');
-    const [submitting, setSubmitting] = useState(false); // State to track form submission
+    const [showAlert, setShowAlert] = useState(false); // State to manage alert visibility
     const formRef = useRef(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (submitting) return; // Prevent duplicate submissions
-        setSubmitting(true); // Set submitting state to true
         try {
             const response = await fetch('https://tulirmatrimony.com/controlapi/addreligion.php', {
                 method: 'POST',
@@ -25,20 +23,25 @@ const Religionadd = () => {
                 body: JSON.stringify({ name: religionName }),
             });
             formRef.current.reset();
-            const data = await response.json();
-            console.log(data);
-            // Handle success or error response here
-            // Reset form and set submitting state to false after 5 seconds
-            setTimeout(() => {
-                setReligionName(''); // Clear the form field
-                setSubmitting(false); // Reset submitting state
-            }, 1000);
-        } catch (error) {
-            console.error('Error:', error);
-            setSubmitting(false); // Reset submitting state
-        }
+            setReligionName(''); 
+            const successAlert = document.getElementById('success-alert');
+              successAlert.style.display = 'block';
+        
+              // Hide success message after 5 seconds
+              setTimeout(() => {
+                successAlert.style.display = 'none';
+              }, 2000);
+           
+                    const data = await response.json();
+                    console.log(data);
+                    // Handle success or error response here
+                } catch (error) {
+                    console.error('Error:', error);
+                }
     };
-
+    const handleGoBack = () => {
+        window.history.back();
+    };
 
   return (
     <>
@@ -96,7 +99,7 @@ const Religionadd = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                <Link class="dropdown-item" href="/Signin">
+                                <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
@@ -121,7 +124,7 @@ const Religionadd = () => {
                                         <label class="form-label" for="religion_name">Religion Name <span class="Form__Error">*</span></label>
 
                                         <input type="text" className="form-control required" id="religion_name" name="religion_name" placeholder="Religion Name" value={religionName} onChange={(e) => setReligionName(e.target.value)} />
-                                    </div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.religion.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn" disabled={submitting} id="formSubmitBtn">Submit</button>
+                                    </div><input type="hidden" name="callbackUrl" id="callbackUrl" value="admin.religion.index"/><input type="hidden" name="mode" id="mode" value="add"/>                        <button type="submit" class="btn btn-primary formSubmitBtn"  id="formSubmitBtn">Submit</button>
                     </form>
                 </div>
                 <div id="success-alert" className="alert m-4 alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
@@ -130,11 +133,12 @@ const Religionadd = () => {
             </div>
         </div>
     </div>
+    <Link to="#" className="btn btn-secondary m-4" onClick={handleGoBack}> Go Back ReligionList </Link>
 </div>
                 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link fw-bolder">© Copyright 2023-2024 By Aathesh soft. All Rights Reserved.</a>
+                            <a href="" class="footer-link fw-bolder">© Copyright 2023-2024 By Aathesh soft. All Rights Reserved.</a>
                         </div>
                     </div>
                 </footer>

@@ -7,60 +7,110 @@ import { LuLogOut } from "react-icons/lu";
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 
-const Casteadd = () => {
+const Locationadd = () => {
     const [data, setData] = useState([]);
     const [selectedReligion, setSelectedReligion] = useState('');
     const [casteName, setCasteName] = useState('');
+    // State variable to hold the selected state
+    const [selectedState, setSelectedState] = useState('');
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('https://tulirmatrimony.com/controlapi/religionlist.php');
-                const result = await response.json();
-                setData(result.body);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+    // List of states in India
+    const statesInIndia = [
+        { id: 1, name: 'Andhra Pradesh' },
+        { id: 2, name: 'Arunachal Pradesh' },
+        { id: 3, name: 'Assam' },
+        { id: 4, name: 'Bihar' },
+        { id: 5, name: 'Chhattisgarh' },
+        { id: 6, name: 'Goa' },
+        { id: 7, name: 'Gujarat' },
+        { id: 8, name: 'Haryana' },
+        { id: 9, name: 'Himachal Pradesh' },
+        { id: 10, name: 'Jharkhand' },
+        { id: 11, name: 'Karnataka' },
+        { id: 12, name: 'Kerala' },
+        { id: 13, name: 'Madhya Pradesh' },
+        { id: 14, name: 'Maharashtra' },
+        { id: 15, name: 'Manipur' },
+        { id: 16, name: 'Meghalaya' },
+        { id: 17, name: 'Mizoram' },
+        { id: 18, name: 'Nagaland' },
+        { id: 19, name: 'Odisha' },
+        { id: 20, name: 'Punjab' },
+        { id: 21, name: 'Rajasthan' },
+        { id: 22, name: 'Sikkim' },
+        { id: 23, name: 'Tamil Nadu' },
+        { id: 24, name: 'Telangana' },
+        { id: 25, name: 'Tripura' },
+        { id: 26, name: 'Uttar Pradesh' },
+        { id: 27, name: 'Uttarakhand' },
+        { id: 28, name: 'West Bengal' },
+        { id: 29, name: 'Andaman and Nicobar Islands' },
+        { id: 30, name: 'Chandigarh' },
+        { id: 31, name: 'Dadra and Nagar Haveli and Daman and Diu' },
+        { id: 32, name: 'Delhi' },
+        { id: 33, name: 'Lakshadweep' },
+        { id: 34, name: 'Puducherry' },
+    ];
 
-        fetchData();
-    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const selectedReligionData = data.find(religion => religion.id === selectedReligion);
-            if (!selectedReligionData) {
-                console.error('Selected religion not found');
+            // Extract district name from the form input
+            const districtName = document.getElementById('district_name').value;
+    
+            // Check if a state is selected
+            if (!selectedState) {
+                // Handle the case where no state is selected
+                console.error('Please select a state');
                 return;
             }
-
-            const response = await fetch('https://tulirmatrimony.com/controlapi/addcaste.php', {
+    
+            // Find the selected state object
+            const selectedStateObject = statesInIndia.find(state => state.id === parseInt(selectedState));
+    
+            // Check if a state is found
+            if (!selectedStateObject) {
+                // Handle the case where the selected state is not found
+                console.error('Selected state not found');
+                return;
+            }
+    
+            // Prepare the request body
+            const requestBody = {
+                state_id: selectedStateObject.id,
+                state_name: selectedStateObject.name,
+                district_name: districtName
+            };
+    
+            // Make the API request
+            const response = await fetch('https://tulirmatrimony.com/controlapi/adddistrict.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    religion_Id: selectedReligion,
-                    religion_name: selectedReligionData.name, // Fetch the religion name based on ID
-                    caste_name: casteName
-                }),
+                body: JSON.stringify(requestBody),
             });
-            setCasteName('');
+    
+            // Clear the input field after submission
+            document.getElementById('district_name').value = '';
+    
             const successAlert = document.getElementById('success-alert');
-              successAlert.style.display = 'block';
-        
-              // Hide success message after 5 seconds
-              setTimeout(() => {
+            successAlert.style.display = 'block';
+    
+            // Hide success message after 5 seconds
+            setTimeout(() => {
                 successAlert.style.display = 'none';
-              }, 2000);
-            const result = await response.json();
-            console.log(result);
-            // You can handle success response here
+            }, 2000);
+    
+            const data = await response.json();
+            console.log(data);
+            // Handle success or error response here
         } catch (error) {
-            console.error('Error adding caste:', error);
+            console.error('Error:', error);
         }
     };
+    
     const handleGoBack = () => {
         window.history.back();
     };
@@ -80,7 +130,7 @@ const Casteadd = () => {
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                    <ol class="breadcrumb breadcrumb-style2 mb-0">
                    <li><MdManageHistory  class="bx bx-user me-2"/></li>
-                   <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Caste </li>
+                   <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Location </li>
                    </ol>
                    <ul class="navbar-nav flex-row align-items-center ms-auto">
                        <li class="nav-item lh-1 me-3">
@@ -141,28 +191,26 @@ const Casteadd = () => {
                 <div class="card-body">
                 <form id="addEditForm" name="addEditForm" onSubmit={handleSubmit}>
                 <div className="mb-3 text-start">
-                    <label className="form-label" htmlFor="religion_name">Religion Name <span className="Form__Error">*</span></label>
-                    <select className="form-select" required aria-label="Default select example" value={selectedReligion} onChange={(e) => setSelectedReligion(e.target.value)}>
-                        <option value="">Select Religion</option>
-                        {data.map(religion => (
-                            <option key={religion.id} value={religion.id}>{religion.name}</option>
+                    <label className="form-label" htmlFor="religion_name">State Name <span className="Form__Error">*</span></label>
+                    <select className="form-select" required aria-label="Default select example" value={selectedState} onChange={(e) => setSelectedState(e.target.value)}>
+                        <option value="">Select State</option>
+                        {/* Map through the states and generate options */}
+                        {statesInIndia.map(state => (
+                            <option key={state.id} value={state.id}>{state.name}</option>
                         ))}
                     </select>
                 </div>
                 <div className="mb-3 text-start">
-                    <label className="form-label" htmlFor="caste_name">Caste Name <span className="Form__Error">*</span></label>
-                    <input type="text" required className="form-control required" id="caste_name" name="caste_name" value={casteName} onChange={(e) => setCasteName(e.target.value)} placeholder="Caste Name" />
+                    <label className="form-label" htmlFor="district_name">District Name <span className="Form__Error">*</span></label>
+                    <input type="text" required className="form-control required" id="district_name" name="district_name" placeholder="district Name" />
                 </div>
                 <button type="submit" className="btn btn-primary formSubmitBtn" id="formSubmitBtn">Submit</button>
             </form>
                 </div>
-                <div id="success-alert" className="alert m-4 alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
-    Record added successfully.
-                </div>
             </div>
         </div>
     </div>
-    <Link to="#" className="btn btn-secondary m-4" onClick={handleGoBack}> Go Back CasteList  </Link>
+    <Link to="#" className="btn btn-secondary m-4" onClick={handleGoBack}> Go Back Location List  </Link>
 
 </div>
                 <footer class="content-footer footer bg-footer-theme">
@@ -180,4 +228,4 @@ const Casteadd = () => {
   )
 }
 
-export default Casteadd
+export default Locationadd

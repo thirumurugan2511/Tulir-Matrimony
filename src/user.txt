@@ -1,0 +1,475 @@
+import React, { useState, useEffect } from 'react';
+import Aside from './Admin/Components/Aside/Aside'
+import { useParams } from 'react-router-dom';
+import { GrUserAdmin } from "react-icons/gr";
+import { IoMdSettings } from "react-icons/io";
+import { MdManageHistory } from "react-icons/md";
+import { LuLogOut } from "react-icons/lu";
+import { Link } from "react-router-dom";
+import { MdPostAdd } from "react-icons/md";
+import Smallicon from './Admin/Components/heart-icon.png'
+
+
+const User = () => {
+  const [regId, setRegId] = useState('');
+  const [options, setOptions] = useState({});
+  
+
+  useEffect(() => {
+    // Fetch dropdown options when component mounts
+    fetchDropdownOptions('marriage_type');
+    fetchDropdownOptions('religion');
+    fetchDropdownOptions('cast');
+    fetchDropdownOptions('moonsign');
+    fetchDropdownOptions('star');
+    fetchDropdownOptions('education');
+    fetchDropdownOptions('occupaction');
+    fetchDropdownOptions('employee');
+    fetchDropdownOptions('annual_income');
+  }, []);
+  
+  // Function to generate a unique registration ID
+  const generateRegId = () => {
+    const date = new Date();
+    const year = date.getFullYear().toString().substr(2);
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const randomNum = Math.floor(1000 + Math.random() * 9000); // Generates a random 4-digit number
+    const newRegId = `TULR${year}${month}${day}${randomNum}`;
+    setRegId(newRegId);
+  };
+  console.log(regId);
+  
+
+
+  const initialFormData = {
+    "section1": {
+      "reg_id": "",
+      "gender": "",
+      "name": "",
+      "email": "",
+      "phonenumber": "",
+      "password": "",
+      "mother_tongue": "",
+      "dob": "",
+      "marriage_type": "",
+      "status_children": "",
+      
+      "image": "",
+      "religion": "",
+      "cast": "",
+      "subcast": "",
+      "sevaikiragam": "",
+      "gothram": "",
+      "moonsign": "",
+      "star": "",
+      "birthplace": "",
+      "birthtime": "",
+      "education":"",
+      "education_details":"",
+      "occupaction":"",
+      "employee":"",
+      "annual_income":"",
+
+    },
+    "section2": {
+      "country": "",
+      "state": "",
+      "city": "",
+      "residece": "",
+      "alternatenumber": "",
+      "nricountry": "",
+      "address": ""
+    },
+    "section3": {
+      "height": "",
+      "weight": "",
+      "food_habits": "",
+      "smoking": "",
+      "drinking": "",
+      "body_type": "",
+      "skin_tone": "",
+      "profile_by": "",
+      "aboutme": ""
+    },
+    "section4": {
+      "family_type": "",
+      "family_status": "",
+      "father_name": "",
+      "father_occupation": "",
+      "mother_name": "",
+      "mother_occupation": "",
+      "brothers_count": "",
+      "sisters_count": "",
+      "brother_married": "",
+      "sister_married": "",
+      "family_details": ""
+    },
+    "section5": {
+      "patner_from_age": "",
+      "patner_to_age": "",
+      "patner_height": "",
+      "patner_weight": "",
+      "patner_religion": "",
+      "patner_cast": "",
+      "patner_country": "",
+      "patner_state": "",
+      "patner_matrial_status": "",
+      "patner_education": "",
+      "patner_occupation": "",
+      "patner_mother_tongue": "",
+      "patner_manglik": "",
+      "patner_salary": "",
+      "patner_child_count": ""
+    }
+  };
+  const labelTranslations = {
+    "reg_id": "பதிவு ஐடி",
+    "name": "பெயர்",
+    "image": "படம்",
+    "gender": "பாலினம்",
+    "email": "மின்னஞ்சல்",
+    "phonenumber": "தொலைபேசி எண்",
+    "password": "கடவுச்சொல்",
+    "mother_tongue": "தாய்மொழி",
+    "dob": "பிறந்த தேதி",
+    "marriage_type": "திருமண வகை",
+    "status_children": "குழந்தைகளின் நிலை",
+    "religion": "மதம்",
+    "cast": "சாதி",
+    "subcast": "உபசாதி",
+    "sevaikiragam": "சேவைக்கிரகம்",
+    "gothram": "கோத்ரம்",
+    "moonsign": "நக்ஷத்திரம்",
+    "star": "நட்சத்திரம்",
+    "birthplace": "பிறந்த இடம்",
+    "birthtime": "பிறந்த நேரம்",
+    "education":"கல்வி",
+    "education_details":"கல்வி விவரங்கள்",
+    "occupaction":"தொழில்முனை",
+    "employee":"பணியாளர்",
+    "annual_income":"ஆண்டுத் தொகை", 
+    "country": "நாடு",
+    "state": "மாநிலம்",
+    "city": "நகரம்",
+    "residece": "வாசகம்",
+    "alternatenumber": "மாற்று எண்",
+    "nricountry": "குழந்தைகளின் நிலை",
+    "address": "முகவரி",
+    "height": "உயரம்",
+    "weight": "எடை",
+    "food_habits": "உணவு நன்மைகள்",
+    "smoking": "புகைப்படுத்தும் அலட்சியம்",
+    "drinking": "குடிப்பதம்",
+    "body_type": "உடல் வடிவம்",
+    "skin_tone": "தோல் நிறம்",
+    "profile_by": "பட்டியல்",
+    "aboutme": "என்ன பற்றி",
+    "family_type": "குடும்ப வகை",
+    "family_status": "குடும்ப நிலை",
+    "father_name": "தந்தை பெயர்",
+    "father_occupation": "தந்தை பணி",
+    "mother_name": "தாய் பெயர்",
+    "mother_occupation": "தாய் பணி",
+    "brothers_count": "சகோதரர் எண்ணிக்கை",
+    "sisters_count": "சகோதரி எண்ணிக்கை",
+    "brother_married": "சகோதரர் திருமணம்",
+    "sister_married": "சகோதரி திருமணம்",
+    "family_details": "குடும்ப விவரங்கள்",
+    "patner_from_age": "உறவினர் வயது வரி",
+    "patner_to_age": "உறவினர் வயது வரி",
+    "patner_height": "உயரம்",
+    "patner_weight": "எடை",
+    "patner_religion": "மதம்",
+    "patner_cast": "சாதி",
+    "patner_country": "நாடு",
+    "patner_state": "மாநிலம்",
+    "patner_matrial_status": "திருமணம் நிலை",
+    "patner_education": "கல்வி",
+    "patner_occupation": "பணி",
+    "patner_mother_tongue": "தாய்மொழி",
+    "patner_manglik": "மங்கலிக்",
+    "patner_salary": "சம்பளம்",
+    "patner_child_count": "குழந்தைகளின் எண்ணிக்கை"
+  };
+  const fieldTypeMapping = {
+    reg_id: 'text',
+    name: 'text',
+    image: 'file',
+    gender: 'text',
+    email: 'email',
+    phonenumber: 'tel',
+    password: 'password',
+    dob: 'date',
+    // Add more field names and their corresponding input types as needed
+  };
+  const sectionNames = {
+    section1: 'Basic Details',
+    section2: 'Residence',
+    section3: 'Physical Info',
+    section4: 'Family Details',
+    section5: 'Partner Preferences'
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+  const [currentSection, setCurrentSection] = useState('section1');
+  const [customerData, setCustomerData] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+  
+    // Check if the value is empty for required fields
+    if (['reg_id', 'name', 'email', 'gender', 'phonenumber', 'password', 'dob'].includes(name) && value.trim() === '') {
+      // You can display an error message or take any other action here
+      return;
+    }
+  
+    setFormData(prevState => ({
+      ...prevState,
+      [currentSection]: {
+        ...prevState[currentSection],
+        [name]: value
+      }
+    }));
+  };
+
+  const handleNext = () => {
+    const sections = Object.keys(formData);
+    const currentIndex = sections.indexOf(currentSection);
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < sections.length) {
+      setCurrentSection(sections[nextIndex]);
+    }
+  };
+  const fetchDropdownOptions = async (fieldName) => {
+    try {
+      const response = await fetch('API_ENDPOINT');
+      if (response.ok) {
+        const responseData = await response.json();
+        const options = responseData.body.map(item => ({ value: item.id, label: item.name }));
+        setOptions(prevOptions => ({
+          ...prevOptions,
+          [fieldName + 'Options']: options
+        }));
+      } else {
+        console.error('Failed to fetch dropdown options');
+      }
+    } catch (error) {
+      console.error('Error fetching dropdown options:', error);
+    }
+  };
+  const handleSubmit = async () => {
+    try {
+      // Combine all section data into one object
+      const combinedData = Object.values(formData).reduce((acc, sectionData) => {
+        return { ...acc, ...sectionData };
+      }, {});
+  
+      // Include regId in the combinedData object
+      combinedData.reg_id = regId;
+
+      // Store combined data in localStorage
+      localStorage.setItem('formData', JSON.stringify(combinedData));
+
+      // Optionally, you can also send data to the server here
+      const response = await fetch('https://tulirmatrimony.com/controlapi/addcustomer.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(combinedData)
+    });
+
+    // Handle the response from your Node.js server
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log('Data sent successfully:', responseData);
+      // Optionally, you can reset the form data and handle any further actions here
+    } else {
+      console.error('Failed to send data');
+    }
+
+      // Reset formData and navigate to the next page
+      setFormData(initialFormData);
+      setCurrentSection('section1');
+      setCustomerData(combinedData);
+    } catch (error) {
+      console.error('Error submitting data:', error);
+    }
+  };
+
+  useEffect(() => {
+    // Fetch customer list data when component mounts
+    generateRegId();
+  }, []);
+
+  const fetchCustomerList = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/api/data/customerlist');
+      if (response.ok) {
+        const responseData = await response.json();
+        if (responseData.body && Array.isArray(responseData.body)) {
+          // Handle fetched customer list data
+        } else {
+          console.error('Fetched data body is not an array:', responseData);
+        }
+      } else {
+        console.error('Failed to fetch customer list');
+      }
+    } catch (error) {
+      console.error('Error fetching customer list:', error);
+    }
+  };
+  const handleBack = () => {
+    const sections = Object.keys(formData);
+    const currentIndex = sections.indexOf(currentSection);
+    const previousIndex = currentIndex - 1;
+    if (previousIndex >= 0) {
+      setCurrentSection(sections[previousIndex]);
+    }
+  };
+  
+
+  return (
+    <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+    <Aside />
+     <div class="layout-page">
+             <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached
+             align-items-center bg-navbar-theme" id="layout-navbar">
+                 <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                     <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                         <i class="bx bx-menu bx-sm"></i>
+                     </a>
+                 </div>
+                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                     <ol class="breadcrumb breadcrumb-style2 mb-0">
+                     <li><MdManageHistory  class="bx bx-user me-2"/></li>
+ <li class="breadcrumb-item" style={{padding: '2px 10px'}}>  Manage Member </li>
+                     </ol>
+                     <ul class="navbar-nav flex-row align-items-center ms-auto">
+                         <li class="nav-item lh-1 me-3">
+                         <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
+                                                     </li>
+                                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                 <div class="avatar avatar-online">
+                                     <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
+                                 </div>
+                             </a>
+                             <ul class="dropdown-menu dropdown-menu-end">
+                                 <li>
+                                     <a class="dropdown-item" href="#">
+                                         <div class="d-flex">
+                                             <div class="flex-shrink-0 me-3">
+                                                 <div class="avatar avatar-online">
+                                                     <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
+                                                 </div>
+                                             </div>
+                                             <div class="flex-grow-1">
+                                                 <span class="fw-semibold d-block mt-2">Admin</span>
+                                             </div>
+                                         </div>
+                                     </a>
+                                 </li>
+                                 <li>
+                                     <div class="dropdown-divider"></div>
+                                 </li>
+                                 <li>
+                                     <Link class="dropdown-item" to="/Sitesetting">
+                                         <IoMdSettings class="bx bx-cog me-2" />
+                                         <span class="align-middle">Settings</span>
+                                     </Link>
+                                 </li>
+                                
+                                 <li>
+                                     <div class="dropdown-divider"></div>
+                                 </li>
+                                 <li>
+                                                                         <Link class="dropdown-item" href="/Signin">
+                                     
+                                         <LuLogOut class="bx bx-power-off me-2" />
+                                         <span class="align-middle">Log Out</span>
+                                     </Link>
+                                 </li>
+                             </ul>
+                         </li>
+                     </ul>
+                 </div>
+             </nav>
+             <div class="content-wrapper">
+    <div>
+    <h2 className='mt-4'>{sectionNames[currentSection]}</h2>
+      <div className='card-body m-5 '>
+      <div className="edit_inputMain-sltr row">
+  {/* Display regId */}
+  <div className="col-lg-6 col-md-6 mb-4 text-start">
+    <label htmlFor="regId">Registration ID</label>
+    <input
+      type="text"
+      id="reg_id"
+      name="reg_id"
+      className="form-control"
+      value={regId}
+      readOnly  // Adding the readOnly attribute
+    />
+  </div>
+
+  {/* Render input fields for the current section */}
+  {Object.keys(formData[currentSection]).map(fieldName => (
+    // Rest of the code remains unchanged
+    <div key={fieldName} className="col-lg-6 col-md-6 mb-4 text-start">
+       <label htmlFor={fieldName}>
+      {labelTranslations[fieldName]} 
+      {['name', 'email', 'gender', 'phonenumber', 'password', 'dob'].includes(fieldName) && <span style={{ color: 'red' }}>*</span>}
+    </label>
+      {/* <label htmlFor={fieldName}>{labelTranslations[fieldName]}</label> */}
+      <input
+        type={fieldTypeMapping[fieldName] || 'text'} // Set input type based on field type, default to 'text' if not found in mapping
+        id={fieldName}
+        name={fieldName}
+        placeholder={` ${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`} // Capitalize first letter
+        className="form-control"
+        value={formData[currentSection][fieldName] || ''}
+        autoSave='off'
+        onChange={handleChange}
+      />
+    </div>
+  ))}
+</div>
+
+{/* Render Back button for sections 2, 3, 4, and 5 */}
+{currentSection !== 'section1' && (
+  <button className='btn btn-secondary' onClick={handleBack}>Back</button>
+)}
+  {/* Render Next button for all sections except the last one */}
+  {currentSection !== 'section5' && (
+        <button className='btn btn-primary m-3' onClick={handleNext}>Next</button>
+      )}
+
+      {/* Render Submit button for the last section */}
+      {currentSection === 'section5' && (
+        <button className='btn btn-success m-3' onClick={handleSubmit}>Submit</button>
+      )}
+</div>
+
+
+    
+
+      {/* Render customer data
+      {Object.keys(customerData).length > 0 && (
+        <div>
+          <h2>Customer Data</h2>
+          <pre>{JSON.stringify(customerData, null, 2)}</pre>
+        </div>
+      )} */}
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+  );
+};
+
+export default User;

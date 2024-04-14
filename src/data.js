@@ -9,7 +9,7 @@ function Data() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://tulirmatrimony.com/controlapi/listuser.php');
+        const response = await fetch('http://localhost:8000/api/data');
         const result = await response.json();
         console.log(result)
         setData(result.body);
@@ -54,7 +54,7 @@ function Data() {
               <td>{item.id}</td>
               <td>{item.username}</td>
               <td>{item.email}</td>
-              <td><Link to={`/Edituser/${item.id}`} >Edit</Link></td>
+              <td><Link to={`/Edituser/${item.id}`} >Edit {item.id}</Link></td>
               <td><Link to='#' onClick={() => deleteUser(item.id)} >Delete</Link></td>
               {/* Add more table cells if required */}
             </tr>

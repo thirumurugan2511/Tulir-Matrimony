@@ -28,6 +28,22 @@ const Education = () => {
   
       fetchData();
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+        await fetch(`https://tulirmatrimony.com/controlapi/deleteeducation.php`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id }),
+        });
+        // Assuming successful deletion, update the state to reflect the changes
+        setData(data.filter(item => item.id !== id));
+    } catch (error) {
+        console.error('Error deleting data:', error);
+    }
+};
   return (
     <>
     <div class="layout-wrapper layout-content-navbar">
@@ -84,7 +100,7 @@ const Education = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                                                        <Link class="dropdown-item" href="/Signin">
+                                                                        <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
@@ -128,7 +144,7 @@ const Education = () => {
             <tr key={item.id}>
                 <td>{item.name}</td>       
                 <td><a href="/religion/edit/15" className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
-                <a href="/religion/edit/15" className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</a></td>
+                <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
                 ))}
            </tbody>
@@ -142,7 +158,7 @@ const Education = () => {
 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link">© Copyright 2023-2024 By Aathesh Soft. All Rights Reserved.</a>
+                            <a href="" class="footer-link">© Copyright 2023-2024 By Aathesh Soft. All Rights Reserved.</a>
                         </div>
                     </div>
                 </footer>

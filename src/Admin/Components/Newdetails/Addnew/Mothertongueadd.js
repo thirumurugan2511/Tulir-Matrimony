@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 
+
 const Mothertongueadd = () => {
     const [mothertongue, setMothertongue] = useState('');
     const formRef = useRef(null);
@@ -22,21 +23,24 @@ const Mothertongueadd = () => {
                 body: JSON.stringify({ name: mothertongue }),
                 
             });
-            formRef.current.reset();
+            setMothertongue('');
     const successAlert = document.getElementById('success-alert');
       successAlert.style.display = 'block';
 
       // Hide success message after 5 seconds
       setTimeout(() => {
         successAlert.style.display = 'none';
-      }, 5000);
-   
+      }, 2000);
+      
             const data = await response.json();
             console.log(data);
             // Handle success or error response here
         } catch (error) {
             console.error('Error:', error);
         }
+    };
+    const handleGoBack = () => {
+        window.history.back();
     };
   return (
 
@@ -95,7 +99,7 @@ const Mothertongueadd = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                <Link class="dropdown-item" href="/Signin">
+                                <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
@@ -121,7 +125,7 @@ const Mothertongueadd = () => {
 
                                         <label class="form-label" for="mothertongue_name">Mothertongue <span class="Form__Error">*</span></label>
 
-                                        <input type="text" required="" class="form-control required" id="mothertongue_name" name="mothertongue_name" value={mothertongue} onChange={(e) => setMothertongue(e.target.value)} placeholder="Mothertongue" />
+                                        <input type="text" required class="form-control required" id="mothertongue_name" name="mothertongue_name" value={mothertongue} onChange={(e) => setMothertongue(e.target.value)} placeholder="Mothertongue" />
 
                                     </div>
                                     
@@ -134,11 +138,12 @@ const Mothertongueadd = () => {
             </div>
         </div>
     </div>
+    <Link to="#" className="btn btn-secondary m-4" onClick={handleGoBack}> Go Back LanguagesList </Link>
 </div>
                 <footer class="content-footer footer bg-footer-theme">
                     <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                         <div class="mb-2 mb-md-0">
-                            <a href="https://gloriousmatrimonial.com/admin/dashboard" class="footer-link fw-bolder">© Copyright 2023-2024 By Marriage Bureau Script. All Rights Reserved.</a>
+                            <a href="" class="footer-link fw-bolder">© Copyright 2023-2024 By Marriage Bureau Script. All Rights Reserved.</a>
                         </div>
                     </div>
                 </footer>

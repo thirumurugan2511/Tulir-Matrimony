@@ -11,15 +11,16 @@ import { MdDelete } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import Smallicon from '../../Components/heart-icon.png'
 
-const Caste = () => {
+const Location = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://tulirmatrimony.com/controlapi/castelist.php');
+                const response = await fetch('https://tulirmatrimony.com/controlapi/districtlist.php');
                 const result = await response.json();
                 setData(result.body);
+                console.log(result);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -30,7 +31,7 @@ const Caste = () => {
 
     const handleDelete = async (id) => {
         try {
-            await fetch(`https://tulirmatrimony.com/controlapi/deletecaste.php`, {
+            await fetch(`https://tulirmatrimony.com/controlapi/deletedistrict.php`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -59,7 +60,7 @@ const Caste = () => {
                <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                    <ol class="breadcrumb breadcrumb-style2 mb-0">
                    <li><MdManageHistory  class="bx bx-user me-2"/></li>
-                   <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Caste </li>
+                   <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Location </li>
                    </ol>
                    <ul class="navbar-nav flex-row align-items-center ms-auto">
                        <li class="nav-item lh-1 me-3">
@@ -115,7 +116,7 @@ const Caste = () => {
 
    <div class="row  justify-content-between">
 <div class="col-md-2">
-            <a href="/Casteadd" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
+            <a href="/Locationadd" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
         </div>
 
 <div class="col-md-4">
@@ -128,14 +129,14 @@ const Caste = () => {
    
 
    <div class="card text-start">
-       <h5 class="card-header">Manage Caste</h5>
+       <h5 class="card-header">Manage Location</h5>
        <div class="table-responsive text-nowrap" id="resultData">
         <table class="table">
    <caption class="d-none">&nbsp;&nbsp; Result Data</caption>
    <thead className='text-start'>
        <tr class="text-nowrap">
-           <th scope="col">Religion Name</th>
-           <th scope="col">Caste Name</th>
+           <th scope="col">State Name</th>
+           <th scope="col">District Name</th>
            <th scope="col">Action</th>
 
        </tr>
@@ -144,8 +145,8 @@ const Caste = () => {
                
    {data.map(item => (
             <tr key={item.id}>
-                <td>{item.religion_name}</td>  
-                <td>{item.caste_name}</td>      
+                <td>{item.state_name}</td>  
+                <td>{item.district_name}</td>      
                 <td><Link to={`/Religionedit?id=${item.id}`} className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
                 <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
@@ -177,4 +178,4 @@ const Caste = () => {
   )
 }
 
-export default Caste
+export default Location
