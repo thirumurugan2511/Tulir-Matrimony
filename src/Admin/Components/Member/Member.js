@@ -41,7 +41,7 @@ const Member = () => {
       
           fetchData();
       }, []);
-       
+    //    http:localhost:8000/data/memlist
       useEffect(() => {
         const fetchPlans = async () => {
             try {
@@ -151,7 +151,7 @@ const Member = () => {
                     {/* <!-- Toast with Placements --> */}
                     <div class="row  justify-content-between">
                          <div class="col-md-2">
-                            <Link to="/User"  class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</Link>
+                            <Link to="/Addusers"  class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</Link>
                         </div>
                         <div class="col-md-4">
                             <div class="search-container">
@@ -212,7 +212,7 @@ const Member = () => {
             </td>
             <td className='txt-success'>{item.status}</td>
             <td><Link to={`/Viewmember/${item.id}`}><FaEye  class="bx bxs-edit"/></Link></td>
-            <td><a href="/religion/edit/15"><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+            <td><Link to={`/Edituser/${item.id}`}><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
             <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
                 ))}   

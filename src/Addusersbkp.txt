@@ -1060,6 +1060,7 @@ const Addusers = () => {
               name={fieldName}
               // Add this if you want to restrict file selection to images
               className="form-control"
+              autoSave='off'
               onChange={handleChange}
             />
           ) : fieldName === 'address' ? (

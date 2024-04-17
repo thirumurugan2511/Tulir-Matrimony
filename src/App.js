@@ -86,7 +86,7 @@ function App() {
           <Route path="/Sresult" element={<Sresult />} />
           <Route path="/Plans" element={<Plans />} />
           <Route path="/data" element={<Data />} />
-          <Route path="/Edituser:userId" element={<Edituser />} />
+          <Route path="/Edituser/:id" element={<Edituser />} />
           <Route path="/User" element={<User />} />
           <Route path="/Religionedit:userId" element={<Religionedit />} />
           <Route path="/Location" element={<Location />} />

@@ -156,7 +156,7 @@ const Dashoard = () => {
         <div class="col-md-6 col-lg-4 order-2" style={{height:'100'}}>
             <a href="#" class="dashboard_animation dashboard_animation__new" onclick="getDashboardData('gender','Female')">
                 <div class="card h-100 w-100 dashboard-box-color">
-                    <div class="card-body">
+                    <div class="card-body" style={{zIndex:'0'}}>
                         <ul class="p-0 m-0">
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">

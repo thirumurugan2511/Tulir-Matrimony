@@ -34,6 +34,11 @@ const User = () => {
     { value: 'No', label: 'No' },
     { value: 'Planning to Leave', label: 'Planning to Leave' },
   ],
+  educationOptions: [
+    { value: 'Bachelor', label: 'Bachelor' },
+    { value: 'Master', label: 'Master' },
+    
+  ],
   drinkingOptions: [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
@@ -192,18 +197,18 @@ const User = () => {
     // Fetch dropdown options when component mounts
     fetchDropdownOptions('marriage_type');
     fetchDropdownOptions('religion');
-    fetchDropdownOptions('cast');
+    // fetchDropdownOptions('cast');
     fetchDropdownOptions('moonsign');
     fetchDropdownOptions('star');
     fetchDropdownOptions('mother_tongue');
-    fetchDropdownOptions('education');
+    // fetchDropdownOptions('education');
     fetchDropdownOptions('occupaction');
     fetchDropdownOptions('employee');
     fetchDropdownOptions('annual_income');
     fetchDropdownOptions('country');
     fetchDropdownOptions('state');
     fetchDropdownOptions('patner_religion');
-    fetchDropdownOptions('patner_cast');
+    // fetchDropdownOptions('patner_cast');
     fetchDropdownOptions('patner_country');
     fetchDropdownOptions('patner_state');
     fetchDropdownOptions('patner_education');
@@ -230,7 +235,7 @@ const User = () => {
 
   const initialFormData = {
     "section1": {
-      // "reg_id": "",
+      "reg_id": regId,
       "gender": "",
       "name": "",
       "email": "",
@@ -461,22 +466,22 @@ const User = () => {
   const [customerData, setCustomerData] = useState({});
   const [casteList, setCasteList] = useState([]);
 
-  useEffect(() => {
-    if (formData.currentSection === 'cast' || formData.currentSection === 'patner_cast') {
-      fetchCasteList();
-    }
-  }, [formData.currentSection]);
+  // useEffect(() => {
+  //   if (formData.currentSection === 'cast' || formData.currentSection === 'patner_cast') {
+  //     fetchCasteList();
+  //   }
+  // }, [formData.currentSection]);
 
-  const fetchCasteList = () => {
-    fetch('https://tulirmatrimony.com/controlapi/castelist.php')
-      .then(response => response.json())
-      .then(data => {
-        setCasteList(data); // Assuming the API returns an array of caste list
-      })
-      .catch(error => {
-        console.error('Error fetching caste list:', error);
-      });
-  };
+  // const fetchCasteList = () => {
+  //   fetch('https://tulirmatrimony.com/controlapi/castelist.php')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setCasteList(data); // Assuming the API returns an array of caste list
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching caste list:', error);
+  //     });
+  // };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -532,6 +537,17 @@ const User = () => {
             ]
           }));
           break;
+          case 'education':
+            // Options for marriage type dropdown
+            setOptions(prevOptions => ({
+              ...prevOptions,
+              [fieldName + 'Options']: [
+                 
+                { value: 'Bachelor', label: 'Bachelor' },
+              { value: 'Master', label: 'Master' }  
+              ]
+            }));
+            break;
           case 'patner_to_age':
             // Options for partner's age dropdown
             const partner_to_ageOptions = [];
@@ -706,59 +722,59 @@ const User = () => {
             break;
       case 'religion':
         // Fetch options from API for religion
-        //http://localhost:8000/religionlist
+        //http://localhost:8000/data/religion
         //https://tulirmatrimony.com/controlapi/religionlist.php
-        endpoint = 'https://tulirmatrimony.com/controlapi/religionlist.php';
+        endpoint = 'http://localhost:8000/data/planlist';
         break;
 
-      case 'cast':
-      case 'patner_cast':
-      // Set the appropriate endpoint for fetching caste list based on currentSection
-      endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
-      break;
+      // case 'cast':
+      // case 'patner_cast':
+      // // Set the appropriate endpoint for fetching caste list based on currentSection
+      // endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
+      // break;
       case 'moonsign':
         // Fetch options from different API for moonsign
         endpoint = 'https://tulirmatrimony.com/controlapi/moonsignlist.php';
         break;
       case 'star':
         // Fetch options from different API for star
-        endpoint = 'https://tulirmatrimony.com/controlapi/starlist.php';
+        endpoint = 'http://localhost:8000/data/planlist';
         break;
       case 'mother_tongue':
         // Fetch options from different API for education
-        endpoint = 'https://tulirmatrimony.com/controlapi/languagelist.php';
+        endpoint = 'http://localhost:8000/data/planlist';
         break;
-        case 'education':
+      // case 'education':
+      //     // Fetch options from different API for education
+      //     endpoint = 'http://localhost:8000/data/planlist';
+      //   break;
+      case 'occupaction':
           // Fetch options from different API for education
-          endpoint = 'https://tulirmatrimony.com/controlapi/educationlist.php';
-          break;
-        case 'occupaction':
-          // Fetch options from different API for education
-          endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
-          break;
-        case 'annual_income':
+        endpoint = 'http://localhost:8000/data/planlist';
+        break;
+      case 'annual_income':
         // Fetch options from different API for education
-        endpoint = 'https://tulirmatrimony.com/controlapi/incomelist.php';
+        endpoint = 'http://localhost:8000/data/planlist';
         break;
-        case 'father_occupation':
+      case 'father_occupation':
           // Fetch options from different API for education
-          endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
-          break;
-        case 'mother_occupation':
+        endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
+        break;
+      case 'mother_occupation':
             // Fetch options from different API for education  patner_religion
-          endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
-          break;
-        case 'patner_religion':
+        endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
+        break;
+      case 'patner_religion':
               // Fetch options from different API for education  patner_religion
-          endpoint = 'https://tulirmatrimony.com/controlapi/religionlist.php';
-          break;
-         case 'patner_cast':
-           // Fetch options from different API for education  patner_religion
-          endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
-          break;
-        case 'patner_education':
+        endpoint = 'https://tulirmatrimony.com/controlapi/religionlist.php';
+        break;
+        //  case 'patner_cast':
+        //    // Fetch options from different API for education  patner_religion
+        //   endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
+        //   break;
+       case 'patner_education':
                 // Fetch options from different API for education  patner_religion
-          endpoint = 'https://tulirmatrimony.com/controlapi/educationlist.php';
+         endpoint = 'https://tulirmatrimony.com/controlapi/educationlist.php';
          break;
         case 'patner_occupation':
              // Fetch options from different API for education  patner_religion
@@ -813,7 +829,7 @@ const User = () => {
       // Optionally, you can also send data to the server here
       //https://tulirmatrimony.com/controlapi/addcustomer.php
       //http://localhost:8000/addcustomer
-      const response = await fetch('https://tulirmatrimony.com/controlapi/addcustomer.php', {
+      const response = await fetch('http://localhost:8000/addcustomer', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -944,7 +960,7 @@ const User = () => {
       <div className='card-body m-5 edit_memberSections_mainsdsd '>
       <div className="edit_inputMain-sltr row">
   
-  {/* <div className="col-lg-6 col-md-6 mb-4 text-start">
+  <div className="col-lg-6 col-md-6 mb-4 text-start">
     <label htmlFor="regId">Registration ID</label>
     <input
       type="text"
@@ -954,7 +970,7 @@ const User = () => {
       value={regId}
       readOnly  
     />
-  </div> */}
+  </div>
 
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
@@ -966,21 +982,7 @@ const User = () => {
         ].includes(fieldName) ?
           <div key={fieldName} className="col-lg-6 col-md-6 mb-4 text-start">
             <label htmlFor={fieldName} style={{ color: 'black' }}>{labelTranslations[fieldName]} </label>
-            {fieldName === 'cast' || fieldName === 'patner_cast' ? (
-              <select
-                id={fieldName}
-                name={fieldName}
-                className="form-select"
-                value={formData[currentSection][fieldName] || ''}
-                onChange={handleChange}
-              >
-                <option value="" selected>Select your {` ${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}</option>
-                {/* Render caste options */}
-                {casteList.map(caste => (
-                  <option key={caste.caste_id} value={caste.caste_name}>{caste.caste_name}</option>
-                ))}
-              </select>
-            ) : (
+             
               <select
                 id={fieldName}
                 name={fieldName}
@@ -994,7 +996,7 @@ const User = () => {
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </select>
-            )}
+            
           </div>
           :
           // Render input field for non-dropdown fields
