@@ -23,6 +23,10 @@ const Addusers = () => {
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
   ],
+  status_childrenOptions: [
+    { value: 'Yes', label: 'Yes' },
+    { value: 'No', label: 'No' }
+  ],
   brother_marriedOptions: [
     { value: 'Married', label: 'Married' },
     { value: 'Unmarried', label: 'Unmarried' }
@@ -34,11 +38,12 @@ const Addusers = () => {
   smokingOptions: [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' },
-    { value: 'Planning to Leave', label: 'Planning to Leave' },
+    { value: 'Planning to Leave', label: 'Planning to Leave' }
   ],
   drinkingOptions: [
     { value: 'Yes', label: 'Yes' },
-    { value: 'No', label: 'No' }
+    { value: 'No', label: 'No' },
+    { value: 'Planning to Leave', label: 'Planning to Leave' }
   ], 
   patner_matrial_statusOptions : [
     { value: 'Single', label: 'Single' },
@@ -313,14 +318,15 @@ const Addusers = () => {
       "patner_country": "",
       "patner_state": "",
       "patner_matrial_status": "",
+      "patner_child_count": "",
+      "patner_child_age": "",
+      "patner_child_gender": "",
       "patner_education": "",
       "patner_occupation": "",
       "patner_mother_tongue": "",
       "patner_manglik": "",
-      "patner_salary": "",
-      "patner_child_count": "",
-      "patner_child_age": "",
-      "patner_child_gender": ""
+      "patner_salary": ""
+      
     },
     "section6": {
       "image": "",
@@ -491,28 +497,40 @@ const Addusers = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, files } = e.target;
   
-    // Check if the value is empty for required fields
-    if ([ 'name', 'email', 'gender', 'phonenumber', 'password', 'dob'].includes(name) && value.trim() === '') {
-      // You can display an error message or take any other action here
-      alert("Please Enter Required Fields!");
-      
-      return (
-        <div className="alert alert-danger" role="alert">
-        Please fill the required field.
-      </div>
-      )
-    }
-  
-    setFormData(prevState => ({
-      ...prevState,
-      [currentSection]: {
-        ...prevState[currentSection],
-        [name]: value
+    if (['image', 'image1', 'id_image', 'id_image1', 'rasiimage'].includes(name)) {
+      // Read the file contents
+      const file = files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // Store the file contents in state
+        setFormData(prevState => ({
+          ...prevState,
+          [currentSection]: {
+            ...prevState[currentSection],
+            [name]: reader.result // Store the file contents
+          }
+        }));
+      };
+      if (file) {
+        reader.readAsDataURL(file); // Read file as data URL
       }
-    }));
+    } else {
+      const { value } = e.target;
+      if (['name', 'email', 'gender', 'phonenumber', 'password', 'dob'].includes(name) && value.trim() === '') {
+        alert("Please Enter Required Fields!");
+      }
+      setFormData(prevState => ({
+        ...prevState,
+        [currentSection]: {
+          ...prevState[currentSection],
+          [name]: value
+        }
+      }));
+    }
   };
+  
 
   const handleNext = () => {
     const sections = Object.keys(formData);
@@ -614,7 +632,17 @@ const Addusers = () => {
                 { value: 'Yes', label: 'Yes' },
                 { value: 'no', label: 'No' }   
               ]
-            }));
+            }));            
+          break;
+          case 'status_children':
+            // Options for marriage type dropdown
+            setOptions(prevOptions => ({
+              ...prevOptions,
+              [fieldName + 'Options']: [
+                { value: 'Yes', label: 'Yes' },
+                { value: 'no', label: 'No' }   
+              ]
+            }));            
           break;
           case 'food_habits':
               // Options for marriage type dropdown
@@ -845,7 +873,17 @@ const Addusers = () => {
       const combinedData = Object.values(formData).reduce((acc, sectionData) => {
         return { ...acc, ...sectionData };
       }, {});
-  
+     
+      const imageData = {
+        image: combinedData.image ? combinedData.image.split(',')[1] : null,
+        image1: combinedData.image1 ? combinedData.image1.split(',')[1] : null,
+        id_image: combinedData.id_image ? combinedData.id_image.split(',')[1] : null,
+        id_image1: combinedData.id_image1 ? combinedData.id_image1.split(',')[1] : null,
+        rasiimage: combinedData.rasiimage ? combinedData.rasiimage.split(',')[1] : null,
+      };
+
+
+
       // Include regId in the combinedData object
       combinedData.reg_id = regId;
 
@@ -860,7 +898,7 @@ const Addusers = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(combinedData)
+      body: JSON.stringify({ ...combinedData, ...imageData }) 
     });
      console.log(combinedData);
     // Handle the response from your Node.js server
@@ -1004,7 +1042,7 @@ const Addusers = () => {
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
         ['gender', 'marriage_type', 'sevaikiragam', 'religion',  'moonsign', 'mother_tongue', 'star', 'education', 'occupaction', 'annual_income',
-          'smoking', 'drinking', 'country', 'state', 'father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'patner_religion',
+          'smoking', 'drinking', 'status_children','country', 'state', 'father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'patner_religion',
            'patner_country', 'patner_state', 'patner_matrial_status', 'patner_education', 'patner_occupation', 'patner_mother_tongue',
           'patner_salary', 'patner_child_gender', 'patner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'patner_from_age',
           'patner_to_age','residece'

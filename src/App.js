@@ -44,6 +44,7 @@ import Locationadd from './Admin/Components/Newdetails/Addnew/Locationadd';
 import Addusers from './Addusers';
 import Freereg from './User/Components/Home/Freereg';
 import Thankyou from './User/Components/Home/Thankyou';
+import Eduser from './Eduser';
 
 
 function App() {
@@ -87,6 +88,7 @@ function App() {
           <Route path="/Plans" element={<Plans />} />
           <Route path="/data" element={<Data />} />
           <Route path="/Edituser/:id" element={<Edituser />} />
+          <Route path="/Eduser/:id" element={<Eduser />} />
           <Route path="/User" element={<User />} />
           <Route path="/Religionedit:userId" element={<Religionedit />} />
           <Route path="/Location" element={<Location />} />

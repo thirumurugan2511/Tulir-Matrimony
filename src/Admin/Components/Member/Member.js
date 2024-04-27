@@ -24,7 +24,6 @@ const Member = () => {
 
         //('https://tulirmatrimony.com/controlapi/customerlist.php');
         //http://localhost:8000/data/memlist
-        //http://localhost:8000/data/planlist
 
 
         useEffect(() => {
@@ -201,7 +200,7 @@ const Member = () => {
         <tr key={item.id}>
             <td>{item.reg_id}</td>
             <td>{item.name}</td>
-            <td><img src={item.image} height={40} alt="User Profile" class="w-px-40 rounded-circle"/></td>
+            <td><img src={`data:image/jpeg;base64,${item.image}`} height={40} alt="User Profile" className="w-px-40 rounded-circle" /></td>
             <td>
             <select className='form-select' value={selectedPlans[item.id] || ''} onChange={(e) => handlePlanChange(item.id, e)}>
                     <option value="">Select Plan</option>

@@ -33,9 +33,7 @@ const Viewmember = () => {
     };
 
     fetchData();
-
   }, []);
- 
   return (
     <>
    <div class="layout-wrapper layout-content-navbar">
@@ -120,7 +118,7 @@ const Viewmember = () => {
         <div class="left_member_profilesDiv">
           <div class="profileView_userAdds position-relative">
           {profileData ? (
-            <img src={`data:image/png;base64,${profileData.body.image}`} alt="User Profile" class="user_profiles" id="viewProfile"/>
+            <img src={profileData.body.image} alt="User Profile" class="user_profiles" id="viewProfile"/>
           ) : (
             <p>Loading...</p>
           )}
@@ -171,14 +169,14 @@ const Viewmember = () => {
                   <div className="MDatails_views">
                     <h5 className="py-2"><span>Gender: {profileData.body.gender}</span></h5>
                     <h5 className="py-2"><span>Mobile: {profileData.body.phonenumber}</span></h5>
-                    <h5 className="py-2"><span>Caste: {profileData.body.cast}</span></h5>
+                    <h5 className="py-2"><span>Caste: {profileData.body.caste}</span></h5>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-6 mt-0 mt-lg-3 mt-md-3 mt-sm-3 right_bordermv">
                   <div className="MDatails_views">
                     <h5 className="py-2"><span>Marital Status: {profileData.body.marriage_type}</span></h5>
                     <h5 className="py-2"><span>State: {profileData.body.state}</span></h5>
-                    <h5 className="py-2"><span>Occupation: {profileData.body.occupaction}</span></h5>
+                    <h5 className="py-2"><span>Occupation: {profileData.body.occupation}</span></h5>
                   </div>
                 </div>
               </div>
@@ -193,100 +191,57 @@ const Viewmember = () => {
     </div>
     {/* <!-- photo multie profile  --> */}
     <div class="collapse" id="multie_photoUpload">
-  {profileData ? (
-    <div class="photo_dvMultie_mainsd">
-      <div class="row">
-        <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv1">
-          <div class="single_imgProfiels-wb">
-            <div class="position-relative">
-              {profileData.body.image && (
-                <img
-                  src={`data:image/png;base64,${profileData.body.image}`}
-                  height={200}
-                  alt="Profile 1"
-                  class="profile-Um"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="bottom"
-                  data-bs-custom-class="custom-tooltip"
-                  data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB"
-                  data-bs-original-title=""
-                  title=""
-                />
-              )}
+    {profileData ? (
+      <div class="photo_dvMultie_mainsd">
+        <div class="row">
+                                                            <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv1">
+            <div class="single_imgProfiels-wb">
+              <div class="position-relative">
+                <img src={profileData.body.image} height={200} alt="Profile 1" class="profile-Um" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB" data-bs-original-title="" title=""/>
+                    
+                                                                                
+               
+                                                                              </div>
+              <button class="btn_vwProfilf">Photo 1</button>
             </div>
-            <button class="btn_vwProfilf">Photo 1</button>
           </div>
-        </div>
-        <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv2">
-          <div class="single_imgProfiels-wb">
-            <div class="position-relative">
-              {profileData.body.image1 && (
-                <img
-                  src={`data:image/png;base64,${profileData.body.image1}`}
-                  height={200}
-                  alt="Profile 2"
-                  class="profile-Um"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="bottom"
-                  data-bs-custom-class="custom-tooltip"
-                  data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB"
-                  data-bs-original-title=""
-                  title=""
-                />
-              )}
-            </div>
-            <button class="btn_vwProfilf">Photo 2</button>
-          </div>
-        </div>
-        <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv3">
-          <div class="single_imgProfiels-wb">
-            <div class="position-relative">
-              {profileData.body.id_image && (
-                <img
-                src={`data:image/png;base64,${profileData.body.id_image}`}
-                  height={200}
-                  alt="ID Proof Front"
-                  class="profile-Um"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="bottom"
-                  data-bs-custom-class="custom-tooltip"
-                  data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB"
-                  data-bs-original-title=""
-                  title=""
-                />
-              )}
-            </div>
-            <button class="btn_vwProfilf">ID Proof Front</button>
-          </div>
-        </div>
-        <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv4">
-          <div class="single_imgProfiels-wb">
-            <div class="position-relative">
-              {profileData.body.id_image1 && (
-                <img
-                  src={`data:image/png;base64,${profileData.body.id_image1}`}
-                  height={200}
-                  alt="ID Proof Back"
-                  class="profile-Um"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="bottom"
-                  data-bs-custom-class="custom-tooltip"
-                  data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB"
-                  data-bs-original-title=""
-                  title=""
-                />
-              )}
-            </div>
-            <button class="btn_vwProfilf">ID Proof Back</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  ) : (
-    <p>Loading...</p>
-  )}
-</div>
+                              <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv2">
+            <div class="single_imgProfiels-wb">
+              <div class="position-relative">
+                <img src={profileData.body.image2} height={200} alt="Profile 2" class="profile-Um" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB" data-bs-original-title="" title=""/>
+                                         
 
+                                                                              </div>
+              <button class="btn_vwProfilf">Photo 2</button>
+            </div>
+          </div>
+                              <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv3">
+            <div class="single_imgProfiels-wb">
+              <div class="position-relative">
+                <img src={profileData.body.id_image} height={200} alt="Id Profile" class="profile-Um" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB" data-bs-original-title="" title=""/>
+                               
+
+                                                                              </div>
+              <button class="btn_vwProfilf">ID Proof Front</button>
+            </div>
+          </div>
+                              <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv4">
+            <div class="single_imgProfiels-wb">
+              <div class="position-relative">
+                <img src={profileData.body.id_image2} height={200} alt="Id proof" class="profile-Um" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB" data-bs-original-title="" title=""/>
+                           
+                                                                              </div>
+              <button class="btn_vwProfilf">ID Proof Back</button>
+            </div>
+          </div>
+                                               
+                             
+                                      </div>
+      </div>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
 
     {/* <div class="main_secPUtabs_btns mt-4 collapse" id="connectActivity">
       <div class="row">
@@ -456,12 +411,12 @@ const Viewmember = () => {
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Caste :</span> {profileData.body.cast}</h5>
+                          <h5 class="py-2"><span>Caste :</span> {profileData.body.caste}</h5>
                       </div>
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Sub Caste :</span> {profileData.body.subcast}</h5>
+                          <h5 class="py-2"><span>Sub Caste :</span> {profileData.body.subcaste}</h5>
                       </div>
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -526,7 +481,7 @@ const Viewmember = () => {
                       </div>
                       <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                           <div class="detalistsleg">
-                              <h5 class="py-2"><span>Occupation :</span> {profileData.body.occupaction}</h5>
+                              <h5 class="py-2"><span>Occupation :</span> {profileData.body.occupation}</h5>
                           </div>
                       </div>
                       <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -576,7 +531,7 @@ const Viewmember = () => {
                           </div>
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                               <div class="detalistsleg">
-                                  <h5 class="py-2"><span>If NRI Originated country :</span> {profileData.body.nricountry}</h5>
+                                  <h5 class="py-2"><span>If NRI Originated country :</span> {profileData.body.nrinumber}</h5>
                               </div>
                           </div>
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -748,7 +703,7 @@ const Viewmember = () => {
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Caste :</span> {profileData.body.patner_cast}</h5>
+                 <h5 class="py-2"><span>Partner Caste :</span> {profileData.body.patner_caste}</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -788,7 +743,7 @@ const Viewmember = () => {
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Manglik :</span> {profileData.body.patner_manglik}</h5>
+                 <h5 class="py-2"><span>Partner Manglik :</span> {profileData.body.patner_ma}</h5>
              </div>
          </div>
      </div>
@@ -809,7 +764,7 @@ const Viewmember = () => {
  <div class="inner_views_detailsFGH">
    <div class="row mx-auto col-md-6">
   
-               <img src={`data:image/png;base64,${profileData.body.rasiimage}`} alt="Horoscope Image"  width={200} height={200}/>
+               <img src={profileData.body.rasiimage} alt="Horoscope Image"  width={200} height={200}/>
                      </div>
  </div>
 </div>

@@ -9,12 +9,40 @@ description:"Admin user"
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    const { name, files } = e.target;
+  
+    if (['image', 'image1', 'id_image', 'id_image1', 'rasiimage'].includes(name)) {
+      // Read the file contents
+      const file = files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // Store the file contents in state
+        setFormData(prevState => ({
+          ...prevState,
+          [currentSection]: {
+            ...prevState[currentSection],
+            [name]: reader.result // Store the file contents
+          }
+        }));
+      };
+      if (file) {
+        reader.readAsDataURL(file); // Read file as data URL
+      }
+    } else {
+      const { value } = e.target;
+      if (['name', 'email', 'gender', 'phonenumber', 'password', 'dob'].includes(name) && value.trim() === '') {
+        alert("Please Enter Required Fields!");
+      }
+      setFormData(prevState => ({
+        ...prevState,
+        [currentSection]: {
+          ...prevState[currentSection],
+          [name]: value
+        }
+      }));
+    }
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -11,8 +11,10 @@ import Smallicon from './Admin/Components/heart-icon.png'
 
 
 const Edituser = () => {
- 
+  const { id } = useParams();
+  const [regId, setRegId] = useState('');
   const [showAlert, setShowAlert] = useState(false);
+
 
   const [options, setOptions] = useState({
     genderOptions: [
@@ -231,124 +233,118 @@ const Edituser = () => {
     fetchDropdownOptions('patner_salary');
   }, []);
 
-  const { id } = useParams();
-  const fetchUserData = async () => {
-    //http://localhost:8000/fetchmember/${id}
-    //https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}
+
+  const fetchUserData = async (id) => {
     try {
       const response = await fetch(`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`);
       if (response.ok) {
         const userData = await response.json();
         console.log(userData); 
-
-        // Initialize form data with user data
-        const initialFormData = initializeFormData(userData.body); 
-        setFormData(initialFormData); // Set form data state with fetched user data
-      } else {
+              } 
+        else {
         console.error('Failed to fetch user data');
       }
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
   };
-
-  useEffect((id) => {
+  useEffect(() => {
     // Fetch user data based on the ID when component mounts
     fetchUserData(id);
   }, []);
   
   const initializeFormData = (userData) => {
     return {
-    "section1": {
-      "name": `${userData.name}`,
-      "gender": `${userData.gender}`,   
-      "email": `${userData.email}`,
-      "phonenumber": `${userData.phonenumber}`,
-      "password": `${userData.password}`,
-      "mother_tongue": `${userData.mother_tongue}`,
-      "dob": `${userData.dob}`,
-      "marriage_type": `${userData.marriage_type}`,
-      "status_children": `${userData.status_children}`,
-      "child_count": `${userData.child_count}`,
-      "child_age": `${userData.child_age}`,
-      "religion": `${userData.religion}`,
-      "cast": `${userData.cast}`,
-      "subcast": `${userData.subcast}`,
-      "sevaikiragam": `${userData.sevaikiragam}`,
-      "gothram": `${userData.gothram}`,
-      "moonsign": `${userData.moonsign}`,
-      "star": `${userData.star}`,
-      "birthplace": `${userData.birthplace}`,
-      "birthtime": `${userData.birthtime}`,
-      "education":`${userData.education}`,
-      "education_details":`${userData.education_details}`,
-      "occupaction":`${userData.occupaction}`,
-      "employee":`${userData.employee}`,
-      "annual_income":`${userData.annual_income}`,
-
-    },
-    "section2": {
-      "country": `${userData.country}`,
-      "state": `${userData.state}`,
-      "city": `${userData.city}`,
-      "residece": `${userData.residece}`,
-      "alternatenumber": `${userData.alternatenumber}`,
-      "nricountry": `${userData.nricountry}`,
-      "address": `${userData.address}`
-    },
-    "section3": {
-      "height": `${userData.height}`,
-      "weight": `${userData.weight}`,
-      "food_habits": `${userData.food_habits}`,
-      "smoking": `${userData.smoking}`,
-      "drinking": `${userData.drinking}`,
-      "body_type": `${userData.body_type}`,
-      "skin_tone": `${userData.skin_tone}`,
-      "profile_by": `${userData.profile_by}`,
-      "aboutme": `${userData.aboutme}`
-    },
-    "section4": {
-      "family_type": `${userData.family_type}`,
-      "family_status": `${userData.family_status}`,
-      "father_name": `${userData.father_name}`,
-      "father_occupation": `${userData.father_occupation}`,
-      "mother_name": `${userData.mother_name}`,
-      "mother_occupation": `${userData.mother_occupation}`,
-      "brothers_count": `${userData.brothers_count}`,
-      "sisters_count": `${userData.sisters_count}`,
-      "brother_married": `${userData.brother_married}`,
-      "sister_married": `${userData.sister_married}`,
-      "family_details": `${userData.family_details}`,
-    },
-    "section5": {
-      "patner_from_age": `${userData.patner_from_age}`,
-      "patner_to_age": `${userData.patner_to_age}`,
-      "patner_height": `${userData.patner_height}`,
-      "patner_weight": `${userData.patner_weight}`,
-      "patner_religion": `${userData.patner_religion}`,
-      "patner_cast": `${userData.patner_cast}`,
-      "patner_country": `${userData.patner_country}`,
-      "patner_state": `${userData.patner_state}`,
-      "patner_matrial_status": `${userData.patner_matrial_status}`,
-      "patner_education": `${userData.patner_education}`,
-      "patner_occupation": `${userData.patner_occupation}`,
-      "patner_mother_tongue": `${userData.patner_mother_tongue}`,
-      "patner_manglik": `${userData.patner_manglik}`,
-      "patner_salary": `${userData.patner_salary}`,
-      "patner_child_count": `${userData.patner_child_count}`,
-      "patner_child_age": `${userData.patner_child_age}`,
-      "patner_child_gender": `${userData.patner_child_gender}`,
-    },
-    "section6": {
-      "image": `${userData.image}`,
-      "image1": `${userData.image1}`,
-      "id_image": `${userData.id_image}`,
-      "id_image1": `${userData.id_image1}`,
-      "rasiimage": `${userData.rasiimage}`,
-    }
-  }
-  };
+      "section1": {
+        "name": userData.name || "",
+        "gender": userData.gender || "",   
+        "email": userData.email || "",
+        "phonenumber": userData.phonenumber || "",
+        "password": userData.password || "",
+        "mother_tongue": userData.mother_tongue || "",
+        "dob": userData.dob || "",
+        "marriage_type": userData.marriage_type || "",
+        "status_children": userData.status_children || "",
+        "child_count": userData.child_count || "",
+        "child_age": userData.child_age || "",
+        "religion": userData.religion || "",
+        "cast": userData.cast || "",
+        "subcast": userData.subcast || "",
+        "sevaikiragam": userData.sevaikiragam || "",
+        "gothram": userData.gothram || "",
+        "moonsign": userData.moonsign || "",
+        "star": userData.star || "",
+        "birthplace": userData.birthplace || "",
+        "birthtime": userData.birthtime || "",
+        "education": userData.education || "",
+        "education_details": userData.education_details || "",
+        "occupaction": userData.occupaction || "",
+        "employee": userData.employee || "",
+        "annual_income": userData.annual_income || "",
+      },
+      "section2": {
+        "country": userData.country || "",
+        "state": userData.state || "",
+        "city": userData.city || "",
+        "residece": userData.residece || "",
+        "alternatenumber": userData.alternatenumber || "",
+        "nricountry": userData.nricountry || "",
+        "address": userData.address || ""
+      },
+      "section3": {
+        "height": userData.height || "",
+        "weight": userData.weight || "",
+        "food_habits": userData.food_habits || "",
+        "smoking": userData.smoking || "",
+        "drinking": userData.drinking || "",
+        "body_type": userData.body_type || "",
+        "skin_tone": userData.skin_tone || "",
+        "profile_by": userData.profile_by || "",
+        "aboutme": userData.aboutme || ""
+      },
+      "section4": {
+        "family_type": userData.family_type || "",
+        "family_status": userData.family_status || "",
+        "father_name": userData.father_name || "",
+        "father_occupation": userData.father_occupation || "",
+        "mother_name": userData.mother_name || "",
+        "mother_occupation": userData.mother_occupation || "",
+        "brothers_count": userData.brothers_count || "",
+        "sisters_count": userData.sisters_count || "",
+        "brother_married": userData.brother_married || "",
+        "sister_married": userData.sister_married || "",
+        "family_details": userData.family_details || ""
+      },
+      "section5": {
+        "patner_from_age": userData.patner_from_age || "",
+        "patner_to_age": userData.patner_to_age || "",
+        "patner_height": userData.patner_height || "",
+        "patner_weight": userData.patner_weight || "",
+        "patner_religion": userData.patner_religion || "",
+        "patner_cast": userData.patner_cast || "",
+        "patner_country": userData.patner_country || "",
+        "patner_state": userData.patner_state || "",
+        "patner_matrial_status": userData.patner_matrial_status || "",
+        "patner_child_count": userData.patner_child_count || "",
+        "patner_child_age": userData.patner_child_age || "",
+        "patner_child_gender": userData.patner_child_gender || "",
+        "patner_education": userData.patner_education || "",
+        "patner_occupation": userData.patner_occupation || "",
+        "patner_mother_tongue": userData.patner_mother_tongue || "",
+        "patner_manglik": userData.patner_manglik || "",
+        "patner_salary": userData.patner_salary || ""
+      },
+      "section6": {
+        "image": userData.image || "",
+        "image1": userData.image1 || "",
+        "id_image": userData.id_image || "",
+        "id_image1": userData.id_image1 || "",
+        "rasiimage": userData.rasiimage || ""
+      }
+    };
   
+    // Now you can use initialFormData for your form initialization
+  };
   
 
   const labelTranslations = {
@@ -493,6 +489,23 @@ const Edituser = () => {
   const [currentSection, setCurrentSection] = useState('section1');
   const [customerData, setCustomerData] = useState({});
   const [casteList, setCasteList] = useState([]);
+
+  // useEffect(() => {
+  //   if (formData.currentSection === 'cast' || formData.currentSection === 'patner_cast') {
+  //     fetchCasteList();
+  //   }
+  // }, [formData.currentSection]);
+
+  // const fetchCasteList = () => {
+  //   fetch('https://tulirmatrimony.com/controlapi/castelist.php')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setCasteList(data); // Assuming the API returns an array of caste list
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching caste list:', error);
+  //     });
+  // };
 
   const handleChange = (e) => {
     const { name, files } = e.target;
@@ -883,6 +896,7 @@ const Edituser = () => {
 
 
       // Include regId in the combinedData object
+      combinedData.reg_id = regId;
 
       // Store combined data in localStorage
       localStorage.setItem('formData', JSON.stringify(combinedData));
