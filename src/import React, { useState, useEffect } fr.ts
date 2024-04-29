@@ -11,8 +11,10 @@ import Smallicon from './Admin/Components/heart-icon.png'
 
 
 const Edituser = () => {
- 
+  const { id } = useParams();
+  const [regId, setRegId] = useState('');
   const [showAlert, setShowAlert] = useState(false);
+
 
   const [options, setOptions] = useState({
     genderOptions: [
@@ -24,245 +26,157 @@ const Edituser = () => {
     { value: 'No', label: 'No' }
   ],
 
+  drinkingOptions: [
+    { value: 'Yes', label: 'Yes' },
+    { value: 'No', label: 'No' },
+    { value: 'Planning to Leave', label: 'Planning to Leave' }
+  ], 
+  patner_matrial_statusOptions : [
+    { value: 'Single', label: 'Single' },
+    { value: 'Divorce', label: 'Divorce' },
+    { value: 'Widow', label: 'Widow' }
+  ],
+  food_habitsOptions : [
+    { value: 'Vegetarian', label: 'Vegetarian' },
+    { value: 'Non-Vegetarian', label: 'Non-Vegetarian' }  
+    
+  ]
   
 });
-  
 
   useEffect(() => {
     // Fetch dropdown options when component mounts
     fetchDropdownOptions('marriage_type');
-    
-    fetchDropdownOptions('father_occupation');
-  
+    fetchDropdownOptions('religion');
+    fetchDropdownOptions('patner_salary');
   }, []);
 
-  const { id } = useParams();
-  console.log(id);
-  console.log("hi")
 
+  const fetchUserData = async (id) => {
+    try {
+      const response = await fetch(`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`);
+      if (response.ok) {
+        const userData = await response.json();
+        console.log(userData); 
+        const initialFormData = initializeFormData(userData);       } 
+        else {
+        console.error('Failed to fetch user data');
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
   useEffect(() => {
-    // Fetch user data based on the ID when component mounts
     fetchUserData(id);
-  }, [id]);
-
-
-
-
-  const [formData, setFormData] = useState({
-    "section1": {
-
-      "name": "",
-      "gender": "",   
-      "email": "",
-      "phonenumber": "",
-      "password": "",
-      "mother_tongue": "",
-      "dob": "",
-      "marriage_type": "",
-      "status_children": "",
-      "child_count": "",
-      "child_age": "",
-      "religion": "",
-      "cast": "",
-      "subcast": "",
-      "sevaikiragam": "",
-      "gothram": "",
-      "moonsign": "",
-      "star": "",
-      "birthplace": "",
-      "birthtime": "",
-      "education":"",
-      "education_details":"",
-      "occupaction":"",
-      "employee":"",
-      "annual_income":"",
-
-    },
-    "section2": {
-      "country": "",
-      "state": "",
-      "city": "",
-      "residece": "",
-      "alternatenumber": "",
-      "nricountry": "",
-      "address": ""
-    },
-    "section3": {
-      "height": "",
-      "weight": "",
-      "food_habits": "",
-      "smoking": "",
-      "drinking": "",
-      "body_type": "",
-      "skin_tone": "",
-      "profile_by": "",
-      "aboutme": ""
-    },
-    "section4": {
-      "family_type": "",
-      "family_status": "",
-      "father_name": "",
-      "father_occupation": "",
-      "mother_name": "",
-      "mother_occupation": "",
-      "brothers_count": "",
-      "sisters_count": "",
-      "brother_married": "",
-      "sister_married": "",
-      "family_details": ""
-    },
-    "section5": {
-      "patner_from_age": "",
-      "patner_to_age": "",
-      "patner_height": "",
-      "patner_weight": "",
-      "patner_religion": "",
-      "patner_cast": "",
-      "patner_country": "",
-      "patner_state": "",
-      "patner_matrial_status": "",
-      "patner_education": "",
-      "patner_occupation": "",
-      "patner_mother_tongue": "",
-      "patner_manglik": "",
-      "patner_salary": "",
-      "patner_child_count": "",
-      "patner_child_age": "",
-      "patner_child_gender": ""
-    },
-    "section6": {
-      "image": "",
-      "image1": "",
-      "id_image": "",
-      "id_image1": "",
-      "rasiimage": "",
-    }
-  }
-);
-//https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}
-//http://localhost:8000/fetchmember/${id}
-const fetchUserData = async () => {
-  try {
-    const response = await fetch(`http://localhost:8000/fetchmember/${id}`);
-    if (response.ok) {
-      const userData = await response.json();
-      console.log(userData); 
-      const updatedFormData = {
-        ...formData,
-        section1: {
-          ...formData.section1,
-          name: userData.body.name || "",
-          gender: userData.body.gender || "",   
-          email: userData.body.email || "",
-          phonenumber: userData.body.phonenumber || "",
-          password: userData.body.password || "",
-          mother_tongue: userData.body.mother_tongue || "",
-          dob: userData.body.dob || "",
-          marriage_type: userData.body.marriage_type || "",
-          status_children: userData.body.status_children || "",
-          child_count: userData.body.child_count || "",
-          child_age: userData.body.child_age || "",
-          religion: userData.body.religion || "",
-          cast: userData.body.cast || "",
-          subcast: userData.body.subcast || "",
-          sevaikiragam: userData.body.sevaikiragam || "",
-          gothram: userData.body.gothram || "",
-          moonsign: userData.body.moonsign || "",
-          star: userData.body.star || "",
-          birthplace: userData.body.birthplace || "",
-          birthtime: userData.body.birthtime || "",
-          education: userData.body.education || "",
-          education_details: userData.body.education_details || "",
-          occupaction: userData.body.occupaction || "",
-          employee: userData.body.employee || "",
-          annual_income: userData.body.annual_income || ""
-        },
-        section2: {
-          ...formData.section2,
-          country: userData.body.country || "",
-          state: userData.body.state || "",
-          city: userData.body.city || "",
-          residece: userData.body.residece || "",
-          alternatenumber: userData.body.alternatenumber || "",
-          nricountry: userData.body.nricountry || "",
-          address: userData.body.address || ""
-        },
-        section3: {
-          ...formData.section3,
-          height: userData.body.height || "",
-          weight: userData.body.weight || "",
-          food_habits: userData.body.food_habits || "",
-          smoking: userData.body.smoking || "",
-          drinking: userData.body.drinking || "",
-          body_type: userData.body.body_type || "",
-          skin_tone: userData.body.skin_tone || "",
-          profile_by: userData.body.profile_by || "",
-          aboutme: userData.body.aboutme || ""
-        },
-        section4: {
-          ...formData.section4,
-          family_type: userData.body.family_type || "",
-          family_status: userData.body.family_status || "",
-          father_name: userData.body.father_name || "",
-          father_occupation: userData.body.father_occupation || "",
-          mother_name: userData.body.mother_name || "",
-          mother_occupation: userData.body.mother_occupation || "",
-          brothers_count: userData.body.brothers_count || "",
-          sisters_count: userData.body.sisters_count || "",
-          brother_married: userData.body.brother_married || "",
-          sister_married: userData.body.sister_married || "",
-          family_details: userData.body.family_details || ""
-        },
-        section5: {
-          ...formData.section5,
-          patner_from_age: userData.body.patner_from_age || "",
-          patner_to_age: userData.body.patner_to_age || "",
-          patner_height: userData.body.patner_height || "",
-          patner_weight: userData.body.patner_weight || "",
-          patner_religion: userData.body.patner_religion || "",
-          patner_cast: userData.body.patner_cast || "",
-          patner_country: userData.body.patner_country || "",
-          patner_state: userData.body.patner_state || "",
-          patner_matrial_status: userData.body.patner_matrial_status || "",
-          patner_education: userData.body.patner_education || "",
-          patner_occupation: userData.body.patner_occupation || "",
-          patner_mother_tongue: userData.body.patner_mother_tongue || "",
-          patner_manglik: userData.body.patner_manglik || "",
-          patner_salary: userData.body.patner_salary || "",
-          patner_child_count: userData.body.patner_child_count || "",
-          patner_child_age: userData.body.patner_child_age || "",
-          patner_child_gender: userData.body.patner_child_gender || ""
-        },
-        section6: {
-          ...formData.section6,
-          image: userData.body.image || "",
-          image1: userData.body.image1 || "",
-          id_image: userData.body.id_image || "",
-          id_image1: userData.body.id_image1 || "",
-          rasiimage: userData.body.rasiimage || ""
-        }
-      };
-      setFormData(updatedFormData); // Set form data state with fetched user data
-    } else {
-      console.error('Failed to fetch user data');
-    }
-  } catch (error) {
-    console.error('Error fetching user data:', error);
-  }
-};
-
-
+  }, []);
+  
+  const initializeFormData = (userData) => {
+    return {
+      "section1": {
+        "name": "",
+        "gender": "",   
+        "email": "",
+        "phonenumber": "",
+        "password": "",
+        "mother_tongue": "",
+        "dob": "",
+        "marriage_type": "",
+        "status_children": "",
+        "child_count": "",
+        "child_age": "",
+        "religion": "",
+        "cast": "",
+        "subcast": "",
+        "sevaikiragam": "",
+        "gothram": "",
+        "moonsign": "",
+        "star": "",
+        "birthplace": "",
+        "birthtime": "",
+        "education":"",
+        "education_details":"",
+        "occupaction":"",
+        "employee":"",
+        "annual_income":"",
+  
+      },
+      "section2": {
+        "country": "",
+        "state": "",
+        "city": "",
+        "residece": "",
+        "alternatenumber": "",
+        "nricountry": "",
+        "address": ""
+      },
+      "section3": {
+        "height": "",
+        "weight": "",
+        "food_habits": "",
+        "smoking": "",
+        "drinking": "",
+        "body_type": "",
+        "skin_tone": "",
+        "profile_by": "",
+        "aboutme": ""
+      },
+      "section4": {
+        "family_type": "",
+        "family_status": "",
+        "father_name": "",
+        "father_occupation": "",
+        "mother_name": "",
+        "mother_occupation": "",
+        "brothers_count": "",
+        "sisters_count": "",
+        "brother_married": "",
+        "sister_married": "",
+        "family_details": ""
+      },
+      "section5": {
+        "patner_from_age": "",
+        "patner_to_age": "",
+        "patner_height": "",
+        "patner_weight": "",
+        "patner_religion": "",
+        "patner_cast": "",
+        "patner_country": "",
+        "patner_state": "",
+        "patner_matrial_status": "",
+        "patner_child_count": "",
+        "patner_child_age": "",
+        "patner_child_gender": "",
+        "patner_education": "",
+        "patner_occupation": "",
+        "patner_mother_tongue": "",
+        "patner_manglik": "",
+        "patner_salary": ""
+        
+      },
+      "section6": {
+        "image": "",
+        "image1": "",
+        "id_image": "",
+        "id_image1": "",
+        "rasiimage": "",
+      }
+     
+    };
+  
+  };
   
 
   const labelTranslations = {
     "reg_id": "பதிவு ஐடி",
     "name": "பெயர்",
     "image": "படம்",
-    "gender": "பாலினம்",
+    
+    "rasiimage": "ஜாதகப் படம்"
   };
   const statesInIndia = [
     { id: 1, name: 'Andhra Pradesh' },
     { id: 2, name: 'Arunachal Pradesh' },
+   
 ];
 
   const fieldTypeMapping = {
@@ -288,7 +202,7 @@ const fetchUserData = async () => {
     section6: 'Upload Images'
   };
 
-  // const [formData, setFormData] = useState(initializeFormData);
+  const [formData, setFormData] = useState(initializeFormData);
   const [currentSection, setCurrentSection] = useState('section1');
   const [customerData, setCustomerData] = useState({});
   const [casteList, setCasteList] = useState([]);
@@ -355,20 +269,62 @@ const fetchUserData = async () => {
           ]
         }));
         break;
-        case 'patner_child_gender':
-          // Options for gender dropdown
-          setOptions(prevOptions => ({
-            ...prevOptions,
-            [fieldName + 'Options']: [
-              { value: 'male', label: 'Male' },
-              { value: 'female', label: 'Female' }
-            ]
-          }));
+            case 'country': 
+            // Options for marriage type dropdown
+            setOptions(prevOptions => ({
+              ...prevOptions,
+              [fieldName + 'Options']: [
+                { value: 'india', label: 'India' } 
+              ]
+            }));
           break;
-        
+          case 'patner_country':
+            // Options for marriage type dropdown
+            setOptions(prevOptions => ({
+              ...prevOptions,
+              [fieldName + 'Options']: [
+                { value: 'india', label: 'India' }
+                  
+              ]
+          }));
+         break;
+        case 'marriage_type':
+            // Options for marriage type dropdown
+          setOptions(prevOptions => ({
+              ...prevOptions,
+              [fieldName + 'Options']: [
+                { value: 'single', label: 'Single' },
+                { value: 'divorce', label: 'Divorce' },
+                { value: 'widow', label: 'Widow' }
+              ]
+            }));
+            break;
+      case 'religion':
+        // Fetch options from API for religion
+        //http://localhost:8000/religionlist
+        //https://tulirmatrimony.com/controlapi/religionlist.php
+        endpoint = 'https://tulirmatrimony.com/controlapi/religionlist.php';
+        break;
+
+      case 'cast':
+      case 'patner_cast':
+      // Set the appropriate endpoint for fetching caste list based on currentSection
+      endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
+      break;
+  
+      
+        case 'patner_mother_tongue':
+            // Fetch options from different API for education  patner_religion
+          endpoint = 'https://tulirmatrimony.com/controlapi/languagelist.php';
+          break;
+        case 'patner_salary':
+            // Fetch options from different API for education  patner_religion
+          endpoint = 'https://tulirmatrimony.com/controlapi/incomelist.php';
+          break;
       default:
         break;
     } 
+  
 
     if (endpoint !== '') {
       const response = await fetch(endpoint);
@@ -389,74 +345,79 @@ const fetchUserData = async () => {
 };
 
 
-const handleSubmit = async (sectionName, sectionData, id) => {
-  try {
-    // Ensure sectionName is valid
-    if (!['section1', 'section2', 'section3', 'section4', 'section5', 'section6'].includes(sectionName)) {
-      throw new Error('Invalid section name');
-    }
-        // Add the id to sectionData
-    const dataToSend = { ...sectionData, id };
-    console.log(dataToSend);
 
-    let apiUrl;
-    switch (sectionName) {
-      case 'section1':
-        apiUrl = 'http://localhost:8000/editcustomer';
-        break;
-      case 'section2':
-        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerfamily.php';
-        break;
-      case 'section3':
-        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerresidency.php';
-        break;
-      case 'section4':
-        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerphycial.php';
-        break;
-      case 'section5':
-        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerpatner.php';
-        break;
-      case 'section6':
-        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerresidency.php';
-        break;
-      default:
-        throw new Error('Invalid section name');
-    }
+  const handleSubmit = async () => {
+    try {
+      // Combine all section data into one object
+      const combinedData = Object.values(formData).reduce((acc, sectionData) => {
+        return { ...acc, ...sectionData };
+      }, {});
+     
+      const imageData = {
+        image: combinedData.image ? combinedData.image.split(',')[1] : null,
+        image1: combinedData.image1 ? combinedData.image1.split(',')[1] : null,
+        id_image: combinedData.id_image ? combinedData.id_image.split(',')[1] : null,
+        id_image1: combinedData.id_image1 ? combinedData.id_image1.split(',')[1] : null,
+        rasiimage: combinedData.rasiimage ? combinedData.rasiimage.split(',')[1] : null,
+      };
 
-    const response = await fetch(apiUrl, {
-      method: 'PUT',
+
+
+      // Include regId in the combinedData object
+      combinedData.reg_id = regId;
+
+      // Store combined data in localStorage
+      localStorage.setItem('formData', JSON.stringify(combinedData));
+
+      // Optionally, you can also send data to the server here
+      //https://tulirmatrimony.com/controlapi/addcustomer.php
+      //http://localhost:8000/addcustomer
+      const response = await fetch('https://tulirmatrimony.com/controlapi/addcustomer.php', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ dataToSend }) 
+      body: JSON.stringify({ ...combinedData, ...imageData }) 
     });
-
-    // Handle the response from the server
+     console.log(combinedData);
+    // Handle the response from your Node.js server
     if (response.ok) {
       const responseData = await response.json();
-      setFormData(dataToSend);
-      console.log('Data sent successfully for section:', responseData);
-      
-      return true; // Success
+      console.log('Data sent successfully:', responseData);
+      setShowAlert(true); // Show alert box
+      setTimeout(() => setShowAlert(false), 1000);
+      window.location.href = '/Member';
+      // Optionally, you can reset the form data and handle any further actions here
     } else {
-      console.error('Failed to send data for section:', sectionName);
-      return false; // Failure
+      console.error('Failed to send data');
     }
 
-    // Optionally, you can reset the form data and handle any further actions here
-    setShowAlert(true); // Show alert box
-    setTimeout(() => setShowAlert(false), 1000);
-    setCurrentSection('section1');
-    // setCustomerData(combinedData);
-  } catch (error) {
-    console.error('Error submitting data:', error);
-  }
-};
+      // Reset formData and navigate to the next page
+      setFormData(initializeFormData);
+      setCurrentSection('section1');
+      setCustomerData(combinedData);
+    } catch (error) {
+      console.error('Error submitting data:', error);
+    }
+  };
 
-
-
-
-
+  const fetchCustomerList = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/api/data/customerlist');
+      if (response.ok) {
+        const responseData = await response.json();
+        if (responseData.body && Array.isArray(responseData.body)) {
+          // Handle fetched customer list data
+        } else {
+          console.error('Fetched data body is not an array:', responseData);
+        }
+      } else {
+        console.error('Failed to fetch customer list');
+      }
+    } catch (error) {
+      console.error('Error fetching customer list:', error);
+    }
+  };
   const handleBack = () => {
     const sections = Object.keys(formData);
     const currentIndex = sections.indexOf(currentSection);
@@ -539,18 +500,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
     <h2 className='mt-4'>{sectionNames[currentSection]}</h2>
       <div className='card-body m-5 edit_memberSections_mainsdsd '>
       <div className="edit_inputMain-sltr row">
-  
-  {/* <div className="col-lg-6 col-md-6 mb-4 text-start">
-    <label htmlFor="regId">Registration ID</label>
-    <input
-      type="text"
-      id="regid"
-      name="regid"
-      className="form-control"
-      value={regId}
-      readOnly  
-    />
-  </div> */}
+
 
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
@@ -592,12 +542,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
               </select>
           </div>
           :
-      //     patner_mother_tongue": "",
-      // "patner_manglik": "",
-      // "patner_salary": "",
-      // "patner_child_count": "",
-      // "patner_child_age": "",
-      // "patner_child_gender": ""
+     
           // Render input field for non-dropdown fields
           <div key={fieldName} className="col-lg-4 col-md-4 mb-4 text-start">
           <label htmlFor={fieldName} style={{ color: 'black' }}>
@@ -651,15 +596,11 @@ const handleSubmit = async (sectionName, sectionData, id) => {
       )}
 
       {/* Render Submit button for the last section */}
-      {/* {currentSection === 'section6' && ( */}
-<button 
-  className='btn btn-success m-3' 
-  onClick={() => handleSubmit(currentSection, formData[currentSection], id)}
->
-  Submit
-</button>
-      {/* )} */}
+      {currentSection === 'section6' && (
+        <button className='btn btn-success m-3' onClick={handleSubmit}>Submit</button>
+      )}
 </div>
+
     </div>
     </div>
     </div>
