@@ -2,7 +2,7 @@ import React from 'react'
 import Slider1 from './Home/Slider1.jpg'
 import Slider2 from './Home/Slider2.jpg'
 import Aboutimg from './Home/about-img.jpg'
-import Logo from './rgt-matrimony-logo.png'
+// import Logo from './rgt-matrimony-logo.png'
 import Slider from './Home/Slider'
 import Hstories from './Hstories'
 const Dhome = () => {
@@ -17,7 +17,7 @@ const Dhome = () => {
 			
                 <div class="logo-box">
 				
-                    <div class="logo"><a href="index"><img src={Logo} class='logo-img' alt="" title="" style={{maxWidth : '100%', height: '60'}} /></a>
+                    <div class="logo"><a href="index"><img src={''} class='logo-img' alt="" title="" style={{maxWidth : '100%', height: '60'}} /></a>
 					</div>
 					
                 </div>

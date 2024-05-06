@@ -19,7 +19,7 @@ const Religion = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://tulirmatrimony.com/controlapi/religionlist.php');
+                const response = await fetch('http://localhost:8000/religion');
                 const result = await response.json();
                 setData(result.body);
             } catch (error) {
@@ -30,7 +30,8 @@ const Religion = () => {
         fetchData();
     }, []);
 
-    //Localhost 
+    //http://localhost:8000/religion
+    //https://tulirmatrimony.com/controlapi/religionlist.php 
 
 
     // useEffect(() => {
@@ -162,7 +163,7 @@ const Religion = () => {
     {data.map(item => (
             <tr key={item.id}>
                 <td>{item.name}</td>       
-                <td><Link to={`/Religionedit?id=${item.id}`} className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
+                <td><Link to={`/Religionedit/id=${item.id}`} className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
                 <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
                 ))}

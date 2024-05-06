@@ -52,7 +52,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-        <Route path="/Dhome" element={<Dhome />} />
+        {/* <Route path="/Dhome" element={<Dhome />} /> */}
           <Route path="/Admin" element={<Signin />} />
           <Route path="/Aside" element={<Aside />} />
           <Route path="/Stories" element={<Stories />} />
@@ -90,7 +90,7 @@ function App() {
           <Route path="/Edituser/:id" element={<Edituser />} />
           <Route path="/Eduser/:id" element={<Eduser />} />
           <Route path="/User" element={<User />} />
-          <Route path="/Religionedit:userId" element={<Religionedit />} />
+          <Route path="/Religionedit/:id" element={<Religionedit />} />
           <Route path="/Location" element={<Location />} />
           <Route path="/Locationadd" element={<Locationadd />} />
           <Route path="/Addusers" element={<Addusers />} />

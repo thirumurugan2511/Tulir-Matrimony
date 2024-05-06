@@ -256,9 +256,6 @@ const Addusers = () => {
       "mother_tongue": "",
       "dob": "",
       "marriage_type": "",
-      "status_children": "",
-      "child_count": "",
-      "child_age": "",
       "religion": "",
       "cast": "",
       "subcast": "",
@@ -276,8 +273,6 @@ const Addusers = () => {
 
     },
     "section2": {
-      "country": "",
-      "state": "",
       "city": "",
       "residece": "",
       "alternatenumber": "",
@@ -286,10 +281,7 @@ const Addusers = () => {
     },
     "section3": {
       "height": "",
-      "weight": "",
       "food_habits": "",
-      "smoking": "",
-      "drinking": "",
       "body_type": "",
       "skin_tone": "",
       "profile_by": "",
@@ -318,9 +310,6 @@ const Addusers = () => {
       "patner_country": "",
       "patner_state": "",
       "patner_matrial_status": "",
-      "patner_child_count": "",
-      "patner_child_age": "",
-      "patner_child_gender": "",
       "patner_education": "",
       "patner_occupation": "",
       "patner_mother_tongue": "",
@@ -352,17 +341,17 @@ const Addusers = () => {
     "child_age": "குழந்தைகளின் வயது",
     "religion": "மதம்",
     "cast": "சாதி",
-    "subcast": "உபசாதி",
+    "subcast": "உட்பிரிவு",
     "sevaikiragam": "செவ்வாய் தோஷம்",
     "gothram": "கோத்ரம்",
     "moonsign": "ராசி",
-    "star": "நட்சத்திரம்",
-    "birthplace": "பிறந்த இடம்",
+    "star": "நட்சத்திரம் / பாதம்",
+    "birthplace": "பூர்வீகம்",
     "birthtime": "பிறந்த நேரம்",
     "education":"கல்வி",
     "education_details":"கல்வி விவரங்கள்",
     "occupaction":"வேலை",
-    "employee":"வேலை விவரம்",
+    "employee":"தொழில் விவரம்",
     "annual_income":"ஆண்டு வருமானம்", 
     "country": "நாடு",
     "state": "மாநிலம்",
@@ -409,7 +398,7 @@ const Addusers = () => {
     "patner_child_age": "குழந்தைகளின் வயது",
     "patner_child_gender": "குழந்தைகளின் பாலினம்",
     "image": "சுயசாதாரண படம்",
-    "image2": "சுயசாதாரண படம் - 2",
+    "image1": "சுயசாதாரண படம் - 2",
     "id_image": "அடையாள படம்",
     "id_image1": "அடையாள படம் - 2",
     "rasiimage": "ஜாதகப் படம்"
@@ -1129,9 +1118,10 @@ const Addusers = () => {
                 </div>
 
 {/* Render Back button for sections 2, 3, 4, and 5 */}
-{currentSection !== 'section1' && (
+{currentSection !== 'section1' && currentSection !== 'section6' && (
   <button className='btn btn-secondary' onClick={handleBack}>Back</button>
 )}
+
   {/* Render Next button for all sections except the last one */}
   {currentSection !== 'section6' && (
         <button className='btn btn-primary m-3' onClick={handleNext}>Next</button>
@@ -1139,7 +1129,134 @@ const Addusers = () => {
 
       {/* Render Submit button for the last section */}
       {currentSection === 'section6' && (
+        <>
+        <div className='container mx-auto justify-content-center mt-5 mb-3 row'>
+          <p className='mb-4'>ஜாதக கட்டம் : ஜாதக கட்டத்தை நிரப்ப கீழே உள்ள வார்த்தைகளை பயன்படுத்தவும்</p>
+          <div className='row mb-1 justify-content-center'>
+             <div className='col-lg-2'> <p>புதன் : pu</p> </div>
+             <div className='col-lg-2'> <p>சூரியன் : sun</p></div>   
+             <div className='col-lg-2'> <p>ராகு : rag</p></div>
+             <div className='col-lg-2'> <p>வியாழன் : vij</p></div>
+             <div className='col-lg-2'> <p>சுக்கிரன் : chk</p></div>
+          </div>
+
+          <div className='row mb-4 justify-content-center'>
+             <div className='col-lg-2'> <p>சனி : sat</p> </div>
+             <div className='col-lg-2'> <p>சந்திரன் : chan</p></div>    
+             <div className='col-lg-2'> <p>கேது : kee</p></div>
+             <div className='col-lg-2'> <p>செவ்வாய் : sev</p></div>
+             <div className='col-lg-2'> <p>லக்கனம் : lac</p></div>
+          </div>
+        <form className='row col-lg-6'>
+          <div class="form-row row mb-3">
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+          <div class="form-row justify-content-between row mb-3">
+            <div class="col-lg-3">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div className='col-lg-6 align-items-center justify-content-center my-auto'><h3>ராசி</h3></div>
+            <div class="col-lg-3">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+
+          <div class="form-row justify-content-between row mb-3">
+            <div class="col-lg-3">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+           
+            <div class="col-lg-3">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            </div>
+            <div class="form-row row mb-3">
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+         
+          <div class="form-row">
+          </div>
+        </form>
+
+        <form className='row col-lg-6'>
+          <div class="form-row row mb-3">
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+          <div class="form-row justify-content-between row mb-3">
+            <div class="col-lg-3">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div className='col-lg-6 align-items-center justify-content-center my-auto'><h3>அம்சம்</h3></div>
+            <div class="col-lg-3">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+
+          <div class="form-row justify-content-between row mb-3">
+            <div class="col-lg-3">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+           
+            <div class="col-lg-3">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            </div>
+            <div class="form-row row mb-3">
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+         
+          <div class="form-row">
+          </div>
+        </form>
+        </div>
+        <button className='btn btn-secondary' onClick={handleBack}>Back</button>
         <button className='btn btn-success m-3' onClick={handleSubmit}>Submit</button>
+        
+        </>
       )}
 </div>
 

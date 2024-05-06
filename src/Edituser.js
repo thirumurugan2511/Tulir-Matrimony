@@ -979,19 +979,19 @@ const handleSubmit = async (sectionName, sectionData, id) => {
         apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerbasic.php';
         break;
       case 'section2':
-        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerfamily.php';
-        break;
-      case 'section3':
         apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerresidency.php';
         break;
-      case 'section4':
+      case 'section3':
         apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerphycial.php';
+        break;
+      case 'section4':
+        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerfamily.php';
         break;
       case 'section5':
         apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerpatner.php';
         break;
       case 'section6':
-        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerresidency.php';
+        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerimage.php';
         break;
       default:
         throw new Error('Invalid section name');
@@ -1013,6 +1013,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
     if (response.ok) {
       const responseData = await response.json();
       console.log('Data sent successfully for section:', responseData);
+      window.location.href = '/Member';
       return true; // Success
     } else {
       console.error('Failed to send data for section:', sectionName);

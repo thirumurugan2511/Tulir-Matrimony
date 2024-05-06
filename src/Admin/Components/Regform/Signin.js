@@ -87,8 +87,6 @@ const handleSubmit = async (e) => {
                         <div className="mb-3 form-password-toggle">
                           <div className="d-flex justify-content-between">
                             <label className="form-label" htmlFor="password">Password</label>
-                            <a href="javascript:void(0)">
-                            </a>
                           </div>
                           <div className="input-group input-group-merge">
                             <input 

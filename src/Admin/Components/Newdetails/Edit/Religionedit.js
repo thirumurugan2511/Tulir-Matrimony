@@ -1,34 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Aside from '../../Aside/Aside';
-import Smallicon from '../../../Components/heart-icon.png';
-import { IoMdSettings } from 'react-icons/io';
-import { LuLogOut } from 'react-icons/lu';
-import { MdManageHistory } from 'react-icons/md';
-import { GrUserAdmin } from 'react-icons/gr';
+import axios from 'axios';
 
-function ReligionEdit() {
+function Religionedit() {
     const { id } = useParams();
     const [religionData, setReligionData] = useState({});
     const [formData, setFormData] = useState({
         religion_name: '',
     });
     const [successMsg, setSuccessMsg] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
 
     useEffect(() => {
-        fetch(`https://tulirmatrimony.com/controlapi/singleuser.php?id=${id}`)
-            .then(response => response.json())
-            .then(data => {
-                setReligionData(data.body); // Extracting the body from the response
-                setFormData({
-                    religion_name: data.body.name || '', // Accessing the 'name' property from the body
-                });
-            })
-            .catch(error => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8000/controlapi/singlereligion?${id}`);
+                const data = response.data;
+                if (data.data.head.code === 600) {
+                    console.error('Data does not exist:', data.data.head.msg);
+                } else {
+                    setReligionData(data.data.body);
+                    setFormData({
+                        religion_name: data.data.body.name || '',
+                    });
+                }
+            } catch (error) {
                 console.error('Error fetching religion data:', error);
-            });
-    }, [id]);
+            }
+        };
 
+        fetchData();
+    }, []);
     const handleChange = e => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -36,31 +39,26 @@ function ReligionEdit() {
             [name]: value,
         }));
     };
-
+    
     const handleSubmit = e => {
         e.preventDefault();
+        
         const requestData = {
-            id: id,
-            religion_name: formData.religion_name,
+            "id": id,
+            "name": formData.religion_name
         };
-
-        fetch('https://tulirmatrimony.com/controlapi/editreligion.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestData),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Data updated successfully:', data);
-                setSuccessMsg('Record updated successfully.');
-                setTimeout(() => {
-                    window.location.href = '/Religion';
-                }, 1000);
+    
+        axios.put('http://localhost:8000/controlapi/editreligion', requestData)
+            .then(response => {
+                if (response.data.head.code === 200) {
+                    setSuccessMsg('Record updated successfully.');
+                } else {
+                    setErrorMsg('Failed to update record.');
+                }
             })
             .catch(error => {
                 console.error('Error updating religion data:', error);
+                setErrorMsg('Failed to update record.');
             });
     };
 
@@ -70,7 +68,6 @@ function ReligionEdit() {
                 <div className="layout-container">
                     <Aside />
                     <div className="layout-page">
-                        {/* Navbar code here */}
                         <div className="content-wrapper">
                             <div className="container-xxl flex-grow-1 container-p-y">
                                 <div className="row">
@@ -101,6 +98,11 @@ function ReligionEdit() {
                                                         {successMsg}
                                                     </div>
                                                 )}
+                                                {errorMsg && (
+                                                    <div className="alert alert-danger" role="alert">
+                                                        {errorMsg}
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -124,4 +126,4 @@ function ReligionEdit() {
     );
 }
 
-export default ReligionEdit;
+export default Religionedit;
