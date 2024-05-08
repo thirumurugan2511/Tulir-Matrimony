@@ -19,7 +19,7 @@ const Religion = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8000/religion');
+                const response = await fetch('https://tulirmatrimony.com/controlapi/religionlist.php');
                 const result = await response.json();
                 setData(result.body);
             } catch (error) {

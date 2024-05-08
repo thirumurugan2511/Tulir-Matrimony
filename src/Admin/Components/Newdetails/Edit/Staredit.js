@@ -8,25 +8,25 @@ import { GrUserAdmin } from "react-icons/gr";
 import { IoMdSettings } from "react-icons/io";
 import Smallicon from '../../rgt-matrimony-logo.png';
 
-function ReligionEdit() {
+function Staredit() {
     const { id } = useParams();
-    const [religionData, setReligionData] = useState({});
+    const [starData, setStardata] = useState({});
     const [formData, setFormData] = useState({
-        religion_name: '',
+        star_name: '',
     });
     const [successMsg, setSuccessMsg] = useState('');
 
     useEffect(() => {
-        fetch(`https://tulirmatrimony.com/controlapi/singlereligion.php?${id}`)
+        fetch(`https://tulirmatrimony.com/controlapi/singlestar.php?${id}`)
             .then(response => response.json())
             .then(data => {
-                setReligionData(data.body);
+                setStardata(data.body);
                 setFormData({
-                    religion_name: data.body.name || '',
+                    star_name: data.body.name || '',
                 });
             })
             .catch(error => {
-                console.error('Error fetching religion data:', error);
+                console.error('Error fetching star data:', error);
             });
     }, [id]);
 
@@ -47,13 +47,13 @@ function ReligionEdit() {
         // Creating requestData object with the desired format
         const requestData = {
             id: idValue,
-            name: formData.religion_name // Assuming formData.religion_name contains the name
+            name: formData.star_name // Assuming formData.star_name contains the name
         };
         const data = JSON.stringify(requestData);
         console.log(data);
 //https://tulirmatrimony.com/controlapi/editreligion.php
 //http://localhost:8000/controlapi/editreligion
-        fetch('https://tulirmatrimony.com/controlapi/editreligion.php', {
+        fetch('https://tulirmatrimony.com/controlapi/editstar.php', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ function ReligionEdit() {
             console.log('Data updated successfully:', data);
             setSuccessMsg('Record updated successfully.');
             setTimeout(() => {
-                window.location.href = '/Religion';
+                window.location.href = '/Star';
             }, 1000);
         })
         .catch(error => {
@@ -91,7 +91,7 @@ function ReligionEdit() {
                 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                     <ol class="breadcrumb breadcrumb-style2 mb-0">
                         <li><MdManageHistory  class="bx bx-user me-2"/></li>
-                        <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Religion </li>
+                        <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage star </li>
                     </ol>
                     <ul class="navbar-nav flex-row align-items-center ms-auto">
                         <li class="nav-item lh-1 me-3">
@@ -150,17 +150,17 @@ function ReligionEdit() {
                                             <div className="card-body">
                                                 <form id="addEditForm" name="addEditForm" onSubmit={(e) => handleSubmit(e, id)}>
                                                     <div className="mb-3 text-start">
-                                                        <label className="form-label" htmlFor="religion_name">
-                                                            Religion Name <span className="Form__Error">*</span>
+                                                        <label className="form-label" htmlFor="star_name">
+                                                            Star Name <span className="Form__Error">*</span>
                                                         </label>
                                                         <input
                                                             type="text"
                                                             className="form-control required"
-                                                            id="religion_name"
-                                                            value={formData.religion_name}
-                                                            name="religion_name"
+                                                            id="star_name"
+                                                            value={formData.star_name}
+                                                            name="star_name"
                                                             onChange={handleChange}
-                                                            placeholder="Religion Name"
+                                                            placeholder="Star Name"
                                                         />
                                                     </div>
                                                     <button type="submit" className="btn btn-primary formSubmitBtn" id="formSubmitBtn">
@@ -195,4 +195,4 @@ function ReligionEdit() {
     );
 }
 
-export default ReligionEdit;
+export default Staredit;

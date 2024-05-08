@@ -96,8 +96,6 @@ function App() {
           <Route path="/Addusers" element={<Addusers />} />
           <Route path="/" element={<Freereg />} />
           <Route path="/Thankyou" element={<Thankyou />} />
-
-
         </Routes>
       </Router>
 
