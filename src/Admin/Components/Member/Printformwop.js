@@ -40,7 +40,7 @@ const Printformwop = () => {
                 //http://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
                 //http://localhost:8000//api/singlejathagam/${id}
                 const response = await axios.get(`https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}`);
-                setData(response.data);
+                setData(response.data.body);
                 console.log(response.data)
               } catch (error) {
                 console.error('Error fetching data', error);

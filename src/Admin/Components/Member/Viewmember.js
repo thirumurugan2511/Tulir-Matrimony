@@ -58,7 +58,7 @@ const Viewmember = () => {
         //http://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
         //http://localhost:8000//api/singlejathagam/${id}
         const response = await axios.get(`https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}`);
-        setData(response.data);
+        setData(response.data.body);
         console.log(response)
       } catch (error) {
         console.error('Error fetching data', error);
@@ -609,7 +609,7 @@ const Viewmember = () => {
                           </div>
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                               <div class="detalistsleg">
-                                  <h5 class="py-2"><span>If NRI Originated country :</span> {profileData.body.mothercountry}</h5>
+                                  <h5 class="py-2"><span>Mother country :</span> {profileData.body.mothercountry}</h5>
                               </div>
                           </div>
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
