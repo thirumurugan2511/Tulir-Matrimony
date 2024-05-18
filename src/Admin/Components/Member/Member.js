@@ -201,16 +201,17 @@ const Member = () => {
             <td>{item.reg_id}</td>
             <td>{item.name}</td>
             <td><img src={`data:image/jpeg;base64,${item.image}`} height={40} alt="User Profile" className="w-px-40 rounded-circle" /></td>
-            <td>
-            <select className='form-select' value={selectedPlans[item.id] || ''} onChange={(e) => handlePlanChange(item.id, e)}>
+            <td> Basic
+            {/* <select className='form-select' value={selectedPlans[item.id] || ''} onChange={(e) => handlePlanChange(item.id, e)}>
                     <option value="">Select Plan</option>
                     {plans.map(plan => (
                         <option key={plan.id} value={plan.id}>{plan.name}</option>
                     ))}
-                </select>
+                </select> */}
             </td>
             <td className='txt-success'>{item.status}</td>
             <td><Link to={`/Viewmember/${item.id}`}><FaEye  class="bx bxs-edit"/></Link></td>
+            
             <td><Link to={`/Edituser/${item.id}`}><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
             <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>

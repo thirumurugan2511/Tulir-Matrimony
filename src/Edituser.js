@@ -45,7 +45,7 @@ const Edituser = () => {
     { value: 'No', label: 'No' },
     { value: 'Planning to Leave', label: 'Planning to Leave' }
   ], 
-  patner_matrial_statusOptions : [
+  partner_matrial_statusOptions : [
     { value: 'Single', label: 'Single' },
     { value: 'Divorce', label: 'Divorce' },
     { value: 'Widow', label: 'Widow' }
@@ -55,15 +55,15 @@ const Edituser = () => {
     { value: 'Non-Vegetarian', label: 'Non-Vegetarian' }  
     
   ],
-  patner_child_genderOptions : [
+  partner_child_genderOptions : [
     { value: 'male', label: 'Male' },
     { value: 'female', label: 'Female' }   
   ],
-  patner_manglikOptions : [
+  partner_manglikOptions : [
     { value: 'Yes', label: 'Yes' },
     { value: 'no', label: 'No' }    
   ],
-  // patner_educationOptions: [
+  // partner_educationOptions: [
   //   { value: 'Bachelor', label: 'Bachelor' },
   //   { value: 'Master', label: 'Master' },
   //   { value: 'Phd', label: 'Phd' },
@@ -111,7 +111,7 @@ const Edituser = () => {
     { value: 'Nuclear Family', label: 'Nuclear Family' },
    { value: 'Joint Family', label: 'Joint Family' }  
   ],
-  patner_from_ageOptions : [
+  partner_from_ageOptions : [
     { value: '18', label: '18 Years' },
     { value: '19', label: '19 Years' },
     { value: '20', label: '20 Years' },
@@ -156,7 +156,7 @@ const Edituser = () => {
     { value: '59', label: '59 Years' },
     { value: '60', label: '60 Years' }
   ],
-  patner_to_ageOptions : [
+  partner_to_ageOptions : [
     { value: '18', label: '18 Years' },
     { value: '19', label: '19 Years' },
     { value: '20', label: '20 Years' },
@@ -209,26 +209,29 @@ const Edituser = () => {
     // Fetch dropdown options when component mounts
     fetchDropdownOptions('marriage_type');
     fetchDropdownOptions('religion');
-    fetchDropdownOptions('cast');
-    fetchDropdownOptions('moonsign');
+    fetchDropdownOptions('caste');
+    fetchDropdownOptions('zodiacsign');
     fetchDropdownOptions('star');
+    fetchDropdownOptions('caste');
     fetchDropdownOptions('mother_tongue');
     fetchDropdownOptions('education');
     fetchDropdownOptions('occupaction');
-    fetchDropdownOptions('employee');
+    fetchDropdownOptions('jobdetails');
     fetchDropdownOptions('annual_income');
+    fetchDropdownOptions('city');
+    fetchDropdownOptions('bloodgroup');
     fetchDropdownOptions('country');
     fetchDropdownOptions('state');
-    fetchDropdownOptions('patner_religion');
-    fetchDropdownOptions('patner_cast');
-    fetchDropdownOptions('patner_country');
-    fetchDropdownOptions('patner_state');
-    fetchDropdownOptions('patner_education');
-    fetchDropdownOptions('patner_occupation');
+    fetchDropdownOptions('partner_religion');
+    fetchDropdownOptions('partner_caste');
+    fetchDropdownOptions('partner_country');
+    fetchDropdownOptions('partner_state');
+    fetchDropdownOptions('partner_education');
+    fetchDropdownOptions('partner_occupation');
     fetchDropdownOptions('father_occupation');
     fetchDropdownOptions('mother_occupation');
-    fetchDropdownOptions('patner_mother_tongue');
-    fetchDropdownOptions('patner_salary');
+    fetchDropdownOptions('partner_mother_tongue');
+    fetchDropdownOptions('partner_salary');
   
   }, []);
 
@@ -252,44 +255,39 @@ const Edituser = () => {
       "email": "",
       "phonenumber": "",
       "password": "",
+      "age": "", 
       "mother_tongue": "",
       "dob": "",
       "marriage_type": "",
-      "status_children": "",
-      "child_count": "",
-      "child_age": "",
       "religion": "",
-      "cast": "",
-      "subcast": "",
+      "caste": "",
+      "subcaste": "",
       "sevaikiragam": "",
       "gothram": "",
-      "moonsign": "",
+      "zodiacsign": "",
       "star": "",
       "birthplace": "",
       "birthtime": "",
       "education":"",
       "education_details":"",
       "occupaction":"",
-      "employee":"",
+      "jobdetails":"",
       "annual_income":"",
+      "kuladeivam":"",
 
     },
     "section2": {
-      "country": "",
-      "state": "",
       "city": "",
       "residece": "",
       "alternatenumber": "",
-      "nricountry": "",
+      "mothercountry": "",
       "address": ""
     },
     "section3": {
       "height": "",
-      "weight": "",
       "food_habits": "",
-      "smoking": "",
-      "drinking": "",
-      "body_type": "",
+      "bloodgroup": "",
+     
       "skin_tone": "",
       "profile_by": "",
       "aboutme": ""
@@ -308,23 +306,18 @@ const Edituser = () => {
       "family_details": ""
     },
     "section5": {
-      "patner_from_age": "",
-      "patner_to_age": "",
-      "patner_height": "",
-      "patner_weight": "",
-      "patner_religion": "",
-      "patner_cast": "",
-      "patner_country": "",
-      "patner_state": "",
-      "patner_matrial_status": "",
-      "patner_education": "",
-      "patner_occupation": "",
-      "patner_mother_tongue": "",
-      "patner_manglik": "",
-      "patner_salary": "",
-      "patner_child_count": "",
-      "patner_child_age": "",
-      "patner_child_gender": ""
+      "partner_from_age": "",
+      "partner_to_age": "",
+      "partner_height": "",
+      "partner_religion": "",
+      "partner_caste": "",
+      "partner_matrial_status": "",
+      "partner_education": "",
+      "partner_occupation": "",
+      "partner_mother_tongue": "",
+      "partner_manglik": "",
+      "partner_salary": ""
+    
     },
     "section6": {
       "image": "",
@@ -356,41 +349,33 @@ const fetchUserData = async () => {
           mother_tongue: userData.body.mother_tongue || "",
           dob: userData.body.dob || "",
           marriage_type: userData.body.marriage_type || "",
-          status_children: userData.body.status_children || "",
-          child_count: userData.body.child_count || "",
-          child_age: userData.body.child_age || "",
           religion: userData.body.religion || "",
-          cast: userData.body.cast || "",
-          subcast: userData.body.subcast || "",
+          caste: userData.body.caste || "",
+          subcaste: userData.body.subcaste || "",
           sevaikiragam: userData.body.sevaikiragam || "",
           gothram: userData.body.gothram || "",
-          moonsign: userData.body.moonsign || "",
+          zodiacsign: userData.body.zodiacsign || "",
           star: userData.body.star || "",
           birthplace: userData.body.birthplace || "",
           birthtime: userData.body.birthtime || "",
           education: userData.body.education || "",
           education_details: userData.body.education_details || "",
           occupaction: userData.body.occupaction || "",
-          employee: userData.body.employee || "",
+          jobdetails: userData.body.jobdetails || "",
           annual_income: userData.body.annual_income || ""
         },
         section2: {
           ...formData.section2,
-          country: userData.body.country || "",
-          state: userData.body.state || "",
           city: userData.body.city || "",
           residece: userData.body.residece || "",
           alternatenumber: userData.body.alternatenumber || "",
-          nricountry: userData.body.nricountry || "",
+          mothercountry: userData.body.mothercountry || "",
           address: userData.body.address || ""
         },
         section3: {
           ...formData.section3,
-          height: userData.body.height || "",
-          weight: userData.body.weight || "",
+          height: userData.body.height || "",   
           food_habits: userData.body.food_habits || "",
-          smoking: userData.body.smoking || "",
-          drinking: userData.body.drinking || "",
           body_type: userData.body.body_type || "",
           skin_tone: userData.body.skin_tone || "",
           profile_by: userData.body.profile_by || "",
@@ -412,23 +397,19 @@ const fetchUserData = async () => {
         },
         section5: {
           ...formData.section5,
-          patner_from_age: userData.body.patner_from_age || "",
-          patner_to_age: userData.body.patner_to_age || "",
-          patner_height: userData.body.patner_height || "",
-          patner_weight: userData.body.patner_weight || "",
-          patner_religion: userData.body.patner_religion || "",
-          patner_cast: userData.body.patner_cast || "",
-          patner_country: userData.body.patner_country || "",
-          patner_state: userData.body.patner_state || "",
-          patner_matrial_status: userData.body.patner_matrial_status || "",
-          patner_education: userData.body.patner_education || "",
-          patner_occupation: userData.body.patner_occupation || "",
-          patner_mother_tongue: userData.body.patner_mother_tongue || "",
-          patner_manglik: userData.body.patner_manglik || "",
-          patner_salary: userData.body.patner_salary || "",
-          patner_child_count: userData.body.patner_child_count || "",
-          patner_child_age: userData.body.patner_child_age || "",
-          patner_child_gender: userData.body.patner_child_gender || ""
+          partner_from_age: userData.body.partner_from_age || "",
+          partner_to_age: userData.body.partner_to_age || "",
+          partner_height: userData.body.partner_height || "",
+          
+          partner_religion: userData.body.partner_religion || "",
+          partner_caste: userData.body.partner_caste || "",
+          partner_matrial_status: userData.body.partner_matrial_status || "",
+          partner_education: userData.body.partner_education || "",
+          partner_occupation: userData.body.partner_occupation || "",
+          partner_mother_tongue: userData.body.partner_mother_tongue || "",
+          partner_manglik: userData.body.partner_manglik || "",
+          partner_salary: userData.body.partner_salary || ""
+          
         },
         section6: {
           ...formData.section6,
@@ -460,32 +441,35 @@ const fetchUserData = async () => {
     "email": "மின்னஞ்சல்",
     "phonenumber": "தொலைபேசி எண்",
     "password": "கடவுச்சொல்",
+    "age": "வயது",
     "mother_tongue": "தாய்மொழி",
     "dob": "பிறந்த தேதி",
     "marriage_type": "திருமண நிலை",
     "status_children": "குழந்தைகளின் நிலை",
     "child_count": "குழந்தைகளின் எண்ணிக்கை",
     "child_age": "குழந்தைகளின் வயது",
+    "kuladeivam": "குலதெய்வம்",
+    "bloodgroup": "இரத்த வகை",
     "religion": "மதம்",
-    "cast": "சாதி",
-    "subcast": "உபசாதி",
+    "caste": "சாதி",
+    "subcaste": "உபசாதி",
     "sevaikiragam": "செவ்வாய் தோஷம்",
     "gothram": "கோத்ரம்",
-    "moonsign": "ராசி",
+    "zodiacsign": "ராசி",
     "star": "நட்சத்திரம்",
     "birthplace": "பிறந்த இடம்",
     "birthtime": "பிறந்த நேரம்",
     "education":"கல்வி",
     "education_details":"கல்வி விவரங்கள்",
     "occupaction":"வேலை",
-    "employee":"வேலை விவரம்",
+    "jobdetails":"வேலை விவரம்",
     "annual_income":"ஆண்டு வருமானம்", 
     "country": "நாடு",
     "state": "மாநிலம்",
     "city": "நகரம்",
     "residece": "குடியிருப்பு வகை",
     "alternatenumber": "தொலைபேசி மாற்று எண்",
-    "nricountry": "தாய்நாடு",
+    "mothercountry": "தாய்நாடு",
     "address": "முகவரி",
     "height": "உயரம்",
     "weight": "எடை",
@@ -507,23 +491,23 @@ const fetchUserData = async () => {
     "brother_married": "சகோதரர் திருமணம்",
     "sister_married": "சகோதரி திருமணம்",
     "family_details": "குடும்ப விவரங்கள்",
-    "patner_from_age": "மணமகன் / மணமகள் வயது வரம்பு",
-    "patner_to_age": "மணமகன் / மணமகள் வயது வரம்பு",
-    "patner_height": "உயரம்",
-    "patner_weight": "எடை",
-    "patner_religion": "மதம்",
-    "patner_cast": "சாதி",
-    "patner_country": "நாடு",
-    "patner_state": "மாநிலம்",
-    "patner_matrial_status": "திருமணம் நிலை",
-    "patner_education": "கல்வி",
-    "patner_occupation": "பணி",
-    "patner_mother_tongue": "தாய்மொழி",
-    "patner_manglik": "செவ்வாய் தோஷம்",
-    "patner_salary": "சம்பளம்",
-    "patner_child_count": "குழந்தைகளின் எண்ணிக்கை",
-    "patner_child_age": "குழந்தைகளின் வயது",
-    "patner_child_gender": "குழந்தைகளின் பாலினம்",
+    "partner_from_age": "மணமகன் / மணமகள் வயது வரம்பு",
+    "partner_to_age": "மணமகன் / மணமகள் வயது வரம்பு",
+    "partner_height": "உயரம்",
+    "partner_weight": "எடை",
+    "partner_religion": "மதம்",
+    "partner_caste": "சாதி",
+    "partner_country": "நாடு",
+    "partner_state": "மாநிலம்",
+    "partner_matrial_status": "திருமணம் நிலை",
+    "partner_education": "கல்வி",
+    "partner_occupation": "பணி",
+    "partner_mother_tongue": "தாய்மொழி",
+    "partner_manglik": "செவ்வாய் தோஷம்",
+    "partner_salary": "சம்பளம்",
+    "partner_child_count": "குழந்தைகளின் எண்ணிக்கை",
+    "partner_child_age": "குழந்தைகளின் வயது",
+    "partner_child_gender": "குழந்தைகளின் பாலினம்",
     "image": "சுயசாதாரண படம்",
     "image2": "சுயசாதாரண படம் - 2",
     "id_image": "அடையாள படம்",
@@ -597,23 +581,21 @@ const fetchUserData = async () => {
 
   const handleChange = (e) => {
     const { name, files } = e.target;
-  
+
     if (['image', 'image1', 'id_image', 'id_image1', 'rasiimage'].includes(name)) {
-      // Read the file contents
       const file = files[0];
       const reader = new FileReader();
       reader.onloadend = () => {
-        // Store the file contents in state
         setFormData(prevState => ({
           ...prevState,
-          [currentSection]: {
-            ...prevState[currentSection],
-            [name]: reader.result // Store the file contents
+          section6: {
+            ...prevState.section6,
+            [name]: reader.result
           }
         }));
       };
       if (file) {
-        reader.readAsDataURL(file); // Read file as data URL
+        reader.readAsDataURL(file);
       }
     } else {
       const { value } = e.target;
@@ -657,7 +639,7 @@ const fetchUserData = async () => {
           ]
         }));
         break;
-        case 'patner_child_gender':
+        case 'partner_child_gender':
           // Options for gender dropdown
           setOptions(prevOptions => ({
             ...prevOptions,
@@ -667,7 +649,7 @@ const fetchUserData = async () => {
             ]
           }));
           break;
-          case 'patner_to_age':
+          case 'partner_to_age':
             // Options for partner's age dropdown
             const partner_to_ageOptions = [];
             for (let i = 18; i <= 60; i++) {
@@ -678,7 +660,7 @@ const fetchUserData = async () => {
               [fieldName + 'Options']: partner_to_ageOptions
             }));
             break;
-            case 'patner_from_age':
+            case 'partner_from_age':
               // Options for partner's age dropdown
               const partner_from_ageOptions = [];
               for (let i = 18; i <= 60; i++) {
@@ -689,6 +671,20 @@ const fetchUserData = async () => {
                 [fieldName + 'Options']: partner_from_ageOptions
               }));
               break;
+            case 'bloodgroup':
+                // Options for marriage type dropdown
+                setOptions(prevOptions => ({
+                  ...prevOptions,
+                  [fieldName + 'Options']: [
+                    { value: 'A Positive', label: 'A Positive' },
+                    { value: 'A Negative', label: 'A Negative' },
+                    { value: 'B Positive', label: 'B Positive' },
+                    { value: 'B Negative', label: 'B Negative' } ,
+                    { value: 'O Positive', label: 'O Positive' },
+                    { value: 'O Negative', label: 'O Negative' }    
+                  ]
+                }));            
+            break;
         case 'sevaikiragam':
           // Options for marriage type dropdown
           setOptions(prevOptions => ({
@@ -710,7 +706,7 @@ const fetchUserData = async () => {
           //     ]
           //   }));
           //   break;
-          //   case 'patner_education':
+          //   case 'partner_education':
           //   // Options for marriage type dropdown
           //   setOptions(prevOptions => ({
           //     ...prevOptions,
@@ -723,7 +719,7 @@ const fetchUserData = async () => {
           //     ]
           //   }));
           //   break;
-          case 'patner_manglik':
+          case 'partner_manglik':
             // Options for marriage type dropdown
             setOptions(prevOptions => ({
               ...prevOptions,
@@ -836,7 +832,7 @@ const fetchUserData = async () => {
               ]
             }));
           break;
-          case 'patner_country':
+          case 'partner_country':
             // Options for marriage type dropdown
             setOptions(prevOptions => ({
               ...prevOptions,
@@ -854,7 +850,7 @@ const fetchUserData = async () => {
             [fieldName + 'Options']: stateOptions
           }));
           break;
-        case 'patner_state':
+        case 'partner_state':
           // Options for partner state dropdown
           const partnerStateOptions = generateStateOptions();
           setOptions(prevOptions => ({
@@ -880,13 +876,16 @@ const fetchUserData = async () => {
         endpoint = 'https://tulirmatrimony.com/controlapi/religionlist.php';
         break;
 
-      case 'cast':
-      case 'patner_cast':
+      case 'partner_caste':
       // Set the appropriate endpoint for fetching caste list based on currentSection
       endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
       break;
-      case 'moonsign':
-        // Fetch options from different API for moonsign
+      case 'caste':
+        // Set the appropriate endpoint for fetching caste list based on currentSection
+        endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
+        break;
+      case 'zodiacsign':
+        // Fetch options from different API for zodiacsign
         endpoint = 'https://tulirmatrimony.com/controlapi/moonsignlist.php';
         break;
       case 'star':
@@ -897,6 +896,11 @@ const fetchUserData = async () => {
         // Fetch options from different API for education
         endpoint = 'https://tulirmatrimony.com/controlapi/languagelist.php';
         break;
+      case 'caste':
+      // case 'partner_caste':
+      // Set the appropriate endpoint for fetching caste list based on currentSection
+      endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
+      break;
         case 'education':
           // Fetch options from different API for education
           endpoint = 'https://tulirmatrimony.com/controlapi/educationlist.php';
@@ -914,31 +918,40 @@ const fetchUserData = async () => {
           endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
           break;
         case 'mother_occupation':
-            // Fetch options from different API for education  patner_religion
+            // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
           break;
-        case 'patner_religion':
-              // Fetch options from different API for education  patner_religion
+        case 'partner_religion':
+              // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/religionlist.php';
           break;
-         case 'patner_cast':
-           // Fetch options from different API for education  patner_religion
+         case 'partner_caste':
+           // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
           break;
-        case 'patner_education':
-                // Fetch options from different API for education  patner_religion
+        case 'partner_education':
+                // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/educationlist.php';
          break;
-        case 'patner_occupation':
-             // Fetch options from different API for education  patner_religion
+        case 'partner_occupation':
+             // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
           break;
-        case 'patner_mother_tongue':
-            // Fetch options from different API for education  patner_religion
+        case 'partner_caste':
+            // case 'partner_caste':
+            // Set the appropriate endpoint for fetching caste list based on currentSection
+          endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
+          break;
+          case 'city':
+          // Fetch options from different API for education
+          endpoint = 'https://tulirmatrimony.com/controlapi/districtlist.php';
+          break;
+        case 'partner_mother_tongue':
+            // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/languagelist.php';
           break;
-        case 'patner_salary':
-            // Fetch options from different API for education  patner_religion
+        case 'partner_salary':
+            // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/incomelist.php';
           break;
       default:
@@ -949,7 +962,24 @@ const fetchUserData = async () => {
       const response = await fetch(endpoint);
       if (response.ok) {
         const responseData = await response.json();
-        const options = responseData.body.map(item => ({ value: item.name, label: item.name }));
+        let options;
+    
+        // Modify mapping based on fieldName
+        switch (fieldName) {
+          case 'caste':
+            options = responseData.body.map(item => ({ value: item.caste_name, label: item.caste_name }));
+            break;
+          case 'partner_caste':
+            options = responseData.body.map(item => ({ value: item.caste_name, label: item.caste_name }));
+            break;
+          case 'city':
+            options = responseData.body.map(item => ({ value: item.district_name, label: item.district_name }));
+            break;
+          default:
+            options = responseData.body.map(item => ({ value: item.name, label: item.name }));
+            break;
+        }
+    
         setOptions(prevOptions => ({
           ...prevOptions,
           [fieldName + 'Options']: options
@@ -988,7 +1018,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
         apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerfamily.php';
         break;
       case 'section5':
-        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerpatner.php';
+        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerpartner.php';
         break;
       case 'section6':
         apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerimage.php';
@@ -1013,7 +1043,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
     if (response.ok) {
       const responseData = await response.json();
       console.log('Data sent successfully for section:', responseData);
-      window.location.href = '/Member';
+      // window.location.href = '/Member';
       return true; // Success
     } else {
       console.error('Failed to send data for section:', sectionName);
@@ -1127,11 +1157,12 @@ const handleSubmit = async (sectionName, sectionData, id) => {
 
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
-        ['gender', 'marriage_type', 'sevaikiragam', 'religion',  'moonsign', 'mother_tongue', 'star', 'education', 'occupaction', 'annual_income',
-          'smoking', 'drinking', 'status_children','country', 'state', 'father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'patner_religion',
-           'patner_country', 'patner_state', 'patner_matrial_status', 'patner_education', 'patner_occupation', 'patner_mother_tongue',
-          'patner_salary', 'patner_child_gender', 'patner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'patner_from_age',
-          'patner_to_age','residece'
+        ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste',  'bloodgroup', 'zodiacsign',
+         'mother_tongue', 'star', 'education', 'occupaction', 'annual_income',
+          'smoking', 'drinking', 'status_children','country', 'state','city', 'father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'partner_religion',
+           'partner_country', 'partner_state', 'partner_matrial_status', 'partner_education', 'partner_occupation', 'partner_mother_tongue',
+          'partner_salary', 'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
+          'partner_to_age','residece'
         ].includes(fieldName) ?
           <div key={fieldName} className="col-lg-4 col-md-6 mb-4 text-start">
             <label htmlFor={fieldName} style={{ color: 'black' }}>{labelTranslations[fieldName]} </label>
@@ -1144,18 +1175,18 @@ const handleSubmit = async (sectionName, sectionData, id) => {
                 onChange={handleChange}
               > 
                 <option value="">Select your {
-                  fieldName === 'patner_from_age' ? 'Partner from age' :
-                  fieldName === 'patner_to_age' ? 'Partner to age' :
-                  fieldName === 'patner_religion' ? 'Partner religion' :
-                  fieldName === 'patner_country' ? 'Partner country' :
-                  fieldName === 'patner_state' ? 'Partner state' :
-                  fieldName === 'patner_matrial_status' ? 'Partner marital status' :
-                  fieldName === 'patner_education' ? 'Partner education' :
-                  fieldName === 'patner_occupation' ? 'Partner occupation' :
-                  fieldName === 'patner_mother_tongue' ? 'Partner mothertongue' :
-                  fieldName === 'patner_manglik' ? 'Partner manglik' :
-                  fieldName === 'patner_salary' ? 'Partner salary' :
-                  fieldName === 'patner_child_gender' ? 'Partner child gender' :
+                  fieldName === 'partner_from_age' ? 'Partner from age' :
+                  fieldName === 'partner_to_age' ? 'Partner to age' :
+                  fieldName === 'partner_religion' ? 'Partner religion' :
+                  fieldName === 'partner_country' ? 'Partner country' :
+                  fieldName === 'partner_state' ? 'Partner state' :
+                  fieldName === 'partner_matrial_status' ? 'Partner marital status' :
+                  fieldName === 'partner_education' ? 'Partner education' :
+                  fieldName === 'partner_occupation' ? 'Partner occupation' :
+                  fieldName === 'partner_mother_tongue' ? 'Partner mothertongue' :
+                  fieldName === 'partner_manglik' ? 'Partner manglik' :
+                  fieldName === 'partner_salary' ? 'Partner salary' :
+                  fieldName === 'partner_child_gender' ? 'Partner child gender' :
                   `${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`
                 }</option>
                 {/* Render options dynamically */}
@@ -1165,12 +1196,12 @@ const handleSubmit = async (sectionName, sectionData, id) => {
               </select>
           </div>
           :
-      //     patner_mother_tongue": "",
-      // "patner_manglik": "",
-      // "patner_salary": "",
-      // "patner_child_count": "",
-      // "patner_child_age": "",
-      // "patner_child_gender": ""
+      //     partner_mother_tongue": "",
+      // "partner_manglik": "",
+      // "partner_salary": "",
+      // "partner_child_count": "",
+      // "partner_child_age": "",
+      // "partner_child_gender": ""
           // Render input field for non-dropdown fields
           <div key={fieldName} className="col-lg-4 col-md-4 mb-4 text-start">
           <label htmlFor={fieldName} style={{ color: 'black' }}>
@@ -1178,6 +1209,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
             {['name', 'email', 'phonenumber', 'password', 'dob'].includes(fieldName) && <span style={{ color: 'red' }}>*</span>}
           </label>
           {['image', 'image1', 'id_image', 'id_image1', 'rasiimage'].includes(fieldName) ? (
+             <>
             <input
               type="file"
               id={fieldName}
@@ -1186,10 +1218,15 @@ const handleSubmit = async (sectionName, sectionData, id) => {
               className="form-control"
               onChange={handleChange}
             />
+          
+            <img src={`data:image/png;base64,${formData.section6[fieldName]}`} alt="Image" width="100" />
+            
+           </>
+            
           ) : fieldName === 'address' ? (
             <textarea
               id={fieldName}
-              name={fieldName}
+              name={fieldName}patner
               placeholder="Enter your address"
               className="form-control"
               value={formData[currentSection][fieldName] || ''}
@@ -1201,7 +1238,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
               type={fieldTypeMapping[fieldName] || 'text'}
               id={fieldName}
               name={fieldName}
-              placeholder={fieldName === 'patner_height' ? 'Partner Height' : fieldName === 'patner_weight' ? 'Partner Weight' : fieldName === 'patner_cast' ? 'Partner Cast' : fieldName === 'patner_child_count' ? 'Partner Child Count' : fieldName === 'patner_child_age' ? 'Partner Child Age' : `${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}
+              placeholder={fieldName === 'partner_height' ? 'Partner Height' : fieldName === 'partner_weight' ? 'Partner Weight' : fieldName === 'partner_caste' ? 'Partner caste' : fieldName === 'partner_child_count' ? 'Partner Child Count' : fieldName === 'partner_child_age' ? 'Partner Child Age' : `${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}
         
               className="form-control"
               value={formData[currentSection][fieldName] || ''}

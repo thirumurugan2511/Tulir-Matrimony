@@ -154,7 +154,7 @@ const Payment = () => {
                 <td>{item.amount}</td>   
                 <td>{item.validity}</td> 
                 <td>{item.description}</td> 
-                <td><a href="/religion/edit/15" className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+                <td><Link to={`/Paymentedit/id=${item.id}`}  className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
                 <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
                 ))}

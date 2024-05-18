@@ -144,7 +144,7 @@ const Moonsign = () => {
    {data.map(item => (
             <tr key={item.id}>
                 <td>{item.name}</td>       
-                <td><a href="/religion/edit/15" className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+                <td><Link to={`/Moonsignedit/id=${item.id}`}  className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
                 <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
                 ))}

@@ -8,6 +8,7 @@ import { LuLogOut } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import { MdPostAdd } from "react-icons/md";
 import Smallicon from './Admin/Components/heart-icon.png'
+import Jathagam from './Admin/Components/Member/Jathagam';
 
 
 const Addusers = () => {
@@ -45,7 +46,7 @@ const Addusers = () => {
     { value: 'No', label: 'No' },
     { value: 'Planning to Leave', label: 'Planning to Leave' }
   ], 
-  patner_matrial_statusOptions : [
+  partner_matrial_statusOptions : [
     { value: 'Single', label: 'Single' },
     { value: 'Divorce', label: 'Divorce' },
     { value: 'Widow', label: 'Widow' }
@@ -55,26 +56,26 @@ const Addusers = () => {
     { value: 'Non-Vegetarian', label: 'Non-Vegetarian' }  
     
   ],
-  patner_child_genderOptions : [
+  partner_child_genderOptions : [
     { value: 'male', label: 'Male' },
     { value: 'female', label: 'Female' }   
   ],
-  patner_manglikOptions : [
+  partner_manglikOptions : [
     { value: 'Yes', label: 'Yes' },
     { value: 'no', label: 'No' }    
   ],
-  // patner_educationOptions: [
+  // partner_educationOptions: [
   //   { value: 'Bachelor', label: 'Bachelor' },
   //   { value: 'Master', label: 'Master' },
   //   { value: 'Phd', label: 'Phd' },
   //   { value: 'Others', label: 'Others' },
   // ],
-  body_typeOptions : [
-    { value: 'Slim', label: 'Slim' },
-    { value: 'Average', label: 'Average' },
-    { value: 'Fat', label: 'Fat' }  
+  // body_typeOptions : [
+  //   { value: 'Slim', label: 'Slim' },
+  //   { value: 'Average', label: 'Average' },
+  //   { value: 'Fat', label: 'Fat' }  
     
-  ],
+  // ],
   // educationOptions: [
   //   { value: 'Bachelor', label: 'Bachelor' },
   //   { value: 'Master', label: 'Master' },
@@ -111,7 +112,7 @@ const Addusers = () => {
     { value: 'Nuclear Family', label: 'Nuclear Family' },
    { value: 'Joint Family', label: 'Joint Family' }  
   ],
-  patner_from_ageOptions : [
+  partner_from_ageOptions : [
     { value: '18', label: '18 Years' },
     { value: '19', label: '19 Years' },
     { value: '20', label: '20 Years' },
@@ -156,7 +157,7 @@ const Addusers = () => {
     { value: '59', label: '59 Years' },
     { value: '60', label: '60 Years' }
   ],
-  patner_to_ageOptions : [
+  partner_to_ageOptions : [
     { value: '18', label: '18 Years' },
     { value: '19', label: '19 Years' },
     { value: '20', label: '20 Years' },
@@ -209,26 +210,27 @@ const Addusers = () => {
     // Fetch dropdown options when component mounts
     fetchDropdownOptions('marriage_type');
     fetchDropdownOptions('religion');
-    fetchDropdownOptions('cast');
-    fetchDropdownOptions('moonsign');
+    fetchDropdownOptions('caste');
+    fetchDropdownOptions('zodiacsign');
     fetchDropdownOptions('star');
     fetchDropdownOptions('mother_tongue');
     fetchDropdownOptions('education');
     fetchDropdownOptions('occupaction');
-    fetchDropdownOptions('employee');
+    fetchDropdownOptions('jobdetails');
     fetchDropdownOptions('annual_income');
-    fetchDropdownOptions('country');
+    fetchDropdownOptions('city');
+    fetchDropdownOptions('bloodgroup');
     fetchDropdownOptions('state');
-    fetchDropdownOptions('patner_religion');
-    fetchDropdownOptions('patner_cast');
-    fetchDropdownOptions('patner_country');
-    fetchDropdownOptions('patner_state');
-    fetchDropdownOptions('patner_education');
-    fetchDropdownOptions('patner_occupation');
+    fetchDropdownOptions('partner_religion');
+    fetchDropdownOptions('partner_caste');
+    fetchDropdownOptions('partner_country');
+    fetchDropdownOptions('partner_state');
+    fetchDropdownOptions('partner_education');
+    fetchDropdownOptions('partner_occupation');
     fetchDropdownOptions('father_occupation');
     fetchDropdownOptions('mother_occupation');
-    fetchDropdownOptions('patner_mother_tongue');
-    fetchDropdownOptions('patner_salary');
+    fetchDropdownOptions('partner_mother_tongue');
+    fetchDropdownOptions('partner_salary');
   }, []);
  
   // Function to generate a unique registration ID
@@ -253,36 +255,39 @@ const Addusers = () => {
       "email": "",
       "phonenumber": "",
       "password": "",
-      "mother_tongue": "",
+      "age": "",  
       "dob": "",
+      "mother_tongue": "",
       "marriage_type": "",
       "religion": "",
-      "cast": "",
+      "caste": "",
       "subcast": "",
       "sevaikiragam": "",
       "gothram": "",
-      "moonsign": "",
+      "zodiacsign": "",
       "star": "",
       "birthplace": "",
       "birthtime": "",
       "education":"",
       "education_details":"",
       "occupaction":"",
-      "employee":"",
+      "jobdetails":"",
       "annual_income":"",
+      "kuladeivam":"",
 
     },
     "section2": {
       "city": "",
       "residece": "",
       "alternatenumber": "",
-      "nricountry": "",
+      "mothercountry": "",
       "address": ""
     },
     "section3": {
       "height": "",
       "food_habits": "",
-      "body_type": "",
+      "bloodgroup": "",
+      
       "skin_tone": "",
       "profile_by": "",
       "aboutme": ""
@@ -301,20 +306,19 @@ const Addusers = () => {
       "family_details": ""
     },
     "section5": {
-      "patner_from_age": "",
-      "patner_to_age": "",
-      "patner_height": "",
-      "patner_weight": "",
-      "patner_religion": "",
-      "patner_cast": "",
-      "patner_country": "",
-      "patner_state": "",
-      "patner_matrial_status": "",
-      "patner_education": "",
-      "patner_occupation": "",
-      "patner_mother_tongue": "",
-      "patner_manglik": "",
-      "patner_salary": ""
+      "partner_from_age": "",
+      "partner_to_age": "",
+      "partner_height": "",
+     
+      "partner_religion": "",
+      "partner_caste": "",
+    
+      "partner_matrial_status": "",
+      "partner_education": "",
+      "partner_occupation": "",
+      "partner_mother_tongue": "",
+      "partner_manglik": "",
+      "partner_salary": ""
       
     },
     "section6": {
@@ -338,34 +342,36 @@ const Addusers = () => {
     "marriage_type": "திருமண நிலை",
     "status_children": "குழந்தைகளின் நிலை",
     "child_count": "குழந்தைகளின் எண்ணிக்கை",
-    "child_age": "குழந்தைகளின் வயது",
+    "age": "வயது",
     "religion": "மதம்",
-    "cast": "சாதி",
+    "kuladeivam": "குலதெய்வம்",
+    "bloodgroup": "இரத்த வகை",
+    "caste": "சாதி",
     "subcast": "உட்பிரிவு",
     "sevaikiragam": "செவ்வாய் தோஷம்",
     "gothram": "கோத்ரம்",
-    "moonsign": "ராசி",
+    "zodiacsign": "ராசி",
     "star": "நட்சத்திரம் / பாதம்",
     "birthplace": "பூர்வீகம்",
     "birthtime": "பிறந்த நேரம்",
     "education":"கல்வி",
     "education_details":"கல்வி விவரங்கள்",
     "occupaction":"வேலை",
-    "employee":"தொழில் விவரம்",
+    "jobdetails":"தொழில் விவரம்",
     "annual_income":"ஆண்டு வருமானம்", 
     "country": "நாடு",
     "state": "மாநிலம்",
     "city": "நகரம்",
     "residece": "குடியிருப்பு வகை",
     "alternatenumber": "தொலைபேசி மாற்று எண்",
-    "nricountry": "தாய்நாடு",
+    "mothercountry": "தாய்நாடு",
     "address": "முகவரி",
     "height": "உயரம்",
     "weight": "எடை",
     "food_habits": "உணவு பழக்கம்",
     "smoking": "புகைபிடிக்கும் பழக்கம்",
     "drinking": "குடிபழக்கம்",
-    "body_type": "உடல் வடிவம்",
+    
     "skin_tone": "தோல் நிறம்",
     "profile_by": "பதிவு செய்பவர்",
     "aboutme": "என்னப் பற்றி",
@@ -380,23 +386,23 @@ const Addusers = () => {
     "brother_married": "சகோதரர் திருமணம்",
     "sister_married": "சகோதரி திருமணம்",
     "family_details": "குடும்ப விவரங்கள்",
-    "patner_from_age": "மணமகன் / மணமகள் வயது வரம்பு",
-    "patner_to_age": "மணமகன் / மணமகள் வயது வரம்பு",
-    "patner_height": "உயரம்",
-    "patner_weight": "எடை",
-    "patner_religion": "மதம்",
-    "patner_cast": "சாதி",
-    "patner_country": "நாடு",
-    "patner_state": "மாநிலம்",
-    "patner_matrial_status": "திருமணம் நிலை",
-    "patner_education": "கல்வி",
-    "patner_occupation": "பணி",
-    "patner_mother_tongue": "தாய்மொழி",
-    "patner_manglik": "செவ்வாய் தோஷம்",
-    "patner_salary": "சம்பளம்",
-    "patner_child_count": "குழந்தைகளின் எண்ணிக்கை",
-    "patner_child_age": "குழந்தைகளின் வயது",
-    "patner_child_gender": "குழந்தைகளின் பாலினம்",
+    "partner_from_age": "மணமகன் / மணமகள் வயது வரம்பு",
+    "partner_to_age": "மணமகன் / மணமகள் வயது வரம்பு",
+    "partner_height": "உயரம்",
+    "partner_weight": "எடை",
+    "partner_religion": "மதம்",
+    "partner_caste": "சாதி",
+    "partner_country": "நாடு",
+    "partner_state": "மாநிலம்",
+    "partner_matrial_status": "திருமணம் நிலை",
+    "partner_education": "கல்வி",
+    "partner_occupation": "பணி",
+    "partner_mother_tongue": "தாய்மொழி",
+    "partner_manglik": "செவ்வாய் தோஷம்",
+    "partner_salary": "சம்பளம்",
+    "partner_child_count": "குழந்தைகளின் எண்ணிக்கை",
+    "partner_child_age": "குழந்தைகளின் வயது",
+    "partner_child_gender": "குழந்தைகளின் பாலினம்",
     "image": "சுயசாதாரண படம்",
     "image1": "சுயசாதாரண படம் - 2",
     "id_image": "அடையாள படம்",
@@ -468,22 +474,23 @@ const Addusers = () => {
   const [customerData, setCustomerData] = useState({});
   const [casteList, setCasteList] = useState([]);
 
-  useEffect(() => {
-    if (formData.currentSection === 'cast' || formData.currentSection === 'patner_cast') {
-      fetchCasteList();
-    }
-  }, [formData.currentSection]);
+  // useEffect(() => {
+  //   if (formData.currentSection === 'caste' || formData.currentSection === 'partner_cast') {
+  //     fetchCasteList();
+  //   }
+  // }, [formData.currentSection]);
 
-  const fetchCasteList = () => {
-    fetch('https://tulirmatrimony.com/controlapi/castelist.php')
-      .then(response => response.json())
-      .then(data => {
-        setCasteList(data); // Assuming the API returns an array of caste list
-      })
-      .catch(error => {
-        console.error('Error fetching caste list:', error);
-      });
-  };
+  // const fetchCasteList = () => {
+  //   fetch('http://localhost:8000/data/castelist')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setCasteList(data); // Assuming the API returns an array of caste list
+  //       console.log(casteList)
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching caste list:', error);
+  //     });
+  // };
 
   const handleChange = (e) => {
     const { name, files } = e.target;
@@ -521,14 +528,19 @@ const Addusers = () => {
   };
   
 
-  const handleNext = () => {
-    const sections = Object.keys(formData);
-    const currentIndex = sections.indexOf(currentSection);
-    const nextIndex = currentIndex + 1;
-    if (nextIndex < sections.length) {
-      setCurrentSection(sections[nextIndex]);
-    }
+  const handleNext = (e) => {
+    
+      const sections = Object.keys(formData);
+      const currentIndex = sections.indexOf(currentSection);
+      const nextIndex = currentIndex + 1;
+      if (nextIndex < sections.length) {
+        setCurrentSection(sections[nextIndex]);
+      }
+    
   };
+  
+  
+  
   const generateStateOptions = () => {
     // Generate options for state dropdown
     return statesInIndia.map(state => ({ value: state.name, label: state.name }));
@@ -547,7 +559,7 @@ const Addusers = () => {
           ]
         }));
         break;
-        case 'patner_child_gender':
+        case 'partner_child_gender':
           // Options for gender dropdown
           setOptions(prevOptions => ({
             ...prevOptions,
@@ -557,7 +569,7 @@ const Addusers = () => {
             ]
           }));
           break;
-          case 'patner_to_age':
+          case 'partner_to_age':
             // Options for partner's age dropdown
             const partner_to_ageOptions = [];
             for (let i = 18; i <= 60; i++) {
@@ -568,7 +580,7 @@ const Addusers = () => {
               [fieldName + 'Options']: partner_to_ageOptions
             }));
             break;
-            case 'patner_from_age':
+            case 'partner_from_age':
               // Options for partner's age dropdown
               const partner_from_ageOptions = [];
               for (let i = 18; i <= 60; i++) {
@@ -589,31 +601,21 @@ const Addusers = () => {
             ]
           }));
           break;
-          // case 'education':
-          //   // Options for marriage type dropdown
-          //   setOptions(prevOptions => ({
-          //     ...prevOptions,
-          //     [fieldName + 'Options']: [
-                 
-          //     { value: 'Bachelor', label: 'Bachelor' },
-          //     { value: 'Master', label: 'Master' }  
-          //     ]
-          //   }));
-          //   break;
-          //   case 'patner_education':
-          //   // Options for marriage type dropdown
-          //   setOptions(prevOptions => ({
-          //     ...prevOptions,
-          //     [fieldName + 'Options']: [
-                 
-          //     { value: 'Bachelor', label: 'Bachelor' },
-          //     { value: 'Master', label: 'Master' },
-          //     { value: 'Phd', label: 'Phd' },
-          //     { value: 'Others', label: 'Others' }  
-          //     ]
-          //   }));
-          //   break;
-          case 'patner_manglik':
+          case 'bloodgroup':
+            // Options for marriage type dropdown
+            setOptions(prevOptions => ({
+              ...prevOptions,
+              [fieldName + 'Options']: [
+                { value: 'A Positive', label: 'A Positive' },
+                { value: 'A Negative', label: 'A Negative' },
+                { value: 'B Positive', label: 'B Positive' },
+                { value: 'B Negative', label: 'B Negative' } ,
+                { value: 'O Positive', label: 'O Positive' },
+                { value: 'O Negative', label: 'O Negative' }    
+              ]
+            }));            
+          break;
+          case 'partner_manglik':
             // Options for marriage type dropdown
             setOptions(prevOptions => ({
               ...prevOptions,
@@ -726,7 +728,7 @@ const Addusers = () => {
               ]
             }));
           break;
-          case 'patner_country':
+          case 'partner_country':
             // Options for marriage type dropdown
             setOptions(prevOptions => ({
               ...prevOptions,
@@ -744,7 +746,7 @@ const Addusers = () => {
             [fieldName + 'Options']: stateOptions
           }));
           break;
-        case 'patner_state':
+        case 'partner_state':
           // Options for partner state dropdown
           const partnerStateOptions = generateStateOptions();
           setOptions(prevOptions => ({
@@ -770,13 +772,13 @@ const Addusers = () => {
         endpoint = 'https://tulirmatrimony.com/controlapi/religionlist.php';
         break;
 
-      case 'cast':
-      case 'patner_cast':
+      case 'caste':
+      // case 'partner_caste':
       // Set the appropriate endpoint for fetching caste list based on currentSection
       endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
       break;
-      case 'moonsign':
-        // Fetch options from different API for moonsign
+      case 'zodiacsign':
+        // Fetch options from different API for zodiacsign
         endpoint = 'https://tulirmatrimony.com/controlapi/moonsignlist.php';
         break;
       case 'star':
@@ -799,48 +801,70 @@ const Addusers = () => {
         // Fetch options from different API for education
         endpoint = 'https://tulirmatrimony.com/controlapi/incomelist.php';
         break;
+        case 'city':
+          // Fetch options from different API for education
+          endpoint = 'https://tulirmatrimony.com/controlapi/districtlist.php';
+          break;
         case 'father_occupation':
           // Fetch options from different API for education
           endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
           break;
         case 'mother_occupation':
-            // Fetch options from different API for education  patner_religion
+            // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
           break;
-        case 'patner_religion':
-              // Fetch options from different API for education  patner_religion
+        case 'partner_religion':
+              // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/religionlist.php';
           break;
-         case 'patner_cast':
-           // Fetch options from different API for education  patner_religion
+         case 'partner_caste':
+           // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
+          //http://localhost:8000/data/castelist
+          //https://tulirmatrimony.com/controlapi/castelist.php
           break;
-        case 'patner_education':
-                // Fetch options from different API for education  patner_religion
+        case 'partner_education':
+                // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/educationlist.php';
          break;
-        case 'patner_occupation':
-             // Fetch options from different API for education  patner_religion
+        case 'partner_occupation':
+             // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
           break;
-        case 'patner_mother_tongue':
-            // Fetch options from different API for education  patner_religion
+        case 'partner_mother_tongue':
+            // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/languagelist.php';
           break;
-        case 'patner_salary':
-            // Fetch options from different API for education  patner_religion
+        case 'partner_salary':
+            // Fetch options from different API for education  partner_religion
           endpoint = 'https://tulirmatrimony.com/controlapi/incomelist.php';
           break;
       default:
         break;
     } 
   
-
     if (endpoint !== '') {
       const response = await fetch(endpoint);
       if (response.ok) {
         const responseData = await response.json();
-        const options = responseData.body.map(item => ({ value: item.name, label: item.name }));
+        let options;
+    
+        // Modify mapping based on fieldName
+        switch (fieldName) {
+          case 'caste':
+            options = responseData.body.map(item => ({ value: item.caste_name, label: item.caste_name }));
+            break;
+          case 'partner_caste':
+            options = responseData.body.map(item => ({ value: item.caste_name, label: item.caste_name }));
+            break;
+          case 'city':
+            options = responseData.body.map(item => ({ value: item.district_name, label: item.district_name }));
+            break;
+          default:
+            options = responseData.body.map(item => ({ value: item.name, label: item.name }));
+            break;
+        }
+    
         setOptions(prevOptions => ({
           ...prevOptions,
           [fieldName + 'Options']: options
@@ -849,10 +873,14 @@ const Addusers = () => {
         console.error(`Failed to fetch dropdown options for ${fieldName}`);
       }
     }
+    
+    
   } catch (error) {
     console.error(`Error fetching dropdown options for ${fieldName}:`, error);
   }
 };
+
+
 
 
 
@@ -894,17 +922,16 @@ const Addusers = () => {
     if (response.ok) {
       const responseData = await response.json();
       console.log('Data sent successfully:', responseData);
-      setShowAlert(true); // Show alert box
-      setTimeout(() => setShowAlert(false), 1000);
-      window.location.href = '/Member';
+      setCurrentSection('section6');
+      // setShowAlert(true); // Show alert box
+      // setTimeout(() => setShowAlert(false), 1000);
       // Optionally, you can reset the form data and handle any further actions here
     } else {
       console.error('Failed to send data');
     }
 
       // Reset formData and navigate to the next page
-      setFormData(initialFormData);
-      setCurrentSection('section1');
+      setFormData(initialFormData);   
       setCustomerData(combinedData);
     } catch (error) {
       console.error('Error submitting data:', error);
@@ -1030,11 +1057,11 @@ const Addusers = () => {
 
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
-        ['gender', 'marriage_type', 'sevaikiragam', 'religion',  'moonsign', 'mother_tongue', 'star', 'education', 'occupaction', 'annual_income',
-          'smoking', 'drinking', 'status_children','country', 'state', 'father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'patner_religion',
-           'patner_country', 'patner_state', 'patner_matrial_status', 'patner_education', 'patner_occupation', 'patner_mother_tongue',
-          'patner_salary', 'patner_child_gender', 'patner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'patner_from_age',
-          'patner_to_age','residece'
+        ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste', 'bloodgroup', 'zodiacsign', 'mother_tongue', 'star', 'education', 'occupaction', 'annual_income',
+          'smoking', 'drinking', 'status_children','country', 'state', 'city','father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'partner_religion',
+           'partner_country', 'partner_state', 'partner_matrial_status', 'partner_education', 'partner_occupation', 'partner_mother_tongue',
+          'partner_salary','partner_caste', 'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
+          'partner_to_age','residece'
         ].includes(fieldName) ?
           <div key={fieldName} className="col-lg-4 col-md-6 mb-4 text-start">
             <label htmlFor={fieldName} style={{ color: 'black' }}>{labelTranslations[fieldName]} </label>
@@ -1047,18 +1074,18 @@ const Addusers = () => {
                 onChange={handleChange}
               > 
                 <option value="">Select your {
-                  fieldName === 'patner_from_age' ? 'Partner from age' :
-                  fieldName === 'patner_to_age' ? 'Partner to age' :
-                  fieldName === 'patner_religion' ? 'Partner religion' :
-                  fieldName === 'patner_country' ? 'Partner country' :
-                  fieldName === 'patner_state' ? 'Partner state' :
-                  fieldName === 'patner_matrial_status' ? 'Partner marital status' :
-                  fieldName === 'patner_education' ? 'Partner education' :
-                  fieldName === 'patner_occupation' ? 'Partner occupation' :
-                  fieldName === 'patner_mother_tongue' ? 'Partner mothertongue' :
-                  fieldName === 'patner_manglik' ? 'Partner manglik' :
-                  fieldName === 'patner_salary' ? 'Partner salary' :
-                  fieldName === 'patner_child_gender' ? 'Partner child gender' :
+                  fieldName === 'partner_from_age' ? 'Partner from age' :
+                  fieldName === 'partner_to_age' ? 'Partner to age' :
+                  fieldName === 'partner_religion' ? 'Partner religion' :
+                  fieldName === 'partner_country' ? 'Partner country' :
+                  fieldName === 'partner_state' ? 'Partner state' :
+                  fieldName === 'partner_matrial_status' ? 'Partner marital status' :
+                  fieldName === 'partner_education' ? 'Partner education' :
+                  fieldName === 'partner_occupation' ? 'Partner occupation' :
+                  fieldName === 'partner_mother_tongue' ? 'Partner mothertongue' :
+                  fieldName === 'partner_manglik' ? 'Partner manglik' :
+                  fieldName === 'partner_salary' ? 'Partner salary' :
+                  fieldName === 'partner_child_gender' ? 'Partner child gender' :
                   `${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`
                 }</option>
                 {/* Render options dynamically */}
@@ -1068,12 +1095,12 @@ const Addusers = () => {
               </select>
           </div>
           :
-      //     patner_mother_tongue": "",
-      // "patner_manglik": "",
-      // "patner_salary": "",
-      // "patner_child_count": "",
-      // "patner_child_age": "",
-      // "patner_child_gender": ""
+      //     partner_mother_tongue": "",
+      // "partner_manglik": "",
+      // "partner_salary": "",
+      // "partner_child_count": "",
+      // "partner_child_age": "",
+      // "partner_child_gender": ""
           // Render input field for non-dropdown fields
           <div key={fieldName} className="col-lg-4 col-md-4 mb-4 text-start">
           <label htmlFor={fieldName} style={{ color: 'black' }}>
@@ -1104,7 +1131,7 @@ const Addusers = () => {
               type={fieldTypeMapping[fieldName] || 'text'}
               id={fieldName}
               name={fieldName}
-              placeholder={fieldName === 'patner_height' ? 'Partner Height' : fieldName === 'patner_weight' ? 'Partner Weight' : fieldName === 'patner_cast' ? 'Partner Cast' : fieldName === 'patner_child_count' ? 'Partner Child Count' : fieldName === 'patner_child_age' ? 'Partner Child Age' : `${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}
+              placeholder={fieldName === 'partner_height' ? 'Partner Height' : fieldName === 'partner_weight' ? 'Partner Weight' : fieldName === 'partner_caste' ? 'Partner Caste' : fieldName === 'partner_child_count' ? 'Partner Child Count' : fieldName === 'partner_child_age' ? 'Partner Child Age' : `${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}
         
               className="form-control"
               value={formData[currentSection][fieldName] || ''}
@@ -1124,139 +1151,17 @@ const Addusers = () => {
 
   {/* Render Next button for all sections except the last one */}
   {currentSection !== 'section6' && (
-        <button className='btn btn-primary m-3' onClick={handleNext}>Next</button>
+        <button className='btn btn-primary m-3' onClick={(e) => handleNext(e)}>Next</button>
       )}
 
       {/* Render Submit button for the last section */}
       {currentSection === 'section6' && (
-        <>
-        <div className='container mx-auto justify-content-center mt-5 mb-3 row'>
-          <p className='mb-4'>ஜாதக கட்டம் : ஜாதக கட்டத்தை நிரப்ப கீழே உள்ள வார்த்தைகளை பயன்படுத்தவும்</p>
-          <div className='row mb-1 justify-content-center'>
-             <div className='col-lg-2'> <p>புதன் : pu</p> </div>
-             <div className='col-lg-2'> <p>சூரியன் : sun</p></div>   
-             <div className='col-lg-2'> <p>ராகு : rag</p></div>
-             <div className='col-lg-2'> <p>வியாழன் : vij</p></div>
-             <div className='col-lg-2'> <p>சுக்கிரன் : chk</p></div>
-          </div>
-
-          <div className='row mb-4 justify-content-center'>
-             <div className='col-lg-2'> <p>சனி : sat</p> </div>
-             <div className='col-lg-2'> <p>சந்திரன் : chan</p></div>    
-             <div className='col-lg-2'> <p>கேது : kee</p></div>
-             <div className='col-lg-2'> <p>செவ்வாய் : sev</p></div>
-             <div className='col-lg-2'> <p>லக்கனம் : lac</p></div>
-          </div>
-        <form className='row col-lg-6'>
-          <div class="form-row row mb-3">
-            <div class="col">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-          </div>
-          <div class="form-row justify-content-between row mb-3">
-            <div class="col-lg-3">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div className='col-lg-6 align-items-center justify-content-center my-auto'><h3>ராசி</h3></div>
-            <div class="col-lg-3">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-          </div>
-
-          <div class="form-row justify-content-between row mb-3">
-            <div class="col-lg-3">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-           
-            <div class="col-lg-3">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            </div>
-            <div class="form-row row mb-3">
-            <div class="col">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-          </div>
-         
-          <div class="form-row">
-          </div>
-        </form>
-
-        <form className='row col-lg-6'>
-          <div class="form-row row mb-3">
-            <div class="col">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-          </div>
-          <div class="form-row justify-content-between row mb-3">
-            <div class="col-lg-3">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div className='col-lg-6 align-items-center justify-content-center my-auto'><h3>அம்சம்</h3></div>
-            <div class="col-lg-3">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-          </div>
-
-          <div class="form-row justify-content-between row mb-3">
-            <div class="col-lg-3">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-           
-            <div class="col-lg-3">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            </div>
-            <div class="form-row row mb-3">
-            <div class="col">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-            <div class="col">
-           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
-            </div>
-          </div>
-         
-          <div class="form-row">
-          </div>
-        </form>
-        </div>
-        <button className='btn btn-secondary' onClick={handleBack}>Back</button>
-        <button className='btn btn-success m-3' onClick={handleSubmit}>Submit</button>
+       <>
         
-        </>
+        <button className='btn btn-success m-3' onClick={handleSubmit}>Submit</button>
+        <Jathagam />
+        <button className='btn btn-secondary' onClick={handleBack}>Back</button>
+      </>
       )}
 </div>
 

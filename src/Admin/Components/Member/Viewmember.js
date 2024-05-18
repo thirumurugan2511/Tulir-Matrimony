@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+import axios from 'axios';
 import {Link} from 'react-router-dom'
 import Aside from '../Aside/Aside'
 import { IoMdSettings } from "react-icons/io";
@@ -24,9 +24,9 @@ const Viewmember = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`);
-        const data = await response.json();
-        setProfileData(data);
-        console.log(data);
+        const res = await response.json();
+        setProfileData(res);
+        console.log(res);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -35,6 +35,38 @@ const Viewmember = () => {
     fetchData();
 
   }, []);
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}`);
+        setData(response.data.body);
+        console.log(data)
+      } catch (error) {
+        console.error('Error fetching data', error);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
+  useEffect(() => {
+    const fetchDataa = async () => {
+      try {
+        //http://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
+        //http://localhost:8000//api/singlejathagam/${id}
+        const response = await axios.get(`https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}`);
+        setData(response.data);
+        console.log(response)
+      } catch (error) {
+        console.error('Error fetching data', error);
+      }
+    };
+
+    fetchDataa();
+  }, [id]);
  
   return (
     <>
@@ -133,7 +165,7 @@ const Viewmember = () => {
         <div class="right_content_MDivd bg_member w-100 mt-3 mt-lg-0">
           <div class="top_usenr_btnsgroups">
             <div class="row text-start">
-              <div class="col-lg-8 mt-3">
+              <div class="col-lg-4 mt-3">
                 <div class="user_name_aprv">
                 {profileData ? (
                   <h4>{profileData.body.name} - {profileData.body.reg_id}</h4>
@@ -143,15 +175,10 @@ const Viewmember = () => {
                 </div>
               </div>
               <div class="col-lg-4">
-                {/* <div class="user_name_aprv_new">
-                  <h6 class="text-dark"><span>Completed Profile (100%)</span>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style={{width: '100%'}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                        100 %
-                      </div>
-                    </div>
-                  </h6>
-                </div> */}
+              <Link to={`/Printform/${id}`} class="btn btn-primary">Print With phonenumber </Link>
+              </div>
+              <div class="col-lg-4">
+              <Link to={`/Printformwop/${id}`} class="btn btn-primary">Print Without phonenumber</Link>
               </div>
             </div>
           </div>
@@ -171,20 +198,26 @@ const Viewmember = () => {
                   <div className="MDatails_views">
                     <h5 className="py-2"><span>Gender: {profileData.body.gender}</span></h5>
                     <h5 className="py-2"><span>Mobile: {profileData.body.phonenumber}</span></h5>
-                    <h5 className="py-2"><span>Caste: {profileData.body.cast}</span></h5>
+                    <h5 className="py-2"><span>Caste: {profileData.body.caste}</span></h5>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-6 mt-0 mt-lg-3 mt-md-3 mt-sm-3 right_bordermv">
                   <div className="MDatails_views">
                     <h5 className="py-2"><span>Marital Status: {profileData.body.marriage_type}</span></h5>
-                    <h5 className="py-2"><span>State: {profileData.body.state}</span></h5>
-                    <h5 className="py-2"><span>Occupation: {profileData.body.occupaction}</span></h5>
+                    <h5 className="py-2"><span>State: {profileData.body.city}</span></h5>
+                    <h5 className="py-2"><span>Occupation: {profileData.body.occupation}</span></h5>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+           
+              <div class=" text-end">
+              <Link to="/Member" class="btn btn-primary">Back to Member List</Link>
+              </div>
+            
         </div>
+      
       ) : (
         <p>Loading...</p>
       )}
@@ -424,11 +457,11 @@ const Viewmember = () => {
                             <h5 class="py-2"><span>Marital Status :</span> {profileData.body.marriage_type}</h5>
                         </div>
                     </div>
-                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
                             <h5 class="py-2"><span>Total Children :</span> {profileData.body.status_children}</h5>
                         </div>
-                    </div>
+                    </div> */}
                     {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
                             <h5 class="py-2"><span>Status Children :</span> Not living with me</h5>
@@ -456,12 +489,12 @@ const Viewmember = () => {
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Caste :</span> {profileData.body.cast}</h5>
+                          <h5 class="py-2"><span>Caste :</span> {profileData.body.caste}</h5>
                       </div>
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Sub Caste :</span> {profileData.body.subcast}</h5>
+                          <h5 class="py-2"><span>Sub Caste :</span> {profileData.body.subcaste}</h5>
                       </div>
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -476,7 +509,7 @@ const Viewmember = () => {
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Moonsign :</span> {profileData.body.moonsign}</h5>
+                          <h5 class="py-2"><span>Moonsign :</span> {profileData.body.zodiacsign}</h5>
                       </div>
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -521,7 +554,7 @@ const Viewmember = () => {
                       </div>
                       <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                           <div class="detalistsleg">
-                              <h5 class="py-2"><span>Employee In :</span> {profileData.body.employee}</h5>
+                              <h5 class="py-2"><span>Job  details :</span> {profileData.body.jobdetails}</h5>
                           </div>
                       </div>
                       <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -549,7 +582,7 @@ const Viewmember = () => {
             <div class="collapse show" id="U_detailsDiv4">
             <div class="inner_views_detailsFGH">
                       <div class="row text-start">
-                          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                          {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                               <div class="detalistsleg">
                                   <h5 class="py-2"><span>Country Name :</span> {profileData.body.country}</h5>
                               </div>
@@ -558,7 +591,7 @@ const Viewmember = () => {
                               <div class="detalistsleg">
                                   <h5 class="py-2"><span>State Name :</span> {profileData.body.state}</h5>
                               </div>
-                          </div>
+                          </div> */}
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                               <div class="detalistsleg">
                                   <h5 class="py-2"><span>City Name :</span> {profileData.body.city}</h5>
@@ -576,7 +609,7 @@ const Viewmember = () => {
                           </div>
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                               <div class="detalistsleg">
-                                  <h5 class="py-2"><span>If NRI Originated country :</span> {profileData.body.nricountry}</h5>
+                                  <h5 class="py-2"><span>If NRI Originated country :</span> {profileData.body.mothercountry}</h5>
                               </div>
                           </div>
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -606,7 +639,7 @@ const Viewmember = () => {
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
-                            <h5 class="py-2"><span>Weight :</span> {profileData.body.weight}-Kg</h5>
+                            <h5 class="py-2"><span>Blood Group :</span> {profileData.body.bloodgroup}-Kg</h5>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -614,7 +647,7 @@ const Viewmember = () => {
                             <h5 class="py-2"><span>Eating Habits :</span> {profileData.body.food_habits}</h5>
                         </div>
                     </div>
-                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
                             <h5 class="py-2"><span>Smoking :</span> {profileData.body.smoking}</h5>
                         </div>
@@ -623,12 +656,12 @@ const Viewmember = () => {
                         <div class="detalistsleg">
                             <h5 class="py-2"><span>Drinking :</span> {profileData.body.drinking}</h5>
                         </div>
-                    </div>
-                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    </div> */}
+                    {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
                             <h5 class="py-2"><span>Body Type :</span> {profileData.body.body_type}</h5>
                         </div>
-                    </div>
+                    </div> */}
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
                             <h5 class="py-2"><span>Skin Tone :</span> {profileData.body.skin_tone}</h5>
@@ -723,24 +756,24 @@ const Viewmember = () => {
      <div class="row text-start">
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner From Age :</span> {profileData.body.patner_from_age} Years</h5>
+                 <h5 class="py-2"><span>Partner From Age :</span> {profileData.body.partner_from_age} Years</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner To Age :</span> {profileData.body.patner_to_age} Years</h5>
+                 <h5 class="py-2"><span>Partner To Age :</span> {profileData.body.partner_to_age} Years</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner From Height :</span> {profileData.body.patner_height}cm - 4ft 4in</h5>
+                 <h5 class="py-2"><span>Partner From Height :</span> {profileData.body.partner_height}cm - 4ft 4in</h5>
              </div>
          </div>
-         <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+         {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner To Weight :</span> {profileData.body.patner_weight} Kg</h5>
+                 <h5 class="py-2"><span>Partner To Weight :</span> {profileData.body.partner_weight} Kg</h5>
              </div>
-         </div>
+         </div> */}
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
                  <h5 class="py-2"><span>Partner Religion :</span> {profileData.body.religion}</h5>
@@ -748,27 +781,27 @@ const Viewmember = () => {
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Caste :</span> {profileData.body.patner_cast}</h5>
+                 <h5 class="py-2"><span>Partner Caste :</span> {profileData.body.partner_caste}</h5>
+             </div>
+         </div>
+         {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+             <div class="detalistsleg">
+                 <h5 class="py-2"><span>Partner Country :</span> {profileData.body.partner_country}</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Country :</span> {profileData.body.patner_country}</h5>
+                 <h5 class="py-2"><span>Partner State :</span> {profileData.body.partner_state}</h5>
+             </div>
+         </div> */}
+         <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+             <div class="detalistsleg">
+                 <h5 class="py-2"><span>Partner Annual Income :</span> Upto INR {profileData.body.partner_salary}</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner State :</span> {profileData.body.patner_state}</h5>
-             </div>
-         </div>
-         <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-             <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Annual Income :</span> Upto INR {profileData.body.patner_salary}</h5>
-             </div>
-         </div>
-         <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-             <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Marital Status :</span> {profileData.body.patner_matrial_status}</h5>
+                 <h5 class="py-2"><span>Partner Marital Status :</span> {profileData.body.partner_matrial_status}</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -778,17 +811,17 @@ const Viewmember = () => {
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Occupation :</span> {profileData.body.patner_occupation}</h5>
+                 <h5 class="py-2"><span>Partner Occupation :</span> {profileData.body.partner_occupation}</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Mother Tongue :</span> {profileData.body.patner_mother_tongue}</h5>
+                 <h5 class="py-2"><span>Partner Mother Tongue :</span> {profileData.body.partner_mother_tongue}</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Manglik :</span> {profileData.body.patner_manglik}</h5>
+                 <h5 class="py-2"><span>Partner Manglik :</span> {profileData.body.partner_manglik}</h5>
              </div>
          </div>
      </div>
@@ -807,10 +840,182 @@ const Viewmember = () => {
 </button>
 <div class="collapse show" id="U_detailsDiv2">
  <div class="inner_views_detailsFGH">
-   <div class="row mx-auto col-md-6">
-  
-               <img src={`data:image/png;base64,${profileData.body.rasiimage}`} alt="Horoscope Image"  width={200} height={200}/>
-                     </div>
+   <div class="row mx-auto">
+   {data ? (
+        <>
+        <div className='row'>
+        <div className='col-lg-10 mt-5 m-auto mb-2 row'>
+        <div className='col-lg-3 d-flex mb-5 align-items-center'>
+            <label className="form-label mb-0 me-2">திசை இருப்பு</label>
+            <span>{data.thisaiirupu}</span>
+          </div>
+          <div className='col-lg-3 d-flex mb-5 align-items-center'>
+      <label class="form-label mb-0 me-2">ஆண்டு</label>
+      <span>{data.year}</span>
+    </div>
+    <div className='col-lg-3 d-flex mb-5 align-items-center'>
+      <label class="form-label mb-0 me-2">மாதம்</label>
+      <span>{data.month}</span>
+    </div>
+    <div className='col-lg-3 d-flex mb-5 align-items-center'>
+      <label class="form-label mb-0 me-2">நாள்</label>
+      <span>{data.days}</span>
+    </div>
+       
+      </div>
+      </div>
+      
+      <div className='col-lg-6 mt-5 mb-2'>
+        <table class="table table-bordered">
+        <tbody>
+            <tr>
+            <th scope="row">{data.rasi1}</th>
+            <td>{data.rasi2}</td>
+            <td>{data.rasi3}</td>
+            <td>{data.rasi4}</td>
+            </tr>
+            <tr>
+            <th scope="row">{data.rasi5}</th>
+            <td colspan="2" rowSpan={2}>ராசி</td>
+            <td>{data.rasi6}</td>
+            </tr>
+            <tr>
+            <th scope="row">{data.rasi7}</th>
+            <td >{data.rasi8}</td>
+            </tr>
+            <tr>
+            <th scope="row">{data.rasi9}</th>
+            <td >{data.rasi10}</td>
+            <td>{data.rasi11}</td>
+            <td>{data.rasi12}</td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+        <div className='col-lg-6 mt-5 mb-2'>
+        <table class="table table-bordered">
+        <tbody>
+            <tr>
+            <th scope="row">{data.amsam1}</th>
+            <td>{data.amsam2}</td>
+            <td>{data.amsam3}</td>
+            <td>{data.amsam4}</td>
+            </tr>
+            <tr>
+            <th scope="row">{data.amsam5}</th>
+            <td colspan="2" rowSpan={2}>அம்சம்</td>
+            <td>{data.amsam6}</td>
+            </tr>
+            <tr>
+            <th scope="row">{data.amsam7}</th>
+            <td >{data.amsam8}</td>
+            </tr>
+            <tr>
+            <th scope="row">{data.amsam9}</th>
+            <td >{data.amsam10}</td>
+            <td>{data.amsam11}</td>
+            <td>{data.amsam12}</td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+      {/* <div className='col-lg-6 mt-5 mb-2'>
+        <table className='table table-bordered'>
+          <tbody>
+            <tr>
+              <td>{data.rasi1}</td>
+            </tr>
+            <tr>
+              <td>{data.rasi2}</td>
+            </tr>
+            <tr>
+              <td>{data.rasi3}</td>
+            </tr>
+            <tr>
+             
+              <td>{data.rasi4}</td>
+            </tr>
+            <tr>
+              
+              <td>{data.rasi5}</td>
+            </tr>
+            <tr>
+             
+              <td>{data.rasi6}</td>
+            </tr>
+            <tr>
+             
+              <td>{data.rasi7}</td>
+            </tr>
+            <tr>
+             
+              <td>{data.rasi8}</td>
+            </tr>
+            <tr>
+             
+              <td>{data.rasi9}</td>
+            </tr>
+            <tr>
+            
+              <td>{data.rasi10}</td>
+            </tr>
+            <tr>
+              <td>{data.rasi11}</td>
+            </tr>
+            <tr>
+              <td>{data.rasi12}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className='col-lg-6 mt-5 mb-2'>
+        <table className='table table-bordered'>
+          <tbody>
+            <tr>
+              <td>{data.amsam1}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam2}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam3}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam4}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam5}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam6}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam7}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam8}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam9}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam10}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam11}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam12}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> */}
+      </>
+       ) : (
+        <p>Loading...</p>
+      )}
+   </div>
+
  </div>
 </div>
 </div>
@@ -820,6 +1025,8 @@ const Viewmember = () => {
      ) : (
       <p>Loading...</p>
     )}
+
+    
   </div>
   {/* <!-- / Content --> */}
   <div class="content-backdrop fade"></div>

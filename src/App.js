@@ -45,6 +45,20 @@ import Addusers from './Addusers';
 import Freereg from './User/Components/Home/Freereg';
 import Thankyou from './User/Components/Home/Thankyou';
 import Eduser from './Eduser';
+import Educationedit from './Admin/Components/Newdetails/Edit/Educationedit';
+import Staredit from './Admin/Components/Newdetails/Edit/Staredit';
+import Occupationedit from './Admin/Components/Newdetails/Edit/Occupationedit';
+import Mothertongueedit from './Admin/Components/Newdetails/Edit/Mothertongueedit';
+import Moonsignedit from './Admin/Components/Newdetails/Edit/Moonsignedit';
+import Locationedit from './Admin/Components/Newdetails/Edit/Locationedit';
+import Annualincomeedit from './Admin/Components/Newdetails/Edit/Annualincomeedit';
+import Casteedit from './Admin/Components/Newdetails/Edit/Casteedit';
+import Paymentedit from './Admin/Components/Payment/Paymentedit';
+import Bannerimg from './Bannerimg';
+import Printform from './Admin/Components/Member/PrintForm';
+import Printformwop from './Admin/Components/Member/Printformwop';
+import Jathagam from './Admin/Components/Member/Jathagam';
+import Textform from './Admin/Components/Member/Textform';
 
 
 function App() {
@@ -91,11 +105,25 @@ function App() {
           <Route path="/Eduser/:id" element={<Eduser />} />
           <Route path="/User" element={<User />} />
           <Route path="/Religionedit/:id" element={<Religionedit />} />
+          <Route path="/Staredit/:id" element={<Staredit />} />
+          <Route path="/Occupationedit/:id" element={<Occupationedit />} />
+          <Route path="/Educationedit/:id" element={<Educationedit />} />
+          <Route path="/Mothertongueedit/:id" element={<Mothertongueedit />} />
+          <Route path="/Moonsignedit/:id" element={<Moonsignedit />} />
+          <Route path="/Locationedit/:id" element={<Locationedit />} />
+          <Route path="/Annualincomeedit/:id" element={<Annualincomeedit />} />
+          <Route path="/Casteedit/:id" element={<Casteedit />} />
+          <Route path="/Paymentedit/:id" element={<Paymentedit />} />
           <Route path="/Location" element={<Location />} />
           <Route path="/Locationadd" element={<Locationadd />} />
           <Route path="/Addusers" element={<Addusers />} />
+          <Route path="/Printform/:id" element={<Printform />} />
           <Route path="/" element={<Freereg />} />
+          <Route path="/Bannerimg" element={<Bannerimg />} />
           <Route path="/Thankyou" element={<Thankyou />} />
+          <Route path="/Printformwop/:id" element={<Printformwop />} />
+          <Route path="/Jathagam" element={<Jathagam />} />
+          <Route path="/Textform" element={<Textform />} />
         </Routes>
       </Router>
 

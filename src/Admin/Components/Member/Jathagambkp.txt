@@ -1,0 +1,160 @@
+import React from 'react'
+
+const Jathagam = () => {
+  return (
+    <>
+    <div className='container mx-auto justify-content-center mt-5 mb-3 row'>
+      <p className='mb-4'>ஜாதக கட்டம் : ஜாதக கட்டத்தை நிரப்ப கீழே உள்ள வார்த்தைகளை பயன்படுத்தவும்</p>
+      <div className='row mb-1 justify-content-center'>
+         <div className='col-lg-2'> <p>புதன் : pu</p> </div>
+         <div className='col-lg-2'> <p>சூரியன் : sun</p></div>   
+         <div className='col-lg-2'> <p>ராகு : rag</p></div>
+         <div className='col-lg-2'> <p>வியாழன் : vij</p></div>
+         <div className='col-lg-2'> <p>சுக்கிரன் : chk</p></div>
+      </div>
+
+      <div className='row mb-4 justify-content-center'>
+         <div className='col-lg-2'> <p>சனி : sat</p> </div>
+         <div className='col-lg-2'> <p>சந்திரன் : chan</p></div>    
+         <div className='col-lg-2'> <p>கேது : kee</p></div>
+         <div className='col-lg-2'> <p>செவ்வாய் : sev</p></div>
+         <div className='col-lg-2'> <p>லக்கனம் : lac</p></div>
+      </div>
+
+
+   <form className='row'>
+    <div className='col-lg-3 d-flex mb-5 align-items-center'>
+      <label class="form-label mb-0 me-2">திசை இருப்பு</label>
+      <input type="text" class="form-control"/>
+    </div>
+    <div className='col-lg-3 d-flex mb-5 align-items-center'>
+      <label class="form-label mb-0 me-2">ஆண்டு</label>
+      <input type="text" class="form-control"/>
+    </div>
+    <div className='col-lg-3 d-flex mb-5 align-items-center'>
+      <label class="form-label mb-0 me-2">மாதம்</label>
+      <input type="text" class="form-control"/>
+    </div>
+    <div className='col-lg-3 d-flex mb-5 align-items-center'>
+      <label class="form-label mb-0 me-2">தேதி</label>
+      <input type="text" class="form-control"/>
+    </div>
+
+    <div className=' col-lg-6'>
+      <div class="form-row row mb-3">
+        <div class="col">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+      </div>
+      <div class="form-row justify-content-between row mb-3">
+        <div class="col-lg-3">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div className='col-lg-6 align-items-center justify-content-center my-auto'><h3>ராசி</h3></div>
+        <div class="col-lg-3">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+      </div>
+
+      <div class="form-row justify-content-between row mb-3">
+        <div class="col-lg-3">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+       
+        <div class="col-lg-3">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        </div>
+        <div class="form-row row mb-3">
+        <div class="col">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+      </div>
+     
+      <div class="form-row">
+      </div>
+    </div>
+
+    <div className=' col-lg-6'>
+      <div class="form-row row mb-3">
+        <div class="col">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+      </div>
+      <div class="form-row justify-content-between row mb-3">
+        <div class="col-lg-3">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div className='col-lg-6 align-items-center justify-content-center my-auto'><h3>அம்சம்</h3></div>
+        <div class="col-lg-3">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+      </div>
+
+      <div class="form-row justify-content-between row mb-3">
+        <div class="col-lg-3">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+       
+        <div class="col-lg-3">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        </div>
+        <div class="form-row row mb-3">
+        <div class="col">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+        <div class="col">
+       <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+        </div>
+      </div>
+     
+      <div class="form-row">
+      </div>
+    </div>
+    
+    <div className='text-center'>
+    <button className='btn btn-success m-3'>Submit</button>
+    </div>
+    </form>
+    </div>
+    
+    
+    </>
+  )
+}
+
+export default Jathagam

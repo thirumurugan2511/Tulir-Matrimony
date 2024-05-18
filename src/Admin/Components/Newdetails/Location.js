@@ -147,7 +147,7 @@ const Location = () => {
             <tr key={item.id}>
                 <td>{item.state_name}</td>  
                 <td>{item.district_name}</td>      
-                <td><Link to={`/Religionedit?id=${item.id}`} className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
+                <td><Link to={`/Locationedit/id=${item.id}`} className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
                 <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
                 ))}

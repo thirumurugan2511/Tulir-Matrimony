@@ -51,8 +51,8 @@ function Educationedit() {
         };
         const data = JSON.stringify(requestData);
         console.log(data);
-//https://tulirmatrimony.com/controlapi/editreligion.php
-//http://localhost:8000/controlapi/editreligion
+//https://tulirmatrimony.com/controlapi/editeducation.php
+//http://localhost:8000/controlapi/editeducation
         fetch('https://tulirmatrimony.com/controlapi/editeducation.php', {
             method: 'PUT',
             headers: {
@@ -69,7 +69,7 @@ function Educationedit() {
             }, 1000);
         })
         .catch(error => {
-            console.error('Error updating religion data:', error);
+            console.error('Error updating education data:', error);
         });
     };
     
@@ -156,7 +156,7 @@ function Educationedit() {
                                                         <input
                                                             type="text"
                                                             className="form-control required"
-                                                            id="religion_name"
+                                                            id="education_name"
                                                             value={formData.education_name}
                                                             name="education_name"
                                                             onChange={handleChange}

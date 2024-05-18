@@ -18,8 +18,10 @@ const Caste = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch('https://tulirmatrimony.com/controlapi/castelist.php');
+                // https://tulirmatrimony.com/controlapi/castelist.php
                 const result = await response.json();
                 setData(result.body);
+                console.log(data)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -146,7 +148,7 @@ const Caste = () => {
             <tr key={item.id}>
                 <td>{item.religion_name}</td>  
                 <td>{item.caste_name}</td>      
-                <td><Link to={`/Religionedit?id=${item.id}`} className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
+                <td><Link to={`/Casteedit/id=${item.id}`} className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</Link> /
                 <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
                 ))}

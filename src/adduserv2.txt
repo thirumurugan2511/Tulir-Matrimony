@@ -23,6 +23,10 @@ const Addusers = () => {
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
   ],
+  status_childrenOptions: [
+    { value: 'Yes', label: 'Yes' },
+    { value: 'No', label: 'No' }
+  ],
   brother_marriedOptions: [
     { value: 'Married', label: 'Married' },
     { value: 'Unmarried', label: 'Unmarried' }
@@ -34,11 +38,12 @@ const Addusers = () => {
   smokingOptions: [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' },
-    { value: 'Planning to Leave', label: 'Planning to Leave' },
+    { value: 'Planning to Leave', label: 'Planning to Leave' }
   ],
   drinkingOptions: [
     { value: 'Yes', label: 'Yes' },
-    { value: 'No', label: 'No' }
+    { value: 'No', label: 'No' },
+    { value: 'Planning to Leave', label: 'Planning to Leave' }
   ], 
   patner_matrial_statusOptions : [
     { value: 'Single', label: 'Single' },
@@ -204,7 +209,7 @@ const Addusers = () => {
     // Fetch dropdown options when component mounts
     fetchDropdownOptions('marriage_type');
     fetchDropdownOptions('religion');
-    fetchDropdownOptions('cast');
+    fetchDropdownOptions('caste');
     fetchDropdownOptions('moonsign');
     fetchDropdownOptions('star');
     fetchDropdownOptions('mother_tongue');
@@ -215,7 +220,7 @@ const Addusers = () => {
     fetchDropdownOptions('country');
     fetchDropdownOptions('state');
     fetchDropdownOptions('patner_religion');
-    fetchDropdownOptions('patner_cast');
+    fetchDropdownOptions('patner_caste');
     fetchDropdownOptions('patner_country');
     fetchDropdownOptions('patner_state');
     fetchDropdownOptions('patner_education');
@@ -251,11 +256,8 @@ const Addusers = () => {
       "mother_tongue": "",
       "dob": "",
       "marriage_type": "",
-      "status_children": "",
-      "child_count": "",
-      "child_age": "",
       "religion": "",
-      "cast": "",
+      "caste": "",
       "subcast": "",
       "sevaikiragam": "",
       "gothram": "",
@@ -271,8 +273,6 @@ const Addusers = () => {
 
     },
     "section2": {
-      "country": "",
-      "state": "",
       "city": "",
       "residece": "",
       "alternatenumber": "",
@@ -281,10 +281,7 @@ const Addusers = () => {
     },
     "section3": {
       "height": "",
-      "weight": "",
       "food_habits": "",
-      "smoking": "",
-      "drinking": "",
       "body_type": "",
       "skin_tone": "",
       "profile_by": "",
@@ -317,10 +314,8 @@ const Addusers = () => {
       "patner_occupation": "",
       "patner_mother_tongue": "",
       "patner_manglik": "",
-      "patner_salary": "",
-      "patner_child_count": "",
-      "patner_child_age": "",
-      "patner_child_gender": ""
+      "patner_salary": ""
+      
     },
     "section6": {
       "image": "",
@@ -345,18 +340,18 @@ const Addusers = () => {
     "child_count": "குழந்தைகளின் எண்ணிக்கை",
     "child_age": "குழந்தைகளின் வயது",
     "religion": "மதம்",
-    "cast": "சாதி",
-    "subcast": "உபசாதி",
+    "caste": "சாதி",
+    "subcast": "உட்பிரிவு",
     "sevaikiragam": "செவ்வாய் தோஷம்",
     "gothram": "கோத்ரம்",
     "moonsign": "ராசி",
-    "star": "நட்சத்திரம்",
-    "birthplace": "பிறந்த இடம்",
+    "star": "நட்சத்திரம் / பாதம்",
+    "birthplace": "பூர்வீகம்",
     "birthtime": "பிறந்த நேரம்",
     "education":"கல்வி",
     "education_details":"கல்வி விவரங்கள்",
     "occupaction":"வேலை",
-    "employee":"வேலை விவரம்",
+    "employee":"தொழில் விவரம்",
     "annual_income":"ஆண்டு வருமானம்", 
     "country": "நாடு",
     "state": "மாநிலம்",
@@ -403,7 +398,7 @@ const Addusers = () => {
     "patner_child_age": "குழந்தைகளின் வயது",
     "patner_child_gender": "குழந்தைகளின் பாலினம்",
     "image": "சுயசாதாரண படம்",
-    "image2": "சுயசாதாரண படம் - 2",
+    "image1": "சுயசாதாரண படம் - 2",
     "id_image": "அடையாள படம்",
     "id_image1": "அடையாள படம் - 2",
     "rasiimage": "ஜாதகப் படம்"
@@ -473,55 +468,73 @@ const Addusers = () => {
   const [customerData, setCustomerData] = useState({});
   const [casteList, setCasteList] = useState([]);
 
-  useEffect(() => {
-    if (formData.currentSection === 'cast' || formData.currentSection === 'patner_cast') {
-      fetchCasteList();
-    }
-  }, [formData.currentSection]);
+  // useEffect(() => {
+  //   if (formData.currentSection === 'caste' || formData.currentSection === 'patner_cast') {
+  //     fetchCasteList();
+  //   }
+  // }, [formData.currentSection]);
 
-  const fetchCasteList = () => {
-    fetch('https://tulirmatrimony.com/controlapi/castelist.php')
-      .then(response => response.json())
-      .then(data => {
-        setCasteList(data); // Assuming the API returns an array of caste list
-      })
-      .catch(error => {
-        console.error('Error fetching caste list:', error);
-      });
-  };
+  // const fetchCasteList = () => {
+  //   fetch('http://localhost:8000/data/castelist')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setCasteList(data); // Assuming the API returns an array of caste list
+  //       console.log(casteList)
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching caste list:', error);
+  //     });
+  // };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, files } = e.target;
   
-    // Check if the value is empty for required fields
-    if ([ 'name', 'email', 'gender', 'phonenumber', 'password', 'dob'].includes(name) && value.trim() === '') {
-      // You can display an error message or take any other action here
-      alert("Please Enter Required Fields!");
-      
-      return (
-        <div className="alert alert-danger" role="alert">
-        Please fill the required field.
-      </div>
-      )
-    }
-  
-    setFormData(prevState => ({
-      ...prevState,
-      [currentSection]: {
-        ...prevState[currentSection],
-        [name]: value
+    if (['image', 'image1', 'id_image', 'id_image1', 'rasiimage'].includes(name)) {
+      // Read the file contents
+      const file = files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // Store the file contents in state
+        setFormData(prevState => ({
+          ...prevState,
+          [currentSection]: {
+            ...prevState[currentSection],
+            [name]: reader.result // Store the file contents
+          }
+        }));
+      };
+      if (file) {
+        reader.readAsDataURL(file); // Read file as data URL
       }
-    }));
-  };
-
-  const handleNext = () => {
-    const sections = Object.keys(formData);
-    const currentIndex = sections.indexOf(currentSection);
-    const nextIndex = currentIndex + 1;
-    if (nextIndex < sections.length) {
-      setCurrentSection(sections[nextIndex]);
+    } else {
+      const { value } = e.target;
+      if (['name', 'email', 'gender', 'phonenumber', 'password', 'dob'].includes(name) && value.trim() === '') {
+        alert("Please Enter Required Fields!");
+      }
+      setFormData(prevState => ({
+        ...prevState,
+        [currentSection]: {
+          ...prevState[currentSection],
+          [name]: value
+        }
+      }));
     }
   };
+  
+
+  const handleNext = (e) => {
+    
+      const sections = Object.keys(formData);
+      const currentIndex = sections.indexOf(currentSection);
+      const nextIndex = currentIndex + 1;
+      if (nextIndex < sections.length) {
+        setCurrentSection(sections[nextIndex]);
+      }
+    
+  };
+  
+  
+  
   const generateStateOptions = () => {
     // Generate options for state dropdown
     return statesInIndia.map(state => ({ value: state.name, label: state.name }));
@@ -582,30 +595,7 @@ const Addusers = () => {
             ]
           }));
           break;
-          // case 'education':
-          //   // Options for marriage type dropdown
-          //   setOptions(prevOptions => ({
-          //     ...prevOptions,
-          //     [fieldName + 'Options']: [
-                 
-          //     { value: 'Bachelor', label: 'Bachelor' },
-          //     { value: 'Master', label: 'Master' }  
-          //     ]
-          //   }));
-          //   break;
-          //   case 'patner_education':
-          //   // Options for marriage type dropdown
-          //   setOptions(prevOptions => ({
-          //     ...prevOptions,
-          //     [fieldName + 'Options']: [
-                 
-          //     { value: 'Bachelor', label: 'Bachelor' },
-          //     { value: 'Master', label: 'Master' },
-          //     { value: 'Phd', label: 'Phd' },
-          //     { value: 'Others', label: 'Others' }  
-          //     ]
-          //   }));
-          //   break;
+         
           case 'patner_manglik':
             // Options for marriage type dropdown
             setOptions(prevOptions => ({
@@ -614,7 +604,17 @@ const Addusers = () => {
                 { value: 'Yes', label: 'Yes' },
                 { value: 'no', label: 'No' }   
               ]
-            }));
+            }));            
+          break;
+          case 'status_children':
+            // Options for marriage type dropdown
+            setOptions(prevOptions => ({
+              ...prevOptions,
+              [fieldName + 'Options']: [
+                { value: 'Yes', label: 'Yes' },
+                { value: 'no', label: 'No' }   
+              ]
+            }));            
           break;
           case 'food_habits':
               // Options for marriage type dropdown
@@ -753,10 +753,10 @@ const Addusers = () => {
         endpoint = 'https://tulirmatrimony.com/controlapi/religionlist.php';
         break;
 
-      case 'cast':
-      case 'patner_cast':
+      case 'caste':
+      // case 'patner_cast':
       // Set the appropriate endpoint for fetching caste list based on currentSection
-      endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
+      endpoint = 'http://localhost:8000/data/castelist';
       break;
       case 'moonsign':
         // Fetch options from different API for moonsign
@@ -845,7 +845,17 @@ const Addusers = () => {
       const combinedData = Object.values(formData).reduce((acc, sectionData) => {
         return { ...acc, ...sectionData };
       }, {});
-  
+     
+      const imageData = {
+        image: combinedData.image ? combinedData.image.split(',')[1] : null,
+        image1: combinedData.image1 ? combinedData.image1.split(',')[1] : null,
+        id_image: combinedData.id_image ? combinedData.id_image.split(',')[1] : null,
+        id_image1: combinedData.id_image1 ? combinedData.id_image1.split(',')[1] : null,
+        rasiimage: combinedData.rasiimage ? combinedData.rasiimage.split(',')[1] : null,
+      };
+
+
+
       // Include regId in the combinedData object
       combinedData.reg_id = regId;
 
@@ -860,7 +870,7 @@ const Addusers = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(combinedData)
+      body: JSON.stringify({ ...combinedData, ...imageData }) 
     });
      console.log(combinedData);
     // Handle the response from your Node.js server
@@ -1003,8 +1013,8 @@ const Addusers = () => {
 
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
-        ['gender', 'marriage_type', 'sevaikiragam', 'religion',  'moonsign', 'mother_tongue', 'star', 'education', 'occupaction', 'annual_income',
-          'smoking', 'drinking', 'country', 'state', 'father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'patner_religion',
+        ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste',  'moonsign', 'mother_tongue', 'star', 'education', 'occupaction', 'annual_income',
+          'smoking', 'drinking', 'status_children','country', 'state', 'father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'patner_religion',
            'patner_country', 'patner_state', 'patner_matrial_status', 'patner_education', 'patner_occupation', 'patner_mother_tongue',
           'patner_salary', 'patner_child_gender', 'patner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'patner_from_age',
           'patner_to_age','residece'
@@ -1091,17 +1101,148 @@ const Addusers = () => {
                 </div>
 
 {/* Render Back button for sections 2, 3, 4, and 5 */}
-{currentSection !== 'section1' && (
+{currentSection !== 'section1' && currentSection !== 'section6' && (
   <button className='btn btn-secondary' onClick={handleBack}>Back</button>
 )}
+
   {/* Render Next button for all sections except the last one */}
   {currentSection !== 'section6' && (
-        <button className='btn btn-primary m-3' onClick={handleNext}>Next</button>
+        <button className='btn btn-primary m-3' onClick={(e) => handleNext(e)}>Next</button>
       )}
 
       {/* Render Submit button for the last section */}
       {currentSection === 'section6' && (
+        <>
+        <div className='container mx-auto justify-content-center mt-5 mb-3 row'>
+          <p className='mb-4'>ஜாதக கட்டம் : ஜாதக கட்டத்தை நிரப்ப கீழே உள்ள வார்த்தைகளை பயன்படுத்தவும்</p>
+          <div className='row mb-1 justify-content-center'>
+             <div className='col-lg-2'> <p>புதன் : pu</p> </div>
+             <div className='col-lg-2'> <p>சூரியன் : sun</p></div>   
+             <div className='col-lg-2'> <p>ராகு : rag</p></div>
+             <div className='col-lg-2'> <p>வியாழன் : vij</p></div>
+             <div className='col-lg-2'> <p>சுக்கிரன் : chk</p></div>
+          </div>
+
+          <div className='row mb-4 justify-content-center'>
+             <div className='col-lg-2'> <p>சனி : sat</p> </div>
+             <div className='col-lg-2'> <p>சந்திரன் : chan</p></div>    
+             <div className='col-lg-2'> <p>கேது : kee</p></div>
+             <div className='col-lg-2'> <p>செவ்வாய் : sev</p></div>
+             <div className='col-lg-2'> <p>லக்கனம் : lac</p></div>
+          </div>
+        <form className='row col-lg-6'>
+          <div class="form-row row mb-3">
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+          <div class="form-row justify-content-between row mb-3">
+            <div class="col-lg-3">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div className='col-lg-6 align-items-center justify-content-center my-auto'><h3>ராசி</h3></div>
+            <div class="col-lg-3">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+
+
+          <div class="form-row justify-content-between row mb-3">
+            <div class="col-lg-3">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col-lg-3">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+
+            </div>
+            <div class="form-row row mb-3">
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+         
+          <div class="form-row">
+          </div>
+        </form>
+
+        <form className='row col-lg-6'>
+          <div class="form-row row mb-3">
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+          <div class="form-row justify-content-between row mb-3">
+            <div class="col-lg-3">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div className='col-lg-6 align-items-center justify-content-center my-auto'><h3>அம்சம்</h3></div>
+            <div class="col-lg-3">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+
+          <div class="form-row justify-content-between row mb-3">
+            <div class="col-lg-3">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+           
+            <div class="col-lg-3">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            </div>
+            <div class="form-row row mb-3">
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+            <div class="col">
+           <input type="text" class="form-control border border-dark" style={{ height: '100px' }}/>
+            </div>
+          </div>
+         
+          <div class="form-row">
+          </div>
+        </form>
+        </div>
+        <button className='btn btn-secondary' onClick={handleBack}>Back</button>
         <button className='btn btn-success m-3' onClick={handleSubmit}>Submit</button>
+        
+        </>
       )}
 </div>
 

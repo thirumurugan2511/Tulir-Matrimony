@@ -51,8 +51,8 @@ function Staredit() {
         };
         const data = JSON.stringify(requestData);
         console.log(data);
-//https://tulirmatrimony.com/controlapi/editreligion.php
-//http://localhost:8000/controlapi/editreligion
+//https://tulirmatrimony.com/controlapi/editstar.php
+//http://localhost:8000/controlapi/editstar
         fetch('https://tulirmatrimony.com/controlapi/editstar.php', {
             method: 'PUT',
             headers: {
@@ -69,7 +69,7 @@ function Staredit() {
             }, 1000);
         })
         .catch(error => {
-            console.error('Error updating religion data:', error);
+            console.error('Error updating star data:', error);
         });
     };
     

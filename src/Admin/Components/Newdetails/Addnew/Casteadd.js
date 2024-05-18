@@ -53,7 +53,7 @@ const Casteadd = () => {
               // Hide success message after 5 seconds
               setTimeout(() => {
                 successAlert.style.display = 'none';
-              }, 2000);
+              }, 1000);
             const result = await response.json();
             console.log(result);
             // You can handle success response here
