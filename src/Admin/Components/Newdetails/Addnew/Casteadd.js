@@ -62,7 +62,7 @@ const Casteadd = () => {
         }
     };
     const handleGoBack = () => {
-        window.history.back();
+        window.location.href = '/Caste';
     };
   return (
     <>

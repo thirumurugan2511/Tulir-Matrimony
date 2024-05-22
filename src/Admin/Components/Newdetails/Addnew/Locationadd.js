@@ -112,7 +112,7 @@ const Locationadd = () => {
     };
     
     const handleGoBack = () => {
-        window.history.back();
+        window.location.href = '/Location';
     };
   return (
     <>

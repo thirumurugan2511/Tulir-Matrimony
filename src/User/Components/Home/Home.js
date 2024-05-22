@@ -1,51 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from './rgt-matrimony-logo.png';
 import './Home.css';
 import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import Navbar from '../Navbar/Navbar';
 
 
 
 const Home = () => {
+  const [click, setClick] = React.useState(false);
+
+  const handleClick = () => setClick(!click);
+  const Close = () => setClick(false);
   return (
     <>
-      {/* <header>
-        <nav className="navbar navbar-light bg-light py-4">
-          <div className="container-fluid">
-            <div className='container row mx-auto'>
-              <div className='col-lg-8 col-md-6 col-sm-6 col-6 text-start'>
-                <a className="navbar-brand" href="#">
-                  <img src={Logo} alt="Logo" width="150" height="120" className="d-inline-block align-text-top"/>
-                </a>
-              </div>
-              <div className='col-lg-2 col-md-3 col-sm-6 col-6 text-end'>
-                <Link to='/Freereg' className='btn btn-primary px-5 py-2'>Sign In</Link>
-              </div>
-              <div className='col-lg-2 col-md-3 col-sm-6 col-6 text-end'>
-                <Link to='/Freereg' className='btn btn-primary px-5 py-2'>Sign Up</Link>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </header> */}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="#">
-              <img src={Logo} alt="Logo" width="150" height="120" className="d-inline-block align-text-top"/>
-            </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-            <Link to='/Freereg' className='btn btn-primary px-5 py-2 nav-link'>Member Plans</Link>
-            </li>
-            <li class="nav-item">
-            <Link to='/Freereg' className='btn btn-primary px-5 py-2 nav-link'>Sign In</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <Navbar />
+     
       <section className='bg-grey'>
         <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
           <ol className="carousel-indicators">
@@ -115,6 +85,9 @@ const Home = () => {
             </select>
             <button type="submit" className="btn btn-primary mx-2 w-50">Let's Begin</button>
             </form>
+        </div>
+        <div className='search-form-btn mt-4 mx-auto'>
+           <button className='btn btn-primary col-sm-6 col-5 py-3'>Free search</button>
         </div>
       </section>
     </>

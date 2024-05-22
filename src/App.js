@@ -59,6 +59,7 @@ import Printform from './Admin/Components/Member/PrintForm';
 import Printformwop from './Admin/Components/Member/Printformwop';
 import Jathagam from './Admin/Components/Member/Jathagam';
 import Textform from './Admin/Components/Member/Textform';
+import Home from './User/Components/Home/Home';
 
 
 function App() {
@@ -66,7 +67,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-        {/* <Route path="/Dhome" element={<Dhome />} /> */}
+        <Route path="/Dhome" element={<Dhome />} />
           <Route path="/Admin" element={<Signin />} />
           <Route path="/Aside" element={<Aside />} />
           <Route path="/Stories" element={<Stories />} />
@@ -118,12 +119,13 @@ function App() {
           <Route path="/Locationadd" element={<Locationadd />} />
           <Route path="/Addusers" element={<Addusers />} />
           <Route path="/Printform/:id" element={<Printform />} />
-          <Route path="/" element={<Freereg />} />
+          <Route path="/Freereg" element={<Freereg />} />
           <Route path="/Bannerimg" element={<Bannerimg />} />
           <Route path="/Thankyou" element={<Thankyou />} />
           <Route path="/Printformwop/:id" element={<Printformwop />} />
           <Route path="/Jathagam" element={<Jathagam />} />
           <Route path="/Textform" element={<Textform />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </Router>
 

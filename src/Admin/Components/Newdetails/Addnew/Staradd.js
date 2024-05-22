@@ -39,7 +39,7 @@ const Staradd = () => {
         }
     };
     const handleGoBack = () => {
-        window.history.back();
+        window.location.href = '/Star';
     };
 
   return (

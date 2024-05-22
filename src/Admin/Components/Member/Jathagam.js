@@ -1,4 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import {Link} from 'react-router-dom'
+import { MdManageHistory } from "react-icons/md";
+import { GrUserAdmin } from "react-icons/gr";
+import { MdPostAdd } from "react-icons/md";
+import { FaEye } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
+import axios from 'axios';
+import Aside from '../Aside/Aside';
+import { IoMdSettings } from "react-icons/io";
+import { LuLogOut } from "react-icons/lu";
+import { MdModeEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import { IoMdAdd } from "react-icons/io";
+import Smallicon from '../../Components/heart-icon.png'
+import Lady from './lady.jpg'
+import Men from './men.jpg'
 
 const Jathagam = () => {
   const [data, setData] = useState([]);
@@ -33,6 +50,7 @@ const Jathagam = () => {
     amsam11: "",
     amsam12: ""
   });
+  const [profileData, setProfileData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,10 +61,14 @@ const Jathagam = () => {
         const result = await response.json();
         const latestId = result.body[result.body.length - 1].id;
         console.log(latestId)
+        const responsee = await fetch(`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${latestId}`);
+        const res = await responsee.json();
+        setProfileData(res);
         setData(latestId);
         setFormData({ ...formData, user_id: latestId });
         // console.log(data)
         console.log(result)
+        console.log(res)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -54,6 +76,24 @@ const Jathagam = () => {
 
     fetchData();
 }, []);
+
+//  const userid = formData.user_id;
+//  console.log(userid)
+// useEffect(() => {
+//   const fetchData = async () => {
+//     try {
+//       const response = await fetch(`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${userid}`);
+//       const res = await response.json();
+//       setProfileData(res);
+//       console.log(res);
+//     } catch (error) {
+//       console.error('Error fetching data:', error);
+//     }
+//   };
+
+//   fetchData();
+
+// }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -89,7 +129,79 @@ const Jathagam = () => {
 
   return (
     <>
+     <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+    <Aside />
+    <div class="layout-page">
+    <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached
+            align-items-center bg-navbar-theme" id="layout-navbar">
+                <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                    <Link class="nav-item nav-link px-0 me-xl-4" to="javascript:void(0)">
+                        <i class="bx bx-menu bx-sm"></i>
+                    </Link>
+                </div>
+                <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                    <ol class="breadcrumb breadcrumb-style2 mb-0">
+                    <li><MdManageHistory  class="bx bx-user me-2"/></li>
+      <li class="breadcrumb-item" style={{padding: '2px 10px', backgroundcolor: 'white'}}>  Manage Jathagam </li>
+                    </ol>
+                    <ul class="navbar-nav flex-row align-items-center ms-auto">
+                        <li class="nav-item lh-1 me-3">
+                        <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
+                                                    </li>
+                                                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                            <Link class="nav-link dropdown-toggle hide-arrow" to="javascript:void(0);"
+                                data-bs-toggle="dropdown">
+                                <div class="avatar avatar-online">
+                                    <img src={Smallicon} alt class="w-px-40 h-auto rounded-circle" />
+                                </div>
+                            </Link>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar avatar-online">
+                                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <span class="fw-semibold d-block mt-2">Admin</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                    <Link class="dropdown-item" to="/Sitesettings">
+                                        <IoMdSettings class="bx bx-cog me-2" />
+                                        <span class="align-middle">Settings</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                         <Link class="dropdown-item" href="/Signin">
+                                    
+                                        <LuLogOut class="bx bx-power-off me-2" />
+                                        <span class="align-middle">Log Out</span>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
       <div className='container mx-auto justify-content-center mt-5 mb-3 row'>
+      {profileData ? (
+             <h2 className='mb-4'>Jathagam Details - {profileData.body.name}</h2>     
+           ) : (
+            <p>Loading...</p>
+          )}
+        
         <p className='mb-4'>ஜாதக கட்டம் : ஜாதக கட்டத்தை நிரப்ப கீழே உள்ள வார்த்தைகளை பயன்படுத்தவும்</p>
         <div className='row mb-1 justify-content-center'>
            <div className='col-lg-2'> <p>புதன் : pu</p> </div>
@@ -257,6 +369,9 @@ const Jathagam = () => {
             <button type="submit" className='btn btn-success m-3'>Submit</button>
           </div>
         </form>
+      </div>
+      </div>
+      </div>
       </div>
     </>
   );

@@ -27,6 +27,16 @@ const Addusers = () => {
   status_childrenOptions: [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
+  ], 
+  pathan_numberOptions: [
+    { value: '1', label: '1' },
+    { value: '2', label: '2' },
+    { value: '3', label: '3' },
+    { value: '4', label: '4' }
+  ], 
+  plan_statusOptions : [
+    { value: 'Paid', label: 'Paid' },
+    { value: 'Not Paid', label: 'Not Paid' }    
   ],
   brother_marriedOptions: [
     { value: 'Married', label: 'Married' },
@@ -36,6 +46,7 @@ const Addusers = () => {
     { value: 'Married', label: 'Married' },
     { value: 'Unmarried', label: 'Unmarried' }
   ],
+  
   smokingOptions: [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' },
@@ -64,6 +75,7 @@ const Addusers = () => {
     { value: 'Yes', label: 'Yes' },
     { value: 'no', label: 'No' }    
   ],
+ 
   // partner_educationOptions: [
   //   { value: 'Bachelor', label: 'Bachelor' },
   //   { value: 'Master', label: 'Master' },
@@ -215,12 +227,12 @@ const Addusers = () => {
     fetchDropdownOptions('star');
     fetchDropdownOptions('mother_tongue');
     fetchDropdownOptions('education');
-    fetchDropdownOptions('occupaction');
+    fetchDropdownOptions('occupation');
     fetchDropdownOptions('jobdetails');
     fetchDropdownOptions('annual_income');
     fetchDropdownOptions('city');
     fetchDropdownOptions('bloodgroup');
-    fetchDropdownOptions('state');
+    fetchDropdownOptions('plan_name');
     fetchDropdownOptions('partner_religion');
     fetchDropdownOptions('partner_caste');
     fetchDropdownOptions('partner_country');
@@ -250,6 +262,8 @@ const Addusers = () => {
   const initialFormData = {
     "section1": {
       // "reg_id": regId,
+      "plan_name": "",
+      "plan_status": "",
       "name": "",
       "gender": "",   
       "email": "",
@@ -261,17 +275,19 @@ const Addusers = () => {
       "marriage_type": "",
       "religion": "",
       "caste": "",
-      "subcast": "",
+      "subcaste": "",
       "sevaikiragam": "",
       "gothram": "",
-      "zodiacsign": "",
       "star": "",
+      "pathan_number": "",
+      "zodiacsign": "",
       "birthplace": "",
       "birthtime": "",
       "education":"",
       "education_details":"",
-      "occupaction":"",
+      "occupation":"",
       "jobdetails":"",
+      "joblocation":"",
       "annual_income":"",
       "kuladeivam":"",
 
@@ -309,10 +325,8 @@ const Addusers = () => {
       "partner_from_age": "",
       "partner_to_age": "",
       "partner_height": "",
-     
       "partner_religion": "",
       "partner_caste": "",
-    
       "partner_matrial_status": "",
       "partner_education": "",
       "partner_occupation": "",
@@ -331,6 +345,8 @@ const Addusers = () => {
   };
   const labelTranslations = {
     "reg_id": "பதிவு ஐடி",
+    "plan_name": "உறுப்பினர் திட்டம்",
+    "plan_status": "உறுப்பினர் திட்ட நிலை",
     "name": "பெயர்",
     "image": "படம்",
     "gender": "பாலினம்",
@@ -343,21 +359,23 @@ const Addusers = () => {
     "status_children": "குழந்தைகளின் நிலை",
     "child_count": "குழந்தைகளின் எண்ணிக்கை",
     "age": "வயது",
+    "pathan_number":"பாதம்",
     "religion": "மதம்",
     "kuladeivam": "குலதெய்வம்",
     "bloodgroup": "இரத்த வகை",
     "caste": "சாதி",
-    "subcast": "உட்பிரிவு",
+    "subcaste": "உட்பிரிவு",
     "sevaikiragam": "செவ்வாய் தோஷம்",
     "gothram": "கோத்ரம்",
     "zodiacsign": "ராசி",
-    "star": "நட்சத்திரம் / பாதம்",
+    "star": "நட்சத்திரம்",
     "birthplace": "பூர்வீகம்",
     "birthtime": "பிறந்த நேரம்",
     "education":"கல்வி",
     "education_details":"கல்வி விவரங்கள்",
-    "occupaction":"வேலை",
+    "occupation":"வேலை",
     "jobdetails":"தொழில் விவரம்",
+    "joblocation":"தொழில் இடம்",
     "annual_income":"ஆண்டு வருமானம்", 
     "country": "நாடு",
     "state": "மாநிலம்",
@@ -466,7 +484,7 @@ const Addusers = () => {
     section3: 'Physical Info',
     section4: 'Family Details',
     section5: 'Partner Preferences',
-    section6: 'Upload Images'
+    section6: 'Upload Images',
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -558,7 +576,19 @@ const Addusers = () => {
             { value: 'female', label: 'Female' }
           ]
         }));
-        break;
+        break; 
+        case 'pathan_number':
+        // Options for gender dropdown
+        setOptions(prevOptions => ({
+          ...prevOptions,
+          [fieldName + 'Options']: [
+            { value: '1', label: '1' },
+            { value: '2', label: '2' },
+            { value: '3', label: '3' },
+            { value: '4', label: '4' }
+          ]
+        }));
+        break; 
         case 'partner_child_gender':
           // Options for gender dropdown
           setOptions(prevOptions => ({
@@ -719,6 +749,16 @@ const Addusers = () => {
                   ]
                 }));
               break;
+              case 'plan_status':
+                // Options for marriage type dropdown
+                setOptions(prevOptions => ({
+                  ...prevOptions,
+                  [fieldName + 'Options']: [
+                    { value: 'Paid', label: 'Paid' },
+                    { value: 'Not Paid', label: 'Not Paid' }             
+                  ]
+                }));
+              break;
             case 'country': 
             // Options for marriage type dropdown
             setOptions(prevOptions => ({
@@ -777,8 +817,12 @@ const Addusers = () => {
       // Set the appropriate endpoint for fetching caste list based on currentSection
       endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
       break;
-      case 'zodiacsign':
+      case 'plan_name':
         // Fetch options from different API for zodiacsign
+        endpoint = 'https://tulirmatrimony.com/controlapi/planlist.php';
+        break;
+      case 'zodiacsign':
+          // Fetch options from different API for zodiacsign
         endpoint = 'https://tulirmatrimony.com/controlapi/moonsignlist.php';
         break;
       case 'star':
@@ -793,7 +837,7 @@ const Addusers = () => {
           // Fetch options from different API for education
           endpoint = 'https://tulirmatrimony.com/controlapi/educationlist.php';
           break;
-        case 'occupaction':
+        case 'occupation':
           // Fetch options from different API for education
           endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
           break;
@@ -921,8 +965,9 @@ const Addusers = () => {
     // Handle the response from your Node.js server
     if (response.ok) {
       const responseData = await response.json();
-      console.log('Data sent successfully:', responseData);
-      setCurrentSection('section6');
+      console.log('Data sent successfully:', responseData);   
+      // setCurrentSection('section6');
+      window.location.href = '/Jathagam';
       // setShowAlert(true); // Show alert box
       // setTimeout(() => setShowAlert(false), 1000);
       // Optionally, you can reset the form data and handle any further actions here
@@ -943,23 +988,24 @@ const Addusers = () => {
     generateRegId();
   }, []);
 
-  const fetchCustomerList = async () => {
-    try {
-      const response = await fetch('http://localhost:8000/api/data/customerlist');
-      if (response.ok) {
-        const responseData = await response.json();
-        if (responseData.body && Array.isArray(responseData.body)) {
-          // Handle fetched customer list data
-        } else {
-          console.error('Fetched data body is not an array:', responseData);
-        }
-      } else {
-        console.error('Failed to fetch customer list');
-      }
-    } catch (error) {
-      console.error('Error fetching customer list:', error);
-    }
-  };
+  // const fetchCustomerList = async () => {
+  //   try {
+  //     const response = await fetch('http://localhost:8000/api/data/customerlist');
+  //     if (response.ok) {
+  //       const responseData = await response.json();
+  //       if (responseData.body && Array.isArray(responseData.body)) {
+  //         // Handle fetched customer list data
+  //       } else {
+  //         console.error('Fetched data body is not an array:', responseData);
+  //       }
+  //     } else {
+  //       console.error('Failed to fetch customer list');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error fetching customer list:', error);
+  //   }
+  // };
+
   const handleBack = () => {
     const sections = Object.keys(formData);
     const currentIndex = sections.indexOf(currentSection);
@@ -1016,7 +1062,7 @@ const Addusers = () => {
                                      <div class="dropdown-divider"></div>
                                  </li>
                                  <li>
-                                     <Link class="dropdown-item" to="/Sitesetting">
+                                     <Link class="dropdown-item" to="/Sitesettings">
                                          <IoMdSettings class="bx bx-cog me-2" />
                                          <span class="align-middle">Settings</span>
                                      </Link>
@@ -1026,7 +1072,7 @@ const Addusers = () => {
                                      <div class="dropdown-divider"></div>
                                  </li>
                                  <li>
-                                       <Link class="dropdown-item" href="/Signin">
+                                       <Link class="dropdown-item" to="/Signin">
                                      
                                          <LuLogOut class="bx bx-power-off me-2" />
                                          <span class="align-middle">Log Out</span>
@@ -1057,7 +1103,7 @@ const Addusers = () => {
 
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
-        ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste', 'bloodgroup', 'zodiacsign', 'mother_tongue', 'star', 'education', 'occupaction', 'annual_income',
+        ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste','plan_name','plan_status', 'pathan_number','bloodgroup', 'zodiacsign', 'mother_tongue', 'star', 'education', 'occupation', 'annual_income',
           'smoking', 'drinking', 'status_children','country', 'state', 'city','father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'partner_religion',
            'partner_country', 'partner_state', 'partner_matrial_status', 'partner_education', 'partner_occupation', 'partner_mother_tongue',
           'partner_salary','partner_caste', 'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
@@ -1158,9 +1204,10 @@ const Addusers = () => {
       {currentSection === 'section6' && (
        <>
         
-        <button className='btn btn-success m-3' onClick={handleSubmit}>Submit</button>
-        <Jathagam />
-        <button className='btn btn-secondary' onClick={handleBack}>Back</button>
+        
+        {/* <Jathagam /> */}
+        <button className='btn btn-secondary m-3' onClick={handleBack}>Back</button>
+        <button className='btn btn-success ' onClick={handleSubmit}>Submit</button>
       </>
       )}
 </div>

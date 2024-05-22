@@ -39,7 +39,7 @@ const Annualincomeadd = () => {
         }
     };
     const handleGoBack = () => {
-        window.history.back();
+        window.location.href = '/Annualincome';
     };
   return (
     <>

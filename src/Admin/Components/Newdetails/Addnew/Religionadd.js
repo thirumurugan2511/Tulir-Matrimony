@@ -40,7 +40,7 @@ const Religionadd = () => {
                 }
     };
     const handleGoBack = () => {
-        window.history.back();
+        window.location.href = '/Religion';
     };
 
   return (

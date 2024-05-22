@@ -133,7 +133,7 @@ const Member = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                         <Link class="dropdown-item" href="/Signin">
+                                         <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>

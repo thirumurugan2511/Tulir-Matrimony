@@ -115,7 +115,7 @@ const Viewmember = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <Link class="dropdown-item" to="/Sitesetting">
+                                    <Link class="dropdown-item" to="/Sitesettings">
                                         <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>
                                     </Link>
@@ -124,7 +124,7 @@ const Viewmember = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                         <Link class="dropdown-item" href="/Signin">
+                                         <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
@@ -197,14 +197,14 @@ const Viewmember = () => {
                 <div className="col-lg-4 col-md-6 col-sm-6 mt-0 mt-lg-3 mt-md-3 mt-sm-3">
                   <div className="MDatails_views">
                     <h5 className="py-2"><span>Gender: {profileData.body.gender}</span></h5>
-                    <h5 className="py-2"><span>Mobile: {profileData.body.phonenumber}</span></h5>
+                    <h5 className="py-2"><span>Age: {profileData.body.age}</span></h5>
                     <h5 className="py-2"><span>Caste: {profileData.body.caste}</span></h5>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-6 mt-0 mt-lg-3 mt-md-3 mt-sm-3 right_bordermv">
                   <div className="MDatails_views">
                     <h5 className="py-2"><span>Marital Status: {profileData.body.marriage_type}</span></h5>
-                    <h5 className="py-2"><span>State: {profileData.body.city}</span></h5>
+                    <h5 className="py-2"><span>Mobile: {profileData.body.phonenumber}</span></h5>
                     <h5 className="py-2"><span>Occupation: {profileData.body.occupation}</span></h5>
                   </div>
                 </div>
@@ -457,11 +457,11 @@ const Viewmember = () => {
                             <h5 class="py-2"><span>Marital Status :</span> {profileData.body.marriage_type}</h5>
                         </div>
                     </div>
-                    {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
-                            <h5 class="py-2"><span>Total Children :</span> {profileData.body.status_children}</h5>
+                            <h5 class="py-2"><span>Total Children :</span> {profileData.body.plan_name}</h5>
                         </div>
-                    </div> */}
+                    </div>
                     {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
                             <h5 class="py-2"><span>Status Children :</span> Not living with me</h5>
@@ -507,14 +507,20 @@ const Viewmember = () => {
                           <h5 class="py-2"><span>Gothra :</span> {profileData.body.gothram}</h5>
                       </div>
                   </div>
+                  
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Moonsign :</span> {profileData.body.zodiacsign}</h5>
+                          <h5 class="py-2"><span>Star :</span> {profileData.body.star}</h5>
                       </div>
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Star :</span> {profileData.body.star}</h5>
+                          <h5 class="py-2"><span>Star :</span> {profileData.body.patham_number}</h5>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                      <div class="detalistsleg">
+                          <h5 class="py-2"><span>Moonsign :</span> {profileData.body.zodiacsign}</h5>
                       </div>
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -559,7 +565,7 @@ const Viewmember = () => {
                       </div>
                       <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                           <div class="detalistsleg">
-                              <h5 class="py-2"><span>Occupation :</span> {profileData.body.occupaction}</h5>
+                              <h5 class="py-2"><span>Occupation :</span> {profileData.body.occupation}</h5>
                           </div>
                       </div>
                       <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -639,7 +645,7 @@ const Viewmember = () => {
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
-                            <h5 class="py-2"><span>Blood Group :</span> {profileData.body.bloodgroup}-Kg</h5>
+                            <h5 class="py-2"><span>Blood Group :</span> {profileData.body.bloodgroup}</h5>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -847,19 +853,19 @@ const Viewmember = () => {
         <div className='col-lg-10 mt-5 m-auto mb-2 row'>
         <div className='col-lg-3 d-flex mb-5 align-items-center'>
             <label className="form-label mb-0 me-2">திசை இருப்பு</label>
-            <span>{data.thisaiirupu}</span>
+            <span style={{color: 'black'}}>{data.thisaiirupu}</span>
           </div>
           <div className='col-lg-3 d-flex mb-5 align-items-center'>
       <label class="form-label mb-0 me-2">ஆண்டு</label>
-      <span>{data.year}</span>
+      <span style={{color: 'black'}}>{data.year}</span>
     </div>
     <div className='col-lg-3 d-flex mb-5 align-items-center'>
       <label class="form-label mb-0 me-2">மாதம்</label>
-      <span>{data.month}</span>
+      <span style={{color: 'black'}}>{data.month}</span>
     </div>
     <div className='col-lg-3 d-flex mb-5 align-items-center'>
       <label class="form-label mb-0 me-2">நாள்</label>
-      <span>{data.days}</span>
+      <span style={{color: 'black'}}>{data.days}</span>
     </div>
        
       </div>
@@ -869,22 +875,22 @@ const Viewmember = () => {
         <table class="table table-bordered">
         <tbody>
             <tr>
-            <th scope="row">{data.rasi1}</th>
+            <td scope="row">{data.rasi1}</td>
             <td>{data.rasi2}</td>
             <td>{data.rasi3}</td>
             <td>{data.rasi4}</td>
             </tr>
             <tr>
-            <th scope="row">{data.rasi5}</th>
+            <td scope="row">{data.rasi5}</td>
             <td colspan="2" rowSpan={2}>ராசி</td>
             <td>{data.rasi6}</td>
             </tr>
             <tr>
-            <th scope="row">{data.rasi7}</th>
+            <td scope="row">{data.rasi7}</td>
             <td >{data.rasi8}</td>
             </tr>
             <tr>
-            <th scope="row">{data.rasi9}</th>
+            <td scope="row">{data.rasi9}</td>
             <td >{data.rasi10}</td>
             <td>{data.rasi11}</td>
             <td>{data.rasi12}</td>
@@ -896,22 +902,22 @@ const Viewmember = () => {
         <table class="table table-bordered">
         <tbody>
             <tr>
-            <th scope="row">{data.amsam1}</th>
+            <td scope="row">{data.amsam1}</td>
             <td>{data.amsam2}</td>
             <td>{data.amsam3}</td>
             <td>{data.amsam4}</td>
             </tr>
             <tr>
-            <th scope="row">{data.amsam5}</th>
+            <td scope="row">{data.amsam5}</td>
             <td colspan="2" rowSpan={2}>அம்சம்</td>
             <td>{data.amsam6}</td>
             </tr>
             <tr>
-            <th scope="row">{data.amsam7}</th>
+            <td scope="row">{data.amsam7}</td>
             <td >{data.amsam8}</td>
             </tr>
             <tr>
-            <th scope="row">{data.amsam9}</th>
+            <td scope="row">{data.amsam9}</td>
             <td >{data.amsam10}</td>
             <td>{data.amsam11}</td>
             <td>{data.amsam12}</td>

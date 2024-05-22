@@ -1,0 +1,27 @@
+.banner-search{
+    margin-top: -200px;
+    background: rgb(251, 12, 199);
+}
+
+.search-form-btn {
+    margin-top: -200px !important;
+    display: none;
+}
+#carouselExampleIndicators{
+    z-index: -1;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
+
+
+@media only screen and (max-width: 768px) {
+	.search-form{
+   
+        display: none;
+    }
+
+    .search-form-btn {
+        display: block;
+        
+    }
+}

@@ -27,6 +27,16 @@ const Edituser = () => {
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
   ],
+  pathan_numberOptions: [
+    { value: '1', label: '1' },
+    { value: '2', label: '2' },
+    { value: '3', label: '3' },
+    { value: '4', label: '4' }
+  ], 
+  plan_statusOptions : [
+    { value: 'Paid', label: 'Paid' },
+    { value: 'Not Paid', label: 'Not Paid' }    
+  ],
   brother_marriedOptions: [
     { value: 'Married', label: 'Married' },
     { value: 'Unmarried', label: 'Unmarried' }
@@ -215,13 +225,13 @@ const Edituser = () => {
     fetchDropdownOptions('caste');
     fetchDropdownOptions('mother_tongue');
     fetchDropdownOptions('education');
-    fetchDropdownOptions('occupaction');
+    fetchDropdownOptions('occupation');
     fetchDropdownOptions('jobdetails');
     fetchDropdownOptions('annual_income');
     fetchDropdownOptions('city');
     fetchDropdownOptions('bloodgroup');
     fetchDropdownOptions('country');
-    fetchDropdownOptions('state');
+    fetchDropdownOptions('plan_name');
     fetchDropdownOptions('partner_religion');
     fetchDropdownOptions('partner_caste');
     fetchDropdownOptions('partner_country');
@@ -250,6 +260,8 @@ const Edituser = () => {
   const [formData, setFormData] = useState({
     "section1": {
       // "reg_id": "",
+      "plan_name": "",
+      "plan_status": "",
       "name": "",
       "gender": "",   
       "email": "",
@@ -264,14 +276,16 @@ const Edituser = () => {
       "subcaste": "",
       "sevaikiragam": "",
       "gothram": "",
-      "zodiacsign": "",
       "star": "",
+      "pathan_number": "",
+      "zodiacsign": "",
       "birthplace": "",
       "birthtime": "",
       "education":"",
       "education_details":"",
-      "occupaction":"",
+      "occupation":"",
       "jobdetails":"",
+      "joblocation":"",
       "annual_income":"",
       "kuladeivam":"",
 
@@ -286,8 +300,7 @@ const Edituser = () => {
     "section3": {
       "height": "",
       "food_habits": "",
-      "bloodgroup": "",
-     
+      "bloodgroup": "",  
       "skin_tone": "",
       "profile_by": "",
       "aboutme": ""
@@ -341,9 +354,12 @@ const fetchUserData = async () => {
         section1: {
           ...formData.section1,
           reg_id: userData.body.reg_id,
+          plan_name: userData.body.plan_name || "",
+          plan_status: userData.body.plan_status || "",
           name: userData.body.name || "",
           gender: userData.body.gender || "",   
           email: userData.body.email || "",
+          age: userData.body.age || "",
           phonenumber: userData.body.phonenumber || "",
           password: userData.body.password || "",
           mother_tongue: userData.body.mother_tongue || "",
@@ -354,14 +370,16 @@ const fetchUserData = async () => {
           subcaste: userData.body.subcaste || "",
           sevaikiragam: userData.body.sevaikiragam || "",
           gothram: userData.body.gothram || "",
-          zodiacsign: userData.body.zodiacsign || "",
           star: userData.body.star || "",
+          pathan_number: userData.body.pathan_number || "",
+          zodiacsign: userData.body.zodiacsign || "",
           birthplace: userData.body.birthplace || "",
           birthtime: userData.body.birthtime || "",
           education: userData.body.education || "",
           education_details: userData.body.education_details || "",
-          occupaction: userData.body.occupaction || "",
+          occupation: userData.body.occupation || "",
           jobdetails: userData.body.jobdetails || "",
+          joblocation: userData.body.joblocation || "",
           annual_income: userData.body.annual_income || ""
         },
         section2: {
@@ -435,6 +453,8 @@ const fetchUserData = async () => {
 
   const labelTranslations = {
     "reg_id": "பதிவு ஐடி",
+    "plan_name": "உறுப்பினர் திட்டம்",
+    "plan_status": "உறுப்பினர் திட்ட நிலை",
     "name": "பெயர்",
     "image": "படம்",
     "gender": "பாலினம்",
@@ -445,6 +465,7 @@ const fetchUserData = async () => {
     "mother_tongue": "தாய்மொழி",
     "dob": "பிறந்த தேதி",
     "marriage_type": "திருமண நிலை",
+    "pathan_number":"பாதம்",
     "status_children": "குழந்தைகளின் நிலை",
     "child_count": "குழந்தைகளின் எண்ணிக்கை",
     "child_age": "குழந்தைகளின் வயது",
@@ -461,7 +482,8 @@ const fetchUserData = async () => {
     "birthtime": "பிறந்த நேரம்",
     "education":"கல்வி",
     "education_details":"கல்வி விவரங்கள்",
-    "occupaction":"வேலை",
+    "occupation":"வேலை",
+    "joblocation":"தொழில் இடம்",
     "jobdetails":"வேலை விவரம்",
     "annual_income":"ஆண்டு வருமானம்", 
     "country": "நாடு",
@@ -639,6 +661,18 @@ const fetchUserData = async () => {
           ]
         }));
         break;
+        case 'pathan_number':
+          // Options for gender dropdown
+          setOptions(prevOptions => ({
+            ...prevOptions,
+            [fieldName + 'Options']: [
+              { value: '1', label: '1' },
+              { value: '2', label: '2' },
+              { value: '3', label: '3' },
+              { value: '4', label: '4' }
+            ]
+          }));
+          break; 
         case 'partner_child_gender':
           // Options for gender dropdown
           setOptions(prevOptions => ({
@@ -684,6 +718,16 @@ const fetchUserData = async () => {
                     { value: 'O Negative', label: 'O Negative' }    
                   ]
                 }));            
+            break;
+            case 'plan_status':
+              // Options for marriage type dropdown
+              setOptions(prevOptions => ({
+                ...prevOptions,
+                [fieldName + 'Options']: [
+                  { value: 'Paid', label: 'Paid' },
+                  { value: 'Not Paid', label: 'Not Paid' }             
+                ]
+              }));
             break;
         case 'sevaikiragam':
           // Options for marriage type dropdown
@@ -880,6 +924,10 @@ const fetchUserData = async () => {
       // Set the appropriate endpoint for fetching caste list based on currentSection
       endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
       break;
+      case 'plan_name':
+        // Fetch options from different API for zodiacsign
+        endpoint = 'https://tulirmatrimony.com/controlapi/planlist.php';
+        break;
       case 'caste':
         // Set the appropriate endpoint for fetching caste list based on currentSection
         endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
@@ -905,7 +953,7 @@ const fetchUserData = async () => {
           // Fetch options from different API for education
           endpoint = 'https://tulirmatrimony.com/controlapi/educationlist.php';
           break;
-        case 'occupaction':
+        case 'occupation':
           // Fetch options from different API for education
           endpoint = 'https://tulirmatrimony.com/controlapi/occupationlist.php';
           break;
@@ -1043,7 +1091,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
     if (response.ok) {
       const responseData = await response.json();
       console.log('Data sent successfully for section:', responseData);
-      // window.location.href = '/Member';
+      window.location.href = '/Member';
       return true; // Success
     } else {
       console.error('Failed to send data for section:', sectionName);
@@ -1158,7 +1206,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
         ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste',  'bloodgroup', 'zodiacsign',
-         'mother_tongue', 'star', 'education', 'occupaction', 'annual_income',
+         'mother_tongue', 'star', 'education', 'occupation', 'annual_income',
           'smoking', 'drinking', 'status_children','country', 'state','city', 'father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'partner_religion',
            'partner_country', 'partner_state', 'partner_matrial_status', 'partner_education', 'partner_occupation', 'partner_mother_tongue',
           'partner_salary', 'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',

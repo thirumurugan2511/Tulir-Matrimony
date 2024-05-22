@@ -39,7 +39,7 @@ const Occupationadd = () => {
     };
 
     const handleGoBack = () => {
-        window.history.back();
+        window.location.href = '/Occupation';
     };
 
     return (

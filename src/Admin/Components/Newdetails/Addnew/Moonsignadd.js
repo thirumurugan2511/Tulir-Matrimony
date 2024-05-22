@@ -38,7 +38,7 @@ const Moonsignadd = () => {
         }
     };
     const handleGoBack = () => {
-        window.history.back();
+        window.location.href = '/Moonsign';
     };
   return (
     <>

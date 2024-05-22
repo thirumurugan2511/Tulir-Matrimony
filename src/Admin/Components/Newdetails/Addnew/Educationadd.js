@@ -39,7 +39,7 @@ const Educationadd = () => {
         }
     };
     const handleGoBack = () => {
-        window.history.back();
+        window.location.href = '/Education';
     };
 
   return (

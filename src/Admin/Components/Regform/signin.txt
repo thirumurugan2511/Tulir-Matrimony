@@ -36,7 +36,7 @@ const handleSubmit = async (e) => {
     if (response.data && response.data.head && response.data.head.code === 200) {
       const responseData = response.data.body;
       console.log(responseData)
-      if (responseData && responseData.username === formData.user_name) {
+      if (responseData && responseData.username === formData.user_name && responseData.password === formData.password) {
         // Redirect to admin page upon successful login
         window.location.href = '/Dashboard';
       } else {
