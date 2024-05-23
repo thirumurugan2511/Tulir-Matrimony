@@ -4,14 +4,23 @@ import './Home.css';
 import { Link } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
+import CardSlider from './CardSlider';
+
 
 
 
 const Home = () => {
   const [click, setClick] = React.useState(false);
-
   const handleClick = () => setClick(!click);
   const Close = () => setClick(false);
+  const cards = [
+    { image: 'https://via.placeholder.com/300x200' },
+    { image: 'https://via.placeholder.com/300x200' },
+    { image: 'https://via.placeholder.com/300x200' },
+    { image: 'https://via.placeholder.com/300x200' },
+    { image: 'https://via.placeholder.com/300x200' },
+    { image: 'https://via.placeholder.com/300x200' },
+  ];
   return (
     <>
     <Navbar />
@@ -90,6 +99,8 @@ const Home = () => {
            <button className='btn btn-primary col-sm-6 col-5 py-3'>Free search</button>
         </div>
       </section>
+      <CardSlider cards={cards} />
+      
     </>
   );
 }
