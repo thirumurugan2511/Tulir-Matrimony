@@ -260,17 +260,14 @@ const Addusers = () => {
 
 
   const initialFormData = {
-    "section1": {
-      // "reg_id": regId,
-      "plan_name": "",
-      "plan_status": "",
+    "section1": {  
       "name": "",
       "gender": "",   
-      "email": "",
       "phonenumber": "",
       "password": "",
-      "age": "",  
       "dob": "",
+      "email": "",
+      "age": "",  
       "mother_tongue": "",
       "marriage_type": "",
       "religion": "",
@@ -290,6 +287,8 @@ const Addusers = () => {
       "joblocation":"",
       "annual_income":"",
       "kuladeivam":"",
+      "plan_name": "",
+      "plan_status": ""
 
     },
     "section2": {
@@ -363,7 +362,7 @@ const Addusers = () => {
     "religion": "மதம்",
     "kuladeivam": "குலதெய்வம்",
     "bloodgroup": "இரத்த வகை",
-    "caste": "சாதி",
+    "caste": "இனம்",
     "subcaste": "உட்பிரிவு",
     "sevaikiragam": "செவ்வாய் தோஷம்",
     "gothram": "கோத்ரம்",
@@ -379,7 +378,7 @@ const Addusers = () => {
     "annual_income":"ஆண்டு வருமானம்", 
     "country": "நாடு",
     "state": "மாநிலம்",
-    "city": "நகரம்",
+    "city": "மாவட்டம்",
     "residece": "குடியிருப்பு வகை",
     "alternatenumber": "தொலைபேசி மாற்று எண்",
     "mothercountry": "தாய்நாடு",
@@ -409,7 +408,7 @@ const Addusers = () => {
     "partner_height": "உயரம்",
     "partner_weight": "எடை",
     "partner_religion": "மதம்",
-    "partner_caste": "சாதி",
+    "partner_caste": "இனம்",
     "partner_country": "நாடு",
     "partner_state": "மாநிலம்",
     "partner_matrial_status": "திருமணம் நிலை",
@@ -512,7 +511,7 @@ const Addusers = () => {
 
   const handleChange = (e) => {
     const { name, files } = e.target;
-  
+    
     if (['image', 'image1', 'id_image', 'id_image1', 'rasiimage'].includes(name)) {
       // Read the file contents
       const file = files[0];
@@ -532,9 +531,6 @@ const Addusers = () => {
       }
     } else {
       const { value } = e.target;
-      if (['name', 'email', 'gender', 'phonenumber', 'password', 'dob'].includes(name) && value.trim() === '') {
-        alert("Please Enter Required Fields!");
-      }
       setFormData(prevState => ({
         ...prevState,
         [currentSection]: {
@@ -547,7 +543,10 @@ const Addusers = () => {
   
 
   const handleNext = (e) => {
-    
+    const { name, value } = e.target;
+
+   
+      console.log('next');
       const sections = Object.keys(formData);
       const currentIndex = sections.indexOf(currentSection);
       const nextIndex = currentIndex + 1;
@@ -555,8 +554,8 @@ const Addusers = () => {
         setCurrentSection(sections[nextIndex]);
       }
     
+    
   };
-  
   
   
   const generateStateOptions = () => {
@@ -816,6 +815,8 @@ const Addusers = () => {
       // case 'partner_caste':
       // Set the appropriate endpoint for fetching caste list based on currentSection
       endpoint = 'https://tulirmatrimony.com/controlapi/castelist.php';
+      //http://localhost:8000/data/castelist
+      //https://tulirmatrimony.com/controlapi/castelist.php
       break;
       case 'plan_name':
         // Fetch options from different API for zodiacsign
@@ -928,13 +929,20 @@ const Addusers = () => {
 
 
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     try {
       // Combine all section data into one object
       const combinedData = Object.values(formData).reduce((acc, sectionData) => {
         return { ...acc, ...sectionData };
       }, {});
-     
+      const { name, value } = e.target;
+
+      if (['name'].includes(name) && value.trim() === '') {
+      
+        alert("Please Enter Required Fields!");
+        console.log('Please Enter Required Fields!');
+      }
+
       const imageData = {
         image: combinedData.image ? combinedData.image.split(',')[1] : null,
         image1: combinedData.image1 ? combinedData.image1.split(',')[1] : null,
@@ -942,8 +950,6 @@ const Addusers = () => {
         id_image1: combinedData.id_image1 ? combinedData.id_image1.split(',')[1] : null,
         rasiimage: combinedData.rasiimage ? combinedData.rasiimage.split(',')[1] : null,
       };
-
-
 
       // Include regId in the combinedData object
       combinedData.reg_id = regId;
@@ -966,13 +972,27 @@ const Addusers = () => {
     if (response.ok) {
       const responseData = await response.json();
       console.log('Data sent successfully:', responseData);   
+      if (responseData.head.code === 200) {
+        // Handle the success scenario, such as updating the UI or moving to another section
+        setCurrentSection('section6');
+        window.location.href = '/Jathagam';
+        
+      } else {
+        // Handle the case where code is not 200
+        setCurrentSection('section6');
+        console.error('Error:', responseData.head.msg);
+        alert('Please enter the required fields');
+      
+      }
       // setCurrentSection('section6');
-      window.location.href = '/Jathagam';
+     
       // setShowAlert(true); // Show alert box
       // setTimeout(() => setShowAlert(false), 1000);
-      // Optionally, you can reset the form data and handle any further actions here
+      
     } else {
       console.error('Failed to send data');
+      setCurrentSection('section6');
+      
     }
 
       // Reset formData and navigate to the next page
@@ -987,24 +1007,6 @@ const Addusers = () => {
     // Fetch customer list data when component mounts
     generateRegId();
   }, []);
-
-  // const fetchCustomerList = async () => {
-  //   try {
-  //     const response = await fetch('http://localhost:8000/api/data/customerlist');
-  //     if (response.ok) {
-  //       const responseData = await response.json();
-  //       if (responseData.body && Array.isArray(responseData.body)) {
-  //         // Handle fetched customer list data
-  //       } else {
-  //         console.error('Fetched data body is not an array:', responseData);
-  //       }
-  //     } else {
-  //       console.error('Failed to fetch customer list');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error fetching customer list:', error);
-  //   }
-  // };
 
   const handleBack = () => {
     const sections = Object.keys(formData);
@@ -1086,27 +1088,17 @@ const Addusers = () => {
              <div class="content-wrapper">
     <div>
     <h2 className='mt-4'>{sectionNames[currentSection]}</h2>
+    
       <div className='card-body m-5 edit_memberSections_mainsdsd '>
+
       <div className="edit_inputMain-sltr row">
-  
-  {/* <div className="col-lg-6 col-md-6 mb-4 text-start">
-    <label htmlFor="regId">Registration ID</label>
-    <input
-      type="text"
-      id="regid"
-      name="regid"
-      className="form-control"
-      value={regId}
-      readOnly  
-    />
-  </div> */}
 
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
-        ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste','plan_name','plan_status', 'pathan_number','bloodgroup', 'zodiacsign', 'mother_tongue', 'star', 'education', 'occupation', 'annual_income',
+        ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste','plan_name','plan_status', 'pathan_number','bloodgroup', 'zodiacsign', 'mother_tongue', 'star', 'education', 'occupation', 
           'smoking', 'drinking', 'status_children','country', 'state', 'city','father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'partner_religion',
            'partner_country', 'partner_state', 'partner_matrial_status', 'partner_education', 'partner_occupation', 'partner_mother_tongue',
-          'partner_salary','partner_caste', 'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
+          'partner_caste', 'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
           'partner_to_age','residece'
         ].includes(fieldName) ?
           <div key={fieldName} className="col-lg-4 col-md-6 mb-4 text-start">
@@ -1141,18 +1133,12 @@ const Addusers = () => {
               </select>
           </div>
           :
-      //     partner_mother_tongue": "",
-      // "partner_manglik": "",
-      // "partner_salary": "",
-      // "partner_child_count": "",
-      // "partner_child_age": "",
-      // "partner_child_gender": ""
-          // Render input field for non-dropdown fields
           <div key={fieldName} className="col-lg-4 col-md-4 mb-4 text-start">
           <label htmlFor={fieldName} style={{ color: 'black' }}>
             {labelTranslations[fieldName]}
-            {['name', 'email', 'phonenumber', 'password', 'dob'].includes(fieldName) && <span style={{ color: 'red' }}>*</span>}
+            {['name', 'gender', 'phonenumber', 'password', 'dob'].includes(fieldName) && <span style={{ color: 'red' }}>*</span>}
           </label>
+        
           {['image', 'image1', 'id_image', 'id_image1', 'rasiimage'].includes(fieldName) ? (
             <input
               type="file"
@@ -1169,7 +1155,22 @@ const Addusers = () => {
               placeholder="Enter your address"
               className="form-control"
               value={formData[currentSection][fieldName] || ''}
-              autoSave='off'
+              autoSave="off"
+              onChange={handleChange}
+            />
+          ) : fieldName === 'phonenumber' || fieldName === 'alternatenumber'? (
+            <input
+              id={fieldName}
+              type="tel"
+              name={fieldName}
+              placeholder="Enter your phone number"
+              className="form-control"
+              maxlength="10"
+              minlength="10"
+              pattern="^\d{4}-\d{3}-\d{4}$"
+              required
+              value={formData[currentSection][fieldName] || ''}
+              autoSave="off"
               onChange={handleChange}
             />
           ) : (
@@ -1177,51 +1178,50 @@ const Addusers = () => {
               type={fieldTypeMapping[fieldName] || 'text'}
               id={fieldName}
               name={fieldName}
-              placeholder={fieldName === 'partner_height' ? 'Partner Height' : fieldName === 'partner_weight' ? 'Partner Weight' : fieldName === 'partner_caste' ? 'Partner Caste' : fieldName === 'partner_child_count' ? 'Partner Child Count' : fieldName === 'partner_child_age' ? 'Partner Child Age' : `${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}
-        
+              placeholder={
+                fieldName === 'partner_height' ? 'Partner Height' :
+                fieldName === 'partner_weight' ? 'Partner Weight' :
+                fieldName === 'partner_caste' ? 'Partner Caste' :
+                fieldName === 'partner_child_count' ? 'Partner Child Count' :
+                fieldName === 'partner_child_age' ? 'Partner Child Age' :
+                `${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`
+              }
               className="form-control"
               value={formData[currentSection][fieldName] || ''}
-              autoSave='off'
+              autoSave="off"
               onChange={handleChange}
             />
           )}
         </div>
+        
         
       ))}
                 </div>
 
 {/* Render Back button for sections 2, 3, 4, and 5 */}
 {currentSection !== 'section1' && currentSection !== 'section6' && (
-  <button className='btn btn-secondary' onClick={handleBack}>Back</button>
+  <button type='button' className='btn btn-secondary' onClick={handleBack}>Back</button>
 )}
 
   {/* Render Next button for all sections except the last one */}
   {currentSection !== 'section6' && (
-        <button className='btn btn-primary m-3' onClick={(e) => handleNext(e)}>Next</button>
+        <button type='button' className='btn btn-primary m-3' onClick={(e) => handleNext(e)}>Next</button>
       )}
 
       {/* Render Submit button for the last section */}
       {currentSection === 'section6' && (
        <>
-        
-        
         {/* <Jathagam /> */}
-        <button className='btn btn-secondary m-3' onClick={handleBack}>Back</button>
+        <button type='button' className='btn btn-secondary m-3' onClick={handleBack}>Back</button>
         <button className='btn btn-success ' onClick={handleSubmit}>Submit</button>
+        {/* <div id="success-alert" className="alert m-4 alert-success" style={{ display: 'none', backgroundColor: '#28a745', color:'white' }} role="alert">
+         Record added successfully.
+                </div> */}
       </>
       )}
+      
 </div>
 
-
-    
-
-{/*       
-      {Object.keys(customerData).length > 0 && (
-        <div>
-          <h2>Customer Data</h2>
-          <pre>{JSON.stringify(customerData, null, 2)}</pre>
-        </div>
-      )} */}
     </div>
     </div>
     </div>

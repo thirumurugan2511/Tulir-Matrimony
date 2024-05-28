@@ -60,6 +60,7 @@ import Printformwop from './Admin/Components/Member/Printformwop';
 import Jathagam from './Admin/Components/Member/Jathagam';
 import Textform from './Admin/Components/Member/Textform';
 import Home from './User/Components/Home/Home';
+import Genprint from './Admin/Components/Member/Genprint';
 
 
 function App() {
@@ -125,6 +126,7 @@ function App() {
           <Route path="/Printformwop/:id" element={<Printformwop />} />
           <Route path="/Jathagam" element={<Jathagam />} />
           <Route path="/Textform" element={<Textform />} />
+          <Route path="/Genprint" element={<Genprint />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>

@@ -9,6 +9,7 @@ import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import Smallicon from '../../Components/heart-icon.png'
 import Astrology from './astrology.png'
+import './member.css'
 
 
 const Viewmember = () => {
@@ -51,22 +52,45 @@ const Viewmember = () => {
 
     fetchData();
   }, [id]);
+  const formatDate = (dateStr) => {
+    if (!dateStr) return '';
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`;
+  };
+        
 
   useEffect(() => {
     const fetchDataa = async () => {
       try {
-        //http://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
+        //https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
         //http://localhost:8000//api/singlejathagam/${id}
         const response = await axios.get(`https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}`);
         setData(response.data.body);
         console.log(response)
+        
       } catch (error) {
         console.error('Error fetching data', error);
       }
     };
 
     fetchDataa();
+    
   }, [id]);
+
+  const formatTime = (timeStr) => {
+    if (!timeStr) return '';
+    const [hours, minutes] = timeStr.split(':');
+    const intHours = parseInt(hours, 10);
+    const intMinutes = parseInt(minutes, 10);
+    const period = intHours >= 12 ? 'PM' : 'AM';
+    const formattedHours = intHours % 12 || 12;
+    const formattedMinutes = intMinutes < 10 ? `0${intMinutes}` : intMinutes;
+    return `${formattedHours}:${formattedMinutes} ${period}`;
+};
+
+  const handleBackClick = () => {
+    window.history.back();
+  };
  
   return (
     <>
@@ -143,9 +167,12 @@ const Viewmember = () => {
 </div>
 
 <div class="content-wrapper">
+  <div className='col-lg-4 text-start back-btn'>
+ <button onClick={handleBackClick} className="btn btn-secondary">Back to Member</button>
+ </div>
   {/* <!-- Toast with Placements --> */}
-  {/* <!-- Toast with Placements -->
-  <!-- Content --> */}
+
+  
   <div class="container-xxl flex-grow-1 container-p-y">
     <div class="inner_adProfileMian">
       <div class="inner_flexDiv-membr d-block d-lg-flex gap-3">
@@ -175,10 +202,10 @@ const Viewmember = () => {
                 </div>
               </div>
               <div class="col-lg-4">
-              <Link to={`/Printform/${id}`} class="btn btn-primary">Print With phonenumber </Link>
+              <Link to={`/Printform/${id}`} class="btn btn-primary">Print With Mobile No </Link>
               </div>
               <div class="col-lg-4">
-              <Link to={`/Printformwop/${id}`} class="btn btn-primary">Print Without phonenumber</Link>
+              <Link to={`/Printformwop/${id}`} class="btn btn-primary">Print Without Mobile No</Link>
               </div>
             </div>
           </div>
@@ -212,9 +239,7 @@ const Viewmember = () => {
             </div>
           </div>
            
-              <div class=" text-end">
-              <Link to="/Member" class="btn btn-primary">Back to Member List</Link>
-              </div>
+             
             
         </div>
       
@@ -449,7 +474,7 @@ const Viewmember = () => {
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
-                            <h5 class="py-2"><span>Birthdate :</span> {profileData.body.dob}</h5>
+                            <h5 class="py-2"><span>Birthdate :</span> {formatDate(profileData.body.dob)}</h5>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -459,13 +484,14 @@ const Viewmember = () => {
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
-                            <h5 class="py-2"><span>Total Children :</span> {profileData.body.plan_name}</h5>
+                            <h5 class="py-2"><span>Plan Name :</span> {profileData.body.plan_name}</h5>
                         </div>
                     </div>
-                    {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
-                            <h5 class="py-2"><span>Status Children :</span> Not living with me</h5>
-                        </div> */}
+                            <h5 class="py-2"><span>குல தெய்வம் :</span> {profileData.body.kuladeivam}</h5>
+                        </div>
+                        </div>
             </div>
         </div>
     </div>
@@ -515,12 +541,12 @@ const Viewmember = () => {
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Star :</span> {profileData.body.patham_number}</h5>
+                          <h5 class="py-2"><span>Patham :</span> {profileData.body.patham_number}</h5>
                       </div>
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Moonsign :</span> {profileData.body.zodiacsign}</h5>
+                          <h5 class="py-2"><span>Zodiac Sign :</span> {profileData.body.zodiacsign}</h5>
                       </div>
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -530,7 +556,7 @@ const Viewmember = () => {
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Birth Time :</span>{profileData.body.birthtime}</h5>
+                          <h5 class="py-2"><span>Birth Time :</span>{formatTime(profileData.body.birthtime)}</h5>
                       </div>
                   </div>
               </div>
@@ -570,6 +596,11 @@ const Viewmember = () => {
                       </div>
                       <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                           <div class="detalistsleg">
+                              <h5 class="py-2"><span>Job Location :</span> {profileData.body.joblocation}</h5>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                          <div class="detalistsleg">
                               <h5 class="py-2"><span>Annual Income :</span> INR {profileData.body.annual_income}</h5>
                           </div>
                       </div>
@@ -600,7 +631,7 @@ const Viewmember = () => {
                           </div> */}
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                               <div class="detalistsleg">
-                                  <h5 class="py-2"><span>City Name :</span> {profileData.body.city}</h5>
+                                  <h5 class="py-2"><span>District Name :</span> {profileData.body.city}</h5>
                               </div>
                           </div>
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -852,48 +883,48 @@ const Viewmember = () => {
         <div className='row'>
         <div className='col-lg-10 mt-5 m-auto mb-2 row'>
         <div className='col-lg-3 d-flex mb-5 align-items-center'>
-            <label className="form-label mb-0 me-2">திசை இருப்பு</label>
-            <span style={{color: 'black'}}>{data.thisaiirupu}</span>
+            <span className="fw-bold jd_text mb-0 me-2">திசை இருப்பு</span>
+            <span style={{color: 'black'}}>: {data.thisaiirupu}</span>
           </div>
           <div className='col-lg-3 d-flex mb-5 align-items-center'>
-      <label class="form-label mb-0 me-2">ஆண்டு</label>
-      <span style={{color: 'black'}}>{data.year}</span>
+      <span class="fw-bold jd_text mb-0 me-2">ஆண்டு</span>
+      <span style={{color: 'black'}}>: {data.year}</span>
     </div>
     <div className='col-lg-3 d-flex mb-5 align-items-center'>
-      <label class="form-label mb-0 me-2">மாதம்</label>
-      <span style={{color: 'black'}}>{data.month}</span>
+      <span class="fw-bold jd_text mb-0 me-2">மாதம்</span>
+      <span style={{color: 'black'}}>: {data.month}</span>
     </div>
     <div className='col-lg-3 d-flex mb-5 align-items-center'>
-      <label class="form-label mb-0 me-2">நாள்</label>
-      <span style={{color: 'black'}}>{data.days}</span>
+      <span class="fw-bold jd_text mb-0 me-2">நாள்</span>
+      <span style={{color: 'black'}}>: {data.days}</span>
     </div>
        
       </div>
       </div>
       
       <div className='col-lg-6 mt-5 mb-2'>
-        <table class="table table-bordered">
+        <table class="table table-bordered table_jadh">
         <tbody>
             <tr>
-            <td scope="row">{data.rasi1}</td>
-            <td>{data.rasi2}</td>
-            <td>{data.rasi3}</td>
-            <td>{data.rasi4}</td>
+            <td className="j_dd" >{data.rasi1}</td>
+            <td className="j_dd" >{data.rasi2}</td>
+            <td className="j_dd" >{data.rasi3}</td>
+            <td className="j_dd" >{data.rasi4}</td>
             </tr>
             <tr>
-            <td scope="row">{data.rasi5}</td>
-            <td colspan="2" rowSpan={2}>ராசி</td>
-            <td>{data.rasi6}</td>
+            <td className="j_dd" >{data.rasi5}</td>
+            <td colspan="2" className="j_dd" rowSpan={2}>ராசி</td>
+            <td className="j_dd" >{data.rasi6}</td>
             </tr>
             <tr>
-            <td scope="row">{data.rasi7}</td>
-            <td >{data.rasi8}</td>
+            <td className="j_dd" >{data.rasi7}</td>
+           <td className="j_dd" >{data.rasi8}</td>
             </tr>
             <tr>
-            <td scope="row">{data.rasi9}</td>
-            <td >{data.rasi10}</td>
-            <td>{data.rasi11}</td>
-            <td>{data.rasi12}</td>
+            <td className="j_dd" >{data.rasi9}</td>
+           <td className="j_dd" >{data.rasi10}</td>
+            <td className="j_dd" >{data.rasi11}</td>
+            <td className="j_dd" >{data.rasi12}</td>
             </tr>
         </tbody>
         </table>
@@ -902,25 +933,25 @@ const Viewmember = () => {
         <table class="table table-bordered">
         <tbody>
             <tr>
-            <td scope="row">{data.amsam1}</td>
-            <td>{data.amsam2}</td>
-            <td>{data.amsam3}</td>
-            <td>{data.amsam4}</td>
+            <td className="j_dd" >{data.amsam1}</td>
+            <td className="j_dd" >{data.amsam2}</td>
+            <td className="j_dd" >{data.amsam3}</td>
+            <td className="j_dd" >{data.amsam4}</td>
             </tr>
             <tr>
-            <td scope="row">{data.amsam5}</td>
-            <td colspan="2" rowSpan={2}>அம்சம்</td>
-            <td>{data.amsam6}</td>
+            <td className="j_dd" >{data.amsam5}</td>
+            <td colspan="2" className="j_dd" rowSpan={2}>அம்சம்</td>
+            <td className="j_dd" >{data.amsam6}</td>
             </tr>
             <tr>
-            <td scope="row">{data.amsam7}</td>
-            <td >{data.amsam8}</td>
+           <td className="j_dd" >{data.amsam7}</td>
+           <td className="j_dd" >{data.amsam8}</td>
             </tr>
             <tr>
-            <td scope="row">{data.amsam9}</td>
-            <td >{data.amsam10}</td>
-            <td>{data.amsam11}</td>
-            <td>{data.amsam12}</td>
+           <td className="j_dd" >{data.amsam9}</td>
+           <td className="j_dd" >{data.amsam10}</td>
+            <td className="j_dd" >{data.amsam11}</td>
+            <td className="j_dd" >{data.amsam12}</td>
             </tr>
         </tbody>
         </table>

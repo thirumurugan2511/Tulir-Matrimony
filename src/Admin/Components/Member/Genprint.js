@@ -22,7 +22,7 @@ import jsPDF from 'jspdf';
 import './Print.css'
 
 
-const PrintForm = () => {
+const Genprint = () => {
         const [data, setData] = useState([]);
         const [profileData, setProfileData] = useState(null);
         const { id } = useParams();
@@ -33,7 +33,7 @@ const PrintForm = () => {
               try {
                 //https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}
                 //http://localhost:8000/fetchmember/${id}
-                const response = await fetch(`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`);
+                const response = await fetch(`http://localhost:8000/fetchmember`);
                 const data = await response.json();
                 setProfileData(data);
                 console.log(data);
@@ -51,9 +51,9 @@ const PrintForm = () => {
               try {
                 //http://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
                 //http://localhost:8000//api/singlejathagam/${id}
-                const response = await axios.get(`https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}`);
-                setData(response.data.body);
-                console.log(response)
+                const response = await axios.get(`http://localhost:8000/api/singlejathagam`);
+                setData(response.data);
+                console.log(response.data)
               } catch (error) {
                 console.error('Error fetching data', error);
               }
@@ -163,7 +163,7 @@ const PrintForm = () => {
                         <td className="fw-bold">தாய் பெயர்</td>
                         <td>: {profileData.body.mother_name}</td>
                         <td className="fw-bold">திருமணமானவர்கள்</td>
-                        <td>: {profileData.body.brother_married} / {profileData.body.brother_married} </td>   
+                        <td>: {profileData.body.brother_married} / {profileData.body.brother_married} </td>     
                     </tr>
                     <tr>
                       
@@ -198,7 +198,7 @@ const PrintForm = () => {
         
         {data ? (
         <>
-        <div className='tab_div mt-4'> 
+        <div className='tab_div mt-5'> 
           <div className='col-lg-6 mt-3 mb-1'>
           <table class="table table-bordered print-table3">
           <tbody>
@@ -239,8 +239,9 @@ const PrintForm = () => {
               </tr>
               <tr>
               <td>{data.amsam5}</td>
-              <td colspan="2" rowSpan={2}>அம்சம்
-              <p>துளிர் மேட்ரிமோனி</p>
+              <td colspan="2" rowSpan={2}>
+                அம்சம்
+                <p>துளிர் மேட்ரிமோனி</p>
               </td>
               <td>{data.amsam6}</td>
               </tr>
@@ -304,4 +305,4 @@ const PrintForm = () => {
   )
 }
 
-export default PrintForm
+export default Genprint

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
@@ -19,9 +19,11 @@ function Navbar() {
                 <p className="text-white me-4 top-text">606 Arnetta Tunnel, New Martin, NH 06242</p>
             </div>
 		<header>
-            
-                <h3 className="text-white">Tulir Matrimony</h3>
-                <nav ref={navRef}>
+            <div className="container row">
+                <div className="col-lg-3 col-md-6 col-sm-6">
+                    <h3 className="text-white">Tulir Matrimony</h3>
+                </div>
+                <nav ref={navRef} className="zindex col-lg-9 col-md-6 gap-3 col-sm-6 justify-content-end res_nav">
                     <Link to="/">Home</Link>
                     <Link to="/Plans">Member Plans</Link>
                     <Link to="/Signin">Sign In</Link>
@@ -32,6 +34,7 @@ function Navbar() {
                         <FaTimes />
                     </button>
                 </nav>
+            </div>
                 <button
                     className="nav-btn"
                     onClick={showNavbar}>

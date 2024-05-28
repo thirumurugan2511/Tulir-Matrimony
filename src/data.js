@@ -3,65 +3,55 @@ import { Link, useParams } from 'react-router-dom'
 
 
 function Data() {
-  const [data, setData] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [time, setTime] = useState('');
+    const [formattedTime, setFormattedTime] = useState('');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:8000/api/data');
-        const result = await response.json();
-        console.log(result)
-        setData(result.body);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+    const handleTimeChange = (e) => {
+        setTime(e.target.value);
     };
 
-    fetchData();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (time) {
+            let [hours, minutes] = time.split(':');
+            hours = parseInt(hours);
+            let period = 'AM';
 
-    function onEditUser(user){
+            if (hours >= 12) {
+                period = 'PM';
+                if (hours > 12) {
+                    hours -= 12;
+                }
+            } else if (hours === 0) {
+                hours = 12;
+            }
 
-    }
-  }, []);
-
-  const deleteUser = (userId) => {
-    fetch(`https://tulirmatrimony.com/controlapi/deleteuser.php?id=${userId}`, {
-      method: 'DELETE'
-    })
-      .then(response => response.json())
-      .then(data => {
-        // Update the state to remove the deleted user
-        setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
-      })
-      .catch(error => console.error('Error deleting user:', error));
-  };
+            const formatted = `${hours}:${minutes} ${period}`;
+            setFormattedTime(formatted);
+        }
+    };
 
   return (
     <div>
-      <h1>Data Table</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            {/* Add more table headers if required */}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(item => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.username}</td>
-              <td>{item.email}</td>
-              <td><Link to={`/Edituser/${item.id}`} >Edit {item.id}</Link></td>
-              <td><Link to='#' onClick={() => deleteUser(item.id)} >Delete</Link></td>
-              {/* Add more table cells if required */}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+            <h1>Data Table</h1>
+          
+            
+            <h2>Time Input</h2>
+            <label htmlFor="timeinput">Time:</label><br/>
+            <input 
+                id="timeinput" 
+                type="time" 
+                value={time} 
+                onChange={handleTimeChange} 
+                required 
+            /><br/><br/>
+            
+            <button type="submit" onClick={handleSubmit}>Submit</button>
+            
+            <div id="timeDisplay">
+                {formattedTime && <p>Selected Time: {formattedTime}</p>}
+            </div>
+        </div>
   );
 }
 

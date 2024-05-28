@@ -3,7 +3,7 @@ import Slider1 from './Home/Slider1.jpg'
 import Slider2 from './Home/Slider2.jpg'
 import Aboutimg from './Home/about-img.jpg'
 // import Logo from './rgt-matrimony-logo.png'
-import Slider from './Home/Slider'
+// import Slider from './Home/Slider'
 import Hstories from './Hstories'
 const Dhome = () => {
 
@@ -494,7 +494,7 @@ const Dhome = () => {
     </section>
     {/* <!--End About Section --> */}
     {/* <!-- Features Section Two --> */}
-    <Slider />
+    {/* <Slider /> */}
     <Hstories />
 
     <Hstories />

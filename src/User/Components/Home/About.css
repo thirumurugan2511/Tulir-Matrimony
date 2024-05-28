@@ -1,0 +1,14 @@
+.about-slide{
+    width: 300px!important;
+    height: 300px!important;
+}
+
+.about-bg {
+    background: #29335c;
+}
+@media only screen and (max-width: 500px) {
+	.about-slide{
+        width: 200px!important;
+        height: 200px!important;
+    }
+}

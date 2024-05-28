@@ -1,0 +1,10 @@
+.features .true {
+    font-size: 12px;
+}
+
+.features {
+    text-align: justify;
+}
+.price {
+    font-size: 20px !important;
+}

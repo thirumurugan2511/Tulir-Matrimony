@@ -254,7 +254,7 @@ const Jathagam = () => {
     </div>
     <div className='col-lg-3 d-flex mb-5 align-items-center'>
       <label class="form-label mb-0 me-2">நாள்</label>
-      <input type="text" class="form-control" name="date" onChange={handleChange}/>
+      <input type="text" class="form-control" name="days" onChange={handleChange}/>
     </div>
 
     <div className=' col-lg-6'>

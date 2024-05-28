@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import { MdPostAdd } from "react-icons/md";
@@ -13,96 +14,98 @@ import { LuLogOut } from "react-icons/lu";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
-import Smallicon from '../../Components/heart-icon.png';
-import Lady from './lady.jpg';
-import Men from './men.jpg';
+import Smallicon from '../../Components/heart-icon.png'
+import Lady from './lady.jpg'
+import Men from './men.jpg'
 import { useReactToPrint } from 'react-to-print';
 import jsPDF from 'jspdf';
 
-const Textform = () => {
-    const [data, setData] = useState([]);
-    const [profileData, setProfileData] = useState(null);
-    const { id } = useParams();
-    const componentRef = useRef();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
+const Genprint = () => {
+        const [data, setData] = useState([]);
+        const [profileData, setProfileData] = useState(null);
+        const { id } = useParams();
+        const componentRef = useRef();
+
+        useEffect(() => {
+            const fetchData = async () => {
+              try {
+                //https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}
+                //http://localhost:8000/fetchmember/${id}
                 const response = await fetch(`http://localhost:8000/fetchmember`);
                 const data = await response.json();
                 setProfileData(data);
                 console.log(data);
-            } catch (error) {
+              } catch (error) {
                 console.error('Error fetching data:', error);
-            }
-        };
+              }
+            };
+        
+            fetchData();
+        
+          }, []);
 
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
+          useEffect(() => {
+            const fetchData = async () => {
+              try {
+                //http://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
+                //http://localhost:8000//api/singlejathagam/${id}
                 const response = await axios.get(`http://localhost:8000/api/singlejathagam`);
                 setData(response.data);
-                console.log(response.data);
-            } catch (error) {
+                console.log(response.data)
+              } catch (error) {
                 console.error('Error fetching data', error);
-            }
+              }
+            };
+        
+            fetchData();
+          }, [id]);
+          const handleBackClick = () => {
+            window.history.back();
+          };
+          const formatDate = (dateStr) => {
+            if (!dateStr) return '';
+            const [year, month, day] = dateStr.split('-');
+            return `${day}/${month}/${year}`;
+          };
+
+          const formatTime = (timeStr) => {
+            if (!timeStr) return '';
+            const [hours, minutes] = timeStr.split(':');
+            const intHours = parseInt(hours, 10);
+            const intMinutes = parseInt(minutes, 10);
+            const period = intHours >= 12 ? 'PM' : 'AM';
+            const formattedHours = intHours % 12 || 12;
+            const formattedMinutes = intMinutes < 10 ? `0${intMinutes}` : intMinutes;
+            return `${formattedHours}:${formattedMinutes} ${period}`;
         };
-
-        fetchData();
-    }, [id]);
-
-    const handleBackClick = () => {
-        window.history.back();
-    };
-
-    const formatDate = (dateStr) => {
-        if (!dateStr) return '';
-        const [year, month, day] = dateStr.split('-');
-        return `${day}/${month}/${year}`;
-    };
-
-    const formatTime = (timeStr) => {
-        if (!timeStr) return '';
-        const [hours, minutes] = timeStr.split(':');
-        const intHours = parseInt(hours, 10);
-        const intMinutes = parseInt(minutes, 10);
-        const period = intHours >= 12 ? 'PM' : 'AM';
-        const formattedHours = intHours % 12 || 12;
-        const formattedMinutes = intMinutes < 10 ? `0${intMinutes}` : intMinutes;
-        return `${formattedHours}:${formattedMinutes} ${period}`;
-    };
-
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-    });
-
-    const handleDownloadPdf = () => {
-        const doc = new jsPDF();
-        doc.fromHTML(componentRef.current, 15, 15, {
-            width: 170,
+        const handlePrint = useReactToPrint({
+            content: () => componentRef.current,
         });
-        doc.save('profile.pdf');
-    };
-
-    return (
-        <>
-            <div className="layout-wrapper layout-content-navbar">
-                <div className="layout-container">
-                    <Aside />
-                    <div className="layout-page">
-                                   <div className='row mb-3 mx-5 mt-4 '>
-                                        <div className='col-lg-6 text-start'>
-                                            <button onClick={handleBackClick} className="btn btn-secondary">Back to Member List</button>
-                                        </div>
-                                        <div className=' col-lg-6 text-end'>
-                                            <button onClick={handlePrint} className="btn btn-primary me-2">Print</button>
-                                            <button onClick={handleDownloadPdf} className="btn btn-primary">Download PDF</button>
-                                        </div>
-                                    </div>
-                    <div className='container gen_print row mx-auto border  my-4 p-4' ref={componentRef}>
+    
+        const handleDownloadPdf = () => {
+            const doc = new jsPDF();
+            doc.fromHTML(componentRef.current, 15, 15, {
+                width: 170,
+            });
+            doc.save('profile.pdf');
+        };
+        
+        
+     
+  return (
+    <>
+                                  <div className='row mb-3 mx-5 mt-4 '>
+                                <div className='col-lg-6 text-start'>
+                                    <button onClick={handleBackClick} className="btn btn-secondary">Back to Member List</button>
+                                </div>
+                                <div className=' col-lg-6 text-end'>
+                                    <button onClick={handlePrint} className="btn btn-primary me-2">Print</button>
+                                    <button onClick={handleDownloadPdf} className="btn btn-primary">Download PDF</button>
+                                </div>
+                            </div>
+    
+    <div className='container gen_print row mx-auto border  my-4 p-4' ref={componentRef}>
     {profileData ? ( 
       
                   <>
@@ -113,60 +116,64 @@ const Textform = () => {
             <p>எட்டயபுரம் வளைவு ரோடு, படித்துறை எதிரில், கோவில்பட்டி - 628501</p>
         </div>
         <div className='col-lg-6 mt-4 row'>
-        <div className='mb-3 text-start row'>
+        <div className='mb-2  text-start row'>
                 <span className='col-lg-7 fw-bold'>பதிவு எண்</span>
                 <span className='col-lg-5'>: {profileData.body.reg_id}</span>
             </div>
-        <div className='mb-3 text-start row'>
+        <div className='mb-2  text-start row'>
                 <span className='col-lg-7 fw-bold'>பெயர்</span>
                 <span className='col-lg-5'>: {profileData.body.name}</span>
             </div>
             
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>பிறந்த தேதி</span>
                 <span className='col-lg-5'>: {formatDate(profileData.body.dob)}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>உயரம்</span>
                 <span className='col-lg-5'>: {profileData.body.height}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
+                <span className='col-lg-7 fw-bold'>மதம்</span>
+                <span className='col-lg-5'>: {profileData.body.religion}</span>
+            </div>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>இனம்</span>
                 <span className='col-lg-5'>: {profileData.body.caste}</span>
             </div>
            
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>கல்வி</span>
                 <span className='col-lg-5'>: {profileData.body.education}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>இடம்</span>
                 <span className='col-lg-5'>: {profileData.body.address}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>தந்தை பெயர்</span>
                 <span className='col-lg-5'>: {profileData.body.father_name}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>சகோதரர்கள் / சகோதரிகள்</span>
                 <span className='col-lg-5'>: {profileData.body.brothers_count} / {profileData.body.sisters_count} </span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>சகோதரர் திருமணமானவர்கள்</span>
                 <span className='col-lg-5'>: {profileData.body.brother_married}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>சகோதரி திருமணமானவர்கள்</span>
                 <span className='col-lg-5'>: {profileData.body.sister_married}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>ராசி</span>
                 <span className='col-lg-5'>: {profileData.body.zodiacsign}</span>
             </div>
         </div>
         <div className='col-lg-6 mt-4 row'>
        
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>பிறந்த நேரம்</span>
                 <span className='col-lg-5'>: {formatTime(profileData.body.birthtime)}</span>
             </div>
@@ -174,52 +181,54 @@ const Textform = () => {
                 <span className='col-lg-7 fw-bold'>பாலினம்</span>
                 <span className='col-lg-5'>: {profileData.body.gender}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>வயது</span>
                 <span className='col-lg-5'>: {profileData.body.age}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>சாதி</span>
                 <span className='col-lg-5'>: {profileData.body.caste}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>துணை சாதி</span>
                 <span className='col-lg-5'>: {profileData.body.subcaste}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>சொந்த ஊர்</span>
                 <span className='col-lg-5'>: {profileData.body.city}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>குல தெய்வம்</span>
                 <span className='col-lg-5'>: {profileData.body.kuladeivam}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>வேலை</span>
                 <span className='col-lg-5'>: {profileData.body.occupation}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>சம்பளம்</span>
                 <span className='col-lg-5'>: {profileData.body.annual_income}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>தாய் பெயர்</span>
                 <span className='col-lg-5'>: {profileData.body.mother_name}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2   text-start row'>
                 <span className='col-lg-7 fw-bold'>தொலைபேசி எண்</span>
                 <span className='col-lg-5'>: {profileData.body.phonenumber}</span>
             </div>
-            <div className='mb-3  text-start row'>
+            <div className='mb-2  text-start row'>
                 <span className='col-lg-7 fw-bold'>நட்சத்திரம்</span>
                 <span className='col-lg-5'>: {profileData.body.star}</span>
             </div>
           
         </div>  
-        <hr className='mt-3' />
+       
+        <hr className='mt-5 mb-3' />
+        
         {data ? (
         <>
-        <div className='text-center mb-3'>
+        <div className='text-center mt-5 mb-3'>
           <h3>ஜாதக விவரம்</h3>
         </div>
         <div className='row'>
@@ -229,22 +238,22 @@ const Textform = () => {
             <span>: {data.thisaiirupu}</span>
           </div>
           <div className='col-lg-3 d-flex mb-2 align-items-center'>
-      <span class="fw-bold mb-0 me-2">ஆண்டு</span>
-      <span>: {data.year}</span>
-    </div>
-    <div className='col-lg-3 d-flex mb-2 align-items-center'>
-      <span class="fw-bold mb-0 me-2">மாதம்</span>
-      <span>: {data.month}</span>
-    </div>
-    <div className='col-lg-3 d-flex mb-2 align-items-center'>
-      <span class="fw-bold mb-0 me-2">நாள்</span>
-      <span>: {data.days}</span>
-    </div>
-       
-      </div>
-      </div>
-      
-      <div className='col-lg-6 mt-5 mb-2'>
+        <span class="fw-bold mb-0 me-2">ஆண்டு</span>
+        <span>: {data.year}</span>
+        </div>
+        <div className='col-lg-3 d-flex mb-2 align-items-center'>
+        <span class="fw-bold mb-0 me-2">மாதம்</span>
+        <span>: {data.month}</span>
+        </div>
+        <div className='col-lg-3 d-flex mb-2 align-items-center'>
+        <span class="fw-bold mb-0 me-2">நாள்</span>
+        <span>: {data.days}</span>
+        </div>
+        
+        </div>
+        </div>
+        
+        <div className='col-lg-6 mt-5 mb-2'>
         <table class="table table-bordered">
         <tbody>
             <tr>
@@ -297,12 +306,12 @@ const Textform = () => {
             </tr>
         </tbody>
         </table>
-       
+        
         </div>
-      <div className='mt-2 mb-2'>
+        <div className='mt-2 mb-2'>
         <p>This profile taken from <b>tulirmatrimony.com</b></p>
         </div>
-      </>
+        </>
        ) : (
         <p>Loading...</p>
       )}
@@ -317,11 +326,15 @@ const Textform = () => {
                     <p>Loading...</p>
                 )}
                 </div>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
-};
+                  
+                
+    
+        
+      
+   
+ 
+    </>
+  )
+}
 
-export default Textform;
+export default Genprint

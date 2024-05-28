@@ -1,0 +1,25 @@
+.j_dd{
+    border: 0 solid;
+    border-color: black;
+    padding: 30px !important;
+    border-width: 1px!important;
+}
+.jd_text{
+    color: #697a8d;
+}
+.back-btn{
+        margin-left: 30px;
+        margin-top: 20px;
+    
+}
+.border-line{
+    border: black;
+    border: 0 solid;
+    border-width: 1px!important;
+}
+.gen_print{
+    border-color: black !important;
+    padding: 0 10px;
+    margin: 10px 6px !important;
+    
+}

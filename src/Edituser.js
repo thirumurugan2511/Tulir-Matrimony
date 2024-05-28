@@ -27,7 +27,7 @@ const Edituser = () => {
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
   ],
-  pathan_numberOptions: [
+  patham_numberOptions: [
     { value: '1', label: '1' },
     { value: '2', label: '2' },
     { value: '3', label: '3' },
@@ -260,16 +260,15 @@ const Edituser = () => {
   const [formData, setFormData] = useState({
     "section1": {
       // "reg_id": "",
-      "plan_name": "",
-      "plan_status": "",
+      
       "name": "",
       "gender": "",   
-      "email": "",
       "phonenumber": "",
       "password": "",
+      "email": "",
+      "dob": "",
       "age": "", 
       "mother_tongue": "",
-      "dob": "",
       "marriage_type": "",
       "religion": "",
       "caste": "",
@@ -277,7 +276,7 @@ const Edituser = () => {
       "sevaikiragam": "",
       "gothram": "",
       "star": "",
-      "pathan_number": "",
+      "patham_number": "",
       "zodiacsign": "",
       "birthplace": "",
       "birthtime": "",
@@ -288,6 +287,8 @@ const Edituser = () => {
       "joblocation":"",
       "annual_income":"",
       "kuladeivam":"",
+      "plan_name": "",
+      "plan_status": ""
 
     },
     "section2": {
@@ -371,13 +372,14 @@ const fetchUserData = async () => {
           sevaikiragam: userData.body.sevaikiragam || "",
           gothram: userData.body.gothram || "",
           star: userData.body.star || "",
-          pathan_number: userData.body.pathan_number || "",
+          patham_number: userData.body.patham_number || "",
           zodiacsign: userData.body.zodiacsign || "",
           birthplace: userData.body.birthplace || "",
           birthtime: userData.body.birthtime || "",
           education: userData.body.education || "",
           education_details: userData.body.education_details || "",
           occupation: userData.body.occupation || "",
+          kuladeivam: userData.body.kuladeivam || "",
           jobdetails: userData.body.jobdetails || "",
           joblocation: userData.body.joblocation || "",
           annual_income: userData.body.annual_income || ""
@@ -465,15 +467,15 @@ const fetchUserData = async () => {
     "mother_tongue": "தாய்மொழி",
     "dob": "பிறந்த தேதி",
     "marriage_type": "திருமண நிலை",
-    "pathan_number":"பாதம்",
+    "patham_number":"பாதம்",
     "status_children": "குழந்தைகளின் நிலை",
     "child_count": "குழந்தைகளின் எண்ணிக்கை",
     "child_age": "குழந்தைகளின் வயது",
     "kuladeivam": "குலதெய்வம்",
     "bloodgroup": "இரத்த வகை",
     "religion": "மதம்",
-    "caste": "சாதி",
-    "subcaste": "உபசாதி",
+    "caste": "இனம்",
+    "subcaste": "உட்பிரிவு",
     "sevaikiragam": "செவ்வாய் தோஷம்",
     "gothram": "கோத்ரம்",
     "zodiacsign": "ராசி",
@@ -488,7 +490,7 @@ const fetchUserData = async () => {
     "annual_income":"ஆண்டு வருமானம்", 
     "country": "நாடு",
     "state": "மாநிலம்",
-    "city": "நகரம்",
+    "city": "மாவட்டம்",
     "residece": "குடியிருப்பு வகை",
     "alternatenumber": "தொலைபேசி மாற்று எண்",
     "mothercountry": "தாய்நாடு",
@@ -518,7 +520,7 @@ const fetchUserData = async () => {
     "partner_height": "உயரம்",
     "partner_weight": "எடை",
     "partner_religion": "மதம்",
-    "partner_caste": "சாதி",
+    "partner_caste": "இனம்",
     "partner_country": "நாடு",
     "partner_state": "மாநிலம்",
     "partner_matrial_status": "திருமணம் நிலை",
@@ -661,7 +663,7 @@ const fetchUserData = async () => {
           ]
         }));
         break;
-        case 'pathan_number':
+        case 'patham_number':
           // Options for gender dropdown
           setOptions(prevOptions => ({
             ...prevOptions,
@@ -1091,7 +1093,19 @@ const handleSubmit = async (sectionName, sectionData, id) => {
     if (response.ok) {
       const responseData = await response.json();
       console.log('Data sent successfully for section:', responseData);
-      window.location.href = '/Member';
+      
+      if (responseData.head.code === 200) {
+        // Handle the success scenario, such as updating the UI or moving to another section
+        setCurrentSection('section6');
+        window.location.href = '/Member';
+        
+      } else {
+        // Handle the case where code is not 200
+        setCurrentSection('section6');
+        console.error('Error:', responseData.head.msg);
+        alert('Please enter the required fields');
+      
+      }
       return true; // Success
     } else {
       console.error('Failed to send data for section:', sectionName);
@@ -1206,10 +1220,10 @@ const handleSubmit = async (sectionName, sectionData, id) => {
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
         ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste',  'bloodgroup', 'zodiacsign',
-         'mother_tongue', 'star', 'education', 'occupation', 'annual_income',
+         'mother_tongue', 'star', 'education', 'occupation', 'patham_number',
           'smoking', 'drinking', 'status_children','country', 'state','city', 'father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'partner_religion',
            'partner_country', 'partner_state', 'partner_matrial_status', 'partner_education', 'partner_occupation', 'partner_mother_tongue',
-          'partner_salary', 'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
+           'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
           'partner_to_age','residece'
         ].includes(fieldName) ?
           <div key={fieldName} className="col-lg-4 col-md-6 mb-4 text-start">
@@ -1254,7 +1268,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
           <div key={fieldName} className="col-lg-4 col-md-4 mb-4 text-start">
           <label htmlFor={fieldName} style={{ color: 'black' }}>
             {labelTranslations[fieldName]}
-            {['name', 'email', 'phonenumber', 'password', 'dob'].includes(fieldName) && <span style={{ color: 'red' }}>*</span>}
+            {['name', 'phonenumber','gender', 'password', 'dob'].includes(fieldName) && <span style={{ color: 'red' }}>*</span>}
           </label>
           {['image', 'image1', 'id_image', 'id_image1', 'rasiimage'].includes(fieldName) ? (
              <>
@@ -1279,6 +1293,21 @@ const handleSubmit = async (sectionName, sectionData, id) => {
               className="form-control"
               value={formData[currentSection][fieldName] || ''}
               autoSave='off'
+              onChange={handleChange}
+            />
+          ) : fieldName === 'phonenumber' ? (
+            <input
+              id={fieldName}
+              type="tel"
+              name={fieldName}
+              placeholder="Enter your phone number"
+              className="form-control"
+              maxlength="10"
+              minlength="10"
+              pattern="^\d{4}-\d{3}-\d{4}$"
+              required
+              value={formData[currentSection][fieldName] || ''}
+              autoSave="off"
               onChange={handleChange}
             />
           ) : (

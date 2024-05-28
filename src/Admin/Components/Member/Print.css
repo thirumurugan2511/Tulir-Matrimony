@@ -1,0 +1,54 @@
+.print-table tbody tr {
+    text-align: start;
+}
+.print-table{
+    width: 100%;
+}
+
+.print-table tbody tr td {
+    padding-bottom: 25px;
+}
+
+.print-table2 {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.print-table3 tbody tr {
+    text-align: center;
+}
+
+.print-table3 tbody tr td {
+      height: 60px;
+      width: 60px;
+}
+.head-text{
+    text-align: center!important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.com_text {
+    position: relative;
+    top: -360px;
+    opacity: .5;
+    font-size: 20px;
+}
+
+.tab_div {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+}
+
+.tab_div table {
+    border-color: black;
+}
+
+.tab_div div {
+    width: 40%;
+}
+
+/* .data_det {
+    margin-bottom: 200px;
+} */

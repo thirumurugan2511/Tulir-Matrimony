@@ -2,6 +2,7 @@ import React from 'react'
 import { FaPaperPlane } from "react-icons/fa";
 import { AiFillDollarCircle } from "react-icons/ai";
 import { GiGoldBar } from "react-icons/gi";
+import './Plans.css'
 
 
 
@@ -47,18 +48,10 @@ const Plans = () => {
                                 <h4 class="price">INR: 500 <i class="fa fa-inr "></i> <br/>
                                Days 30 </h4>
                             </div>
-                            <ul class="features">
-                                                               <li class="true">Profile Display</li>
-								                                
-								 
-                                <li class="true">Express Interest</li>
-								 
-                               
-								 
-                                <li class="true">Verified Profiles</li>
-								 
-								<li class="true">Profile Up-gradation</li>
-								                            </ul>
+                            <div class="features">
+                               <p class="true">தாங்கள் மூலமாக பயோடேட்டா ஜாதகம் போட்டோ முழுவதுமாக பார்த்துக் கொள்ளலாம்.</p>
+                                <p class="true">உங்களுக்கு பொருத்தமான 60 வரங்களின் தொலைபேசி எண்களை ஆறு மாதத்திற்கு எடுத்துக் கொள்ளலாம்.</p>
+							</div>
 							<p class="contacts">
 							<h4>Allowed Contacts : 60</h4>
                                                        
@@ -94,18 +87,10 @@ const Plans = () => {
                                 <h4 class="price">INR: 3000 <i class="fa fa-inr"></i> <br/>
                                Days 60 </h4>
                             </div>
-                            <ul class="features">
-                                                               <li class="true">Profile Display</li>
-								                                
-								 
-                                <li class="true">Express Interest</li>
-								 
-                                
-								 
-                                <li class="true">Verified Profiles</li>
-								 
-								<li class="true">Profile Up-gradation</li>
-								                            </ul>
+                            <div class="features">
+                               <p class="true">தாங்கள் மூலமாக பயோடேட்டா ஜாதகம் போட்டோ முழுவதுமாக பார்த்துக் கொள்ளலாம்.</p>
+                                <p class="true">உங்களுக்கு பொருத்தமான 120 வரங்களின் தொலைபேசி எண்களை ஆறு மாதத்திற்கு எடுத்துக் கொள்ளலாம்.</p>
+							</div>
 							<p class="contacts">
 							<h4>Allowed Contacts : 120</h4>
                                                        
@@ -141,17 +126,10 @@ const Plans = () => {
                                 <h5 class="price">INR: 2100 <i class="fa fa-inr"></i> <br/>
                                Days 120 </h5>
                             </div>
-                            <ul class="features">
-                                                               <li class="true">Profile Display</li>
-								                              
-								 
-                                <li class="true">Express Interest</li>
-								 
-								 
-                                <li class="true">Verified Profiles</li>
-								 
-								<li class="true">Profile Up-gradation</li>
-								                            </ul>
+                            <div class="features">
+                               <p class="true">தாங்கள் மூலமாக பயோடேட்டா ஜாதகம் போட்டோ முழுவதுமாக பார்த்துக் கொள்ளலாம்.</p>
+                                <p class="true">உங்களுக்கு பொருத்தமான 60 வரங்களின் தொலைபேசி எண்களை ஆறு மாதத்திற்கு எடுத்துக் கொள்ளலாம்.</p>
+							</div>
 							<p class="contacts">
 							<h4>Allowed Contacts : No limit</h4>
                                                        

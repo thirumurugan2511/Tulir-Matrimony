@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import CardSlider from './CardSlider';
+import About from './About';
 
 
 
@@ -25,7 +26,7 @@ const Home = () => {
     <>
     <Navbar />
      
-      <section className='bg-grey'>
+      <section className='bg-grey pb-5 '>
         <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
           <ol className="carousel-indicators">
             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active"></li>
@@ -99,7 +100,11 @@ const Home = () => {
            <button className='btn btn-primary col-sm-6 col-5 py-3'>Free search</button>
         </div>
       </section>
+      <section className='mt-5 pt-5 mb-5'>
       <CardSlider cards={cards} />
+      
+      </section>
+      <About />
       
     </>
   );
