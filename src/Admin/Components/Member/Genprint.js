@@ -168,7 +168,7 @@ const Genprint = () => {
                     <tr>
                       
                        <td className="fw-bold">முகவரி</td>
-                        <td>: {profileData.body.city}</td>
+                        <td>: {profileData.body.address}</td>
                         <td className="fw-bold">குல தெய்வம்</td>
                        <td>: {profileData.body.kuladeivam}</td>
                    </tr>
@@ -198,7 +198,7 @@ const Genprint = () => {
         
         {data ? (
         <>
-        <div className='tab_div mt-5'> 
+        <div className='tab_div mt-4'> 
           <div className='col-lg-6 mt-3 mb-1'>
           <table class="table table-bordered print-table3">
           <tbody>

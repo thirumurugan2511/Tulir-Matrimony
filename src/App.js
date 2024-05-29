@@ -61,6 +61,7 @@ import Jathagam from './Admin/Components/Member/Jathagam';
 import Textform from './Admin/Components/Member/Textform';
 import Home from './User/Components/Home/Home';
 import Genprint from './Admin/Components/Member/Genprint';
+import Editjathagam from './Admin/Components/Member/Editjathagam';
 
 
 function App() {
@@ -125,6 +126,7 @@ function App() {
           <Route path="/Thankyou" element={<Thankyou />} />
           <Route path="/Printformwop/:id" element={<Printformwop />} />
           <Route path="/Jathagam" element={<Jathagam />} />
+          <Route path="/Editjathagam/:id" element={<Editjathagam />} />
           <Route path="/Textform" element={<Textform />} />
           <Route path="/Genprint" element={<Genprint />} />
           <Route path="/" element={<Home />} />

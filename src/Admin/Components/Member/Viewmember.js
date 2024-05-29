@@ -4,11 +4,13 @@ import axios from 'axios';
 import {Link} from 'react-router-dom'
 import Aside from '../Aside/Aside'
 import { IoMdSettings } from "react-icons/io";
+import { MdModeEdit } from "react-icons/md";
 import { LuLogOut } from "react-icons/lu";
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import Smallicon from '../../Components/heart-icon.png'
 import Astrology from './astrology.png'
+import Editjathagam from './Editjathagam';
 import './member.css'
 
 
@@ -42,6 +44,8 @@ const Viewmember = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        //https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
+        //http://localhost:8000/api/singlejathagam
         const response = await axios.get(`https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}`);
         setData(response.data.body);
         console.log(data)
@@ -876,8 +880,12 @@ const Viewmember = () => {
  </div>
 </button>
 <div class="collapse show" id="U_detailsDiv2">
+  
  <div class="inner_views_detailsFGH">
    <div class="row mx-auto">
+   <div className='text-end'>
+      <Link to={`/Editjathagam/${id}`} class="icon_usBox"><MdModeEdit class="bx bxs-edit"/> Edit Jathagam</Link>
+    </div>
    {data ? (
         <>
         <div className='row'>

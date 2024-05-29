@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+import axios from 'axios';
 import {Link} from 'react-router-dom'
 import Aside from '../Aside/Aside'
 import { IoMdSettings } from "react-icons/io";
@@ -9,6 +9,7 @@ import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import Smallicon from '../../Components/heart-icon.png'
 import Astrology from './astrology.png'
+import './member.css'
 
 
 const Viewmember = () => {
@@ -24,16 +25,73 @@ const Viewmember = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`);
-        const data = await response.json();
-        setProfileData(data);
-        console.log(data);
+        const res = await response.json();
+        setProfileData(res);
+        console.log(res);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     fetchData();
+
   }, []);
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}`);
+        setData(response.data.body);
+        console.log(data)
+      } catch (error) {
+        console.error('Error fetching data', error);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+  const formatDate = (dateStr) => {
+    if (!dateStr) return '';
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`;
+  };
+        
+
+  useEffect(() => {
+    const fetchDataa = async () => {
+      try {
+        //https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
+        //http://localhost:8000//api/singlejathagam/${id}
+        const response = await axios.get(`https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}`);
+        setData(response.data.body);
+        console.log(response)
+        
+      } catch (error) {
+        console.error('Error fetching data', error);
+      }
+    };
+
+    fetchDataa();
+    
+  }, [id]);
+
+  const formatTime = (timeStr) => {
+    if (!timeStr) return '';
+    const [hours, minutes] = timeStr.split(':');
+    const intHours = parseInt(hours, 10);
+    const intMinutes = parseInt(minutes, 10);
+    const period = intHours >= 12 ? 'PM' : 'AM';
+    const formattedHours = intHours % 12 || 12;
+    const formattedMinutes = intMinutes < 10 ? `0${intMinutes}` : intMinutes;
+    return `${formattedHours}:${formattedMinutes} ${period}`;
+};
+
+  const handleBackClick = () => {
+    window.history.back();
+  };
+ 
   return (
     <>
    <div class="layout-wrapper layout-content-navbar">
@@ -81,7 +139,7 @@ const Viewmember = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <Link class="dropdown-item" to="/Sitesetting">
+                                    <Link class="dropdown-item" to="/Sitesettings">
                                         <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>
                                     </Link>
@@ -90,7 +148,7 @@ const Viewmember = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                         <Link class="dropdown-item" href="/Signin">
+                                         <Link class="dropdown-item" to="/Signin">
                                     
                                         <LuLogOut class="bx bx-power-off me-2" />
                                         <span class="align-middle">Log Out</span>
@@ -109,16 +167,19 @@ const Viewmember = () => {
 </div>
 
 <div class="content-wrapper">
+  <div className='col-lg-4 text-start back-btn'>
+ <button onClick={handleBackClick} className="btn btn-secondary">Back to Member</button>
+ </div>
   {/* <!-- Toast with Placements --> */}
-  {/* <!-- Toast with Placements -->
-  <!-- Content --> */}
+
+  
   <div class="container-xxl flex-grow-1 container-p-y">
     <div class="inner_adProfileMian">
       <div class="inner_flexDiv-membr d-block d-lg-flex gap-3">
         <div class="left_member_profilesDiv">
           <div class="profileView_userAdds position-relative">
           {profileData ? (
-            <img src={profileData.body.image} alt="User Profile" class="user_profiles" id="viewProfile"/>
+            <img src={`data:image/png;base64,${profileData.body.image}`} alt="User Profile" class="user_profiles" id="viewProfile"/>
           ) : (
             <p>Loading...</p>
           )}
@@ -131,7 +192,7 @@ const Viewmember = () => {
         <div class="right_content_MDivd bg_member w-100 mt-3 mt-lg-0">
           <div class="top_usenr_btnsgroups">
             <div class="row text-start">
-              <div class="col-lg-8 mt-3">
+              <div class="col-lg-4 mt-3">
                 <div class="user_name_aprv">
                 {profileData ? (
                   <h4>{profileData.body.name} - {profileData.body.reg_id}</h4>
@@ -141,15 +202,10 @@ const Viewmember = () => {
                 </div>
               </div>
               <div class="col-lg-4">
-                {/* <div class="user_name_aprv_new">
-                  <h6 class="text-dark"><span>Completed Profile (100%)</span>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style={{width: '100%'}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                        100 %
-                      </div>
-                    </div>
-                  </h6>
-                </div> */}
+              <Link to={`/Printform/${id}`} class="btn btn-primary">Print With Mobile No </Link>
+              </div>
+              <div class="col-lg-4">
+              <Link to={`/Printformwop/${id}`} class="btn btn-primary">Print Without Mobile No</Link>
               </div>
             </div>
           </div>
@@ -168,21 +224,25 @@ const Viewmember = () => {
                 <div className="col-lg-4 col-md-6 col-sm-6 mt-0 mt-lg-3 mt-md-3 mt-sm-3">
                   <div className="MDatails_views">
                     <h5 className="py-2"><span>Gender: {profileData.body.gender}</span></h5>
-                    <h5 className="py-2"><span>Mobile: {profileData.body.phonenumber}</span></h5>
+                    <h5 className="py-2"><span>Age: {profileData.body.age}</span></h5>
                     <h5 className="py-2"><span>Caste: {profileData.body.caste}</span></h5>
                   </div>
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-6 mt-0 mt-lg-3 mt-md-3 mt-sm-3 right_bordermv">
                   <div className="MDatails_views">
                     <h5 className="py-2"><span>Marital Status: {profileData.body.marriage_type}</span></h5>
-                    <h5 className="py-2"><span>State: {profileData.body.state}</span></h5>
+                    <h5 className="py-2"><span>Mobile: {profileData.body.phonenumber}</span></h5>
                     <h5 className="py-2"><span>Occupation: {profileData.body.occupation}</span></h5>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+           
+             
+            
         </div>
+      
       ) : (
         <p>Loading...</p>
       )}
@@ -191,57 +251,100 @@ const Viewmember = () => {
     </div>
     {/* <!-- photo multie profile  --> */}
     <div class="collapse" id="multie_photoUpload">
-    {profileData ? (
-      <div class="photo_dvMultie_mainsd">
-        <div class="row">
-                                                            <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv1">
-            <div class="single_imgProfiels-wb">
-              <div class="position-relative">
-                <img src={profileData.body.image} height={200} alt="Profile 1" class="profile-Um" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB" data-bs-original-title="" title=""/>
-                    
-                                                                                
-               
-                                                                              </div>
-              <button class="btn_vwProfilf">Photo 1</button>
+  {profileData ? (
+    <div class="photo_dvMultie_mainsd">
+      <div class="row">
+        <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv1">
+          <div class="single_imgProfiels-wb">
+            <div class="position-relative">
+              {profileData.body.image && (
+                <img
+                  src={`data:image/png;base64,${profileData.body.image}`}
+                  height={200}
+                  alt="Profile 1"
+                  class="profile-Um"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  data-bs-custom-class="custom-tooltip"
+                  data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB"
+                  data-bs-original-title=""
+                  title=""
+                />
+              )}
             </div>
+            <button class="btn_vwProfilf">Photo 1</button>
           </div>
-                              <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv2">
-            <div class="single_imgProfiels-wb">
-              <div class="position-relative">
-                <img src={profileData.body.image2} height={200} alt="Profile 2" class="profile-Um" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB" data-bs-original-title="" title=""/>
-                                         
-
-                                                                              </div>
-              <button class="btn_vwProfilf">Photo 2</button>
+        </div>
+        <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv2">
+          <div class="single_imgProfiels-wb">
+            <div class="position-relative">
+              {profileData.body.image1 && (
+                <img
+                  src={`data:image/png;base64,${profileData.body.image1}`}
+                  height={200}
+                  alt="Profile 2"
+                  class="profile-Um"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  data-bs-custom-class="custom-tooltip"
+                  data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB"
+                  data-bs-original-title=""
+                  title=""
+                />
+              )}
             </div>
+            <button class="btn_vwProfilf">Photo 2</button>
           </div>
-                              <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv3">
-            <div class="single_imgProfiels-wb">
-              <div class="position-relative">
-                <img src={profileData.body.id_image} height={200} alt="Id Profile" class="profile-Um" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB" data-bs-original-title="" title=""/>
-                               
-
-                                                                              </div>
-              <button class="btn_vwProfilf">ID Proof Front</button>
+        </div>
+        <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv3">
+          <div class="single_imgProfiels-wb">
+            <div class="position-relative">
+              {profileData.body.id_image && (
+                <img
+                src={`data:image/png;base64,${profileData.body.id_image}`}
+                  height={200}
+                  alt="ID Proof Front"
+                  class="profile-Um"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  data-bs-custom-class="custom-tooltip"
+                  data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB"
+                  data-bs-original-title=""
+                  title=""
+                />
+              )}
             </div>
+            <button class="btn_vwProfilf">ID Proof Front</button>
           </div>
-                              <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv4">
-            <div class="single_imgProfiels-wb">
-              <div class="position-relative">
-                <img src={profileData.body.id_image2} height={200} alt="Id proof" class="profile-Um" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB" data-bs-original-title="" title=""/>
-                           
-                                                                              </div>
-              <button class="btn_vwProfilf">ID Proof Back</button>
+        </div>
+        <div class="col-lg-3 mb-4 col-md-4 col-sm-6" id="imageDiv4">
+          <div class="single_imgProfiels-wb">
+            <div class="position-relative">
+              {profileData.body.id_image1 && (
+                <img
+                  src={`data:image/png;base64,${profileData.body.id_image1}`}
+                  height={200}
+                  alt="ID Proof Back"
+                  class="profile-Um"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  data-bs-custom-class="custom-tooltip"
+                  data-bs-title="Photo resolution : 254*320  Photo Size : 5 MB"
+                  data-bs-original-title=""
+                  title=""
+                />
+              )}
             </div>
+            <button class="btn_vwProfilf">ID Proof Back</button>
           </div>
-                                               
-                             
-                                      </div>
+        </div>
       </div>
-      ) : (
-        <p>Loading...</p>
-      )}
     </div>
+  ) : (
+    <p>Loading...</p>
+  )}
+</div>
+
 
     {/* <div class="main_secPUtabs_btns mt-4 collapse" id="connectActivity">
       <div class="row">
@@ -371,7 +474,7 @@ const Viewmember = () => {
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
-                            <h5 class="py-2"><span>Birthdate :</span> {profileData.body.dob}</h5>
+                            <h5 class="py-2"><span>Birthdate :</span> {formatDate(profileData.body.dob)}</h5>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -381,13 +484,14 @@ const Viewmember = () => {
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
-                            <h5 class="py-2"><span>Total Children :</span> {profileData.body.status_children}</h5>
+                            <h5 class="py-2"><span>Plan Name :</span> {profileData.body.plan_name}</h5>
                         </div>
                     </div>
-                    {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
-                            <h5 class="py-2"><span>Status Children :</span> Not living with me</h5>
-                        </div> */}
+                            <h5 class="py-2"><span>குல தெய்வம் :</span> {profileData.body.kuladeivam}</h5>
+                        </div>
+                        </div>
             </div>
         </div>
     </div>
@@ -429,14 +533,20 @@ const Viewmember = () => {
                           <h5 class="py-2"><span>Gothra :</span> {profileData.body.gothram}</h5>
                       </div>
                   </div>
+                  
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Moonsign :</span> {profileData.body.moonsign}</h5>
+                          <h5 class="py-2"><span>Star :</span> {profileData.body.star}</h5>
                       </div>
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Star :</span> {profileData.body.star}</h5>
+                          <h5 class="py-2"><span>Patham :</span> {profileData.body.patham_number}</h5>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                      <div class="detalistsleg">
+                          <h5 class="py-2"><span>Zodiac Sign :</span> {profileData.body.zodiacsign}</h5>
                       </div>
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -446,7 +556,7 @@ const Viewmember = () => {
                   </div>
                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                       <div class="detalistsleg">
-                          <h5 class="py-2"><span>Birth Time :</span>{profileData.body.birthtime}</h5>
+                          <h5 class="py-2"><span>Birth Time :</span>{formatTime(profileData.body.birthtime)}</h5>
                       </div>
                   </div>
               </div>
@@ -476,12 +586,17 @@ const Viewmember = () => {
                       </div>
                       <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                           <div class="detalistsleg">
-                              <h5 class="py-2"><span>Employee In :</span> {profileData.body.employee}</h5>
+                              <h5 class="py-2"><span>Job  details :</span> {profileData.body.jobdetails}</h5>
                           </div>
                       </div>
                       <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                           <div class="detalistsleg">
                               <h5 class="py-2"><span>Occupation :</span> {profileData.body.occupation}</h5>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                          <div class="detalistsleg">
+                              <h5 class="py-2"><span>Job Location :</span> {profileData.body.joblocation}</h5>
                           </div>
                       </div>
                       <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -504,7 +619,7 @@ const Viewmember = () => {
             <div class="collapse show" id="U_detailsDiv4">
             <div class="inner_views_detailsFGH">
                       <div class="row text-start">
-                          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                          {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                               <div class="detalistsleg">
                                   <h5 class="py-2"><span>Country Name :</span> {profileData.body.country}</h5>
                               </div>
@@ -513,10 +628,10 @@ const Viewmember = () => {
                               <div class="detalistsleg">
                                   <h5 class="py-2"><span>State Name :</span> {profileData.body.state}</h5>
                               </div>
-                          </div>
+                          </div> */}
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                               <div class="detalistsleg">
-                                  <h5 class="py-2"><span>City Name :</span> {profileData.body.city}</h5>
+                                  <h5 class="py-2"><span>District Name :</span> {profileData.body.city}</h5>
                               </div>
                           </div>
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -531,7 +646,7 @@ const Viewmember = () => {
                           </div>
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                               <div class="detalistsleg">
-                                  <h5 class="py-2"><span>If NRI Originated country :</span> {profileData.body.nrinumber}</h5>
+                                  <h5 class="py-2"><span>Mother country :</span> {profileData.body.mothercountry}</h5>
                               </div>
                           </div>
                           <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -561,7 +676,7 @@ const Viewmember = () => {
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
-                            <h5 class="py-2"><span>Weight :</span> {profileData.body.weight}-Kg</h5>
+                            <h5 class="py-2"><span>Blood Group :</span> {profileData.body.bloodgroup}</h5>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -569,7 +684,7 @@ const Viewmember = () => {
                             <h5 class="py-2"><span>Eating Habits :</span> {profileData.body.food_habits}</h5>
                         </div>
                     </div>
-                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
                             <h5 class="py-2"><span>Smoking :</span> {profileData.body.smoking}</h5>
                         </div>
@@ -578,12 +693,12 @@ const Viewmember = () => {
                         <div class="detalistsleg">
                             <h5 class="py-2"><span>Drinking :</span> {profileData.body.drinking}</h5>
                         </div>
-                    </div>
-                    <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+                    </div> */}
+                    {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
                             <h5 class="py-2"><span>Body Type :</span> {profileData.body.body_type}</h5>
                         </div>
-                    </div>
+                    </div> */}
                     <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                         <div class="detalistsleg">
                             <h5 class="py-2"><span>Skin Tone :</span> {profileData.body.skin_tone}</h5>
@@ -678,24 +793,24 @@ const Viewmember = () => {
      <div class="row text-start">
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner From Age :</span> {profileData.body.patner_from_age} Years</h5>
+                 <h5 class="py-2"><span>Partner From Age :</span> {profileData.body.partner_from_age} Years</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner To Age :</span> {profileData.body.patner_to_age} Years</h5>
+                 <h5 class="py-2"><span>Partner To Age :</span> {profileData.body.partner_to_age} Years</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner From Height :</span> {profileData.body.patner_height}cm - 4ft 4in</h5>
+                 <h5 class="py-2"><span>Partner From Height :</span> {profileData.body.partner_height}cm - 4ft 4in</h5>
              </div>
          </div>
-         <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+         {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner To Weight :</span> {profileData.body.patner_weight} Kg</h5>
+                 <h5 class="py-2"><span>Partner To Weight :</span> {profileData.body.partner_weight} Kg</h5>
              </div>
-         </div>
+         </div> */}
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
                  <h5 class="py-2"><span>Partner Religion :</span> {profileData.body.religion}</h5>
@@ -703,27 +818,27 @@ const Viewmember = () => {
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Caste :</span> {profileData.body.patner_caste}</h5>
+                 <h5 class="py-2"><span>Partner Caste :</span> {profileData.body.partner_caste}</h5>
+             </div>
+         </div>
+         {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+             <div class="detalistsleg">
+                 <h5 class="py-2"><span>Partner Country :</span> {profileData.body.partner_country}</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Country :</span> {profileData.body.patner_country}</h5>
+                 <h5 class="py-2"><span>Partner State :</span> {profileData.body.partner_state}</h5>
+             </div>
+         </div> */}
+         <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
+             <div class="detalistsleg">
+                 <h5 class="py-2"><span>Partner Annual Income :</span> Upto INR {profileData.body.partner_salary}</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner State :</span> {profileData.body.patner_state}</h5>
-             </div>
-         </div>
-         <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-             <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Annual Income :</span> Upto INR {profileData.body.patner_salary}</h5>
-             </div>
-         </div>
-         <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
-             <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Marital Status :</span> {profileData.body.patner_matrial_status}</h5>
+                 <h5 class="py-2"><span>Partner Marital Status :</span> {profileData.body.partner_matrial_status}</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
@@ -733,17 +848,17 @@ const Viewmember = () => {
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Occupation :</span> {profileData.body.patner_occupation}</h5>
+                 <h5 class="py-2"><span>Partner Occupation :</span> {profileData.body.partner_occupation}</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Mother Tongue :</span> {profileData.body.patner_mother_tongue}</h5>
+                 <h5 class="py-2"><span>Partner Mother Tongue :</span> {profileData.body.partner_mother_tongue}</h5>
              </div>
          </div>
          <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">
-                 <h5 class="py-2"><span>Partner Manglik :</span> {profileData.body.patner_ma}</h5>
+                 <h5 class="py-2"><span>Partner Manglik :</span> {profileData.body.partner_manglik}</h5>
              </div>
          </div>
      </div>
@@ -762,10 +877,182 @@ const Viewmember = () => {
 </button>
 <div class="collapse show" id="U_detailsDiv2">
  <div class="inner_views_detailsFGH">
-   <div class="row mx-auto col-md-6">
-  
-               <img src={profileData.body.rasiimage} alt="Horoscope Image"  width={200} height={200}/>
-                     </div>
+   <div class="row mx-auto">
+   {data ? (
+        <>
+        <div className='row'>
+        <div className='col-lg-10 mt-5 m-auto mb-2 row'>
+        <div className='col-lg-3 d-flex mb-5 align-items-center'>
+            <span className="fw-bold jd_text mb-0 me-2">திசை இருப்பு</span>
+            <span style={{color: 'black'}}>: {data.thisaiirupu}</span>
+          </div>
+          <div className='col-lg-3 d-flex mb-5 align-items-center'>
+      <span class="fw-bold jd_text mb-0 me-2">ஆண்டு</span>
+      <span style={{color: 'black'}}>: {data.year}</span>
+    </div>
+    <div className='col-lg-3 d-flex mb-5 align-items-center'>
+      <span class="fw-bold jd_text mb-0 me-2">மாதம்</span>
+      <span style={{color: 'black'}}>: {data.month}</span>
+    </div>
+    <div className='col-lg-3 d-flex mb-5 align-items-center'>
+      <span class="fw-bold jd_text mb-0 me-2">நாள்</span>
+      <span style={{color: 'black'}}>: {data.days}</span>
+    </div>
+       
+      </div>
+      </div>
+      
+      <div className='col-lg-6 mt-5 mb-2'>
+        <table class="table table-bordered table_jadh">
+        <tbody>
+            <tr>
+            <td className="j_dd" >{data.rasi1}</td>
+            <td className="j_dd" >{data.rasi2}</td>
+            <td className="j_dd" >{data.rasi3}</td>
+            <td className="j_dd" >{data.rasi4}</td>
+            </tr>
+            <tr>
+            <td className="j_dd" >{data.rasi5}</td>
+            <td colspan="2" className="j_dd" rowSpan={2}>ராசி</td>
+            <td className="j_dd" >{data.rasi6}</td>
+            </tr>
+            <tr>
+            <td className="j_dd" >{data.rasi7}</td>
+           <td className="j_dd" >{data.rasi8}</td>
+            </tr>
+            <tr>
+            <td className="j_dd" >{data.rasi9}</td>
+           <td className="j_dd" >{data.rasi10}</td>
+            <td className="j_dd" >{data.rasi11}</td>
+            <td className="j_dd" >{data.rasi12}</td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+        <div className='col-lg-6 mt-5 mb-2'>
+        <table class="table table-bordered">
+        <tbody>
+            <tr>
+            <td className="j_dd" >{data.amsam1}</td>
+            <td className="j_dd" >{data.amsam2}</td>
+            <td className="j_dd" >{data.amsam3}</td>
+            <td className="j_dd" >{data.amsam4}</td>
+            </tr>
+            <tr>
+            <td className="j_dd" >{data.amsam5}</td>
+            <td colspan="2" className="j_dd" rowSpan={2}>அம்சம்</td>
+            <td className="j_dd" >{data.amsam6}</td>
+            </tr>
+            <tr>
+           <td className="j_dd" >{data.amsam7}</td>
+           <td className="j_dd" >{data.amsam8}</td>
+            </tr>
+            <tr>
+           <td className="j_dd" >{data.amsam9}</td>
+           <td className="j_dd" >{data.amsam10}</td>
+            <td className="j_dd" >{data.amsam11}</td>
+            <td className="j_dd" >{data.amsam12}</td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+      {/* <div className='col-lg-6 mt-5 mb-2'>
+        <table className='table table-bordered'>
+          <tbody>
+            <tr>
+              <td>{data.rasi1}</td>
+            </tr>
+            <tr>
+              <td>{data.rasi2}</td>
+            </tr>
+            <tr>
+              <td>{data.rasi3}</td>
+            </tr>
+            <tr>
+             
+              <td>{data.rasi4}</td>
+            </tr>
+            <tr>
+              
+              <td>{data.rasi5}</td>
+            </tr>
+            <tr>
+             
+              <td>{data.rasi6}</td>
+            </tr>
+            <tr>
+             
+              <td>{data.rasi7}</td>
+            </tr>
+            <tr>
+             
+              <td>{data.rasi8}</td>
+            </tr>
+            <tr>
+             
+              <td>{data.rasi9}</td>
+            </tr>
+            <tr>
+            
+              <td>{data.rasi10}</td>
+            </tr>
+            <tr>
+              <td>{data.rasi11}</td>
+            </tr>
+            <tr>
+              <td>{data.rasi12}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className='col-lg-6 mt-5 mb-2'>
+        <table className='table table-bordered'>
+          <tbody>
+            <tr>
+              <td>{data.amsam1}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam2}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam3}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam4}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam5}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam6}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam7}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam8}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam9}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam10}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam11}</td>
+            </tr>
+            <tr>
+              <td>{data.amsam12}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> */}
+      </>
+       ) : (
+        <p>Loading...</p>
+      )}
+   </div>
+
  </div>
 </div>
 </div>
@@ -775,6 +1062,8 @@ const Viewmember = () => {
      ) : (
       <p>Loading...</p>
     )}
+
+    
   </div>
   {/* <!-- / Content --> */}
   <div class="content-backdrop fade"></div>
