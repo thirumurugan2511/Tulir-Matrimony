@@ -166,7 +166,7 @@ const Stories = () => {
                 <td>{item.groom_id}</td> 
                 <td>{item.marriage_date}</td> 
                 <td>{item.message}</td> 
-                <td><a href="/religion/edit/15" className='text-ed'><MdModeEdit class="bx bxs-edit"/> Edit</a> /
+                <td>
                 <Link to="#" onClick={() => handleDelete(item.id)} className='text-ed'> <MdDelete class="bx bxs-edit" />Delete</Link></td>
                </tr>
                 ))}

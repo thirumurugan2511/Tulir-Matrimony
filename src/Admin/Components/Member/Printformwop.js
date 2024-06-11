@@ -20,6 +20,8 @@ import Men from './men.jpg'
 import { useReactToPrint } from 'react-to-print';
 import jsPDF from 'jspdf';
 import './Print.css'
+import logoMain from './tulir-header-logo.jpg'
+
 
 
 const Printformwop = () => {
@@ -96,15 +98,15 @@ const Printformwop = () => {
      
   return (
     <>
-                                  <div className='row mb-3 mx-5 mt-4 '>
-                                <div className='col-lg-6 text-start'>
-                                    <button onClick={handleBackClick} className="btn btn-secondary">Back to Member List</button>
-                                </div>
-                                <div className=' col-lg-6 text-end'>
-                                    <button onClick={handlePrint} className="btn btn-primary me-2">Print</button>
-                                    {/* <button onClick={handleDownloadPdf} className="btn btn-primary">Download PDF</button> */}
-                                </div>
-                            </div>
+                              <div className='row mb-3 mx-5 mt-4 '>
+                                  <div className='col-lg-6 text-start'>
+                                      <button onClick={handleBackClick} className="btn btn-secondary">Back to Member List</button>
+                                  </div>
+                                  <div className=' col-lg-6 text-end'>
+                                      <button onClick={handlePrint} className="btn btn-primary me-2">Print</button>
+                                      {/* <button onClick={handleDownloadPdf} className="btn btn-primary">Download PDF</button> */}
+                                  </div>
+                              </div>
     
     <div className=' gen_print row mx-auto border' ref={componentRef}>
     {profileData ? ( 
@@ -112,9 +114,10 @@ const Printformwop = () => {
                   <>
 
         <div className='border-bottom pt-1 pb-4 head-text'>
-            <h2 className='fw-bold'>துளிர் மேட்ரிமோனி</h2>
+        <img class="p-3" src={logoMain} />
+            {/* <h2 className='fw-bold'>துளிர் மேட்ரிமோனி</h2>
             <p>159F, விஜயாபுரி,V.E.P, காம்ப்ளக்ஸ்,</p>
-            <p>எட்டையபுரம் வளைவு ரோடு, படித்துறை எதிரில், கோவில்பட்டி - 628501</p>
+            <p>எட்டையபுரம் வளைவு ரோடு, படித்துறை எதிரில், கோவில்பட்டி - 628501</p> */}
         </div>
         <div className='mt-1 row data_det'>
             <table className='print-table'>
@@ -143,7 +146,7 @@ const Printformwop = () => {
                     <tr>
                         <td className="fw-bold">பிறந்த தேதி</td>
                         <td>: {formatDate(profileData.body.dob)}</td>
-                        <td className="fw-bold">வருவாய்</td>
+                        <td className="fw-bold">வருமானம்</td>
                         <td>: {profileData.body.annual_income}</td>
                        
                     </tr>
@@ -166,9 +169,8 @@ const Printformwop = () => {
                         <td>: {profileData.body.brother_married} / {profileData.body.brother_married} </td>   
                     </tr>
                     <tr>
-                       <td className="fw-bold">பிறந்த நேரம்</td>
-                        <td>: {formatTime(profileData.body.birthtime)}</td> 
-                       
+                        <td className="fw-bold">சொந்த ஊர்</td>
+                        <td>: {profileData.body.city}</td> 
                         <td className="fw-bold">குல தெய்வம்</td>
                        <td>: {profileData.body.kuladeivam}</td>
                    </tr>
@@ -179,13 +181,11 @@ const Printformwop = () => {
                         <td>: {profileData.body.zodiacsign}</td>   
                     </tr>
                    
-                    {/* <tr>
-                        <td className="fw-bold">தொலைபேசி எண்</td>
-                        <td>: {profileData.body.phonenumber}</td>
-                        <td className="fw-bold">இடம்</td>
-                        <td>: {profileData.body.address}</td>
+                    <tr>
+                         <td className="fw-bold">பிறந்த நேரம்</td>
+                        <td>: {formatTime(profileData.body.birthtime)}</td> 
                          
-                    </tr> */}
+                    </tr>
                     {/* <tr>
                         <td className="fw-bold">திருமணமானவர்கள்</td>
                         <td>: {profileData.body.brother_married} / {profileData.body.brother_married} </td>      

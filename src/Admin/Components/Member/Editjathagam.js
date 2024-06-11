@@ -215,15 +215,15 @@ const Editjathagam = () => {
           </div>
           <div className='col-lg-3 d-flex mb-5 align-items-center'>
       <label class="form-label mb-0 me-2">ஆண்டு</label>
-      <input type="text" class="form-control" name='year' value={formData.year} onChange={handleChange} />
+      <input type="text" maxlength="2" class="form-control" name='year' value={formData.year} onChange={handleChange} />
     </div>
     <div className='col-lg-3 d-flex mb-5 align-items-center'>
       <label class="form-label mb-0 me-2">மாதம்</label>
-      <input type="text" class="form-control" name="month" value={formData.month} onChange={handleChange} />
+      <input type="text" maxlength="2" class="form-control" name="month" value={formData.month} onChange={handleChange} />
     </div>
     <div className='col-lg-3 d-flex mb-5 align-items-center'>
       <label class="form-label mb-0 me-2">நாள்</label>
-      <input type="text" class="form-control" name="days" value={formData.days} onChange={handleChange}/>
+      <input type="text" maxlength="2" class="form-control" name="days" value={formData.days} onChange={handleChange}/>
     </div>
 
     <div className=' col-lg-6'>

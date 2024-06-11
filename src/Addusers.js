@@ -28,7 +28,7 @@ const Addusers = () => {
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
   ], 
-  pathan_numberOptions: [
+  patham_numberOptions: [
     { value: '1', label: '1' },
     { value: '2', label: '2' },
     { value: '3', label: '3' },
@@ -60,7 +60,8 @@ const Addusers = () => {
   partner_matrial_statusOptions : [
     { value: 'Single', label: 'Single' },
     { value: 'Divorce', label: 'Divorce' },
-    { value: 'Widow', label: 'Widow' }
+    { value: 'Widow', label: 'Widow' },
+    { value: 'anyone', label: 'Any One' }
   ],
   food_habitsOptions : [
     { value: 'Vegetarian', label: 'Vegetarian' },
@@ -276,7 +277,7 @@ const Addusers = () => {
       "sevaikiragam": "",
       "gothram": "",
       "star": "",
-      "pathan_number": "",
+      "patham_number": "",
       "zodiacsign": "",
       "birthplace": "",
       "birthtime": "",
@@ -358,7 +359,7 @@ const Addusers = () => {
     "status_children": "குழந்தைகளின் நிலை",
     "child_count": "குழந்தைகளின் எண்ணிக்கை",
     "age": "வயது",
-    "pathan_number":"பாதம்",
+    "patham_number":"பாதம்",
     "religion": "மதம்",
     "kuladeivam": "குலதெய்வம்",
     "bloodgroup": "இரத்த வகை",
@@ -375,20 +376,19 @@ const Addusers = () => {
     "occupation":"வேலை",
     "jobdetails":"தொழில் விவரம்",
     "joblocation":"தொழில் இடம்",
-    "annual_income":"ஆண்டு வருமானம்", 
+    "annual_income":"ஆண்டு / மாத வருமானம் ", 
     "country": "நாடு",
     "state": "மாநிலம்",
-    "city": "மாவட்டம்",
+    "city": "பிறந்த மாவட்டம்",
     "residece": "குடியிருப்பு வகை",
     "alternatenumber": "தொலைபேசி மாற்று எண்",
     "mothercountry": "தாய்நாடு",
-    "address": "முகவரி",
+    "address": "தற்போதைய முகவரி",
     "height": "உயரம்",
     "weight": "எடை",
     "food_habits": "உணவு பழக்கம்",
     "smoking": "புகைபிடிக்கும் பழக்கம்",
     "drinking": "குடிபழக்கம்",
-    
     "skin_tone": "தோல் நிறம்",
     "profile_by": "பதிவு செய்பவர்",
     "aboutme": "என்னப் பற்றி",
@@ -400,8 +400,8 @@ const Addusers = () => {
     "mother_occupation": "தாய் பணி",
     "brothers_count": "சகோதரர் எண்ணிக்கை",
     "sisters_count": "சகோதரி எண்ணிக்கை",
-    "brother_married": "சகோதரர் திருமணம்",
-    "sister_married": "சகோதரி திருமணம்",
+    "brother_married": "திருமணம் ஆன சகோதரர் எண்ணிக்கை",
+    "sister_married": "திருமணம் ஆன சகோதரி எண்ணிக்கை",
     "family_details": "குடும்ப விவரங்கள்",
     "partner_from_age": "மணமகன் / மணமகள் வயது வரம்பு",
     "partner_to_age": "மணமகன் / மணமகள் வயது வரம்பு",
@@ -479,7 +479,7 @@ const Addusers = () => {
   };
   const sectionNames = {
     section1: 'Basic Details',
-    section2: 'Residence',
+    section2: 'Residece',
     section3: 'Physical Info',
     section4: 'Family Details',
     section5: 'Partner Preferences',
@@ -576,7 +576,7 @@ const Addusers = () => {
           ]
         }));
         break; 
-        case 'pathan_number':
+        case 'patham_number':
         // Options for gender dropdown
         setOptions(prevOptions => ({
           ...prevOptions,
@@ -800,7 +800,8 @@ const Addusers = () => {
               [fieldName + 'Options']: [
                 { value: 'single', label: 'Single' },
                 { value: 'divorce', label: 'Divorce' },
-                { value: 'widow', label: 'Widow' }
+                { value: 'widow', label: 'Widow' },
+                { value: 'anyone', label: 'Any One' }
               ]
             }));
             break;
@@ -1095,7 +1096,7 @@ const Addusers = () => {
 
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
-        ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste','plan_name','plan_status', 'pathan_number','bloodgroup', 'zodiacsign', 'mother_tongue', 'star', 'education', 'occupation', 
+        ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste','plan_name','plan_status', 'patham_number','bloodgroup', 'zodiacsign', 'mother_tongue', 'star', 'education', 'occupation', 
           'smoking', 'drinking', 'status_children','country', 'state', 'city','father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'partner_religion',
            'partner_country', 'partner_state', 'partner_matrial_status', 'partner_education', 'partner_occupation', 'partner_mother_tongue',
           'partner_caste', 'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
@@ -1165,9 +1166,24 @@ const Addusers = () => {
               name={fieldName}
               placeholder="Enter your phone number"
               className="form-control"
-              maxlength="10"
-              minlength="10"
+              maxlength="12"
+              minlength="12"
               pattern="^\d{4}-\d{3}-\d{4}$"
+              required
+              value={formData[currentSection][fieldName] || ''}
+              autoSave="off"
+              onChange={handleChange}
+            />
+          ) : fieldName === 'age'
+          ? (
+            <input
+              id={fieldName}
+              type="text"
+              name={fieldName}
+              placeholder="Enter your age"
+              className="form-control"
+              maxlength="2"
+              minlength="2"
               required
               value={formData[currentSection][fieldName] || ''}
               autoSave="off"

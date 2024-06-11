@@ -58,8 +58,7 @@ const Edituser = () => {
   partner_matrial_statusOptions : [
     { value: 'Single', label: 'Single' },
     { value: 'Divorce', label: 'Divorce' },
-    { value: 'Widow', label: 'Widow' },
-    { value: 'anyone', label: 'Any One' }
+    { value: 'Widow', label: 'Widow' }
   ],
   food_habitsOptions : [
     { value: 'Vegetarian', label: 'Vegetarian' },
@@ -430,15 +429,14 @@ const fetchUserData = async () => {
           partner_manglik: userData.body.partner_manglik || "",
           partner_salary: userData.body.partner_salary || ""
           
-        }
-        ,
+        },
         section6: {
           ...formData.section6,
-          image:  "",
-          image1: "",
-          id_image: "",
-          id_image1:  "",
-          rasiimage: ""
+          image: userData.body.image || "",
+          image1: userData.body.image1 || "",
+          id_image: userData.body.id_image || "",
+          id_image1: userData.body.id_image1 || "",
+          rasiimage: userData.body.rasiimage || ""
         }
       };
       setFormData(updatedFormData); // Set form data state with fetched user data
@@ -450,6 +448,9 @@ const fetchUserData = async () => {
     console.error('Error fetching user data:', error);
   }
 };
+
+
+  
 
   const labelTranslations = {
     "reg_id": "பதிவு ஐடி",
@@ -488,11 +489,11 @@ const fetchUserData = async () => {
     "annual_income":"ஆண்டு / மாத வருமானம்", 
     "country": "நாடு",
     "state": "மாநிலம்",
-    "city": "பிறந்த மாவட்டம்",
+    "city": "மாவட்டம்",
     "residece": "குடியிருப்பு வகை",
     "alternatenumber": "தொலைபேசி மாற்று எண்",
     "mothercountry": "தாய்நாடு",
-    "address": "தற்போதைய முகவரி",
+    "address": "முகவரி",
     "height": "உயரம்",
     "weight": "எடை",
     "food_habits": "உணவு பழக்கம்",
@@ -510,8 +511,8 @@ const fetchUserData = async () => {
     "mother_occupation": "தாய் பணி",
     "brothers_count": "சகோதரர் எண்ணிக்கை",
     "sisters_count": "சகோதரி எண்ணிக்கை",
-    "brother_married": "திருமணம் ஆன சகோதரர் எண்ணிக்கை",
-    "sister_married": "திருமணம் ஆன சகோதரி எண்ணிக்கை",
+    "brother_married": "சகோதரர் திருமணம்",
+    "sister_married": "சகோதரி திருமணம்",
     "family_details": "குடும்ப விவரங்கள்",
     "partner_from_age": "மணமகன் / மணமகள் வயது வரம்பு",
     "partner_to_age": "மணமகன் / மணமகள் வயது வரம்பு",
@@ -589,7 +590,7 @@ const fetchUserData = async () => {
   };
   const sectionNames = {
     section1: 'Basic Details',
-    section2: 'Residece',
+    section2: 'Residence',
     section3: 'Physical Info',
     section4: 'Family Details',
     section5: 'Partner Preferences',
@@ -603,24 +604,16 @@ const fetchUserData = async () => {
 
   const handleChange = (e) => {
     const { name, files } = e.target;
-  
+
     if (['image', 'image1', 'id_image', 'id_image1', 'rasiimage'].includes(name)) {
       const file = files[0];
       const reader = new FileReader();
       reader.onloadend = () => {
-        let base64String = reader.result;
-        // Strip the prefix if it exists
-        if (base64String.startsWith('data:image/jpeg;base64,')) {
-          base64String = base64String.replace('data:image/jpeg;base64,', '');
-        } else if (base64String.startsWith('data:image/png;base64,')) {
-          base64String = base64String.replace('data:image/png;base64,', '');
-        }
-  
         setFormData(prevState => ({
           ...prevState,
-          [currentSection]: {
-            ...prevState[currentSection],
-            [name]: base64String // Store the stripped file contents
+          section6: {
+            ...prevState.section6,
+            [name]: reader.result
           }
         }));
       };
@@ -629,6 +622,9 @@ const fetchUserData = async () => {
       }
     } else {
       const { value } = e.target;
+      // if (['name', 'email', 'gender', 'phonenumber', 'password', 'dob'].includes(name) && value.trim() === '') {
+      //   alert("Please Enter Required Fields!");
+      // }
       setFormData(prevState => ({
         ...prevState,
         [currentSection]: {
@@ -638,7 +634,6 @@ const fetchUserData = async () => {
       }));
     }
   };
-  
   
 
   const handleNext = () => {
@@ -745,7 +740,30 @@ const fetchUserData = async () => {
             ]
           }));
           break;
-          
+          // case 'education':
+          //   // Options for marriage type dropdown
+          //   setOptions(prevOptions => ({
+          //     ...prevOptions,
+          //     [fieldName + 'Options']: [
+                 
+          //     { value: 'Bachelor', label: 'Bachelor' },
+          //     { value: 'Master', label: 'Master' }  
+          //     ]
+          //   }));
+          //   break;
+          //   case 'partner_education':
+          //   // Options for marriage type dropdown
+          //   setOptions(prevOptions => ({
+          //     ...prevOptions,
+          //     [fieldName + 'Options']: [
+                 
+          //     { value: 'Bachelor', label: 'Bachelor' },
+          //     { value: 'Master', label: 'Master' },
+          //     { value: 'Phd', label: 'Phd' },
+          //     { value: 'Others', label: 'Others' }  
+          //     ]
+          //   }));
+          //   break;
           case 'partner_manglik':
             // Options for marriage type dropdown
             setOptions(prevOptions => ({
@@ -892,8 +910,7 @@ const fetchUserData = async () => {
               [fieldName + 'Options']: [
                 { value: 'single', label: 'Single' },
                 { value: 'divorce', label: 'Divorce' },
-                { value: 'widow', label: 'Widow' },
-                { value: 'anyone', label: 'Any One' }
+                { value: 'widow', label: 'Widow' }
               ]
             }));
             break;
@@ -1050,7 +1067,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
         apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerfamily.php';
         break;
       case 'section5':
-        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerpatner.php';
+        apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerpartner.php';
         break;
       case 'section6':
         apiUrl = 'https://tulirmatrimony.com/controlapi/editcustomerimage.php';
@@ -1202,7 +1219,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
   {Object.keys(formData[currentSection]).map(fieldName => (
         ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste',  'bloodgroup', 'zodiacsign',
          'mother_tongue', 'star', 'education', 'occupation', 'patham_number',
-          'smoking', 'drinking', 'status_children','country', 'state','city', 'partner_caste','father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'partner_religion',
+          'smoking', 'drinking', 'status_children','country', 'state','city', 'father_occupation', 'mother_occupation', 'sister_married', 'brother_married', 'partner_religion',
            'partner_country', 'partner_state', 'partner_matrial_status', 'partner_education', 'partner_occupation', 'partner_mother_tongue',
            'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
           'partner_to_age','residece'
@@ -1232,9 +1249,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
                   fieldName === 'partner_child_gender' ? 'Partner child gender' :
                   `${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`
                 }</option>
-
                 {/* Render options dynamically */}
-
                 {options[fieldName + 'Options'] && options[fieldName + 'Options'].map(option => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
@@ -1263,6 +1278,8 @@ const handleSubmit = async (sectionName, sectionData, id) => {
               className="form-control"
               onChange={handleChange}
             />
+          
+            
            </>
             
           ) : fieldName === 'address' ? (
@@ -1282,24 +1299,9 @@ const handleSubmit = async (sectionName, sectionData, id) => {
               name={fieldName}
               placeholder="Enter your phone number"
               className="form-control"
-              maxlength="12"
-              minlength="12"
+              maxlength="10"
+              minlength="10"
               pattern="^\d{4}-\d{3}-\d{4}$"
-              required
-              value={formData[currentSection][fieldName] || ''}
-              autoSave="off"
-              onChange={handleChange}
-            />
-          ) : fieldName === 'age'
-          ? (
-            <input
-              id={fieldName}
-              type="text"
-              name={fieldName}
-              placeholder="Enter your age"
-              className="form-control"
-              maxlength="2"
-              minlength="2"
               required
               value={formData[currentSection][fieldName] || ''}
               autoSave="off"
@@ -1311,6 +1313,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
               id={fieldName}
               name={fieldName}
               placeholder={fieldName === 'partner_height' ? 'Partner Height' : fieldName === 'partner_weight' ? 'Partner Weight' : fieldName === 'partner_caste' ? 'Partner caste' : fieldName === 'partner_child_count' ? 'Partner Child Count' : fieldName === 'partner_child_age' ? 'Partner Child Age' : `${fieldName.replace(/_/g, ' ').charAt(0).toUpperCase() + fieldName.replace(/_/g, ' ').slice(1)}`}
+        
               className="form-control"
               value={formData[currentSection][fieldName] || ''}
               autoSave='off'

@@ -200,7 +200,7 @@ const Member = () => {
         <tr key={item.id}>
             <td>{item.reg_id}</td>
             <td>{item.name}</td>
-            <td><img src={`data:image/jpeg;base64,${item.image}`} height={40} alt="User Profile" className="w-px-40 rounded-circle" /></td>
+            <td><img src={`data:image/jpeg;base64,${item.image}`} height={50} width={50} alt="User Profile" className="w-px-40 rounded-circle" /></td>
             <td> {item.plan_name}
             {/* <select className='form-select' value={selectedPlans[item.id] || ''} onChange={(e) => handlePlanChange(item.id, e)}>
                     <option value="">Select Plan</option>

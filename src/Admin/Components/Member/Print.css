@@ -21,6 +21,12 @@
 .print-table3 tbody tr td {
       height: 60px;
       width: 60px;
+      word-wrap: break-word;
+      padding: 15px;
+}
+
+.print-table3 {
+    table-layout: fixed;
 }
 .head-text{
     text-align: center!important;
@@ -29,7 +35,7 @@
 }
 .com_text {
     position: relative;
-    top: -360px;
+    top: -490px;
     opacity: .5;
     font-size: 20px;
 }

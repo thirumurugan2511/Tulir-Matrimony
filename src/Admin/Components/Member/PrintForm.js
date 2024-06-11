@@ -20,6 +20,8 @@ import Men from './men.jpg'
 import { useReactToPrint } from 'react-to-print';
 import jsPDF from 'jspdf';
 import './Print.css'
+import logoMain from './tulir-header-logo.jpg'
+
 
 
 const PrintForm = () => {
@@ -112,9 +114,10 @@ const PrintForm = () => {
                   <>
 
         <div className='border-bottom pt-1 pb-4 head-text'>
-            <h2 className='fw-bold'>துளிர் மேட்ரிமோனி</h2>
+        <img class="p-3" src={logoMain} />
+            {/* <h2 className='fw-bold'>துளிர் மேட்ரிமோனி</h2>
             <p>159F, விஜயாபுரி,V.E.P, காம்ப்ளக்ஸ்,</p>
-            <p>எட்டையபுரம் வளைவு ரோடு, படித்துறை எதிரில், கோவில்பட்டி - 628501</p>
+            <p>எட்டையபுரம் வளைவு ரோடு, படித்துறை எதிரில், கோவில்பட்டி - 628501</p> */}
         </div>
         <div className='mt-1 row data_det'>
             <table className='print-table'>
@@ -143,7 +146,7 @@ const PrintForm = () => {
                     <tr>
                         <td className="fw-bold">பிறந்த தேதி</td>
                         <td>: {formatDate(profileData.body.dob)}</td>
-                        <td className="fw-bold">வருவாய்</td>
+                        <td className="fw-bold">வருமானம்</td>
                         <td>: {profileData.body.annual_income}</td>
                        
                     </tr>
@@ -166,32 +169,32 @@ const PrintForm = () => {
                         <td>: {profileData.body.brother_married} / {profileData.body.brother_married} </td>   
                     </tr>
                     <tr>
-                      
-                       <td className="fw-bold">முகவரி</td>
-                        <td>: {profileData.body.city}</td>
-                        <td className="fw-bold">குல தெய்வம்</td>
+                       <td className="fw-bold">குல தெய்வம்</td>
                        <td>: {profileData.body.kuladeivam}</td>
+                       <td className="fw-bold">தற்போதைய முகவரி</td>
+                        <td>: {profileData.body.address}</td>
+                      
                    </tr>
                     <tr>
                         <td className="fw-bold">நட்சத்திரம் / பாதம்</td>
                         <td>: {profileData.body.star} / {profileData.body.patham_number} </td>
-                        <td className="fw-bold">ராசி</td>
-                        <td>: {profileData.body.zodiacsign}</td>   
+                        <td className="fw-bold">சொந்த ஊர்</td>
+                        <td>: {profileData.body.city}</td>  
+                       
                     </tr>
                    
                     <tr>
-                        <td className="fw-bold">தொலைபேசி எண்</td>
-                        <td>: {profileData.body.phonenumber}</td>
+                        <td className="fw-bold">ராசி</td>
+                        <td>: {profileData.body.zodiacsign}</td>   
+                        
                         <td className="fw-bold">பிறந்த நேரம்</td>
                         <td>: {formatTime(profileData.body.birthtime)}</td>   
                     </tr>
-                    {/* <tr>
-                        <td className="fw-bold">திருமணமானவர்கள்</td>
-                        <td>: {profileData.body.brother_married} / {profileData.body.brother_married} </td>      
-                        <td className="fw-bold">உயரம்</td>
-                        <td>: {profileData.body.height}</td>
+                    <tr>
+                       <td className="fw-bold">தொலைபேசி எண்</td>
+                        <td>: {profileData.body.phonenumber}</td>
                        
-                    </tr> */}
+                    </tr>
                 </tbody>
             </table>
         </div>

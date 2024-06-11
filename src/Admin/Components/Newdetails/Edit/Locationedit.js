@@ -65,20 +65,28 @@ const Locationedit = () => {
     }, [id]);
 
     const handleChange = e => {
+        // const { name, value } = e.target;
+        // if (name === "state_id") {
+        //     // If changing the religion, update selectedReligion state
+        //     setSelectedState(value);
+        // } else {
+        //     // If changing caste name, update casteData state
+        //     setDistrictName(prevState => ({
+        //         ...prevState,
+        //         [name]: value,
+        //     }));
+        //     setSelectedState(prevState => ({
+        //         ...prevState,
+        //         [name]: value,
+        //     }));
+        // }
         const { name, value } = e.target;
         if (name === "state_id") {
-            // If changing the religion, update selectedReligion state
-            setSelectedState(value);
+            setstateId(value);
+            const state = statesInIndia.find(state => state.id === parseInt(value));
+            setSelectedState(state ? state.name : '');
         } else {
-            // If changing caste name, update casteData state
-            setDistrictName(prevState => ({
-                ...prevState,
-                [name]: value,
-            }));
-            setSelectedState(prevState => ({
-                ...prevState,
-                [name]: value,
-            }));
+            setDistrictName(value);
         }
     };
     const handleSubmit = async (e,id) => {
@@ -93,7 +101,7 @@ const Locationedit = () => {
             const requestBody = {
                 id: idValue,
                 state_id:stateId,
-                state_name: statesInIndia.find(state => state.id === parseInt(selectedState))?.name || '',
+                state_name: selectedState,
                 district_name: districtName
             };
 
