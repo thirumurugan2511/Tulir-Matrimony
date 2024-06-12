@@ -17,7 +17,7 @@ function Navbar() {
        <div className="text-end top-nav d-flex gap-3 justify-content-end">
                 <p className="text-white top-text">+91 9898989899</p>
                 <p className="text-white me-4 top-text">606 Arnetta Tunnel, New Martin, NH 06242</p>
-            </div>
+        </div>
 		<header>
             <div className="container row">
                 <div className="col-lg-3 col-md-6 col-sm-6">

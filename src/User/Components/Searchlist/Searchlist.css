@@ -1,0 +1,21 @@
+.speaker-block-three .image-box .image {
+  border-radius: 4px!important;
+}
+
+.speaker-block-three .info-box:before {
+    right: 0 !important;
+    left: auto !important;
+}
+
+.speaker-block-three .info-box {
+    padding-right: none !important;
+    padding: 10px 30px !important;
+    width: 85%;
+    border-radius: 4px;
+}
+.image-box .image {
+    width: 85%!important;
+}
+.activee {
+    color: #f20487 !important;
+}

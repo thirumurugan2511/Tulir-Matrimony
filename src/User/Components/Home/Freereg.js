@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Logo from '../rgt-matrimony-logo.png'
+import Navbar from '../Navbar/Navbar';
 
 const Freereg = () => {
   const [regId, setRegId] = useState('');
@@ -236,6 +237,7 @@ const Freereg = () => {
 
   return (
    <>
+   <Navbar />
   <section class="vh-100 gradient-custom ">
   <div class="container h-100 ">
     <div class="row justify-content-center align-items-center h-100">
