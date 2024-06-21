@@ -1,161 +1,233 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { FaPaperPlane } from "react-icons/fa";
 import { AiFillDollarCircle } from "react-icons/ai";
 import { GiGoldBar } from "react-icons/gi";
-import './Plans.css'
+import { FaCheck } from "react-icons/fa6";
+import Navbar from "./Navbar/Navbar";
 
-
+import "./Plans.css";
+import Footer from "./Footer/Footer";
 
 const Plans = () => {
-    const pageStyle ={
-		backgroundImage: 'url("https://www.matrimonysoftware.in/images/background/5.jpg")'
-	}
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://tulirmatrimony.com/controlapi/planlist.php"
+        );
+        const result = await response.json();
+        console.log(result);
+        setData(result.body);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const pageStyle = {
+    backgroundImage:
+      'url("https://www.matrimonysoftware.in/images/background/5.jpg")',
+  };
   return (
     <>
-    <section class="page-title" style={pageStyle} >
-        <div class="auto-container">
-            <h1 class="d-none d-lg-block d-xl-block d-md-block"> Membership Plans</h1>
-            <ul class="bread-crumb clearfix">
-                <li><a href="index">Home</a></li>
-                <li> Membership Plans</li>
-            </ul>
+      <Navbar />
+      <div className="main-content">
+        <div className="container">
+          <div className="page-content">
+            <div className="row"></div>
+            <div className="row">
+              {data.map((item) => (
+                <div className="col-lg-12" style={{ textAlign: "center" }}>
+                  <div className="card" style={{ padding: "20px" }}>
+                    <div className="card-body">
+                      <div className="p-4 card-body">
+                        <div className="media">
+                          <div className="media-body">
+                            <h2 style={{ color: "rgb(231, 1, 138)" }}>
+                              {item.name}
+                            </h2>
+                          </div>
+                        </div>
+                        <div
+                          className="plan-features mt-5"
+                          style={{ textAlign: "left" }}
+                        >
+                          <h5 style={{ lineHeight: "30px" }}>
+                            <FaCheck
+                              className="fas fa-check me-2"
+                              style={{ color: "rgb(231, 1, 138)" }}
+                            />
+                            {item.description}
+                          </h5>
+                          <div className="py-4 text-center">
+                            <h2>
+                              {item.amount} /{" "}
+                              <span className="font-size-13">
+                                {item.validity}
+                              </span>
+                            </h2>
+                          </div>
+                          <div className="text-center">
+                            <button
+                              className="btn btn-md"
+                              style={{
+                                backgroundColor: "rgb(231, 1, 138)",
+                                color: "white",
+                              }}
+                            >
+                              Select Plan 
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* <div className="col-lg-12" style={{ textAlign: "center" }}>
+                <div className="card" style={{ padding: "20px" }}>
+                  <div className="card-body">
+                    <div className="p-4 card-body">
+                      <div className="media">
+                        <div className="media-body">
+                          <h2 style={{ color: "rgb(231, 1, 138)" }}>
+                            Plan 2: Diamond
+                          </h2>
+                        </div>
+                      </div>
+                      <div
+                        className="plan-features mt-5"
+                        style={{ textAlign: "left" }}
+                      >
+                        <h5>
+                          <FaCheck
+                            className="fas fa-check me-2"
+                            style={{ color: "rgb(231, 1, 138)" }}
+                          />
+                          தாங்கள் online மூலமாக பயோடேட்டா, ஜாதகம், போட்டோ
+                          முழுவதுமாக பார்த்து கொள்ளலாம். உங்களுக்கு பொருத்தமான
+                          120 வரன்களின் தொலைபேசி எண்களை 12 மாதத்திற்கு எடுத்து
+                          கொள்ளலாம்
+                        </h5>
+                        <h5 style={{ lineHeight: "30px" }}>
+                          <FaCheck
+                            className="fas fa-check me-2"
+                            style={{ color: "rgb(231, 1, 138)" }}
+                          />
+                          Like SMS unlimited ஆக அனுப்பி கொள்ளலாம்
+                        </h5>
+                      </div>
+                      <div className="py-4">
+                        <h2>
+                          Rs: 5000/{" "}
+                          <span className="font-size-13">12 months</span>
+                        </h2>
+                      </div>
+                      <div className="text-center">
+                        <button
+                          className="btn btn-md"
+                          style={{
+                            backgroundColor: "rgb(231, 1, 138)",
+                            color: "white",
+                          }}
+                        >
+                          Select Plan 2
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-12" style={{ textAlign: "center" }}>
+                <div className="card" style={{ padding: "20px" }}>
+                  <div className="card-body">
+                    <div className="p-4 card-body">
+                      <div className="media">
+                        <div className="media-body">
+                          <h2 style={{ color: "rgb(231, 1, 138)" }}>
+                            Plan 3: Assisted Service
+                          </h2>
+                        </div>
+                        <div className="ms-3"></div>
+                      </div>
+                      <div className="text-center">
+                        <div
+                          className="plan-features mt-4"
+                          style={{ textAlign: "left" }}
+                        >
+                          <h5 style={{ lineHeight: "30px" }}>
+                            <FaCheck
+                              className="fas fa-check me-2"
+                              style={{ color: "rgb(231, 1, 138)" }}
+                            />
+                            தாங்கள் online மூலமாக பயோடேட்டா, ஜாதகம், போட்டோ
+                            முழுவதுமாக பார்த்து கொள்ளலாம். உங்களுக்கு பொருத்தமான
+                            120 வரன்களின் தொலைபேசி எண்களை 6 மாதத்திற்கு எடுத்து
+                            கொள்ளலாம்
+                          </h5>
+                          <h5 style={{ lineHeight: "30px" }}>
+                            <FaCheck
+                              className="fas fa-check me-2"
+                              style={{ color: "rgb(231, 1, 138)" }}
+                            />
+                            Like SMS unlimited ஆக அனுப்பி கொள்ளலாம்
+                          </h5>
+                          <h5 style={{ lineHeight: "30px" }}>
+                            <FaCheck
+                              className="fas fa-check me-2"
+                              style={{ color: "rgb(231, 1, 138)" }}
+                            />
+                            உங்களுக்கு பொருத்தமான வரன்கள் வாரம் ஒருமுறை
+                            போட்டோவுடன் WhatsApp-ல் அனுப்பி வைக்கப்படும்
+                          </h5>
+                          <h5 style={{ lineHeight: "30px" }}>
+                            <FaCheck
+                              className="fas fa-check me-2"
+                              style={{ color: "rgb(231, 1, 138)" }}
+                            />
+                            எங்கள் நிறுவனத்தில் தனியாக ஒரு நபர் நியமித்து
+                            உங்களுக்கு உதவி செய்வார்
+                          </h5>
+                          <h5 style={{ lineHeight: "30px" }}>
+                            <FaCheck
+                              className="fas fa-check me-2"
+                              style={{ color: "rgb(231, 1, 138)" }}
+                            />
+                            ஜாதகம் பொருத்தமாக இருந்தால் அவர்களே பேசி தருவார்கள்
+                          </h5>
+                        </div>
+                        <div className="py-4">
+                          <h2>
+                            Rs: 10000/{" "}
+                            <span className="font-size-13">6 months</span>
+                          </h2>
+                        </div>
+                        <button
+                          className="btn btn-md"
+                          style={{
+                            backgroundColor: "rgb(231, 1, 138)",
+                            color: "white",
+                          }}
+                        >
+                          Select Plan 3
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
+            </div>
+          </div>
         </div>
-    </section>
-    <section class="pricing-section">
-        <div class="anim-icons">
-            <span class="icon icon-circle-green wow fadeIn animated" ></span>
-            <span class="icon icon-circle-blue wow fadeIn animated" ></span>
-            <span class="icon icon-circle-pink wow fadeIn animated"></span>
-        </div>
-		
-               
-        <div class="auto-container">
-            
-            <div class="outer-box">
-                <div class="row">
-				
-				   
-                    <div class="pricing-block col-lg-4 col-md-4 col-sm-4 wow fadeInUp animated" >
-								  
-                               <form method="post" action="login" name="my_plan">
-
-                        <div class="inner-box">
-                            <div class="icon-box">
-                                <div class="icon-outer"><FaPaperPlane className='icon flaticon-paper-plane' /> </div>
-                            </div>
-                            <div class="price-box">
-                                <div class="title">BASIC</div>
-                                <h4 class="price">INR: 500 <i class="fa fa-inr "></i> <br/>
-                               Days 30 </h4>
-                            </div>
-                            <div class="features">
-                               <p class="true">தாங்கள் மூலமாக பயோடேட்டா ஜாதகம் போட்டோ முழுவதுமாக பார்த்துக் கொள்ளலாம்.</p>
-                                <p class="true">உங்களுக்கு பொருத்தமான 60 வரங்களின் தொலைபேசி எண்களை ஆறு மாதத்திற்கு எடுத்துக் கொள்ளலாம்.</p>
-							</div>
-							<p class="contacts">
-							<h4>Allowed Contacts : 60</h4>
-                                                       
-							</p>
-                           
-							 <div class="btn-box mt-3">							
-                              <input name="choose" type="hidden" value="1"/>
-
-                            <button type="submit" class="theme-btn"><a class="theme-btn btn btn-style-one"><span class="btn-title">Pay Now</span></a></button>
-                        </div>
-							<input name="txtplan" type="hidden" id="txtplan" value="plan5"/>
-							<input name="txtplanname" type="hidden" id="txtplanname" value="BASIC"/>
-							<input name="txtoid" type="hidden" id="txtoid" value="MP3096937"/>
-							<input type="hidden" name="id" value="1"/>
-							<input type="hidden" name="pm" value="op4" class="formtext" onclick="getPayForm(this.value)" checked=""/>
-                             
-                        </div>
-						 </form>
-						                     </div>
-					   
-             
-                    <div class="pricing-block col-lg-4 col-md-4 col-sm-4 wow fadeInUp animated">
-								  
-          
-                               <form method="post" action="login" name="my_plan">
-
-                        <div class="inner-box">
-                            <div class="icon-box">
-                                <div class="icon-outer"><AiFillDollarCircle class="icon flaticon-paper-plane"/></div>
-                            </div>
-                            <div class="price-box">
-                                <div class="title">Silver</div>
-                                <h4 class="price">INR: 3000 <i class="fa fa-inr"></i> <br/>
-                               Days 60 </h4>
-                            </div>
-                            <div class="features">
-                               <p class="true">தாங்கள் மூலமாக பயோடேட்டா ஜாதகம் போட்டோ முழுவதுமாக பார்த்துக் கொள்ளலாம்.</p>
-                                <p class="true">உங்களுக்கு பொருத்தமான 120 வரங்களின் தொலைபேசி எண்களை ஆறு மாதத்திற்கு எடுத்துக் கொள்ளலாம்.</p>
-							</div>
-							<p class="contacts">
-							<h4>Allowed Contacts : 120</h4>
-                                                       
-							</p>
-                           
-							 <div class="btn-box mt-3">							
-                              <input name="choose" type="hidden" value="3"/>
-
-                            <button type="submit" class="theme-btn"><a class="theme-btn btn btn-style-one"><span class="btn-title">Pay Now</span></a></button>
-                        </div>
-							<input name="txtplan" type="hidden" id="txtplan" value="Plan3"/>
-							<input name="txtplanname" type="hidden" id="txtplanname" value="PRIMIUM"/>
-							<input name="txtoid" type="hidden" id="txtoid" value="MP3096937"/>
-							<input type="hidden" name="id" value="3"/>
-							<input type="hidden" name="pm" value="op4" class="formtext" onclick="getPayForm(this.value)" checked=""/>
-                             
-                        </div>
-						 </form>
-						                     </div>
-					   
-               
-                    <div class="pricing-block col-lg-4 col-md-4 col-sm-4 wow fadeInUp animated">
-								  
-                 
-                               <form method="post" action="login" name="my_plan">
-
-                        <div class="inner-box">
-                            <div class="icon-box">
-                                <div class="icon-outer"><GiGoldBar class="icon flaticon-paper-plane" /></div>
-                            </div>
-                            <div class="price-box">
-                                <div class="title">Gold</div>
-                                <h5 class="price">INR: 2100 <i class="fa fa-inr"></i> <br/>
-                               Days 120 </h5>
-                            </div>
-                            <div class="features">
-                               <p class="true">தாங்கள் மூலமாக பயோடேட்டா ஜாதகம் போட்டோ முழுவதுமாக பார்த்துக் கொள்ளலாம்.</p>
-                                <p class="true">உங்களுக்கு பொருத்தமான 60 வரங்களின் தொலைபேசி எண்களை ஆறு மாதத்திற்கு எடுத்துக் கொள்ளலாம்.</p>
-							</div>
-							<p class="contacts">
-							<h4>Allowed Contacts : No limit</h4>
-                                                       
-							</p>
-                           
-							 <div class="btn-box mt-3">							
-                              <input name="choose" type="hidden" value="54"/>
-
-                            <button type="submit" class="theme-btn"><a class="theme-btn btn btn-style-one"><span class="btn-title">Pay Now</span></a></button>
-                        </div>
-							<input name="txtplan" type="hidden" id="txtplan" value=""/>
-							<input name="txtplanname" type="hidden" id="txtplanname" value="SUPERseUPAR"/>
-							<input name="txtoid" type="hidden" id="txtoid" value="MP3096937"/>
-							<input type="hidden" name="id" value="54"/>
-							<input type="hidden" name="pm" value="op4" class="formtext" onclick="getPayForm(this.value)" checked=""/>
-                             
-                        </div>
-						 </form>
-						                     </div>
-					                    </div>
-		       </div>
-             </div>
-              
-			</section>
+      </div>
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Plans
+export default Plans;

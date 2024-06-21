@@ -28,9 +28,9 @@ const handleSubmit = async (e) => {
   try {
     //https://tulirmatrimony.com/controlapi/login.php
     //http://localhost:8000/api/login
-    const response = await axios.post('https://tulirmatrimony.com/controlapi/login.php', {
-      "user_name": formData.user_name,
-      "password": formData.password
+    const response = await axios.post("https://tulirmatrimony.com/controlapi/login.php", {
+      user_name: formData.user_name,
+      password: formData.password,
     });
     console.log(response);
     if (response.data && response.data.head && response.data.head.code === 200) {

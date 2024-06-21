@@ -6,6 +6,8 @@ import { NavLink } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import CardSlider from './CardSlider';
 import About from './About';
+import Hstories from '../Hstories';
+import Footer from '../Footer/Footer';
 
 
 
@@ -24,7 +26,7 @@ const Home = () => {
   ];
   return (
     <>
-    <Navbar />
+      <Navbar />
      
       <section className='bg-grey pb-5 '>
         <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
@@ -100,12 +102,14 @@ const Home = () => {
            <Link to="/Searchlist"  className='btn btn-primary col-sm-6 col-5 py-3'>Free search</Link>
         </div>
       </section>
-      <section className='mt-5 pt-5 mb-5'>
+      <section className='mt-5 pt-5 mb-5 card-slider-profile'>
       <CardSlider cards={cards} />
       
       </section>
       <About />
-      
+      <Hstories />
+      <Footer />
+     
     </>
   );
 }

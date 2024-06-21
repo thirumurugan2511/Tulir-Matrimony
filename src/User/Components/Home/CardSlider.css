@@ -3,11 +3,7 @@
    width: 16rem;
 }
 }
-@media only screen and (max-width: 768px) {
-    .card{
-       width: 13rem;
-    }
-    }
+
 
 @media only screen and (max-width: 480px) {
         .card{
@@ -17,4 +13,68 @@
 
 .slick-arrow {
     display: none !important;
+}
+
+.info-box:before {
+   right: 0 !important;
+   left: auto !important;
+}
+
+.info-box {
+   padding-right: none !important;
+   padding: 10px 30px !important;
+   width: 85%;
+   border-radius: 4px;
+}
+
+.image-box .image {
+   width: 85% !important;
+}
+
+.user-img {
+   height: 325px!important;
+}
+.card-body {
+   background-color: #f20487 !important;
+   border-radius: 10px;
+}
+.info-box {
+   background-color: #f20487;
+   
+}
+.name {
+   color: white;
+}
+.designation{
+   color: white;
+}
+.card-text {
+   color: white;
+}
+.pro-border{
+   border-radius: 10px 0 0 10px !important;
+}
+
+.view-pro {
+   background-color: #ffffff;
+   color: #29335c
+}
+.card-title{
+   margin-bottom: 0px !important;
+}
+
+.spinner-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 80vh;
+   /* Adjust the height as needed */
+}
+.card-img-top{
+   height: 300px!important;
+}
+@media only screen and (max-width: 768px) {
+   .card {
+      width: 13rem;
+   }
 }

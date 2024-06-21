@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Logo from '../rgt-matrimony-logo.png'
+import Logo from './rgt-matrimony-logo.png'
 import Navbar from '../Navbar/Navbar';
 
 const Freereg = () => {

@@ -883,18 +883,21 @@ const Viewmember = () => {
   
  <div class="inner_views_detailsFGH">
    <div class="row mx-auto">
+    <div className='text-start'>
+      <Link to={`/Addjathagam/${id}`} class="icon_usBox"><MdModeEdit class="bx bxs-edit"/> Add Jathagam</Link>
+    </div>
    <div className='text-end'>
       <Link to={`/Editjathagam/${id}`} class="icon_usBox"><MdModeEdit class="bx bxs-edit"/> Edit Jathagam</Link>
     </div>
    {data ? (
         <>
         <div className='row'>
-        <div className='col-lg-10 mt-5 m-auto mb-2 row'>
-        <div className='col-lg-3 d-flex mb-5 align-items-center'>
+        <div className='col-lg-10 mt-5 mx-auto mb-2 row'>
+        <div className='col-lg-4 d-flex mb-5 align-items-center'>
             <span className="fw-bold jd_text mb-0 me-2">திசை இருப்பு</span>
             <span style={{color: 'black'}}>: {data.thisaiirupu}</span>
           </div>
-          <div className='col-lg-3 d-flex mb-5 align-items-center'>
+          <div className='col-lg-2 d-flex mb-5 align-items-center'>
       <span class="fw-bold jd_text mb-0 me-2">ஆண்டு</span>
       <span style={{color: 'black'}}>: {data.year}</span>
     </div>

@@ -8,7 +8,7 @@
 }
 
 .zindex{
-	z-index: 9;
+	z-index: 99;
 }
 :root {
 	--mainColor: #29335c;
@@ -23,19 +23,23 @@ header {
 	justify-content: space-between;
 	height: 80px;
 	padding: 0 2rem;
-	background-color: var(--mainColor);
-	color: var(--textColor);
+	background-color: white;
+	color: #29335c;
+	border-bottom: #29335c 1px solid;
+	position: sticky;
+	top: 0;
+	z-index: 99;
 }
 .top-nav{
-    height: 30px;
+    height: 35px;
     width: 100%;
-    background-color: #fa00b2;
+    background-color:  #29335c;
     color: white;
 
 }
 nav a {
 	/* margin: 0 1rem; */
-	color: var(--textColor);
+	color: #29335c;
 	text-decoration: none;
     /* font-size: 20px; */
 }
@@ -50,7 +54,7 @@ header .nav-btn {
 	background: transparent;
 	border: none;
 	outline: none;
-	color: var(--textColor);
+	color: #29335c;
 	visibility: hidden;
 	opacity: 0;
 	font-size: 1.8rem;
@@ -96,20 +100,22 @@ nav {
 		position: absolute;
 		top: 2rem;
 		right: 2rem;
+		color: white;
 	}
 
 	nav a {
 		font-size: 1.5rem;
+		color: white!important;
 	}
 }
 
 @media only screen and (max-width: 768px) {
 	.top-text{
-        font-size: 14px;
+        font-size: 9px;
     }
 }
 @media only screen and (max-width: 480px) {
 	.top-text{
-        font-size: 10px;
+        font-size: 8px;
     }
 }

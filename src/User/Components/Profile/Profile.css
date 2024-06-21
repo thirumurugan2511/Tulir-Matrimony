@@ -1,0 +1,12 @@
+
+@media only screen and (max-width: 768px) {
+    .profile-mobile div {
+       text-align: center!important;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .profile-mobile div {
+            text-align: center !important;
+        }
+}

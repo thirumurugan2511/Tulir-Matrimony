@@ -17,7 +17,8 @@ import Smallicon from "../../Components/heart-icon.png";
 import Lady from "./lady.jpg";
 import Men from "./men.jpg";
 
-const Jathagam = () => {
+const Addjathagam = () => {
+  const { id } = useParams();
   const [data, setData] = useState([]);
   const [formData, setFormData] = useState({
     user_id: "",
@@ -51,64 +52,28 @@ const Jathagam = () => {
     amsam12: "",
   });
   const [profileData, setProfileData] = useState(null);
-
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      // Fetch the list of customers
-      const response = await fetch(
-        "https://tulirmatrimony.com/controlapi/customerlist.php"
-      );
-      const result = await response.json();
-
-      // Get the first customer ID
-      const firstId = result.body[0].id;
-
-      // Fetch the details of the first customer
-      const responsee = await fetch(
-        `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${firstId}`
-      );
-      const res = await responsee.json();
-
-      // Update the state with the fetched profile data and form data
-      setProfileData(res);
-      setFormData({ ...formData, user_id: firstId });
-
-      console.log("Customer List:", result);
-      console.log("First Customer Data:", res);
-    } catch (error) {
-      console.error("Error fetching data:", error);
+  
+  useEffect(() => {
+    if (id) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        user_id: id,
+      }));
     }
-  };
-
-  fetchData();
-}, []);
-
-  //  const userid = formData.user_id;
-  //  console.log(userid)
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch(`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${userid}`);
-  //       const res = await response.json();
-  //       setProfileData(res);
-  //       console.log(res);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-
-  // }, []);
+  }, [id]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const handleSubmit = async (e) => {
+  
+  const handleSubmit = async (e, id) => {
+    
+    
     e.preventDefault();
     try {
+        
+         
+
       //https://tulirmatrimony.com/controlapi/addjathagam.php
       //http://localhost:8000/addjathagam
       const response = await fetch(
@@ -127,7 +92,7 @@ useEffect(() => {
         // Handle success, maybe show a success message
         const responseData = await response.json();
         console.log("Jathagam added successfully!", responseData);
-        alert("Jathagam added successsfully");
+         alert("Jathagam added successsfully");
         window.location.href = "/Member";
       } else {
         // Handle error, maybe show an error message
@@ -618,4 +583,4 @@ useEffect(() => {
   );
 };
 
-export default Jathagam;
+export default Addjathagam;

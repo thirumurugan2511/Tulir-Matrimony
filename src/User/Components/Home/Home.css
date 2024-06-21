@@ -24,4 +24,7 @@
         display: block;
         
     }
+    .card-slider-profile{
+        padding-top: 120px !important;
+    }
 }

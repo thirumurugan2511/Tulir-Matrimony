@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Aside from '../Aside/Aside';
 import { LuLogOut } from "react-icons/lu";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import { IoMdSettings } from "react-icons/io";
@@ -13,6 +13,9 @@ function Paymentedit() {
     const [paymentData, setPaymentData] = useState({});
     const [formData, setFormData] = useState({
         payment_name: '',
+        amount: '',
+        validity: '',
+        description: ''
     });
     const [successMsg, setSuccessMsg] = useState('');
 
@@ -23,6 +26,9 @@ function Paymentedit() {
                 setPaymentData(data.body);
                 setFormData({
                     payment_name: data.body.name || '',
+                    amount: data.body.amount || '',
+                    validity: data.body.validity || '',
+                    description: data.body.description || ''
                 });
             })
             .catch(error => {
@@ -47,33 +53,36 @@ function Paymentedit() {
         // Creating requestData object with the desired format
         const requestData = {
             id: idValue,
-            name: formData.payment_name // Assuming formData.payment_name contains the name
+            name: formData.payment_name,
+            amount: formData.amount,
+            validity: formData.validity,
+            description: formData.description
         };
         const data = JSON.stringify(requestData);
         console.log(data);
-//https://tulirmatrimony.com/controlapi/editplan.php
-//http://localhost:8000/controlapi/editplan
-        fetch('https://tulirmatrimony.com/controlapi/editplan.php', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestData),
+
+
+        //https://tulirmatrimony.com/controlapi/editplan.php
+        //http://localhost:8000/controlapi/editplan
+        fetch("https://tulirmatrimony.com/controlapi/editplan.php", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestData),
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Data updated successfully:', data);
-            setSuccessMsg('Record updated successfully.');
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Data updated successfully:", data);
+            setSuccessMsg("Record updated successfully.");
             setTimeout(() => {
                 window.location.href = '/Payment';
             }, 1000);
-        })
-        .catch(error => {
-            console.error('Error updating payment data:', error);
-        });
+          })
+          .catch((error) => {
+            console.error("Error updating payment data:", error);
+          });
     };
-    
-
 
     return (
         <>
@@ -81,67 +90,65 @@ function Paymentedit() {
                 <div className="layout-container">
                     <Aside />
                     <div className="layout-page">
-                    <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached
-            align-items-center bg-navbar-theme" id="layout-navbar">
-                <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                        <i class="bx bx-menu bx-sm"></i>
-                    </a>
-                </div>
-                <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                    <ol class="breadcrumb breadcrumb-style2 mb-0">
-                        <li><MdManageHistory  class="bx bx-user me-2"/></li>
-                        <li class="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Payment </li>
-                    </ol>
-                    <ul class="navbar-nav flex-row align-items-center ms-auto">
-                        <li class="nav-item lh-1 me-3">
-                                                       <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
-                                                    </li>
-                                                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                                <div class="avatar avatar-online">
-                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
-                                </div>
+                    <nav className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+                        <div className="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                            <a className="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                                <i className="bx bx-menu bx-sm"></i>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0 me-3">
-                                                <div class="avatar avatar-online">
-                                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
-                                                </div>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <span class="fw-semibold d-block mt-2">Admin</span>
-                                            </div>
+                        </div>
+                        <div className="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                            <ol className="breadcrumb breadcrumb-style2 mb-0">
+                                <li><MdManageHistory className="bx bx-user me-2"/></li>
+                                <li className="breadcrumb-item " style={{padding: '2px 10px'}}>  Manage Payment </li>
+                            </ol>
+                            <ul className="navbar-nav flex-row align-items-center ms-auto">
+                                <li className="nav-item lh-1 me-3">
+                                    <GrUserAdmin className="bx bx-user me-2" /><span className="align-middle">Administrator</span>
+                                </li>
+                                <li className="nav-item navbar-dropdown dropdown-user dropdown">
+                                    <a className="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                        <div className="avatar avatar-online">
+                                            <img src={Smallicon} alt="" className="w-px-40 h-auto rounded-circle"/>
                                         </div>
                                     </a>
-                                </li>
-                                <li>
-                                    <div class="dropdown-divider"></div>
-                                </li>
-                                <li>
-                                    <Link class="dropdown-item" to="/Sitesettings">
-                                        <IoMdSettings class="bx bx-cog me-2" />
-                                        <span class="align-middle">Settings</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <div class="dropdown-divider"></div>
-                                </li>
-                                <li>
-                                                                        <Link class="dropdown-item" to="/Signin">
-                                    
-                                        <LuLogOut class="bx bx-power-off me-2" />
-                                        <span class="align-middle">Log Out</span>
-                                    </Link>
+                                    <ul className="dropdown-menu dropdown-menu-end">
+                                        <li>
+                                            <a className="dropdown-item" href="#">
+                                                <div className="d-flex">
+                                                    <div className="flex-shrink-0 me-3">
+                                                        <div className="avatar avatar-online">
+                                                            <img src={Smallicon} alt="" className="w-px-40 h-auto rounded-circle"/>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex-grow-1">
+                                                        <span className="fw-semibold d-block mt-2">Admin</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div className="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <Link className="dropdown-item" to="/Sitesettings">
+                                                <IoMdSettings className="bx bx-cog me-2" />
+                                                <span className="align-middle">Settings</span>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <div className="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <Link className="dropdown-item" to="/Signin">
+                                                <LuLogOut className="bx bx-power-off me-2" />
+                                                <span className="align-middle">Log Out</span>
+                                            </Link>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+                        </div>
+                    </nav>
                         <div className="content-wrapper">
                             <div className="container-xxl flex-grow-1 container-p-y">
                                 <div className="row">
@@ -151,7 +158,7 @@ function Paymentedit() {
                                                 <form id="addEditForm" name="addEditForm" onSubmit={(e) => handleSubmit(e, id)}>
                                                     <div className="mb-3 text-start">
                                                         <label className="form-label" htmlFor="payment_name">
-                                                        Payment Name <span className="Form__Error">*</span>
+                                                            Payment Name <span className="Form__Error">*</span>
                                                         </label>
                                                         <input
                                                             type="text"
@@ -161,6 +168,48 @@ function Paymentedit() {
                                                             name="payment_name"
                                                             onChange={handleChange}
                                                             placeholder="Payment"
+                                                        />
+                                                    </div>
+                                                    <div className="mb-3 text-start">
+                                                        <label className="form-label" htmlFor="amount">
+                                                            Amount <span className="Form__Error">*</span>
+                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            className="form-control required"
+                                                            id="amount"
+                                                            value={formData.amount}
+                                                            name="amount"
+                                                            onChange={handleChange}
+                                                            placeholder="Amount"
+                                                        />
+                                                    </div>
+                                                    <div className="mb-3 text-start">
+                                                        <label className="form-label" htmlFor="validity">
+                                                            Validity <span className="Form__Error">*</span>
+                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            className="form-control required"
+                                                            id="validity"
+                                                            value={formData.validity}
+                                                            name="validity"
+                                                            onChange={handleChange}
+                                                            placeholder="Validity"
+                                                        />
+                                                    </div>
+                                                    <div className="mb-3 text-start">
+                                                        <label className="form-label" htmlFor="description">
+                                                            Description <span className="Form__Error">*</span>
+                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            className="form-control required"
+                                                            id="description"
+                                                            value={formData.description}
+                                                            name="description"
+                                                            onChange={handleChange}
+                                                            placeholder="Description"
                                                         />
                                                     </div>
                                                     <button type="submit" className="btn btn-primary formSubmitBtn" id="formSubmitBtn">

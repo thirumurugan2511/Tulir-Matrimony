@@ -1,5 +1,7 @@
 .speaker-block-three .image-box .image {
   border-radius: 4px!important;
+  border: none !important;
+  height: 250px !important;
 }
 
 .speaker-block-three .info-box:before {
@@ -16,6 +18,18 @@
 .image-box .image {
     width: 85%!important;
 }
+
 .activee {
     color: #f20487 !important;
+}
+.view-pro{
+        background-color: #ffffff;
+            color: #29335c
+}
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    /* Adjust the height as needed */
 }
