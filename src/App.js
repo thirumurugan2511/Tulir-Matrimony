@@ -7,6 +7,8 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import { AuthProvider, useAuth } from "./AuthContext";
+
 import Stories from './Admin/Components/Stories/Stories';
 import Dashboard from './Admin/Components/Dashboard/Dashboard';
 import Storiesadd from './Admin/Components/Stories/Storiesadd';
@@ -70,7 +72,6 @@ import Searchlist from './User/Components/Searchlist/Searchlist';
 import Login from './User/Components/Login/Login';
 import Basicdetails from './User/Components/Profile/Basicdetails';
 import Profile from './User/Components/Profile/Profile';
-import { AuthProvider, useAuth } from "./Auth";
 import Searchform from './User/Components/Searchlist/Searchform';
 import Addjathagam from './Admin/Components/Member/Addjathagam';
 
@@ -155,11 +156,34 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Addjathagam/:id" element={<Addjathagam />} />
             <Route path="/Searchform" element={<Searchform />} />
+
+            <Route
+              path="/Searchlist"
+              element={
+                <ProtectedRoute>
+                  <Searchlist />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/Profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </Router>
       </AuthProvider>
     </div>
   );
 }
+
+
+const ProtectedRoute = ({ children }) => {
+  const { isLoggedIn } = useAuth();
+  return isLoggedIn ? children : <Navigate to="/Login" />;
+};
 
 export default App;

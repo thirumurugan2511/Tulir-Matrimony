@@ -110,7 +110,7 @@ const CardSlider = () => {
                 alt=""
                 className="card-img-top"
               />
-              <div className="card-body mt-2">
+              <div className="card-body info-box-div mt-2">
                 <h5 className="card-title text-white">{card.name}</h5>
                 <p className="card-text">{card.age}Age : 22</p>
                 <p className="card-text mb-1">{card.age}Software Engineer</p>

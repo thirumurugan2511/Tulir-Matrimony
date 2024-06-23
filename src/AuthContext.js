@@ -1,28 +1,15 @@
-// src/AuthContext.js
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const signin = (username, password) => {
-    // Replace with actual sign-in logic (e.g., API call)
-    // For demonstration, we are assuming the sign-in is successful
-    if (username === 'admin' && password === 'password') {
-      setIsAuthenticated(true);
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  const logout = () => {
-    setIsAuthenticated(false);
-  };
+  const login = () => setIsLoggedIn(true);
+  const logout = () => setIsLoggedIn(false);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, signin, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

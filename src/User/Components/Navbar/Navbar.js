@@ -2,20 +2,17 @@ import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink, Link } from "react-router-dom";
 import "./Navbar.css";
-import { useAuth } from "../../../Auth";
+import { useAuth } from "../../../AuthContext";
 import Logo from '../rgt-matrimony-logo.png'
 
 function Navbar() {
-	const navRef = useRef();
-    const { user } = useAuth();
-    console.log('navbar' ,user)
-    
+  const navRef = useRef();
+  const { isLoggedIn, logout } = useAuth();
 
-	const showNavbar = () => {
-		navRef.current.classList.toggle(
-			"responsive_nav"
-		);
-	};
+  const showNavbar = () => {
+    navRef.current.classList.toggle("responsive_nav");
+  };
+    
 
 	return (
     <>
@@ -28,17 +25,27 @@ function Navbar() {
       <header>
         <div className="container row">
           <div className="col-lg-3 col-md-6 col-sm-6 ">
-            <img src={Logo} width="100" height="60" alt=""/>
-       </div>
+            <img src={Logo} width="100" height="60" alt="" />
+          </div>
           <nav
             ref={navRef}
             className="zindex col-lg-9 col-md-6 gap-3 col-sm-6 justify-content-end res_nav"
           >
-            <Link to="/">Home</Link>
-            <Link to="/Plans">Plans</Link>
-            <Link to="/Profile">Profile</Link>
-            <Link to="/Searchlist">Search</Link>
-            <Link to="/Login">Sign In</Link>
+            {isLoggedIn ? (
+              <>
+                <Link to="/">Home</Link>
+                <Link to="/Profile">Profile</Link>
+                <Link to="/Plans">Plans</Link>
+                <Link to="/Searchlist">Search</Link>
+                <button onClick={logout}>Logout</button>
+              </>
+            ) : (
+              <>
+                <Link to="/">Home</Link>
+                <Link to="/Plans">Plans</Link>
+                <Link to="/Login">Sign In</Link>
+              </>
+            )}
 
             {/* <a href="/#">About me</a> */}
             <button className="nav-btn nav-close-btn" onClick={showNavbar}>
