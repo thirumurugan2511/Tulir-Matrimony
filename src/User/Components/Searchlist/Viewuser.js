@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import { IoMdSettings } from "react-icons/io";
 import { MdModeEdit } from "react-icons/md";
 import { LuLogOut } from "react-icons/lu";
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
-import Navbar from '../Navbar/Navbar'
-import './Profile.css';
-import Smallicon from '../rgt-matrimony-logo.png'
-import Editjathagam from '../../../Admin/Components/Member/Editjathagam';
-import "../../../Admin/Components/Member/member.css"
-import Footer from '../Footer/Footer';
+import Navbar from "../Navbar/Navbar";
+import "../Profile/Profile.css";
+import Smallicon from "../rgt-matrimony-logo.png";
+import Editjathagam from "../../../Admin/Components/Member/Editjathagam";
+import "../../../Admin/Components/Member/member.css";
+import Footer from "../Footer/Footer";
 
-
-const Profile = () => {
+const Viewuser = () => {
   const { id } = useParams();
   //http://localhost:8000/fetchmember
   //https://tulirmatrimony.com/controlapi/singlecustomer.php?id=239
- 
 
   console.log(id);
   // (`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`);
@@ -28,7 +26,9 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=239`);
+        const response = await fetch(
+          `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`
+        );
         const res = await response.json();
         setProfileData(res);
         console.log(res);
@@ -130,14 +130,13 @@ const Profile = () => {
                       Back to List
                     </button>
                   </div>
-                  <div className="text-center col-lg-4 mt-2 col-12">
-                    <h2 className="mb-0">My Profile</h2>
-                  </div>
-                  <div className="col-lg-4 text-end col-12 mt-2 float-right">
-                    <Link to="/Editprofile" className="btn btn-secondary">
-                      Edit My Details
-                    </Link>
-                  </div>
+                  {profileData ? (
+                    <div className="text-center col-lg-4 mt-2 col-12">
+                      <h2 className="mb-0">{profileData.body.name} Profile</h2>
+                    </div>
+                  ) : (
+                    <p>Loading...</p>
+                  )}
                 </div>
                 {/* <!-- Toast with Placements --> */}
 
@@ -1236,7 +1235,7 @@ const Profile = () => {
                             <div class="collapse show" id="U_detailsDiv2">
                               <div class="inner_views_detailsFGH">
                                 <div class="row mx-auto">
-                                  <div className="text-end">
+                                  {/* <div className="text-end">
                                     <Link
                                       to={`/Edituserjathagam/${id}`}
                                       class="icon_usBox"
@@ -1244,7 +1243,7 @@ const Profile = () => {
                                       <MdModeEdit class="bx bxs-edit" /> Edit
                                       Jathagam
                                     </Link>
-                                  </div>
+                                  </div> */}
                                   {data ? (
                                     <>
                                       <div className="row">
@@ -1531,6 +1530,6 @@ const Profile = () => {
       {/* <Footer /> */}
     </>
   );
-}
+};
 
-export default Profile
+export default Viewuser;

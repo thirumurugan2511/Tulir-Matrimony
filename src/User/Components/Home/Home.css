@@ -5,7 +5,17 @@
 
 .search-form-btn {
     margin-top: -200px !important;
-    display: none;
+  
+}
+.load-spin{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+.back-spin {
+    background-image: url("../back-spin.gif");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 #carouselExampleIndicators{
     z-index: -1;

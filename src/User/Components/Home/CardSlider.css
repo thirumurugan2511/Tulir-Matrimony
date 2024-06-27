@@ -37,6 +37,9 @@
 .info-box-div {
    background-color: #f20487 !important;
    border-radius: 10px;
+      width: 100% !important;
+         margin: auto;
+            margin-bottom: 10px;
 }
 .info-box {
    background-color: #f20487;
@@ -53,6 +56,18 @@
 }
 .pro-border{
    border-radius: 10px 0 0 10px !important;
+   padding: 10px !important;
+}
+.load-spin {
+   width: 130px;
+   height: 130px;
+   border-radius: 50%;
+}
+
+.back-spin {
+   background-image: url("../back-spin.gif");
+   background-repeat: no-repeat;
+   background-position: center;
 }
 
 .view-pro {
@@ -71,7 +86,10 @@
    /* Adjust the height as needed */
 }
 .card-img-top{
-   height: 300px!important;
+   height: 250px!important;
+   width: 100%;
+   margin: auto!important;
+   margin-top: 10px !important;
 }
 @media only screen and (max-width: 768px) {
    .card {

@@ -18,7 +18,9 @@
 .image-box .image {
     width: 85%!important;
 }
-
+.MuiPagination-text{
+    justify-content: center!important;
+}
 .activee {
     color: #f20487 !important;
 }

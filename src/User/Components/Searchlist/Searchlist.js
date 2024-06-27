@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./Searchlist.css";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { Link } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import { Spinner } from "react-bootstrap";
+import loaderGif from "../loader-spin.gif";
+import "../Spinner/Spinner.css";
 
 const Searchlist = () => {
   const [data, setData] = useState([]);
@@ -38,12 +44,9 @@ const Searchlist = () => {
   const currentProfiles = data.slice(indexOfFirstProfile, indexOfLastProfile);
 
   // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(data.length / profilesPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  const paginate = (event, pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   // Function to show alert and track click counts
   const handleClick = () => {
@@ -62,16 +65,11 @@ const Searchlist = () => {
   return (
     <>
       {loading ? (
-        <div className="spinner-container">
-          <div className="d-flex align-items-center justify-content-center">
-            <div
-              className="spinner-grow"
-              style={{ width: "3rem", height: "3rem" }}
-              role="status"
-            >
-              <span className="sr-only"></span>
-            </div>
-          </div>
+        <div
+          className="d-flex justify-content-center back-spin"
+          style={{ height: "100vh", alignItems: "center" }}
+        >
+          <img src={loaderGif} alt="Loading..." className="load-spin" />
         </div>
       ) : (
         <>
@@ -79,7 +77,6 @@ const Searchlist = () => {
           <section className="speakers-section-three pt-5">
             <div className="auto-container">
               <h4 className="mb-3">
-                {/* நீங்கள் {clickCount} சுயவிவரங்களை பார்த்திருக்கிறீர்கள். */}
                 உங்களிடம் {remainingLimit} சுயவிவரங்களை பார்க்கும் வாய்ப்பு
                 உள்ளது.
               </h4>
@@ -125,32 +122,35 @@ const Searchlist = () => {
                             {item.district} Madurai{" "}
                           </span>
                         </a>
-                        <button
+                        <Link
+                          className="btn py-2 mt-2 view-pro"
+                          to={`/Viewuser/${item.id}`}
+                          // Disable button if limit is reached
+                        >
+                          View Profile
+                        </Link>
+                        {/* <Link
                           className="btn py-2 mt-2 view-pro"
                           onClick={handleClick}
+                          to={`/Viewuser/${item.id}`}
                           disabled={remainingLimit <= 0} // Disable button if limit is reached
                         >
                           View Profile
-                        </button>
+                        </Link> */}
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
               <div align="center" className="col-lg-12">
-                <ul className="styled-pagination" id="pagination">
-                  <li className="setPage">
-                    Page {currentPage} of {pageNumbers.length}
-                  </li>
-                  {pageNumbers.map((number) => (
-                    <li
-                      key={number}
-                      className={number === currentPage ? "activee" : ""}
-                    >
-                      <a onClick={() => paginate(number)}>{number}</a>
-                    </li>
-                  ))}
-                </ul>
+                <Stack spacing={2}>
+                  <Pagination
+                    count={Math.ceil(data.length / profilesPerPage)}
+                    page={currentPage}
+                    onChange={paginate}
+                    color="secondary"
+                  />
+                </Stack>
               </div>
             </div>
           </section>

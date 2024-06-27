@@ -22,7 +22,7 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	height: 80px;
-	padding: 0 2rem;
+	padding: 0 1rem;
 	background-color: white;
 	color: #29335c;
 	border-bottom: #29335c 1px solid;
@@ -35,7 +35,11 @@ header {
     width: 100%;
     background-color:  #29335c;
     color: white;
+	font-size: 14px;
 
+}
+.navbar-logo{
+	height: 65px;
 }
 nav a {
 	/* margin: 0 1rem; */
@@ -64,6 +68,9 @@ header div,
 nav {
 	display: flex;
 	align-items: center;
+}
+.top-text{
+	font-size: 12px;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -118,4 +125,8 @@ nav {
 	.top-text{
         font-size: 8px;
     }
+	.navbar-logo{
+		height: 50px;
+	}
+
 }

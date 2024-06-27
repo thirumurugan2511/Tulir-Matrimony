@@ -70,10 +70,12 @@ import Genprint from './Admin/Components/Member/Genprint';
 import Editjathagam from './Admin/Components/Member/Editjathagam';
 import Searchlist from './User/Components/Searchlist/Searchlist';
 import Login from './User/Components/Login/Login';
-import Basicdetails from './User/Components/Profile/Basicdetails';
+import Editprofile from "./User/Components/Profile/Editprofile";
 import Profile from './User/Components/Profile/Profile';
 import Searchform from './User/Components/Searchlist/Searchform';
 import Addjathagam from './Admin/Components/Member/Addjathagam';
+import Edituserjathagam from './User/Components/Profile/Edituserjathagam';
+import Viewuser from './User/Components/Searchlist/Viewuser';
 
 
 
@@ -152,11 +154,15 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/Searchlist" element={<Searchlist />} />
             <Route path="/Profile" element={<Profile />} />
-            <Route path="/Basicdetails" element={<Basicdetails />} />
+            <Route path="/Editprofile" element={<Editprofile />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Addjathagam/:id" element={<Addjathagam />} />
             <Route path="/Searchform" element={<Searchform />} />
+            <Route path="/Viewuser/:id" element={<Viewuser />} />
 
+            <Route path="/Edituserjathagam" element={<Edituserjathagam />} />
+
+            <Route path="/Searchform" element={<Searchform />} />
             <Route
               path="/Searchlist"
               element={

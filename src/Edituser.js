@@ -1186,17 +1186,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
       <div className='card-body m-5 edit_memberSections_mainsdsd '>
       <div className="edit_inputMain-sltr row">
   
-  {/* <div className="col-lg-6 col-md-6 mb-4 text-start">
-    <label htmlFor="regId">Registration ID</label>
-    <input
-      type="text"
-      id="regid"
-      name="regid"
-      className="form-control"
-      value={regId}
-      readOnly  
-    />
-  </div> */}
+
 
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (

@@ -25,7 +25,7 @@ function Navbar() {
       <header>
         <div className="container row">
           <div className="col-lg-3 col-md-6 col-sm-6 ">
-            <img src={Logo} width="100" height="60" alt="" />
+            <img src={Logo} className="navbar-logo" alt="" />
           </div>
           <nav
             ref={navRef}
@@ -35,14 +35,14 @@ function Navbar() {
               <>
                 <Link to="/">Home</Link>
                 <Link to="/Profile">Profile</Link>
-                <Link to="/Plans">Plans</Link>
+                <Link to="/Plans">Membership Plans</Link>
                 <Link to="/Searchlist">Search</Link>
-                <button onClick={logout}>Logout</button>
+                <button className="btn btn-info" onClick={logout}>Logout</button>
               </>
             ) : (
               <>
                 <Link to="/">Home</Link>
-                <Link to="/Plans">Plans</Link>
+                <Link to="/Plans">Membership Plans</Link>
                 <Link to="/Login">Sign In</Link>
               </>
             )}

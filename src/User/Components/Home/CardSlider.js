@@ -4,6 +4,7 @@ import styled from "styled-components";
 import "./CardSlider.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import loaderGif from "../loader-spin.gif";
 
 const CardSliderContainer = styled.div`
   .slick-slide {
@@ -61,7 +62,7 @@ const CardSlider = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 4000,
     responsive: [
       {
@@ -96,7 +97,14 @@ const CardSlider = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div
+        className="d-flex justify-content-center back-spin"
+        style={{ height: "100vh", alignItems: "center" }}
+      >
+        <img src={loaderGif} alt="Loading..." className="load-spin" />
+      </div>
+    );
   }
 
   return (

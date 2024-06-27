@@ -1,119 +1,138 @@
-import Footer from "./Footer/Footer";
 import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
+import styled from "styled-components";
+import "../Components/Home/CardSlider.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import loaderGif from "./loader-spin.gif";
+
+const CardSliderContainer = styled.div`
+  .slick-slide {
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+const Card = styled.div`
+  width: 100%;
+  margin: 0 10px;
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+`;
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
 
 const Hstories = () => {
-  const [data, setData] = useState([]);
+  const [cards, setCards] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        //https://tulirmatrimony.com/controlapi/successlist.php
+        //http://localhost:8000/data/hstories
         const response = await fetch(
           "https://tulirmatrimony.com/controlapi/successlist.php"
         );
         const result = await response.json();
-        console.log(result);
-        setData(result.body);
+        const shuffledCards = shuffleArray(result.body).slice(0, 8);
+        setCards(shuffledCards);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  return (
-    <>
-      <section className="news-section d-none d-md-block d-lg-block d-xl-block">
-        <div className="anim-icons">
-          <span className="icon icon-circle-blue wow fadeIn animated"></span>
-          <span className="icon twist-line-1 wow zoomIn animated"></span>
-          <span className="icon twist-line-2 wow zoomIn animated"></span>
-          <span className="icon twist-line-3 wow zoomIn animated"></span>
-        </div>
-        <div className="auto-container">
-          <div className="sec-title text-center">
-            <span className="title"> Our </span>
-            <h2>Happy Story</h2>
-          </div>
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 540,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
-          <div className="row">
-            <div
-              id="carouselExampleDark"
-              className="carousel carousel-dark slide row"
-              data-bs-ride="carousel"
-            >
-              <div className="carousel-inner">
-                {data.map((item, index) => (
-                  <div
-                    key={item.id}
-                    className={`news-block col-lg-4 col-md-6 col-sm-12 wow fadeInRight animated ${
-                      index === 0 ? "active" : ""
-                    }`}
-                  >
-                    <div className="inner-box">
-                      <div className="image-box">
-                        <figure className="image">
-                          <a href="success_story">
-                            <img
-                              className="w-30"
-                              src={`data:image/jpeg;base64,${item.image}`}
-                              alt=""
-                            />
-                          </a>
-                        </figure>
-                      </div>
-                      <div className="lower-content">
-                        <ul className="post-info">
-                          <li>
-                            <span className="far fa-user"></span>
-                            <a href="success_story">{item.marriage_date}</a>
-                          </li>
-                        </ul>
-                        <h4>
-                          <a href="success_story">
-                            {item.bridename} &amp; {item.groom_name}
-                          </a>
-                        </h4>
-                        <p>{item.Message}</p>
-                        <div className="btn-box btn">
-                          {/* <a href="success_story" className="read-more">
-                            View More
-                          </a> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+  if (loading) {
+    return (
+      <div
+        className="d-flex justify-content-center back-spin"
+        style={{ height: "100vh", alignItems: "center" }}
+      >
+        <img src={loaderGif} alt="Loading..." className="load-spin" />
+      </div>
+    );
+  }
+
+  return (
+    
+    <CardSliderContainer>
+      <Slider {...settings}>
+        
+        {cards.map((card, index) => (
+          
+          <Card key={index}>
+            <div className="card pro-border" style={{ width: "18rem" }}>
+              <img
+                src={`data:image/jpeg;base64,${card.image}`}
+                alt=""
+                className="card-img-top"
+              />
+              <div className="card-body info-box-div mt-2">
+                <h5 className="card-title text-white">{card.marriage_date}</h5>
+                <p className="card-text">
+                  {card.bridename} &amp; {card.groom_name}
+                </p>
+               
               </div>
-              <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleDark"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleDark"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Next</span>
-              </button>
             </div>
-          </div>
-        </div>
-      </section>
-    </>
+          </Card>
+        ))}
+      </Slider>
+    </CardSliderContainer>
   );
 };
 

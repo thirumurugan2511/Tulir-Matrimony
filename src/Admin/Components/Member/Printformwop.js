@@ -171,7 +171,7 @@ const Printformwop = () => {
                     <td className="fw-bold">திருமணமானவர்கள்</td>
                     <td>
                       : {profileData.body.brother_married} /{" "}
-                      {profileData.body.brother_married}{" "}
+                      {profileData.body.sister}{" "}
                     </td>
                   </tr>
                   <tr>

@@ -5,3 +5,17 @@ footer {
     bottom: 0;
     
 }
+@media only screen and (max-width: 768px) {
+    .foot-text {
+        font-size: 9px;
+        text-align: center !important;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .foot-text {
+        font-size: 8px;
+        text-align: center!important;
+    }   
+
+}

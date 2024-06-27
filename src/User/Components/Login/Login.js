@@ -3,6 +3,7 @@ import { useAuth } from "../../../AuthContext";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Logo from '../rgt-matrimony-logo.png'
+import './Login.css'
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -28,10 +29,11 @@ const Login = () => {
   return (
  
       <>
+      <Navbar />
         <div className="container">
           <div className="authentication-wrapper authentication-basic container-p-y">
             <div className="authentication-inner">
-              <div className="card  col-md-4 mt-5 mx-auto">
+              <div className="card login-div col-md-4 mt-5 mx-auto">
                 <div className="card-body">
                   <div className="app-brand justify-content-center">
                     <a href="#" className="app-brand-link gap-2">
@@ -44,7 +46,7 @@ const Login = () => {
                       <i className="bx bx-chevron-left bx-sm align-middle"></i>
                     </a>
                   </div>
-                  <p className="mb-4 mt-2">Welcome to RTS Matrimony.</p>
+                  <p className="mb-4 mt-2">Welcome to Tulir Matrimony.</p>
                   <form
                     id="formAuthentication"
                     className="mb-3"
