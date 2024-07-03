@@ -56,6 +56,7 @@ const Viewmember = () => {
 
     fetchData();
   }, [id]);
+
   const formatDate = (dateStr) => {
     if (!dateStr) return '';
     const [year, month, day] = dateStr.split('-');
@@ -780,6 +781,7 @@ const Viewmember = () => {
                     </div>
                 </div>
             </div>
+            
 
             </div>
           </div>

@@ -9,16 +9,18 @@ import Aside from '../Aside/Aside';
 import Smallicon from '../../Components/heart-icon.png';
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import loaderGif from "./loader-spin.gif";
+import backspin from './back-spin.gif'
 
 const Member = () => {
   const [data, setData] = useState([]);
   const [plans, setPlans] = useState([]);
   const [selectedPlans, setSelectedPlans] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 10;
     const [clickCount, setClickCount] = useState(0); // State variable to track the number of clicks
     const [remainingLimit, setRemainingLimit] = useState(10); // State variable to track the remaining limit
-    const [loading, setLoading] = useState(true); // State variable for loading status
+  const [loading, setLoading] = useState(true); // State variable for loading status
     const profilesPerPage = 5;
 
   useEffect(() => {
@@ -30,32 +32,19 @@ const Member = () => {
           "https://tulirmatrimony.com/controlapi/customerlist.php"
         );
         const result = await response.json();
-        // Sort data in descending order
-        const sortedData = result.body.sort((a, b) => b.reg_id - a.reg_id);
-        setData(sortedData);
+        console.log(result);
+        setData(result.body);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Set loading to false after data is fetched
       }
     };
 
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchPlans = async () => {
-      try {
-        const response = await fetch(
-          "https://tulirmatrimony.com/controlapi/planlist.php"
-        );
-        const result = await response.json();
-        setPlans(result.body);
-      } catch (error) {
-        console.error("Error fetching plans:", error);
-      }
-    };
-
-    fetchPlans();
-  }, []);
+ 
   // Calculate the profiles to display based on the current page
   const indexOfLastProfile = currentPage * profilesPerPage;
   const indexOfFirstProfile = indexOfLastProfile - profilesPerPage;
@@ -225,59 +214,73 @@ const Member = () => {
                 <div className="card">
                   <h5 className="card-header">Manage Member List</h5>
                   <div className="table-responsive text-nowrap" id="resultData">
-                    <table className="table">
-                      <caption className="d-none">
-                        &nbsp;&nbsp; Result Data
-                      </caption>
-                      <thead className="text-start">
-                        <tr className="text-nowrap">
-                          <th scope="col">Reg ID</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Images</th>
-                          <th scope="col">Plan Name</th>
-                          <th scope="col">View</th>
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody className="text-start">
-                        {paginatedData.map((item) => (
-                          <tr key={item.id}>
-                            <td>{item.reg_id}</td>
-                            <td>{item.name}</td>
-                            <td>
-                              <img
-                                src={`data:image/jpeg;base64,${item.image}`}
-                                height={50}
-                                width={50}
-                                alt="User Profile"
-                                className="w-px-40 rounded"
-                              />
-                            </td>
-                            <td>{item.plan_name}</td>
-                            <td>
-                              <Link to={`/Viewmember/${item.id}`}>
-                                <FaEye className="bx bxs-edit" />
-                              </Link>
-                            </td>
-                            <td>
-                              <Link to={`/Edituser/${item.id}`}>
-                                <MdModeEdit className="bx bxs-edit" /> Edit
-                              </Link>{" "}
-                              /
-                              <Link
-                                to="#"
-                                onClick={() => handleDelete(item.id)}
-                                className="text-ed"
-                              >
-                                {" "}
-                                <MdDelete className="bx bxs-edit" />
-                                Delete
-                              </Link>
-                            </td>
+                    {loading ? (
+                      <div
+                        className="d-flex justify-content-center back-spin text-center"
+                        style={{ height: "100vh", alignItems: "center" }}
+                      >
+                        <img
+                          src={loaderGif}
+                          alt="Loading..."
+                          className="load-spin"
+                        />
+                      </div>
+                    ) : (
+                      <table className="table">
+                        <caption className="d-none">
+                          &nbsp;&nbsp; Result Data
+                        </caption>
+                        <thead className="text-start">
+                          <tr className="text-nowrap">
+                            <th scope="col">Reg ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Images</th>
+                            <th scope="col">Plan Name</th>
+                            <th scope="col">View</th>
+                            <th scope="col">Action</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+
+                        <tbody className="text-start">
+                          {paginatedData.map((item) => (
+                            <tr key={item.id}>
+                              <td>{item.reg_id}</td>
+                              <td>{item.name}</td>
+                              <td>
+                                <img
+                                  src={`data:image/jpeg;base64,${item.image}`}
+                                  height={50}
+                                  width={50}
+                                  alt="User Profile"
+                                  className="w-px-40 rounded"
+                                />
+                              </td>
+                              <td>{item.plan_name}</td>
+                              <td>
+                                <Link to={`/Viewmember/${item.id}`}>
+                                  <FaEye className="bx bxs-edit" />
+                                </Link>
+                              </td>
+                              <td>
+                                <Link to={`/Edituser/${item.id}`}>
+                                  <MdModeEdit className="bx bxs-edit" /> Edit
+                                </Link>{" "}
+                                /
+                                <Link
+                                  to="#"
+                                  onClick={() => handleDelete(item.id)}
+                                  className="text-ed"
+                                >
+                                  {" "}
+                                  <MdDelete className="bx bxs-edit" />
+                                  Delete
+                                </Link>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    )}
                   </div>
                 </div>
                 <div className="">

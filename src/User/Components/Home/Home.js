@@ -111,7 +111,7 @@ const Home = () => {
               </Link>
             </div>
           </section>
-          <section className="mt-5 pt-5 mb-5 card-slider-profile">
+          <section className="mt-5 pt-5 mb-5 card-slider-profile container">
             <CardSlider />
           </section>
           <About />

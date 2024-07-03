@@ -589,7 +589,7 @@ const fetchUserData = async () => {
   };
   const sectionNames = {
     section1: 'Basic Details',
-    section2: 'Residece',
+    section2: 'Residence',
     section3: 'Physical Info',
     section4: 'Family Details',
     section5: 'Partner Preferences',
@@ -1078,12 +1078,12 @@ const handleSubmit = async (sectionName, sectionData, id) => {
       
       if (responseData.head.code === 200) {
         // Handle the success scenario, such as updating the UI or moving to another section
-        setCurrentSection('section6');
+        alert("Successfully updated");
         window.location.href = '/Member';
         
       } else {
         // Handle the case where code is not 200
-        setCurrentSection('section6');
+        alert("Successfully updated");
         console.error('Error:', responseData.head.msg);
       
       }

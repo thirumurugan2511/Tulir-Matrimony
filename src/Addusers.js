@@ -17,206 +17,211 @@ const Addusers = () => {
 
   const [options, setOptions] = useState({
     genderOptions: [
-    { value: 'Male', label: 'Male' },
-    { value: 'Female', label: 'Female' }
-  ],
-  sevaikiragamOptions: [
-    { value: 'Yes', label: 'Yes' },
-    { value: 'No', label: 'No' }
-  ],
-  status_childrenOptions: [
-    { value: 'Yes', label: 'Yes' },
-    { value: 'No', label: 'No' }
-  ], 
-  patham_numberOptions: [
-    { value: '1', label: '1' },
-    { value: '2', label: '2' },
-    { value: '3', label: '3' },
-    { value: '4', label: '4' }
-  ], 
-  plan_statusOptions : [
-    { value: 'Paid', label: 'Paid' },
-    { value: 'Not Paid', label: 'Not Paid' }    
-  ],
-  brother_marriedOptions: [
-    { value: 'Married', label: 'Married' },
-    { value: 'Unmarried', label: 'Unmarried' }
-  ],
-  sister_marriedOptions: [
-    { value: 'Married', label: 'Married' },
-    { value: 'Unmarried', label: 'Unmarried' }
-  ],
-  
-  smokingOptions: [
-    { value: 'Yes', label: 'Yes' },
-    { value: 'No', label: 'No' },
-    { value: 'Planning to Leave', label: 'Planning to Leave' }
-  ],
-  drinkingOptions: [
-    { value: 'Yes', label: 'Yes' },
-    { value: 'No', label: 'No' },
-    { value: 'Planning to Leave', label: 'Planning to Leave' }
-  ], 
-  partner_matrial_statusOptions : [
-    { value: 'Single', label: 'Single' },
-    { value: 'Divorce', label: 'Divorce' },
-    { value: 'Widow', label: 'Widow' },
-    { value: 'anyone', label: 'Any One' }
-  ],
-  food_habitsOptions : [
-    { value: 'Vegetarian', label: 'Vegetarian' },
-    { value: 'Non-Vegetarian', label: 'Non-Vegetarian' }  
-    
-  ],
-  partner_child_genderOptions : [
-    { value: 'male', label: 'Male' },
-    { value: 'female', label: 'Female' }   
-  ],
-  partner_manglikOptions : [
-    { value: 'Yes', label: 'Yes' },
-    { value: 'no', label: 'No' }    
-  ],
- 
-  // partner_educationOptions: [
-  //   { value: 'Bachelor', label: 'Bachelor' },
-  //   { value: 'Master', label: 'Master' },
-  //   { value: 'Phd', label: 'Phd' },
-  //   { value: 'Others', label: 'Others' },
-  // ],
-  // body_typeOptions : [
-  //   { value: 'Slim', label: 'Slim' },
-  //   { value: 'Average', label: 'Average' },
-  //   { value: 'Fat', label: 'Fat' }  
-    
-  // ],
-  // educationOptions: [
-  //   { value: 'Bachelor', label: 'Bachelor' },
-  //   { value: 'Master', label: 'Master' },
-  // ],
-  resideceOptions : [
-    { value: 'Citizen', label: 'Citizen' },
-    { value: 'Permanent Resident', label: 'Permanent Resident' },
-    { value: 'Temporary Visa', label: 'Temporary Visa' },
-    { value: 'Work Permit', label: 'Work Permit' }
-    
-  ],
-  skin_toneOptions : [
-    { value: 'Wheatish', label: 'Wheatish' },
-    { value: 'Very Fair', label: 'Very Fair' },
-    { value: 'Fair', label: 'Fair' },
-    { value: 'Wheatish Brown', label: 'Wheatish Brown' },
-    { value: 'Dark', label: 'Dark' }  
-  ],
-  profile_byOptions : [
-    { value: 'Self', label: 'Self' },
-    { value: 'Parents', label: 'Parents' },
-    { value: 'Guardian', label: 'Guardian' },
-    { value: 'Friends', label: 'Friends' },
-    { value: 'Relatives', label: 'Relatives' }
-  ],
-  family_typeOptions : [
-    { value: 'Rich ', label: 'Rich' },
-    { value: 'Upper Middle Class', label: 'Upper Middle Class' }, 
-    { value: 'Lower Middle Class', label: 'Lower Middle Class' },  
-    { value: 'Middle Class', label: 'Middle Class' }, 
-    { value: 'Poor', label: 'Poor' } 
-  ],
-  family_statusOptions : [
-    { value: 'Nuclear Family', label: 'Nuclear Family' },
-   { value: 'Joint Family', label: 'Joint Family' }  
-  ],
-  partner_from_ageOptions : [
-    { value: '18', label: '18 Years' },
-    { value: '19', label: '19 Years' },
-    { value: '20', label: '20 Years' },
-    { value: '21', label: '21 Years' },
-    { value: '22', label: '22 Years' },
-    { value: '23', label: '23 Years' },
-    { value: '24', label: '24 Years' },
-    { value: '25', label: '25 Years' },
-    { value: '26', label: '26 Years' },
-    { value: '27', label: '27 Years' },
-    { value: '28', label: '28 Years' },
-    { value: '29', label: '29 Years' },
-    { value: '30', label: '30 Years' },
-    { value: '31', label: '31 Years' },
-    { value: '32', label: '32 Years' },
-    { value: '33', label: '33 Years' },
-    { value: '34', label: '34 Years' },
-    { value: '35', label: '35 Years' },
-    { value: '36', label: '36 Years' },
-    { value: '37', label: '37 Years' },
-    { value: '38', label: '38 Years' },
-    { value: '39', label: '39 Years' },
-    { value: '40', label: '40 Years' },
-    { value: '41', label: '41 Years' },
-    { value: '42', label: '42 Years' },
-    { value: '43', label: '43 Years' },
-    { value: '44', label: '44 Years' },
-    { value: '45', label: '45 Years' },
-    { value: '46', label: '46 Years' },
-    { value: '47', label: '47 Years' },
-    { value: '48', label: '48 Years' },
-    { value: '49', label: '49 Years' },
-    { value: '50', label: '50 Years' },
-    { value: '51', label: '51 Years' },
-    { value: '52', label: '52 Years' },
-    { value: '53', label: '53 Years' },
-    { value: '54', label: '54 Years' },
-    { value: '55', label: '55 Years' },
-    { value: '56', label: '56 Years' },
-    { value: '57', label: '57 Years' },
-    { value: '58', label: '58 Years' },
-    { value: '59', label: '59 Years' },
-    { value: '60', label: '60 Years' }
-  ],
-  partner_to_ageOptions : [
-    { value: '18', label: '18 Years' },
-    { value: '19', label: '19 Years' },
-    { value: '20', label: '20 Years' },
-    { value: '21', label: '21 Years' },
-    { value: '22', label: '22 Years' },
-    { value: '23', label: '23 Years' },
-    { value: '24', label: '24 Years' },
-    { value: '25', label: '25 Years' },
-    { value: '26', label: '26 Years' },
-    { value: '27', label: '27 Years' },
-    { value: '28', label: '28 Years' },
-    { value: '29', label: '29 Years' },
-    { value: '30', label: '30 Years' },
-    { value: '31', label: '31 Years' },
-    { value: '32', label: '32 Years' },
-    { value: '33', label: '33 Years' },
-    { value: '34', label: '34 Years' },
-    { value: '35', label: '35 Years' },
-    { value: '36', label: '36 Years' },
-    { value: '37', label: '37 Years' },
-    { value: '38', label: '38 Years' },
-    { value: '39', label: '39 Years' },
-    { value: '40', label: '40 Years' },
-    { value: '41', label: '41 Years' },
-    { value: '42', label: '42 Years' },
-    { value: '43', label: '43 Years' },
-    { value: '44', label: '44 Years' },
-    { value: '45', label: '45 Years' },
-    { value: '46', label: '46 Years' },
-    { value: '47', label: '47 Years' },
-    { value: '48', label: '48 Years' },
-    { value: '49', label: '49 Years' },
-    { value: '50', label: '50 Years' },
-    { value: '51', label: '51 Years' },
-    { value: '52', label: '52 Years' },
-    { value: '53', label: '53 Years' },
-    { value: '54', label: '54 Years' },
-    { value: '55', label: '55 Years' },
-    { value: '56', label: '56 Years' },
-    { value: '57', label: '57 Years' },
-    { value: '58', label: '58 Years' },
-    { value: '59', label: '59 Years' },
-    { value: '60', label: '60 Years' }
-  ],
-  
-});
+      { value: "Male", label: "Male" },
+      { value: "Female", label: "Female" },
+    ],
+    sevaikiragamOptions: [
+      { value: "Yes", label: "Yes" },
+      { value: "No", label: "No" },
+    ],
+    bloodgroupOptions: [
+      { value: "A Positive", label: "A Positive" },
+      { value: "A Negative", label: "A Negative" },
+      { value: "B Positive", label: "B Positive" },
+      { value: "B Negative", label: "B Negative" },
+      { value: "O Positive", label: "O Positive" },
+      { value: "O Negative", label: "O Negative" },
+    ],
+    status_childrenOptions: [
+      { value: "Yes", label: "Yes" },
+      { value: "No", label: "No" },
+    ],
+    patham_numberOptions: [
+      { value: "1", label: "1" },
+      { value: "2", label: "2" },
+      { value: "3", label: "3" },
+      { value: "4", label: "4" },
+    ],
+    plan_statusOptions: [
+      { value: "Paid", label: "Paid" },
+      { value: "Not Paid", label: "Not Paid" },
+    ],
+    brother_marriedOptions: [
+      { value: "Married", label: "Married" },
+      { value: "Unmarried", label: "Unmarried" },
+    ],
+    sister_marriedOptions: [
+      { value: "Married", label: "Married" },
+      { value: "Unmarried", label: "Unmarried" },
+    ],
+
+    smokingOptions: [
+      { value: "Yes", label: "Yes" },
+      { value: "No", label: "No" },
+      { value: "Planning to Leave", label: "Planning to Leave" },
+    ],
+    drinkingOptions: [
+      { value: "Yes", label: "Yes" },
+      { value: "No", label: "No" },
+      { value: "Planning to Leave", label: "Planning to Leave" },
+    ],
+    partner_matrial_statusOptions: [
+      { value: "Single", label: "Single" },
+      { value: "Divorce", label: "Divorce" },
+      { value: "Widow", label: "Widow" },
+      { value: "anyone", label: "Any One" },
+    ],
+    food_habitsOptions: [
+      { value: "Vegetarian", label: "Vegetarian" },
+      { value: "Non-Vegetarian", label: "Non-Vegetarian" },
+    ],
+    partner_child_genderOptions: [
+      { value: "male", label: "Male" },
+      { value: "female", label: "Female" },
+    ],
+    partner_manglikOptions: [
+      { value: "Yes", label: "Yes" },
+      { value: "no", label: "No" },
+    ],
+
+    // partner_educationOptions: [
+    //   { value: 'Bachelor', label: 'Bachelor' },
+    //   { value: 'Master', label: 'Master' },
+    //   { value: 'Phd', label: 'Phd' },
+    //   { value: 'Others', label: 'Others' },
+    // ],
+    // body_typeOptions : [
+    //   { value: 'Slim', label: 'Slim' },
+    //   { value: 'Average', label: 'Average' },
+    //   { value: 'Fat', label: 'Fat' }
+
+    // ],
+    // educationOptions: [
+    //   { value: 'Bachelor', label: 'Bachelor' },
+    //   { value: 'Master', label: 'Master' },
+    // ],
+    resideceOptions: [
+      { value: "Citizen", label: "Citizen" },
+      { value: "Permanent Resident", label: "Permanent Resident" },
+      { value: "Temporary Visa", label: "Temporary Visa" },
+      { value: "Work Permit", label: "Work Permit" },
+    ],
+    skin_toneOptions: [
+      { value: "Wheatish", label: "Wheatish" },
+      { value: "Very Fair", label: "Very Fair" },
+      { value: "Fair", label: "Fair" },
+      { value: "Wheatish Brown", label: "Wheatish Brown" },
+      { value: "Dark", label: "Dark" },
+    ],
+    profile_byOptions: [
+      { value: "Self", label: "Self" },
+      { value: "Parents", label: "Parents" },
+      { value: "Guardian", label: "Guardian" },
+      { value: "Friends", label: "Friends" },
+      { value: "Relatives", label: "Relatives" },
+    ],
+    family_typeOptions: [
+      { value: "Rich ", label: "Rich" },
+      { value: "Upper Middle Class", label: "Upper Middle Class" },
+      { value: "Lower Middle Class", label: "Lower Middle Class" },
+      { value: "Middle Class", label: "Middle Class" },
+      { value: "Poor", label: "Poor" },
+    ],
+    family_statusOptions: [
+      { value: "Nuclear Family", label: "Nuclear Family" },
+      { value: "Joint Family", label: "Joint Family" },
+    ],
+    partner_from_ageOptions: [
+      { value: "18", label: "18 Years" },
+      { value: "19", label: "19 Years" },
+      { value: "20", label: "20 Years" },
+      { value: "21", label: "21 Years" },
+      { value: "22", label: "22 Years" },
+      { value: "23", label: "23 Years" },
+      { value: "24", label: "24 Years" },
+      { value: "25", label: "25 Years" },
+      { value: "26", label: "26 Years" },
+      { value: "27", label: "27 Years" },
+      { value: "28", label: "28 Years" },
+      { value: "29", label: "29 Years" },
+      { value: "30", label: "30 Years" },
+      { value: "31", label: "31 Years" },
+      { value: "32", label: "32 Years" },
+      { value: "33", label: "33 Years" },
+      { value: "34", label: "34 Years" },
+      { value: "35", label: "35 Years" },
+      { value: "36", label: "36 Years" },
+      { value: "37", label: "37 Years" },
+      { value: "38", label: "38 Years" },
+      { value: "39", label: "39 Years" },
+      { value: "40", label: "40 Years" },
+      { value: "41", label: "41 Years" },
+      { value: "42", label: "42 Years" },
+      { value: "43", label: "43 Years" },
+      { value: "44", label: "44 Years" },
+      { value: "45", label: "45 Years" },
+      { value: "46", label: "46 Years" },
+      { value: "47", label: "47 Years" },
+      { value: "48", label: "48 Years" },
+      { value: "49", label: "49 Years" },
+      { value: "50", label: "50 Years" },
+      { value: "51", label: "51 Years" },
+      { value: "52", label: "52 Years" },
+      { value: "53", label: "53 Years" },
+      { value: "54", label: "54 Years" },
+      { value: "55", label: "55 Years" },
+      { value: "56", label: "56 Years" },
+      { value: "57", label: "57 Years" },
+      { value: "58", label: "58 Years" },
+      { value: "59", label: "59 Years" },
+      { value: "60", label: "60 Years" },
+    ],
+    partner_to_ageOptions: [
+      { value: "18", label: "18 Years" },
+      { value: "19", label: "19 Years" },
+      { value: "20", label: "20 Years" },
+      { value: "21", label: "21 Years" },
+      { value: "22", label: "22 Years" },
+      { value: "23", label: "23 Years" },
+      { value: "24", label: "24 Years" },
+      { value: "25", label: "25 Years" },
+      { value: "26", label: "26 Years" },
+      { value: "27", label: "27 Years" },
+      { value: "28", label: "28 Years" },
+      { value: "29", label: "29 Years" },
+      { value: "30", label: "30 Years" },
+      { value: "31", label: "31 Years" },
+      { value: "32", label: "32 Years" },
+      { value: "33", label: "33 Years" },
+      { value: "34", label: "34 Years" },
+      { value: "35", label: "35 Years" },
+      { value: "36", label: "36 Years" },
+      { value: "37", label: "37 Years" },
+      { value: "38", label: "38 Years" },
+      { value: "39", label: "39 Years" },
+      { value: "40", label: "40 Years" },
+      { value: "41", label: "41 Years" },
+      { value: "42", label: "42 Years" },
+      { value: "43", label: "43 Years" },
+      { value: "44", label: "44 Years" },
+      { value: "45", label: "45 Years" },
+      { value: "46", label: "46 Years" },
+      { value: "47", label: "47 Years" },
+      { value: "48", label: "48 Years" },
+      { value: "49", label: "49 Years" },
+      { value: "50", label: "50 Years" },
+      { value: "51", label: "51 Years" },
+      { value: "52", label: "52 Years" },
+      { value: "53", label: "53 Years" },
+      { value: "54", label: "54 Years" },
+      { value: "55", label: "55 Years" },
+      { value: "56", label: "56 Years" },
+      { value: "57", label: "57 Years" },
+      { value: "58", label: "58 Years" },
+      { value: "59", label: "59 Years" },
+      { value: "60", label: "60 Years" },
+    ],
+  });
   
 
   useEffect(() => {
@@ -479,7 +484,7 @@ const Addusers = () => {
   };
   const sectionNames = {
     section1: 'Basic Details',
-    section2: 'Residece',
+    section2: 'Residence',
     section3: 'Physical Info',
     section4: 'Family Details',
     section5: 'Partner Preferences',

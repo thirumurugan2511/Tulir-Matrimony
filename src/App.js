@@ -76,6 +76,8 @@ import Searchform from './User/Components/Searchlist/Searchform';
 import Addjathagam from './Admin/Components/Member/Addjathagam';
 import Edituserjathagam from './User/Components/Profile/Edituserjathagam';
 import Viewuser from './User/Components/Searchlist/Viewuser';
+import Viewuser1 from "./User/Components/Searchlist/Viewuser1";
+
 
 
 
@@ -159,6 +161,8 @@ function App() {
             <Route path="/Addjathagam/:id" element={<Addjathagam />} />
             <Route path="/Searchform" element={<Searchform />} />
             <Route path="/Viewuser/:id" element={<Viewuser />} />
+            <Route path="/Viewuser" element={<Viewuser />} />
+            <Route path="/Viewuser1" element={<Viewuser1 />} />
 
             <Route path="/Edituserjathagam" element={<Edituserjathagam />} />
 

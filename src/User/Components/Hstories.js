@@ -5,6 +5,7 @@ import "../Components/Home/CardSlider.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import loaderGif from "./loader-spin.gif";
+import About3 from "../Components/Home/tulir3.jpg";
 
 const CardSliderContainer = styled.div`
   .slick-slide {
@@ -60,7 +61,7 @@ const Hstories = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
@@ -108,31 +109,33 @@ const Hstories = () => {
   }
 
   return (
-    
-    <CardSliderContainer>
-      <Slider {...settings}>
-        
-        {cards.map((card, index) => (
-          
-          <Card key={index}>
-            <div className="card pro-border" style={{ width: "18rem" }}>
-              <img
-                src={`data:image/jpeg;base64,${card.image}`}
-                alt=""
-                className="card-img-top"
-              />
-              <div className="card-body info-box-div mt-2">
-                <h5 className="card-title text-white">{card.marriage_date}</h5>
-                <p className="card-text">
-                  {card.bridename} &amp; {card.groom_name}
-                </p>
-               
-              </div>
-            </div>
-          </Card>
-        ))}
-      </Slider>
-    </CardSliderContainer>
+    <>
+      <section className="pt-5 pb-5 bg-grey">
+        {/* <CardSliderContainer>
+          <Slider {...settings}> */}
+            {cards.map((card, index) => (
+              <Card key={index}>
+                <div className="container mx-auto row p-5 bg-white">
+                  <div className="col-lg-8 text-start mb-2">
+                    <p className="mb-3">{card.Message}</p>
+                    <h3>
+                      {card.bridename} &amp; {card.groom_name}
+                    </h3>
+                    <h3> {card.marriage_date}</h3>
+                  </div>
+                  <div className="col-lg-4">
+                    <img
+                      src={`data:image/jpeg;base64,${card.image}`}
+                      className="abouth-slide rounded"
+                    />
+                  </div>
+                </div>
+              </Card>
+            ))}
+          {/* </Slider>
+        </CardSliderContainer> */}
+      </section>
+    </>
   );
 };
 

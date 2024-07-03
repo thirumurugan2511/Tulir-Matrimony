@@ -33,3 +33,14 @@
     background-color: #f30863 ;
     color: white;
 }
+.load-spin {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+
+.back-spin {
+    background-image: url("./back-spin.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
