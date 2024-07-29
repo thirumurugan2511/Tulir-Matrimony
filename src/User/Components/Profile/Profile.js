@@ -28,7 +28,9 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=293`);
+        const response = await fetch(
+          `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`
+        );
         const res = await response.json();
         setProfileData(res);
         console.log(res);
