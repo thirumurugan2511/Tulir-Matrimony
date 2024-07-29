@@ -89,25 +89,25 @@ const Viewuser = () => {
                     {profileData.body.name} - {profileData.body.reg_id}
                   </h1>
                   <ul className="row pro-info4">
-                    <li className="col-lg-3 col-md-3 col-sm-6 col-6">
+                    <li className="col-lg-3 col-md-3 col-sm-6 col-6 mb-2">
                       <img src={proCity} className="proImg" />
                       <p>
                         City <b>: {profileData.body.city} </b>
                       </p>
                     </li>
-                    <li className="col-lg-3 col-md-3 col-sm-6 col-6">
+                    <li className="col-lg-3 col-md-3 col-sm-6 col-6 mb-2">
                       <img src={proAge} className="proImg" />
                       <p>
                         வயது <b>: {profileData.body.age}</b>
                       </p>
                     </li>
-                    <li className="col-lg-3 col-md-3 col-sm-6 col-6">
+                    <li className="col-lg-3 col-md-3 col-sm-6 col-6 mb-2">
                       <img src={proEducation} className="proImg" />
                       <p>
                         கல்வி <b>: {profileData.body.education}</b>
                       </p>
                     </li>
-                    <li className="col-lg-3 col-md-3 col-sm-6 col-6">
+                    <li className="col-lg-3 col-md-3 col-sm-6 col-6 mb-2">
                       <img src={proJob} className="proImg" />
                       <p>
                         வேலை <b>: {profileData.body.occupation}</b>
@@ -311,7 +311,7 @@ const Viewuser = () => {
                             <IoIosArrowForward className="bx bx-power-off me-2" />
                             <b>குடியிருப்பு வகை</b>
                           </td>
-                          <td>{profileData.body.residece}</td>
+                          <td>{profileData.body.residence}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -346,7 +346,7 @@ const Viewuser = () => {
                             <IoIosArrowForward className="bx bx-power-off me-2" />
                             <b>உயரம்</b>
                           </td>
-                          <td>{profileData.body.height}-cm</td>
+                          <td>{profileData.body.height}-Feet</td>
                         </tr>
                         <tr>
                           <td>
@@ -493,7 +493,7 @@ const Viewuser = () => {
                             <IoIosArrowForward className="bx bx-power-off me-2" />
                             <b>உயரம்</b>
                           </td>
-                          <td>{profileData.body.partner_height}cm</td>
+                          <td>{profileData.body.partner_height}-Feet</td>
                         </tr>
                         <tr>
                           <td>

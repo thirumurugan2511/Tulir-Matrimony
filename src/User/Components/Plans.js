@@ -65,7 +65,7 @@ const Plans = () => {
                           </h5>
                           <div className="py-4 text-center">
                             <h2>
-                              {item.amount} /{" "}
+                              ₹ {item.amount} /{" "}
                               <span className="font-size-13">
                                 {item.validity}
                               </span>
@@ -79,7 +79,7 @@ const Plans = () => {
                                 color: "white",
                               }}
                             >
-                              Select Plan 
+                              Select Plan
                             </button>
                           </div>
                         </div>

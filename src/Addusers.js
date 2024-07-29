@@ -42,10 +42,6 @@ const Addusers = () => {
       { value: "3", label: "3" },
       { value: "4", label: "4" },
     ],
-    plan_statusOptions: [
-      { value: "Paid", label: "Paid" },
-      { value: "Not Paid", label: "Not Paid" },
-    ],
     brother_marriedOptions: [
       { value: "Married", label: "Married" },
       { value: "Unmarried", label: "Unmarried" },
@@ -100,7 +96,7 @@ const Addusers = () => {
     //   { value: 'Bachelor', label: 'Bachelor' },
     //   { value: 'Master', label: 'Master' },
     // ],
-    resideceOptions: [
+    residenceOptions: [
       { value: "Citizen", label: "Citizen" },
       { value: "Permanent Resident", label: "Permanent Resident" },
       { value: "Temporary Visa", label: "Temporary Visa" },
@@ -294,12 +290,12 @@ const Addusers = () => {
       "annual_income":"",
       "kuladeivam":"",
       "plan_name": "",
-      "plan_status": ""
+      "plan_register_date": ""
 
     },
     "section2": {
       "city": "",
-      "residece": "",
+      "residence": "",
       "alternatenumber": "",
       "mothercountry": "",
       "address": ""
@@ -344,14 +340,14 @@ const Addusers = () => {
       "image": "",
       "image1": "",
       "id_image": "",
-      "id_image1": "",
+      "id_image1": "", 
       "rasiimage": "",
     }
   };
   const labelTranslations = {
     "reg_id": "பதிவு ஐடி",
     "plan_name": "உறுப்பினர் திட்டம்",
-    "plan_status": "உறுப்பினர் திட்ட நிலை",
+    "plan_register_date": "திட்டம் பதிவு செய்யப்பட்ட தேதி",
     "name": "பெயர்",
     "image": "படம்",
     "gender": "பாலினம்",
@@ -385,7 +381,7 @@ const Addusers = () => {
     "country": "நாடு",
     "state": "மாநிலம்",
     "city": "பிறந்த மாவட்டம்",
-    "residece": "குடியிருப்பு வகை",
+    "residence": "குடியிருப்பு வகை",
     "alternatenumber": "தொலைபேசி மாற்று எண்",
     "mothercountry": "தாய்நாடு",
     "address": "தற்போதைய முகவரி",
@@ -477,6 +473,7 @@ const Addusers = () => {
     phonenumber: 'tel',
     password: 'password',
     dob: 'date',
+    plan_register_date: 'date',
     birthtime: 'time',
     address: 'textarea'
 
@@ -679,7 +676,7 @@ const Addusers = () => {
                 ]
             }));
           break;
-          case 'residece':
+          case 'residence':
               // Options for marriage type dropdown
               setOptions(prevOptions => ({
                 ...prevOptions,
@@ -750,16 +747,6 @@ const Addusers = () => {
                   [fieldName + 'Options']: [
                     { value: 'Nuclear Family', label: 'Nuclear Family' },
                     { value: 'Joint Family', label: 'Joint Family' }             
-                  ]
-                }));
-              break;
-              case 'plan_status':
-                // Options for marriage type dropdown
-                setOptions(prevOptions => ({
-                  ...prevOptions,
-                  [fieldName + 'Options']: [
-                    { value: 'Paid', label: 'Paid' },
-                    { value: 'Not Paid', label: 'Not Paid' }             
                   ]
                 }));
               break;
@@ -966,13 +953,16 @@ const Addusers = () => {
       // Optionally, you can also send data to the server here
       //https://tulirmatrimony.com/controlapi/addcustomer.php
       //http://localhost:8000/addcustomer
-      const response = await fetch('https://tulirmatrimony.com/controlapi/addcustomer.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ ...combinedData, ...imageData }) 
-    });
+      const response = await fetch(
+        "https://tulirmatrimony.com/controlapi/addcustomer.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...combinedData, ...imageData }),
+        }
+      );
      console.log(combinedData);
     // Handle the response from your Node.js server
     if (response.ok) {
@@ -1105,7 +1095,7 @@ const Addusers = () => {
           'smoking', 'drinking', 'status_children','country', 'state', 'city','father_occupation', 'mother_occupation', 'partner_religion',
            'partner_country', 'partner_state', 'partner_matrial_status', 'partner_education', 'partner_occupation', 'partner_mother_tongue',
           'partner_caste', 'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
-          'partner_to_age','residece'
+          'partner_to_age','residence'
         ].includes(fieldName) ?
           <div key={fieldName} className="col-lg-4 col-md-6 mb-4 text-start">
             <label htmlFor={fieldName} style={{ color: 'black' }}>{labelTranslations[fieldName]} </label>

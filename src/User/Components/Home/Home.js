@@ -104,7 +104,7 @@ const Home = () => {
             </div>
             <div className="search-form-btn mt-4 mx-auto">
               <Link
-                to="/Searchlist"
+                to="/Searchform"
                 className="btn btn-primary col-lg-3 col-sm-6 col-5 py-3"
               >
                 Free search

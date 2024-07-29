@@ -93,7 +93,7 @@ const Addjathagam = () => {
         const responseData = await response.json();
         console.log("Jathagam added successfully!", responseData);
          alert("Jathagam added successsfully");
-        window.location.href = "/Member";
+        // window.location.href = "/Member";
       } else {
         // Handle error, maybe show an error message
         console.error("Failed to add Jathagam");

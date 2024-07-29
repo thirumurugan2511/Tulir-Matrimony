@@ -7,11 +7,12 @@ import "slick-carousel/slick/slick-theme.css";
 import loaderGif from "./loader-spin.gif";
 import About3 from "../Components/Home/tulir3.jpg";
 
-const CardSliderContainer = styled.div`
+const StorySliderContainer = styled.div`
   .slick-slide {
     display: flex;
     justify-content: center;
   }
+ 
 `;
 
 const Card = styled.div`
@@ -69,21 +70,21 @@ const Hstories = () => {
       {
         breakpoint: 1400,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -111,29 +112,33 @@ const Hstories = () => {
   return (
     <>
       <section className="pt-5 pb-5 bg-grey">
-        {/* <CardSliderContainer>
-          <Slider {...settings}> */}
+        <div className="sec-title text-center">
+          <span className="title"> Our </span>
+          <h2>Happy Story</h2>
+        </div>
+        <StorySliderContainer>
+          <Slider {...settings}>
             {cards.map((card, index) => (
-              <Card key={index}>
-                <div className="container mx-auto row p-5 bg-white">
-                  <div className="col-lg-8 text-start mb-2">
-                    <p className="mb-3">{card.Message}</p>
-                    <h3>
-                      {card.bridename} &amp; {card.groom_name}
-                    </h3>
-                    <h3> {card.marriage_date}</h3>
+                <Card key={index}>
+                  <div className="mx-auto container row p-5 bg-white">
+                    <div className="col-lg-8 text-start mb-2">
+                      <p className="mb-3">{card.Message}</p>
+                      <h3>
+                        {card.bridename} &amp; {card.groom_name}
+                      </h3>
+                      <h3> {card.marriage_date}</h3>
+                    </div>
+                    <div className="col-lg-4">
+                      <img
+                        src={`data:image/jpeg;base64,${card.image}`}
+                        className="abouth-slide rounded"
+                      />
+                    </div>
                   </div>
-                  <div className="col-lg-4">
-                    <img
-                      src={`data:image/jpeg;base64,${card.image}`}
-                      className="abouth-slide rounded"
-                    />
-                  </div>
-                </div>
-              </Card>
+                </Card>
             ))}
-          {/* </Slider>
-        </CardSliderContainer> */}
+          </Slider>
+        </StorySliderContainer>
       </section>
     </>
   );

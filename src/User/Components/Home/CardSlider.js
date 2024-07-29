@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import "./CardSlider.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -122,7 +123,7 @@ const CardSlider = () => {
                 <h5 className="card-title text-white">{card.name}</h5>
                 <p className="card-text">{card.age}Age : 22</p>
                 <p className="card-text mb-1">{card.age}Software Engineer</p>
-                <a className="btn view-pro">View Profile</a>
+                <Link to="/Login" className="btn view-pro">View Profile</Link>
               </div>
             </div>
           </Card>

@@ -1,20 +1,20 @@
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useAuth } from "../../../AuthContext";
-import Logo from '../rgt-matrimony-logo.png'
+import Logo from "../rgt-matrimony-logo.png";
 
-function Navbar() {
+function Navbar({ userid }) {
+  // Destructure the userid prop
   const navRef = useRef();
   const { isLoggedIn, logout } = useAuth();
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
-    
 
-	return (
+  return (
     <>
       <div className="text-end top-nav d-flex gap-3 justify-content-end">
         <p className="text-white top-text">+91 9443052440</p>
@@ -33,11 +33,13 @@ function Navbar() {
           >
             {isLoggedIn ? (
               <>
-                <Link to="/">Home</Link>
-                <Link to="/Profile">Profile</Link>
+                <Link to={`/Searchlist`}>Home</Link>
+                <Link to={`/Profile`}>Profile</Link>
                 <Link to="/Plans">Membership Plans</Link>
-                <Link to="/Searchlist">Search</Link>
-                <button className="btn btn-info" onClick={logout}>Logout</button>
+                <Link to={`/Searchform`}>Search</Link>
+                <button className="btn btn-info" onClick={logout}>
+                  Logout
+                </button>
               </>
             ) : (
               <>
@@ -46,8 +48,6 @@ function Navbar() {
                 <Link to="/Login">Sign In</Link>
               </>
             )}
-
-            {/* <a href="/#">About me</a> */}
             <button className="nav-btn nav-close-btn" onClick={showNavbar}>
               <FaTimes />
             </button>

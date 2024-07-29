@@ -35,3 +35,6 @@
     height: 80vh;
     /* Adjust the height as needed */
 }
+.cus_name {
+    word-wrap: break-word;
+}

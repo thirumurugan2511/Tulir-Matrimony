@@ -121,12 +121,12 @@ const Occupation = () => {
             <a href="/Occupationadd" class="fw-bold mb-4 btn btn-info"><IoMdAdd class="bx bx-plus-circle" /> Add New</a>
         </div>
 
-<div class="col-md-4">
+{/* <div class="col-md-4">
             <div class="search-container">
         <input type="text" class="search-box form-control" id="searchText" placeholder="Search"/>
         <button class="search-button btn btn-info searchMainBtn" id="commonSearch"><FaSearch class="bx bx-search-alt-2" /></button>
     </div>
-        </div>
+        </div> */}
 </div>
    
 

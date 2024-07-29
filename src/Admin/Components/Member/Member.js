@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { MdManageHistory, MdPostAdd, MdModeEdit, MdDelete } from "react-icons/md";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  MdManageHistory,
+  MdPostAdd,
+  MdModeEdit,
+  MdDelete,
+} from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import { FaEye, FaSearch } from "react-icons/fa";
 import { IoMdSettings, IoMdAdd } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
-import Aside from '../Aside/Aside';
-import Smallicon from '../../Components/heart-icon.png';
+import Aside from "../Aside/Aside";
+import Smallicon from "../../Components/heart-icon.png";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import loaderGif from "./loader-spin.gif";
-import backspin from './back-spin.gif'
+import backspin from "./back-spin.gif";
 
 const Member = () => {
   const [data, setData] = useState([]);
@@ -18,16 +23,16 @@ const Member = () => {
   const [selectedPlans, setSelectedPlans] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-    const [clickCount, setClickCount] = useState(0); // State variable to track the number of clicks
-    const [remainingLimit, setRemainingLimit] = useState(10); // State variable to track the remaining limit
+  const [clickCount, setClickCount] = useState(0); // State variable to track the number of clicks
+  const [remainingLimit, setRemainingLimit] = useState(10); // State variable to track the remaining limit
   const [loading, setLoading] = useState(true); // State variable for loading status
-    const profilesPerPage = 5;
+  const profilesPerPage = 5;
 
   useEffect(() => {
     const fetchData = async () => {
+      //('https://tulirmatrimony.com/controlapi/customerlist.php');
+      //http://localhost:8000/data/memlist
       try {
-        //('https://tulirmatrimony.com/controlapi/customerlist.php');
-        //http://localhost:8000/data/memlist
         const response = await fetch(
           "https://tulirmatrimony.com/controlapi/customerlist.php"
         );
@@ -44,7 +49,6 @@ const Member = () => {
     fetchData();
   }, []);
 
- 
   // Calculate the profiles to display based on the current page
   const indexOfLastProfile = currentPage * profilesPerPage;
   const indexOfFirstProfile = indexOfLastProfile - profilesPerPage;
@@ -61,17 +65,22 @@ const Member = () => {
   };
 
   const handleDelete = async (id) => {
-    try {
-      await fetch(`https://tulirmatrimony.com/controlapi/deletecustomer.php`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
-      });
-      setData(data.filter((item) => item.id !== id));
-    } catch (error) {
-      console.error("Error deleting data:", error);
+    if (window.confirm("Are you sure you want to delete this member?")) {
+      try {
+        await fetch(
+          `https://tulirmatrimony.com/controlapi/deletecustomer.php`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id }),
+          }
+        );
+        setData(data.filter((item) => item.id !== id));
+      } catch (error) {
+        console.error("Error deleting data:", error);
+      }
     }
   };
 
@@ -193,22 +202,6 @@ const Member = () => {
                       <IoMdAdd className="bx bx-plus-circle" /> Add New
                     </Link>
                   </div>
-                  <div className="col-md-4">
-                    <div className="search-container">
-                      <input
-                        type="text"
-                        className="search-box form-control"
-                        id="searchText"
-                        placeholder="Search"
-                      />
-                      <button
-                        className="search-button btn btn-info searchMainBtn"
-                        id="commonSearch"
-                      >
-                        <FaSearch className="bx bx-search-alt-2" />
-                      </button>
-                    </div>
-                  </div>
                 </div>
 
                 <div className="card">
@@ -284,36 +277,6 @@ const Member = () => {
                   </div>
                 </div>
                 <div className="">
-                  {/* <nav aria-label="Page navigation example">
-                      <ul className="pagination mx-auto justify-content-center text-center">
-                        <li className="page-item">
-                          <button
-                            className="page-link"
-                            onClick={handlePreviousPage}
-                          >
-                            Previous
-                          </button>
-                        </li>
-                        {[...Array(totalPages)].map((_, index) => (
-                          <li className="page-item" key={index}>
-                            <button
-                              className="page-link"
-                              onClick={() => setCurrentPage(index + 1)}
-                            >
-                              {index + 1}
-                            </button>
-                          </li>
-                        ))}
-                        <li className="page-item">
-                          <button
-                            className="page-link"
-                            onClick={handleNextPage}
-                          >
-                            Next
-                          </button>
-                        </li>
-                      </ul>
-                    </nav> */}
                   <Stack spacing={2}>
                     <Pagination
                       count={Math.ceil(data.length / profilesPerPage)}
@@ -344,6 +307,6 @@ const Member = () => {
       </div>
     </>
   );
-}
+};
 
 export default Member;

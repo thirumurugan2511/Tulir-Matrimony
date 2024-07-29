@@ -11,32 +11,23 @@ import "../Spinner/Spinner.css";
 import { useLocation } from "react-router-dom";
 import { useAuth } from '../../../AuthContext'
 
-const Searchlist = () => {
+const Test = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [clickCount, setClickCount] = useState(0); // State variable to track the number of clicks
   const [remainingLimit, setRemainingLimit] = useState(10); // State variable to track the remaining limit
   const [loading, setLoading] = useState(true); // State variable for loading status
   const profilesPerPage = 12;
-  const location = useLocation();
+ 
 
-  const query = new URLSearchParams(location.search);
-  const { userid } = useAuth();
-  console.log("UserId From Login" + userid);
+
   //https://tulirmatrimony.com/controlapi/userhome.php
   useEffect(() => {
     const fetchData = async () => {
+      //('https://tulirmatrimony.com/controlapi/customerlist.php');
+      //http://localhost:8000/data/memlist
       try {
-        const response = await fetch(
-          "https://tulirmatrimony.com/controlapi/userhome.php",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ id: userid }),
-          }
-        );
+        const response = await fetch("http://localhost:8000/data/memlist");
         const result = await response.json();
         console.log(result);
         setData(result.body);
@@ -48,7 +39,7 @@ const Searchlist = () => {
     };
 
     fetchData();
-  }, [userid]);
+  }, []);
 
   // Calculate the profiles to display based on the current page
   const indexOfLastProfile = currentPage * profilesPerPage;
@@ -136,7 +127,7 @@ const Searchlist = () => {
                         </a>
                         <Link
                           className="btn py-2 mt-2 view-pro"
-                          to={`/Viewuser/${userid}`}
+                          to={`/Viewuser`}
                           // Disable button if limit is reached
                         >
                           View Profile
@@ -173,4 +164,4 @@ const Searchlist = () => {
   );
 };
 
-export default Searchlist;
+export default Test;

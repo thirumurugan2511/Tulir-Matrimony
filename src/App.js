@@ -77,6 +77,7 @@ import Addjathagam from './Admin/Components/Member/Addjathagam';
 import Edituserjathagam from './User/Components/Profile/Edituserjathagam';
 import Viewuser from './User/Components/Searchlist/Viewuser';
 import Viewuser1 from "./User/Components/Searchlist/Viewuser1";
+import Test from './User/Components/Searchlist/Test';
 
 
 
@@ -154,7 +155,7 @@ function App() {
             <Route path="/Textform" element={<Textform />} />
             <Route path="/Genprint" element={<Genprint />} />
             <Route path="/" element={<Home />} />
-            <Route path="/Searchlist" element={<Searchlist />} />
+            {/* <Route path="/Searchlist" element={<Searchlist />} /> */}
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Editprofile" element={<Editprofile />} />
             <Route path="/Login" element={<Login />} />
@@ -165,8 +166,25 @@ function App() {
             <Route path="/Viewuser1" element={<Viewuser1 />} />
 
             <Route path="/Edituserjathagam" element={<Edituserjathagam />} />
-
+            <Route path="/Test" element={<Test />} />
             <Route path="/Searchform" element={<Searchform />} />
+
+            <Route
+              path="/Searchform"
+              element={
+                <ProtectedRoute>
+                  <Searchform />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/Viewuser/:id"
+              element={
+                <ProtectedRoute>
+                  <Viewuser />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/Searchlist"
               element={

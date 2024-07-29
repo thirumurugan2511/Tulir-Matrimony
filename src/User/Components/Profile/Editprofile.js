@@ -334,7 +334,7 @@ const Basicdetails = () => {
   const fetchUserData = async () => {
     try {
       const response = await fetch(
-        `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=157`
+        `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=293`
       );
       if (response.ok) {
         const userData = await response.json();

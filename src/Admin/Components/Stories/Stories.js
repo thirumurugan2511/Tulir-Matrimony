@@ -158,7 +158,7 @@ const Stories = () => {
                     </a>
                   </div>
 
-                  <div class="col-md-4">
+                  {/* <div class="col-md-4">
                     <div class="search-container">
                       <input
                         type="text"
@@ -173,7 +173,7 @@ const Stories = () => {
                         <FaSearch class="bx bx-search-alt-2" />
                       </button>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* <!-- Basic Layout --> */}
