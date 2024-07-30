@@ -161,6 +161,7 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Addjathagam/:id" element={<Addjathagam />} />
             <Route path="/Searchform" element={<Searchform />} />
+            <Route path="/Searchform/:id" element={<Searchform />} />
             <Route path="/Viewuser/:id" element={<Viewuser />} />
             <Route path="/Viewuser" element={<Viewuser />} />
             <Route path="/Viewuser1" element={<Viewuser1 />} />
