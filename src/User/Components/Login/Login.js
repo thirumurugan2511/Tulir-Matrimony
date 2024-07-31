@@ -33,15 +33,17 @@ const Login = () => {
 
       const data = await response.json();
 
-      if (response.ok) {
+      if (data.head.code === 200) {
         login(data.body); // Store the user data in the auth context
-        navigate(`/Searchlist`); // Redirect to the home page with user_id
+        navigate(`/Searchlist`); // Redirect to the search list page
       } else {
         // Handle errors returned by the API
-        setError(data.message || "Invalid phone number or password");
+        setError(data.head.msg || "Invalid phone number or password");
+        alert("Invalid phone number or password");
       }
     } catch (error) {
       setError("An error occurred. Please try again.");
+      alert("An error occurred. Please try again.");
     }
   };
 

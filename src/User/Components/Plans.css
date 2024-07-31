@@ -8,3 +8,7 @@
 .price {
     font-size: 20px !important;
 }
+.card-plan{
+    background-color: white;
+    border-radius: 10px;
+}

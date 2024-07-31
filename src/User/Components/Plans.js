@@ -42,7 +42,7 @@ const Plans = () => {
             <div className="row">
               {data.map((item) => (
                 <div className="col-lg-12" style={{ textAlign: "center" }}>
-                  <div className="card" style={{ padding: "20px" }}>
+                  <div className="card-plan" style={{ padding: "20px" }}>
                     <div className="card-body">
                       <div className="p-4 card-body">
                         <div className="media">

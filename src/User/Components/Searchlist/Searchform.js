@@ -56,7 +56,7 @@ function Searchform() {
         console.log("District data:", data);
         if (Array.isArray(data.body)) {
           setDistrictList(
-            data.body.map((item) => ({ value: item.id, label: item.name }))
+            data.body.map((item) => ({ value: item.id, label: item.district_name }))
           );
         } else {
           console.error("District data is not an array:", data);
@@ -100,6 +100,7 @@ function Searchform() {
       district: document.querySelector("#district").value,
       star: selectedOptions.map((option) => option.value),
     };
+    console.log(selectedValues);
 
     fetch("https://tulirmatrimony.com/controlapi/usersearch.php", {
       method: "POST",
