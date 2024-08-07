@@ -38,7 +38,10 @@ const Viewuser1 = () => {
             </div>
             <div className="col-lg-8 col-md-8">
               <div className="mb-4">
-                <h1 className="mb-2 headsmain">Dharshini</h1>
+                <h1 className="mb-2 headsmain">Dharshini
+                  <Link className="btn btn-secondary float-end"
+                  to="">Back to Home</Link>
+                </h1>
                 <ul className="row pro-info4">
                   <li className="col-lg-3 col-md-3 col-sm-6 col-6">
                     <img src={proCity} className="proImg" />

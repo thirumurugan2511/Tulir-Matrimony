@@ -8,9 +8,12 @@ import { LuLogOut } from "react-icons/lu";
 import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 import Smallicon from '../rgt-matrimony-logo.png';
+import { useAuth } from '../../../AuthContext'
+
 
 const Edituserjathagam = () => {
-  const { id } = useParams();
+  const { userid } = useAuth();
+  const [id, setId] = useState(userid);
   const [data, setData] = useState([]);
   const [formData, setFormData] = useState({
     user_id: "",
@@ -94,7 +97,7 @@ const Edituserjathagam = () => {
         const responseData = await response.json();
         console.log("Jathagam added successfully!", responseData);
         alert("Jathagam added successsfully");
-        window.location.href = `/Viewmember/${id}`;
+        window.location.href = `/Profile`;
       } else {
         console.error("Failed to add Jathagam");
       }

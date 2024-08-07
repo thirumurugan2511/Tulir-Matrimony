@@ -78,6 +78,8 @@ import Edituserjathagam from './User/Components/Profile/Edituserjathagam';
 import Viewuser from './User/Components/Searchlist/Viewuser';
 import Viewuser1 from "./User/Components/Searchlist/Viewuser1";
 import Test from './User/Components/Searchlist/Test';
+import Selectedplan from './User/Components/Profile/Selectedplan';
+import {ProfileProvider} from './User/Components/ProfileContext';
 
 
 
@@ -86,124 +88,157 @@ function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <Router>
-          <Routes>
-            {/* <Route path="/Dhome" element={<Dhome />} /> */}
-            <Route path="/Admin" element={<Signin />} />
-            <Route path="/Aside" element={<Aside />} />
-            <Route path="/Stories" element={<Stories />} />
-            <Route path="/Dashboard" element={<Dashboard />} />
-            <Route path="/Storiesadd" element={<Storiesadd />} />
-            <Route path="/Payment" element={<Payment />} />
-            <Route path="/Religion" element={<Religion />} />
-            <Route path="/Caste" element={<Caste />} />
-            <Route path="/Occupation" element={<Occupation />} />
-            <Route path="/Education" element={<Education />} />
-            <Route path="/Mothertongue" element={<Mothertongue />} />
-            <Route path="/Annualincome" element={<Annualincome />} />
-            <Route path="/Star" element={<Star />} />
-            <Route path="/Moonsign" element={<Moonsign />} />
-            <Route path="/Religionadd" element={<Religionadd />} />
-            <Route path="/Casteadd" element={<Casteadd />} />
-            <Route path="/Occupationadd" element={<Occupationadd />} />
-            <Route path="/Annualincomeadd" element={<Annualincomeadd />} />
-            <Route path="/Educationadd" element={<Educationadd />} />
-            <Route path="/Moonsignadd" element={<Moonsignadd />} />
-            <Route path="/Mothertongueadd" element={<Mothertongueadd />} />
-            <Route path="/Staradd" element={<Staradd />} />
-            <Route path="/Addmember" element={<Addmember />} />
-            <Route path="/Sitesettings" element={<Sitesettings />} />
-            <Route path="/Signin" element={<Signin />} />
-            <Route path="/Signup" element={<Signup />} />
-            <Route path="/Member" element={<Member />} />
-            <Route path="/Viewmember/:id" element={<Viewmember />} />
-            <Route path="/Paymentadd" element={<Paymentadd />} />
-            <Route path="/Banner" element={<Banner />} />
-            <Route path="/Aboutus" element={<Aboutus />} />
-            <Route path="/Sresult" element={<Sresult />} />
-            <Route path="/Plans" element={<Plans />} />
-            <Route path="/data" element={<Data />} />
-            <Route path="/Edituser/:id" element={<Edituser />} />
-            <Route path="/Eduser/:id" element={<Eduser />} />
-            <Route path="/User" element={<User />} />
-            <Route path="/Religionedit/:id" element={<Religionedit />} />
-            <Route path="/Staredit/:id" element={<Staredit />} />
-            <Route path="/Occupationedit/:id" element={<Occupationedit />} />
-            <Route path="/Educationedit/:id" element={<Educationedit />} />
-            <Route
-              path="/Mothertongueedit/:id"
-              element={<Mothertongueedit />}
-            />
-            <Route path="/Moonsignedit/:id" element={<Moonsignedit />} />
-            <Route path="/Locationedit/:id" element={<Locationedit />} />
-            <Route
-              path="/Annualincomeedit/:id"
-              element={<Annualincomeedit />}
-            />
-            <Route path="/Casteedit/:id" element={<Casteedit />} />
-            <Route path="/Paymentedit/:id" element={<Paymentedit />} />
-            <Route path="/Location" element={<Location />} />
-            <Route path="/Locationadd" element={<Locationadd />} />
-            <Route path="/Addusers" element={<Addusers />} />
-            <Route path="/Printform/:id" element={<Printform />} />
-            <Route path="/Freereg" element={<Freereg />} />
-            <Route path="/Bannerimg" element={<Bannerimg />} />
-            <Route path="/Thankyou" element={<Thankyou />} />
-            <Route path="/Printformwop/:id" element={<Printformwop />} />
-            <Route path="/Jathagam" element={<Jathagam />} />
-            <Route path="/Editjathagam/:id" element={<Editjathagam />} />
-            <Route path="/Textform" element={<Textform />} />
-            <Route path="/Genprint" element={<Genprint />} />
-            <Route path="/" element={<Home />} />
-            {/* <Route path="/Searchlist" element={<Searchlist />} /> */}
-            <Route path="/Profile" element={<Profile />} />
-            <Route path="/Editprofile" element={<Editprofile />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Addjathagam/:id" element={<Addjathagam />} />
-            <Route path="/Searchform" element={<Searchform />} />
-            <Route path="/Searchform/:id" element={<Searchform />} />
-            <Route path="/Viewuser/:id" element={<Viewuser />} />
-            <Route path="/Viewuser" element={<Viewuser />} />
-            <Route path="/Viewuser1" element={<Viewuser1 />} />
-
-            <Route path="/Edituserjathagam" element={<Edituserjathagam />} />
-            <Route path="/Test" element={<Test />} />
-            <Route path="/Searchform" element={<Searchform />} />
-
-            <Route
-              path="/Searchform"
-              element={
-                <ProtectedRoute>
-                  <Searchform />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/Viewuser/:id"
-              element={
-                <ProtectedRoute>
-                  <Viewuser />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/Searchlist"
-              element={
-                <ProtectedRoute>
-                  <Searchlist />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/Profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </Router>
+        <ProfileProvider>
+          <Router>
+            <Routes>
+              {/* <Route path="/Dhome" element={<Dhome />} /> */}
+              <Route path="/Admin" element={<Signin />} />
+              <Route path="/Aside" element={<Aside />} />
+              <Route path="/Stories" element={<Stories />} />
+              <Route path="/Dashboard" element={<Dashboard />} />
+              <Route path="/Storiesadd" element={<Storiesadd />} />
+              <Route path="/Payment" element={<Payment />} />
+              <Route path="/Religion" element={<Religion />} />
+              <Route path="/Caste" element={<Caste />} />
+              <Route path="/Occupation" element={<Occupation />} />
+              <Route path="/Education" element={<Education />} />
+              <Route path="/Mothertongue" element={<Mothertongue />} />
+              <Route path="/Annualincome" element={<Annualincome />} />
+              <Route path="/Star" element={<Star />} />
+              <Route path="/Moonsign" element={<Moonsign />} />
+              <Route path="/Religionadd" element={<Religionadd />} />
+              <Route path="/Casteadd" element={<Casteadd />} />
+              <Route path="/Occupationadd" element={<Occupationadd />} />
+              <Route path="/Annualincomeadd" element={<Annualincomeadd />} />
+              <Route path="/Educationadd" element={<Educationadd />} />
+              <Route path="/Moonsignadd" element={<Moonsignadd />} />
+              <Route path="/Mothertongueadd" element={<Mothertongueadd />} />
+              <Route path="/Staradd" element={<Staradd />} />
+              <Route path="/Addmember" element={<Addmember />} />
+              <Route path="/Sitesettings" element={<Sitesettings />} />
+              <Route path="/Signin" element={<Signin />} />
+              <Route path="/Signup" element={<Signup />} />
+              <Route path="/Member" element={<Member />} />
+              <Route path="/Viewmember/:id" element={<Viewmember />} />
+              <Route path="/Paymentadd" element={<Paymentadd />} />
+              <Route path="/Banner" element={<Banner />} />
+              <Route path="/Aboutus" element={<Aboutus />} />
+              <Route path="/Sresult" element={<Sresult />} />
+              <Route path="/Plans" element={<Plans />} />
+              <Route path="/data" element={<Data />} />
+              <Route path="/Edituser/:id" element={<Edituser />} />
+              <Route path="/Eduser/:id" element={<Eduser />} />
+              <Route path="/User" element={<User />} />
+              <Route path="/Religionedit/:id" element={<Religionedit />} />
+              <Route path="/Staredit/:id" element={<Staredit />} />
+              <Route path="/Occupationedit/:id" element={<Occupationedit />} />
+              <Route path="/Educationedit/:id" element={<Educationedit />} />
+              <Route
+                path="/Mothertongueedit/:id"
+                element={<Mothertongueedit />}
+              />
+              <Route path="/Moonsignedit/:id" element={<Moonsignedit />} />
+              <Route path="/Locationedit/:id" element={<Locationedit />} />
+              <Route
+                path="/Annualincomeedit/:id"
+                element={<Annualincomeedit />}
+              />
+              <Route path="/Casteedit/:id" element={<Casteedit />} />
+              <Route path="/Paymentedit/:id" element={<Paymentedit />} />
+              <Route path="/Location" element={<Location />} />
+              <Route path="/Locationadd" element={<Locationadd />} />
+              <Route path="/Addusers" element={<Addusers />} />
+              <Route path="/Printform/:id" element={<Printform />} />
+              <Route path="/Freereg" element={<Freereg />} />
+              <Route path="/Bannerimg" element={<Bannerimg />} />
+              <Route path="/Thankyou" element={<Thankyou />} />
+              <Route path="/Printformwop/:id" element={<Printformwop />} />
+              <Route path="/Jathagam" element={<Jathagam />} />
+              <Route path="/Editjathagam/:id" element={<Editjathagam />} />
+              <Route path="/Textform" element={<Textform />} />
+              <Route path="/Genprint" element={<Genprint />} />
+              <Route path="/" element={<Home />} />
+              {/* <Route path="/Searchlist" element={<Searchlist />} /> */}
+              <Route path="/Profile" element={<Profile />} />
+              <Route path="/Editprofile" element={<Editprofile />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Addjathagam/:id" element={<Addjathagam />} />
+              <Route path="/Searchform" element={<Searchform />} />
+              <Route path="/Searchform/:id" element={<Searchform />} />
+              <Route path="/Viewuser/:id" element={<Viewuser />} />
+              <Route path="/Viewuser" element={<Viewuser />} />
+              <Route path="/Viewuser1" element={<Viewuser1 />} />
+              <Route path="/Edituserjathagam" element={<Edituserjathagam />} />
+              <Route path="/Test" element={<Test />} />
+              <Route path="/Searchform" element={<Searchform />} />
+              <Route path="/Selectedplan" element={<Selectedplan />} />
+              <Route
+                path="/Searchform"
+                element={
+                  <ProtectedRoute>
+                    <Searchform />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Viewuser/:id"
+                element={
+                  <ProtectedRoute>
+                    <Viewuser />
+                  </ProtectedRoute>
+                }
+              /> 
+              <Route
+                path="/Edituserjathagam/:id"
+                element={
+                  <ProtectedRoute>
+                    <Edituserjathagam />
+                  </ProtectedRoute>
+                }
+              /> 
+              <Route
+                path="/Searchlist"
+                element={
+                  <ProtectedRoute>
+                    <Searchlist />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Selectedplan"
+                element={
+                  <ProtectedRoute>
+                    <Selectedplan />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Searchform"
+                element={
+                  <ProtectedRoute>
+                    <Searchform />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </Router>
+        </ProfileProvider>
       </AuthProvider>
     </div>
   );

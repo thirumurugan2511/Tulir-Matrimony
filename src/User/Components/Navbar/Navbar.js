@@ -35,7 +35,7 @@ function Navbar({ userid }) {
               <>
                 <Link to={`/Searchlist`}>Home</Link>
                 <Link to={`/Profile`}>Profile</Link>
-                <Link to="/Plans">Membership Plans</Link>
+                <Link to={`/Selectedplan`}>Plan Details</Link>
                 <Link to={`/Searchform`}>Search</Link>
                 <button className="btn btn-info" onClick={logout}>
                   Logout

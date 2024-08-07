@@ -3,15 +3,23 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Select from "react-select";
 import Footer from "../Footer/Footer";
+import { useLocation } from "react-router-dom";
+import { useAuth } from '../../../AuthContext';
+import loaderGif from "../loader-spin.gif";
+
 
 function Searchform() {
-  const { user_id } = useParams();
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const { userid } = useAuth();
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [ages, setAges] = useState([]);
   const [educationList, setEducationList] = useState([]);
   const [occupationList, setOccupationList] = useState([]);
   const [districtList, setDistrictList] = useState([]);
   const [starOptions, setStarOptions] = useState([]);
+  // const [loading, setLoading] = useState(true); // State variable for loading status
+
 
   useEffect(() => {
     // Populate age dropdowns
@@ -28,11 +36,11 @@ function Searchform() {
         console.log("Education data:", data);
         if (Array.isArray(data.body)) {
           setEducationList(
-            data.body.map((item) => ({ value: item.id, label: item.name }))
+            data.body.map((item) => ({ value: item.name, label: item.name }))
           );
         } else {
           console.error("Education data is not an array:", data);
-        }
+        } 
       });
 
     // Fetch occupation list
@@ -42,7 +50,7 @@ function Searchform() {
         console.log("Occupation data:", data);
         if (Array.isArray(data.body)) {
           setOccupationList(
-            data.body.map((item) => ({ value: item.id, label: item.name }))
+            data.body.map((item) => ({ value: item.name, label: item.name }))
           );
         } else {
           console.error("Occupation data is not an array:", data);
@@ -56,7 +64,7 @@ function Searchform() {
         console.log("District data:", data);
         if (Array.isArray(data.body)) {
           setDistrictList(
-            data.body.map((item) => ({ value: item.id, label: item.district_name }))
+            data.body.map((item) => ({ value: item.name, label: item.district_name }))
           );
         } else {
           console.error("District data is not an array:", data);
@@ -70,7 +78,7 @@ function Searchform() {
         console.log("Star data:", data);
         if (Array.isArray(data.body)) {
           setStarOptions(
-            data.body.map((item) => ({ value: item.id, label: item.name }))
+            data.body.map((item) => ({ value: item.name, label: item.name }))
           );
         } else {
           console.error("Star data is not an array:", data);
@@ -88,39 +96,60 @@ function Searchform() {
     );
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const selectedValues = {
-      user_id, // Add user_id to the selected values
-      fromAge: document.querySelector("#fromAge").value,
-      toAge: document.querySelector("#toAge").value,
+      user_id: `${userid}`,
+      fromage: document.querySelector("#fromAge").value,
+      toage: document.querySelector("#toAge").value,
       education: document.querySelector("#education").value,
-      occupacation: document.querySelector("#job").value,
+      occupation: document.querySelector("#job").value,
       district: document.querySelector("#district").value,
       star: selectedOptions.map((option) => option.value),
     };
-    console.log(selectedValues);
-
-    fetch("https://tulirmatrimony.com/controlapi/usersearch.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(selectedValues),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+  
+    console.log("Submitting values:", selectedValues);
+  
+    try {
+      const response = await fetch("https://tulirmatrimony.com/controlapi/usersearch.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(selectedValues),
       });
+  
+      // Check if the response is valid
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const responseData = await response.json(); // Get the response as JSON
+      console.log("Response data:", responseData);
+  
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
   };
+  
+  
 
   return (
     <>
       <Navbar />
+      {/* {loading ? (
+            <div
+            className="d-flex justify-content-center back-spin text-center"
+            style={{ height: "100vh", alignItems: "center" }}
+          >
+            <img
+              src={loaderGif}
+              alt="Loading..."
+              className="load-spin"
+            />
+          </div>
+        ) : ( */}
       <section className="pt-4 pb-4 bg-white">
         <form className="container card my-0 py-4" onSubmit={handleSubmit}>
           <div className="row justify-content-center text-start">
@@ -228,6 +257,7 @@ function Searchform() {
           </div>
         </form>
       </section>
+       {/* )} */}
       <Footer />
     </>
   );

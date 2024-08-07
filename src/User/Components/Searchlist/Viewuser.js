@@ -24,8 +24,13 @@ import proCity from "./pro-city.png";
 import proEducation from "./education.png";
 import proJob from "./job.png";
 
-const Viewuser = () => {
+
+const Viewuser = (props) => {
       const { id } = useParams();
+      // const [viewProfile, setViewProfile] = useState(false);
+      // const [selectedprofileid, setSelectedprofileid] = useState(0);
+      // const [planData, setPlanData] = useState(null);
+      // const { setProfileCount, setValidityDate } = useContext(ProfileContext);
 
   // http://localhost:8000/fetchmember
   // (`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`);
@@ -47,6 +52,58 @@ const Viewuser = () => {
 
     fetchData();
   }, []);
+  
+  // useEffect(() => {
+  //   const singlefetchDataa = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${userid}`
+  //       );
+  //       const result = await response.json();
+  //       setSingleData(result.body);
+  //       setFetchComplete(true);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   singlefetchDataa();
+  // }, [userid]);
+
+  // useEffect(() => {
+  //   const handleProfileClick = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://tulirmatrimony.com/controlapi/userprofilecount.php",
+  //         {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify({
+  //             user_id: userid,
+  //             plan: singleData.plan_name,
+  //           }),
+  //         }
+  //       );
+  //       const result = await response.json();
+  //       setPlanData(result.body[0]);
+  //       console.log(planData);
+  //       if (result.body[0].remaining_profile_count <= 0 || new Date(result.body[0].plan_expire_date) <= new Date()) {
+  //         setViewProfile(false);
+  //       } else {
+  //         setViewProfile(true);
+        
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching profile count data:", error);
+  //     }
+  //   };
+
+  //   handleProfileClick();
+  // }, []);
 
    const formatDate = (dateStr) => {
      if (!dateStr) return "";
@@ -87,6 +144,8 @@ const Viewuser = () => {
                 <div className="mb-4">
                   <h1 className="mb-2 mt-4 headsmain">
                     {profileData.body.name} - {profileData.body.reg_id}
+                    <Link className="btn btn-secondary float-end"
+                     to="/Searchlist">Back to Home</Link>
                   </h1>
                   <ul className="row pro-info4">
                     <li className="col-lg-3 col-md-3 col-sm-6 col-6 mb-2">

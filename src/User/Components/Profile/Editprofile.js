@@ -9,9 +9,14 @@ import { MdPostAdd } from "react-icons/md";
 import Smallicon from "../rgt-matrimony-logo.png"
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { useAuth } from '../../../AuthContext';
+import loaderGif from "../loader-spin.gif";
+
 
 const Basicdetails = () => {
   const [showAlert, setShowAlert] = useState(false);
+  const [loading, setLoading] = useState(true); // State variable for loading status
+ 
 
   const [options, setOptions] = useState({
     genderOptions: [
@@ -239,102 +244,106 @@ const Basicdetails = () => {
     fetchDropdownOptions("partner_salary");
   }, []);
 
-  const { id } = useParams();
-  console.log(id);
-  console.log("hi");
+  const { userid } = useAuth();
+  const [id, setId] = useState(userid);
+  console.log("For Edit Profile0", userid);
+ 
 
   useEffect(() => {
     // Fetch user data based on the ID when component mounts
-    fetchUserData(id);
-  }, [id]);
+    fetchUserData(userid);
+  }, [userid]);
 
   const [formData, setFormData] = useState({
-    section1: {
+    "section1": {
       // "reg_id": "",
-      name: "",
-      gender: "",
-      phonenumber: "",
-      password: "",
-      email: "",
-      dob: "",
-      age: "",
-      mother_tongue: "",
-      marriage_type: "",
-      religion: "",
-      caste: "",
-      subcaste: "",
-      sevaikiragam: "",
-      gothram: "",
-      star: "",
-      patham_number: "",
-      zodiacsign: "",
-      birthplace: "",
-      birthtime: "",
-      education: "",
-      education_details: "",
-      occupation: "",
-      jobdetails: "",
-      joblocation: "",
-      annual_income: "",
-      kuladeivam: "",
-      plan_name: "",
-      plan_status: "",
+      "name": "",
+      "gender": "",   
+      "phonenumber": "",
+      "password": "",
+      "email": "",
+      "dob": "",
+      "age": "", 
+      "mother_tongue": "",
+      "marriage_type": "",
+      "religion": "",
+      "caste": "",
+      "subcaste": "",
+      "sevaikiragam": "",
+      "gothram": "",
+      "star": "",
+      "patham_number": "",
+      "zodiacsign": "",
+      "birthplace": "",
+      "birthtime": "",
+      "education":"",
+      "education_details":"",
+      "occupation":"",
+      "jobdetails":"",
+      "joblocation":"",
+      "annual_income":"",
+      "kuladeivam":"",
+      "plan_name": "",
+      "plan_register_date": ""
+
     },
-    section2: {
-      city: "",
-      residece: "",
-      alternatenumber: "",
-      mothercountry: "",
-      address: "",
+    "section2": {
+      "city": "",
+      "residence": "",
+      "alternatenumber": "",
+      "mothercountry": "",
+      "address": ""
     },
-    section3: {
-      height: "",
-      food_habits: "",
-      bloodgroup: "",
-      skin_tone: "",
-      profile_by: "",
-      aboutme: "",
+    "section3": {
+      "height": "",
+      "food_habits": "",
+      "bloodgroup": "",  
+      "skin_tone": "",
+      "profile_by": "",
+      "aboutme": ""
     },
-    section4: {
-      family_type: "",
-      family_status: "",
-      father_name: "",
-      father_occupation: "",
-      mother_name: "",
-      mother_occupation: "",
-      brothers_count: "",
-      sisters_count: "",
-      brother_married: "",
-      sister_married: "",
-      family_details: "",
+    "section4": {
+      "family_type": "",
+      "family_status": "",
+      "father_name": "",
+      "father_occupation": "",
+      "mother_name": "",
+      "mother_occupation": "",
+      "brothers_count": "",
+      "sisters_count": "",
+      "brother_married": "",
+      "sister_married": "",
+      "family_details": ""
     },
-    section5: {
-      partner_from_age: "",
-      partner_to_age: "",
-      partner_height: "",
-      partner_religion: "",
-      partner_caste: "",
-      partner_matrial_status: "",
-      partner_education: "",
-      partner_occupation: "",
-      partner_mother_tongue: "",
-      partner_manglik: "",
-      partner_salary: "",
+    "section5": {
+      "partner_from_age": "",
+      "partner_to_age": "",
+      "partner_height": "",
+      "partner_religion": "",
+      "partner_caste": "",
+      "partner_matrial_status": "",
+      "partner_education": "",
+      "partner_occupation": "",
+      "partner_mother_tongue": "",
+      "partner_manglik": "",
+      "partner_salary": ""
+    
     },
-    section6: {
-      image: "",
-      image1: "",
-      id_image: "",
-      id_image1: "",
-      rasiimage: "",
-    },
-  });
+    "section6": {
+      "image": "",
+      "image1": "",
+      "id_image": "",
+      "id_image1": "",
+      "rasiimage": "",
+    }
+  }
+);
   //https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}
   //http://localhost:8000/fetchmember/${id}
   const fetchUserData = async () => {
     try {
       const response = await fetch(
-        `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=293`
+        `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${userid}`
       );
       if (response.ok) {
         const userData = await response.json();
@@ -344,8 +353,6 @@ const Basicdetails = () => {
           section1: {
             ...formData.section1,
             reg_id: userData.body.reg_id,
-            plan_name: userData.body.plan_name || "",
-            plan_status: userData.body.plan_status || "",
             name: userData.body.name || "",
             gender: userData.body.gender || "",
             email: userData.body.email || "",
@@ -372,6 +379,8 @@ const Basicdetails = () => {
             jobdetails: userData.body.jobdetails || "",
             joblocation: userData.body.joblocation || "",
             annual_income: userData.body.annual_income || "",
+            plan_name: userData.body.plan_name || "",
+            plan_register_date: userData.body.plan_register_date || "",
           },
           section2: {
             ...formData.section2,
@@ -435,13 +444,15 @@ const Basicdetails = () => {
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
+    } finally {
+      setLoading(false); // Set loading to false after data is fetched
     }
   };
 
   const labelTranslations = {
     reg_id: "பதிவு ஐடி",
     plan_name: "உறுப்பினர் திட்டம்",
-    plan_status: "உறுப்பினர் திட்ட நிலை",
+    plan_register_date: "உறுப்பினர் திட்ட தேதி",
     name: "பெயர்",
     image: "படம்",
     gender: "பாலினம்",
@@ -571,6 +582,7 @@ const Basicdetails = () => {
     dob: "date",
     birthtime: "time",
     address: "textarea",
+    plan_register_date:"date"
 
     // Add more field names and their corresponding input types as needed
   };
@@ -721,16 +733,16 @@ const Basicdetails = () => {
             ],
           }));
           break;
-        case "plan_status":
-          // Options for marriage type dropdown
-          setOptions((prevOptions) => ({
-            ...prevOptions,
-            [fieldName + "Options"]: [
-              { value: "Paid", label: "Paid" },
-              { value: "Not Paid", label: "Not Paid" },
-            ],
-          }));
-          break;
+        // case "plan_status":
+        //   // Options for marriage type dropdown
+        //   setOptions((prevOptions) => ({
+        //     ...prevOptions,
+        //     [fieldName + "Options"]: [
+        //       { value: "Paid", label: "Paid" },
+        //       { value: "Not Paid", label: "Not Paid" },
+        //     ],
+        //   }));
+        //   break;
         case "sevaikiragam":
           // Options for marriage type dropdown
           setOptions((prevOptions) => ({
@@ -1027,7 +1039,8 @@ const Basicdetails = () => {
     }
   };
 
-  const handleSubmit = async (sectionName, sectionData, id) => {
+  const handleSubmit = async (sectionName, sectionData, userid) => {
+    setId(userid);
     try {
       // Ensure sectionName is valid
       if (
@@ -1094,11 +1107,11 @@ const Basicdetails = () => {
 
         if (responseData.head.code === 200) {
           // Handle the success scenario, such as updating the UI or moving to another section
-          setCurrentSection("section6");
-          window.location.href = "/Member";
+          alert("Successfully updated");
+          window.location.href = "/Searchlist";
         } else {
           // Handle the case where code is not 200
-          setCurrentSection("section6");
+          alert("Try Again");
           console.error("Error:", responseData.head.msg);
         }
         return true; // Success
@@ -1126,6 +1139,18 @@ const Basicdetails = () => {
       <div class="layout-container">
         <div class="layout-page">
           <Navbar />
+          {loading ? (
+            <div
+            className="d-flex justify-content-center back-spin text-center"
+            style={{ height: "100vh", alignItems: "center" }}
+          >
+            <img
+              src={loaderGif}
+              alt="Loading..."
+              className="load-spin"
+            />
+          </div>
+        ) : (
           <div class="content-wrapper">
             <div>
               <div className="">
@@ -1364,7 +1389,7 @@ const Basicdetails = () => {
                 <button
                   className="btn btn-success m-3"
                   onClick={() =>
-                    handleSubmit(currentSection, formData[currentSection], id)
+                    handleSubmit(currentSection, formData[currentSection], userid)
                   }
                 >
                   Submit
@@ -1373,6 +1398,7 @@ const Basicdetails = () => {
               </div>
             </div>
           </div>
+          )}
         </div>
       </div>
       {/* <Footer /> */}

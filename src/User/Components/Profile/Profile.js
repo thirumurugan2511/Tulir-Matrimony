@@ -13,15 +13,20 @@ import Smallicon from '../rgt-matrimony-logo.png'
 import Editjathagam from '../../../Admin/Components/Member/Editjathagam';
 import "../../../Admin/Components/Member/member.css"
 import Footer from '../Footer/Footer';
+import { useLocation } from "react-router-dom";
+import { useAuth } from '../../../AuthContext'
 
 
 const Profile = () => {
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const { userid } = useAuth();
   const { id } = useParams();
   //http://localhost:8000/fetchmember
   //https://tulirmatrimony.com/controlapi/singlecustomer.php?id=239
  
 
-  console.log(id);
+  console.log("User Id From Profile", userid);
   // (`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`);
   const [profileData, setProfileData] = useState(null);
 
@@ -29,7 +34,7 @@ const Profile = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`
+          `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${userid}`
         );
         const res = await response.json();
         setProfileData(res);
@@ -50,7 +55,7 @@ const Profile = () => {
         //https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
         //http://localhost:8000/api/singlejathagam
         const response = await axios.get(
-          `https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}`
+          `https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${userid}`
         );
         setData(response.data.body);
         console.log(data);
@@ -60,7 +65,7 @@ const Profile = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [userid]);
   const formatDate = (dateStr) => {
     if (!dateStr) return "";
     const [year, month, day] = dateStr.split("-");
@@ -73,7 +78,7 @@ const Profile = () => {
         //https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
         //http://localhost:8000//api/singlejathagam/${id}
         const response = await axios.get(
-          `https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=239`
+          `https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${userid}`
         );
         setData(response.data.body);
         console.log(response);
@@ -83,7 +88,7 @@ const Profile = () => {
     };
 
     fetchDataa();
-  }, [id]);
+  }, [userid]);
 
   const formatTime = (timeStr) => {
     if (!timeStr) return "";
@@ -1240,7 +1245,7 @@ const Profile = () => {
                                 <div class="row mx-auto">
                                   <div className="text-end">
                                     <Link
-                                      to={`/Edituserjathagam/${id}`}
+                                      to={`/Edituserjathagam/${userid}`}
                                       class="icon_usBox"
                                     >
                                       <MdModeEdit class="bx bxs-edit" /> Edit
