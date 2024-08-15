@@ -237,13 +237,22 @@ const Searchlist = () => {
                   </Stack>
                 </div>
               </div>
+              
             </section>
+            
           ) : (
-            <p>{noPlan ? noPlan : "Loading..."}</p>
+            <p>
+              {noPlan ? noPlan : <>
+            <div className="d-flex justify-content-center back-spin" style={{ height: "100vh", alignItems: "center" }}>
+          <img src={loaderGif} alt="Loading..." className="load-spin" />
+          </div>
+            </>}
+            </p>
           )}
-          <Footer />
+       
         </>
       )}
+      <Footer />
     </>
   );
 };

@@ -23,6 +23,8 @@ import proAge from "./pro-age.png"
 import proCity from "./pro-city.png";
 import proEducation from './education.png'
 import proJob from "./job.png";
+import Modal from 'react-bootstrap/Modal'
+import { Button } from 'react-bootstrap';
 
 
 const Viewuser1 = () => {
@@ -34,9 +36,12 @@ const Viewuser1 = () => {
     `https://t4.ftcdn.net/jpg/03/26/98/51/360_F_326985142_1aaKcEjMQW6ULp6oI9MYuv8lN9f8sFmj.jpg`,
   ];
   const [selectedImage, setSelectedImage] = useState(images[0]);
-
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const handleImageClick = (imgUrl) => {
     setSelectedImage(imgUrl);
+
   };
   return (
     <>
@@ -546,6 +551,30 @@ const Viewuser1 = () => {
                   </table>
                 </div>
               </div>
+
+
+             {/* Jathagam Model SECTION */}
+             <h3 className="mb-3 headsmain">
+              Jathagam Details
+             </h3>
+             <Button variant="primary" onClick={handleShow}>
+               View Horoscope Details
+            </Button>
+            <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Horoscope</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          {/* <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button> */}
+        </Modal.Footer>
+      </Modal>
+
             </div>
           </div>
         </div>

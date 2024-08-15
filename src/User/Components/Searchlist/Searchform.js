@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useAuth } from '../../../AuthContext';
 import Navbar from "../Navbar/Navbar";
 import Select from "react-select";
 import Footer from "../Footer/Footer";
-import { useLocation } from "react-router-dom";
-import { useAuth } from '../../../AuthContext';
 import loaderGif from "../loader-spin.gif";
 
-
 function Searchform() {
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
   const { userid } = useAuth();
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [ages, setAges] = useState([]);
@@ -18,8 +13,8 @@ function Searchform() {
   const [occupationList, setOccupationList] = useState([]);
   const [districtList, setDistrictList] = useState([]);
   const [starOptions, setStarOptions] = useState([]);
-  // const [loading, setLoading] = useState(true); // State variable for loading status
-
+  const [searchResults, setSearchResults] = useState(null); // State for storing search results
+  const [loading, setLoading] = useState(false); // State for loading status
 
   useEffect(() => {
     // Populate age dropdowns
@@ -33,27 +28,21 @@ function Searchform() {
     fetch("https://tulirmatrimony.com/controlapi/educationlist.php")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Education data:", data);
         if (Array.isArray(data.body)) {
           setEducationList(
             data.body.map((item) => ({ value: item.name, label: item.name }))
           );
-        } else {
-          console.error("Education data is not an array:", data);
-        } 
+        }
       });
 
     // Fetch occupation list
     fetch("https://tulirmatrimony.com/controlapi/occupationlist.php")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Occupation data:", data);
         if (Array.isArray(data.body)) {
           setOccupationList(
             data.body.map((item) => ({ value: item.name, label: item.name }))
           );
-        } else {
-          console.error("Occupation data is not an array:", data);
         }
       });
 
@@ -61,13 +50,10 @@ function Searchform() {
     fetch("https://tulirmatrimony.com/controlapi/districtlist.php")
       .then((response) => response.json())
       .then((data) => {
-        console.log("District data:", data);
         if (Array.isArray(data.body)) {
           setDistrictList(
             data.body.map((item) => ({ value: item.name, label: item.district_name }))
           );
-        } else {
-          console.error("District data is not an array:", data);
         }
       });
 
@@ -75,13 +61,10 @@ function Searchform() {
     fetch("https://tulirmatrimony.com/controlapi/starlist.php")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Star data:", data);
         if (Array.isArray(data.body)) {
           setStarOptions(
             data.body.map((item) => ({ value: item.name, label: item.name }))
           );
-        } else {
-          console.error("Star data is not an array:", data);
         }
       });
   }, []);
@@ -98,7 +81,8 @@ function Searchform() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    setLoading(true); // Set loading state to true
+
     const selectedValues = {
       user_id: `${userid}`,
       fromage: document.querySelector("#fromAge").value,
@@ -108,9 +92,7 @@ function Searchform() {
       district: document.querySelector("#district").value,
       star: selectedOptions.map((option) => option.value),
     };
-  
-    console.log("Submitting values:", selectedValues);
-  
+
     try {
       const response = await fetch("https://tulirmatrimony.com/controlapi/usersearch.php", {
         method: "POST",
@@ -119,37 +101,26 @@ function Searchform() {
         },
         body: JSON.stringify(selectedValues),
       });
-  
-      // Check if the response is valid
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-  
-      const responseData = await response.json(); // Get the response as JSON
+
+      const responseData = await response.json();
       console.log("Response data:", responseData);
-  
+
+      if (responseData.code === 200) {
+        setSearchResults(responseData.profiles); // Assuming profiles are in the response
+      } else if (responseData.code === 600) {
+        setSearchResults([]); // No profiles found
+      }
+
     } catch (error) {
       console.error("Fetch error:", error);
+    } finally {
+      setLoading(false); // Turn off loading state
     }
   };
-  
-  
 
   return (
     <>
       <Navbar />
-      {/* {loading ? (
-            <div
-            className="d-flex justify-content-center back-spin text-center"
-            style={{ height: "100vh", alignItems: "center" }}
-          >
-            <img
-              src={loaderGif}
-              alt="Loading..."
-              className="load-spin"
-            />
-          </div>
-        ) : ( */}
       <section className="pt-4 pb-4 bg-white">
         <form className="container card my-0 py-4" onSubmit={handleSubmit}>
           <div className="row justify-content-center text-start">
@@ -257,7 +228,32 @@ function Searchform() {
           </div>
         </form>
       </section>
-       {/* )} */}
+
+      <section className="search-body">
+        {loading ? (
+          <div className="text-center">
+            <img src={loaderGif} alt="Loading..." />
+          </div>
+        ) : (
+          searchResults && (
+            searchResults.length > 0 ? (
+              <div className="profile-cards">
+                {searchResults.map((profile, index) => (
+                  <div key={index} className="card">
+                    <h5>{profile.name}</h5>
+                    <p>{profile.age} years old</p>
+                    {/* Add more profile details here */}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center">
+                <p>No profiles found matching your criteria.</p>
+              </div>
+            )
+          )
+        )}
+      </section>
       <Footer />
     </>
   );
