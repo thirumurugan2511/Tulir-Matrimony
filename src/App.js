@@ -246,7 +246,13 @@ function App() {
 
 
 const ProtectedRoute = ({ children }) => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, loading } = useAuth();
+
+  // If still loading, show nothing or a spinner
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return isLoggedIn ? children : <Navigate to="/Login" />;
 };
 

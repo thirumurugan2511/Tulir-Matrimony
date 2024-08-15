@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [userid, setUserid] = useState(null);
   const [sessionExpiration, setSessionExpiration] = useState(null);
+  const [loading, setLoading] = useState(true); // NEW
 
   useEffect(() => {
     const storedExpiration = localStorage.getItem("sessionExpiration");
@@ -26,6 +27,7 @@ export const AuthProvider = ({ children }) => {
         logout();
       }
     }
+    setLoading(false); // NEW - ensure this runs after session check
   }, []);
 
   useEffect(() => {
@@ -65,7 +67,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, user, userid, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, user, userid, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

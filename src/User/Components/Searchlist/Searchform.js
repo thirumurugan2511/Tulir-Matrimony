@@ -105,9 +105,9 @@ function Searchform() {
       const responseData = await response.json();
       console.log("Response data:", responseData);
 
-      if (responseData.code === 200) {
+      if (responseData.head.code === 200) {
         setSearchResults(responseData.profiles); // Assuming profiles are in the response
-      } else if (responseData.code === 600) {
+      } else if (responseData.head.code === 600) {
         setSearchResults([]); // No profiles found
       }
 
