@@ -25,11 +25,11 @@ const Searchlist = () => {
   const [viewProfile, setViewProfile] = useState(false);
   const [selectedprofileid, setSelectedprofileid] = useState(0);
   const [planData, setPlanData] = useState(null);
-  const { setProfileCount, profileCount, setValidityDate } = useContext(ProfileContext); // Include profileCount from context
+  const { setProfileCount, profileCount } = useContext(ProfileContext);
   const query = new URLSearchParams(location.search);
   const { userid } = useAuth();
-  const [remainingCount, setRemainingCount] = useState(null); // Define remainingCount state
-  const [expiredDate, setExpiredDate] = useState(null); // Define expiredDate state
+  const [remainingCount, setRemainingCount] = useState(null);
+  const [expiredDate, setExpiredDate] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +46,7 @@ const Searchlist = () => {
         );
         const result = await response.json();
         setData(result.body);
-        console.log("Home Response", result );
+        console.log("Home Response", result);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -58,7 +58,7 @@ const Searchlist = () => {
   }, [userid]);
 
   useEffect(() => {
-    const singlefetchDataa = async () => {
+    const singlefetchData = async () => {
       try {
         const response = await fetch(
           `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${userid}`
@@ -74,7 +74,7 @@ const Searchlist = () => {
       }
     };
 
-    singlefetchDataa();
+    singlefetchData();
   }, [userid]);
 
   useEffect(() => {
@@ -96,15 +96,16 @@ const Searchlist = () => {
           );
           const result = await response.json();
           
-          // Log the entire result to verify its structure
-          console.log("Full Response:", result);
-          
-          // Check if body is an array and has at least one element
           if (Array.isArray(result.body) && result.body.length > 0) {
-            const profileCount = result.body[0].plan_profile_count;
-            setProfileCount(profileCount); // Update context state
+            const planData = result.body[0];
+            const profileCount = planData.plan_profile_count;
+            const remainingCount = planData.remaining_profile_count;
+            const expiredDate = planData.plan_expired_date;
+
+            setProfileCount(profileCount);
+            setRemainingCount(remainingCount);
+            setExpiredDate(expiredDate);
             setPlan(singleData.plan_name);
-            console.log("Logged User Profile Count", profileCount);
           } else {
             console.error("Unexpected response structure or empty body array:", result.body);
           }
@@ -113,17 +114,23 @@ const Searchlist = () => {
           setNoPlan("No Plan Selected");
         }
       };
-  
+
       sendPlanData();
     }
   }, [fetchComplete, singleData, userid, setProfileCount]);
-  
+
   const indexOfLastProfile = currentPage * profilesPerPage;
   const indexOfFirstProfile = indexOfLastProfile - profilesPerPage;
   const currentProfiles = data.slice(indexOfFirstProfile, indexOfLastProfile);
 
   const paginate = (event, pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  const canViewProfile = () => {
+    const remaining = parseInt(remainingCount, 10);
+    const isExpired = expiredDate && new Date(expiredDate) <= new Date();
+    return remaining > 0 && !isExpired;
   };
 
   const handleProfileClick = async () => {
@@ -144,11 +151,10 @@ const Searchlist = () => {
       const result = await response.json();
       if (Array.isArray(result.body) && result.body.length > 0) {
         setPlanData(result.body[0]);
-        console.log("User Profile Count API", result);
         setRemainingCount(result.body[0].remaining_profile_count);
-        setExpiredDate(result.body[0].plan_expire_date);
+        setExpiredDate(result.body[0].plan_expired_date);
         console.log("Profile Count API", result.body[0].remaining_profile_count);
-        console.log("Profile Expired Date", result.body[0].plan_expire_date);
+        console.log("Profile Expired Date", result.body[0].plan_expired_date);
         if (result.body[0].remaining_profile_count <= 0 || new Date(result.body[0].plan_expire_date) <= new Date()) {
           setViewProfile(false);
         } else {
@@ -162,7 +168,6 @@ const Searchlist = () => {
       console.error("Error fetching profile count data:", error);
     }
   };
-  
 
   return (
     <>
@@ -174,67 +179,65 @@ const Searchlist = () => {
       ) : (
         <>
           {singleData && plan ? (
-            <>
-              <section className="speakers-section-three pt-5">
-                <div className="auto-container">
-                  <h4 className="mb-3">
-                    உங்களிடம் <p>Profile Count: {profileCount}</p> சுயவிவரங்களை பார்க்கும் வாய்ப்பு
-                    உள்ளது. <br/>
-                    Expiry Date: {expiredDate} &nbsp;
-                    Remaining Count: {remainingCount}
-                  </h4>
-                </div>
-                <div className="auto-container">
-                  <div className="row">
-                    {currentProfiles.map((item, index) => (
-                      <div key={index} className="speaker-block-three col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInUp animated">
-                        <div className="inner-box">
-                          <div className="image-box">
-                            <figure className="image">
-                              <a href="#" target="_blank">
-                                <img src={`data:image/jpeg;base64,${item.image}`} alt="Profile Loading.." />
-                              </a>
-                            </figure>
-                          </div>
-                          <div className="info-box">
-                            <h4 className="name">
-                              <a href="#" className="cus_name" target="_blank">
-                                {item.name}
-                              </a>
-                            </h4>
-                            <a href="#" target="_blank" onClick={handleProfileClick}>
-                              <span className="designation">Age : {item.age} </span>
-                              <span className="designation">{item.education} </span>
-                              <span className="designation">{item.occupaction} </span>
-                              <span className="designation">{item.star} </span>
-                              <span className="designation">{item.district} </span>
+            <section className="speakers-section-three pt-5">
+              <div className="auto-container">
+                <h4 className="mb-3">
+                  உங்களிடம் <p>Profile Count: {profileCount}</p> சுயவிவரங்களை பார்க்கும் வாய்ப்பு
+                  உள்ளது. 
+                  Expiry Date: {expiredDate === "0000-00-00" ? "No Expiry Date" : expiredDate}
+                  Remaining Count: {remainingCount}
+                </h4>
+              </div>
+              <div className="auto-container">
+                <div className="row">
+                  {currentProfiles.map((item, index) => (
+                    <div key={index} className="speaker-block-three col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInUp animated">
+                      <div className="inner-box">
+                        <div className="image-box">
+                          <figure className="image">
+                            <a href="#" target="_blank">
+                              <img src={`data:image/jpeg;base64,${item.image}`} alt="Profile Loading.." />
                             </a>
-                            <Link
-                              className="btn py-2 mt-2 view-pro"
-                              to={`/Viewuser/${item.user_id}`}
-                              onClick={() => handleProfileClick()}
-                              disabled={planData ? (planData.remaining_profile_count <= 0 || new Date(planData.plan_expire_date) <= new Date()) : true}
-                            >
-                              View Profile
-                            </Link>
-                          </div>
+                          </figure>
+                        </div>
+                        <div className="info-box">
+                          <h4 className="name">
+                            <a href="#" className="cus_name" target="_blank">
+                              {item.name}
+                            </a>
+                          </h4>
+                          <a href="#" target="_blank" onClick={handleProfileClick}>
+                            <span className="designation">Age : {item.age} </span>
+                            <span className="designation">{item.education} </span>
+                            <span className="designation">{item.occupaction} </span>
+                            <span className="designation">{item.star} </span>
+                            <span className="designation">{item.district} </span>
+                          </a>
+                          <Link
+                            className="btn py-2 mt-2 view-pro"
+                            to={`/Viewuser/${item.user_id}`}
+                            onClick={() => handleProfileClick()}
+                            disabled={!canViewProfile()}
+                          >
+                            View Profile
+                          </Link>
                         </div>
                       </div>
-                    ))}
-                  </div>
-                  <div align="center" className="col-lg-12">
-                    <Stack spacing={2}>
-                      <Pagination
-                        count={Math.ceil(data.length / profilesPerPage)}
-                        page={currentPage}
-                        onChange={paginate}
-                        color="secondary"
-                      />
-                    </Stack>
-                  </div>
+                    </div>
+                  ))}
                 </div>
-              </section> 
-            </>
+                <div align="center" className="col-lg-12">
+                  <Stack spacing={2}>
+                    <Pagination
+                      count={Math.ceil(data.length / profilesPerPage)}
+                      page={currentPage}
+                      onChange={paginate}
+                      color="secondary"
+                    />
+                  </Stack>
+                </div>
+              </div>
+            </section>
           ) : (
             <p>{noPlan ? noPlan : "Loading..."}</p>
           )}
