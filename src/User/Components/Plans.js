@@ -7,6 +7,7 @@ import Navbar from "./Navbar/Navbar";
 
 import "./Plans.css";
 import Footer from "./Footer/Footer";
+import Pay from "./Pay.jpeg";
 
 const Plans = () => {
   const [data, setData] = useState([]);
@@ -221,6 +222,11 @@ const Plans = () => {
                   </div>
                 </div>
               </div> */}
+            </div>
+            <div className="row">
+               <div className="text-center align-items-center justify-content-center">
+                <img src={Pay} className="Pay-image"/>
+               </div>
             </div>
           </div>
         </div>
