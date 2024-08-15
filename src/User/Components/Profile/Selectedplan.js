@@ -137,7 +137,7 @@ function Selectedplan() {
                             <div className="text-center">
                               <h2 className="mb-2">
                                 <span className="font-size-13">
-                                 Plan Register Date: {data.plan_register_date}
+                                 Plan Registered Date: {data.plan_register_date}
                                 </span>
                               </h2>
                               <h2 className="mb-4">

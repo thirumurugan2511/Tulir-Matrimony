@@ -52,58 +52,22 @@ const Viewuser = (props) => {
 
     fetchData();
   }, []);
+
+  const displayField = (field, fallback = "No Data Available") => {
+    return field !== null && field !== undefined && field !== "" ? field : fallback;
+  };
   
-  // useEffect(() => {
-  //   const singlefetchDataa = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${userid}`
-  //       );
-  //       const result = await response.json();
-  //       setSingleData(result.body);
-  //       setFetchComplete(true);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  const images = [
+    `data:image/png;base64,${profileData.body.image}`, // Main image
+    `data:image/png;base64,${profileData.body.image1}`, // Replace with actual image paths
+    `data:image/png;base64,${profileData.body.id_image}`,
+    `data:image/png;base64,${profileData.body.id_image1}`,
+  ];
+  const [selectedImage, setSelectedImage] = useState(images[0]);
 
-  //   singlefetchDataa();
-  // }, [userid]);
-
-  // useEffect(() => {
-  //   const handleProfileClick = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         "https://tulirmatrimony.com/controlapi/userprofilecount.php",
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({
-  //             user_id: userid,
-  //             plan: singleData.plan_name,
-  //           }),
-  //         }
-  //       );
-  //       const result = await response.json();
-  //       setPlanData(result.body[0]);
-  //       console.log(planData);
-  //       if (result.body[0].remaining_profile_count <= 0 || new Date(result.body[0].plan_expire_date) <= new Date()) {
-  //         setViewProfile(false);
-  //       } else {
-  //         setViewProfile(true);
-        
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching profile count data:", error);
-  //     }
-  //   };
-
-  //   handleProfileClick();
-  // }, []);
+  const handleImageClick = (imgUrl) => {
+    setSelectedImage(imgUrl);
+  };
 
    const formatDate = (dateStr) => {
      if (!dateStr) return "";
@@ -125,20 +89,36 @@ const Viewuser = (props) => {
   return (
     <>
       {/* <!-- PROFILE --> */}
-      <Navbar />
+      <Navbar /> 
       <section className="pt-5 pb-5">
         <div className="container">
           <div className="row text-start">
-            {profileData ? (
-              <div className="col-lg-4 col-md-4 proimg-div">
+          {profileData ? (
+        <div className="row">
+          {/* Main Image */}
+          <div className="col-lg-6 col-md-6">
+            <img src={selectedImage} className="w-100 main-image" alt="Selected Product" />
+          </div>
+
+          {/* Thumbnails */}
+          <div className="col-lg-6 col-md-6">
+            <div className="thumbnail-gallery">
+              {images.map((imgUrl, index) => (
                 <img
-                  src={`data:image/png;base64,${profileData.body.image}`}
-                  className="w-100"
+                  key={index}
+                  src={imgUrl}
+                  className={`thumbnail ${selectedImage === imgUrl ? 'selected' : ''}`}
+                  alt={`Thumbnail ${index + 1}`}
+                  onClick={() => handleImageClick(imgUrl)}
+                  style={{ width: '80px', margin: '5px', cursor: 'pointer' }}
                 />
-              </div>
-            ) : (
-              <p>Loading...</p>
-            )}
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
             {profileData ? (
               <div className="col-lg-8 col-md-8">
                 <div className="mb-4">
@@ -187,7 +167,7 @@ const Viewuser = (props) => {
                     <li className="mb-1">
                       <span>
                         <MdOutlineMailOutline className="bx bx-power-off me-2 prouser-icon" />
-                        <span> {profileData.body.email} </span>
+                        <span> {displayField(profileData.body.email, "No Email Provided")} </span>
                       </span>
                     </li>
                     <li className="mb-1">

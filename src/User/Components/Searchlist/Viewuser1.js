@@ -26,6 +26,18 @@ import proJob from "./job.png";
 
 
 const Viewuser1 = () => {
+
+  const images = [
+    `https://www.shutterstock.com/image-photo/portrait-handsome-caucasian-man-formal-260nw-2142820441.jpg`, // Main image
+    `https://www.shutterstock.com/image-photo/portrait-handsome-businessman-on-white-260nw-1664184724.jpg`, // Replace with actual image paths
+    `https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg`,
+    `https://t4.ftcdn.net/jpg/03/26/98/51/360_F_326985142_1aaKcEjMQW6ULp6oI9MYuv8lN9f8sFmj.jpg`,
+  ];
+  const [selectedImage, setSelectedImage] = useState(images[0]);
+
+  const handleImageClick = (imgUrl) => {
+    setSelectedImage(imgUrl);
+  };
   return (
     <>
       {/* <!-- PROFILE --> */}
@@ -34,7 +46,25 @@ const Viewuser1 = () => {
         <div className="container">
           <div className="row text-start">
             <div className="col-lg-4 col-md-4 proimg-div">
-              <img src={About1} className="w-100" />
+            <div className="col-lg-6 col-md-6">
+            <img src={selectedImage} className="w-100 main-image" alt="Selected Product" />
+           
+           </div>
+           <div className="col-lg-6 col-md-6">
+            <div className="thumbnail-gallery">
+              {images.map((imgUrl, index) => (
+                <img
+                  key={index}
+                  src={imgUrl}
+                  className={`thumbnail ${selectedImage === imgUrl ? 'selected' : ''}`}
+                  alt={`Thumbnail ${index + 1}`}
+                  onClick={() => handleImageClick(imgUrl)}
+                  style={{ width: '80px', margin: '5px', cursor: 'pointer' }}
+                />
+              ))}
+            </div>
+            </div>
+
             </div>
             <div className="col-lg-8 col-md-8">
               <div className="mb-4">

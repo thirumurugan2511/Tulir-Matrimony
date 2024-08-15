@@ -105,6 +105,10 @@ const Profile = () => {
     window.location.href = "/Searchlist";
   };
 
+  const displayField = (field, fallback = "No Data Available") => {
+    return field !== null && field !== undefined && field !== "" ? field : fallback;
+  };
+
   return (
     <>
       <div class="layout-wrapper layout-content-navbar">
@@ -211,7 +215,7 @@ const Profile = () => {
                                       </h5>
                                       <h5 className="py-2">
                                         <span>
-                                          Email: {profileData.body.email}
+                                          Email: {displayField(profileData.body.email, "No Email Provided")}
                                         </span>
                                       </h5>
                                       <h5 className="py-2">

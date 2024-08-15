@@ -179,8 +179,8 @@ const Searchlist = () => {
                 <div className="auto-container">
                   <h4 className="mb-3">
                     உங்களிடம் <p>Profile Count: {profileCount}</p> சுயவிவரங்களை பார்க்கும் வாய்ப்பு
-                    உள்ளது. 
-                    Expiry Date: {expiredDate}
+                    உள்ளது. <br/>
+                    Expiry Date: {expiredDate} &nbsp;
                     Remaining Count: {remainingCount}
                   </h4>
                 </div>
