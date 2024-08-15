@@ -131,28 +131,26 @@ const Viewuser = (props) => {
         <div className="container">
           <div className="row text-start">
           {profileData && profileData.body ? (
-         <div className="row">
-          {/* Main Image */}
           <div className="col-lg-4 col-md-4">
-            {selectedImage ? (
-              <img src={selectedImage} className="w-100 main-image" alt="Selected Product" />
-            ) : (
-              <p>No image available</p>
-            )}
-          
-          {/* Thumbnails */}
-            {images.map((imgUrl, index) => (
-                <img
-                  key={index}
-                  src={imgUrl}
-                  className={`thumbnail ${selectedImage === imgUrl ? 'selected' : ''}`}
-                  alt={`Thumbnail ${index + 1}`}
-                  onClick={() => handleImageClick(imgUrl)}
-                  style={{ width: '80px', height: '80px', borderRadius:'20px', margin: '5px', cursor: 'pointer' }}
-                />
-              ))}
-              </div>
-            </div>
+            {/* Main Image */}
+              {selectedImage ? (
+                <img src={selectedImage} className="w-100 main-image" alt="Selected Product" />
+              ) : (
+                <p>No image available</p>
+              )}
+            
+            {/* Thumbnails */}
+              {images.map((imgUrl, index) => (
+                  <img
+                    key={index}
+                    src={imgUrl}
+                    className={`thumbnail ${selectedImage === imgUrl ? 'selected' : ''}`}
+                    alt={`Thumbnail ${index + 1}`}
+                    onClick={() => handleImageClick(imgUrl)}
+                    style={{ width: '80px', height: '80px', borderRadius:'20px', margin: '5px', cursor: 'pointer' }}
+                  />
+                ))}
+          </div>
        
    
       ) : (
@@ -161,11 +159,17 @@ const Viewuser = (props) => {
             {profileData ? (
               <div className="col-lg-8 col-md-8">
                 <div className="mb-4">
-                  <h1 className="mb-2 mt-4 headsmain">
-                    {profileData.body.name} - {profileData.body.reg_id}
-                    <Link className="btn btn-secondary float-end"
-                     to="/Searchlist">Back to Home</Link>
-                  </h1>
+                  <div className="row align-items-center text-center">
+                    <h1 className="mb-2 col-lg-9 col-12 col-sm-6  mt-4  text-center headsmain">
+                      {profileData.body.name} - {profileData.body.reg_id}
+                    </h1>
+                    <div className="col-lg-3 col-12 col-sm-6 text-center">
+                      <Link className="btn btn-secondary"
+                        to="/Searchlist">Back to Home
+                      </Link>
+                    </div>
+                    
+                  </div>
                   <ul className="row pro-info4">
                     <li className="col-lg-3 col-md-3 col-sm-6 col-6 mb-2">
                       <img src={proCity} className="proImg" />
@@ -641,188 +645,187 @@ const Viewuser = (props) => {
                   </div>
                 </div>
                  {/* Jathagam Model SECTION */}
-             <h3 className="mb-3 headsmain">
-              Jathagam Details
-             </h3>
-             <Button variant="primary" onClick={handleShow}>
-               View Horoscope Details
+                <h3 className="mb-3 headsmain">
+                  Jathagam Details
+                </h3>
+                <Button variant="primary" onClick={handleShow}>
+                  View Horoscope Details
+                </Button>
+                <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Horoscope</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="row">
+            {data ? (
+                      <>
+                        <div className="row">
+                          <div className="mt-5 m-auto mb-2 row">
+                            <div className="col-lg-3 d-flex mb-5 align-items-center">
+                              <span className="fw-bold jd_text mb-0 me-2">
+                                திசை இருப்பு
+                              </span>
+                              <span style={{ color: "black" }}>
+                                : {data.thisaiirupu}
+                              </span>
+                            </div>
+                            <div className="col-lg-3 d-flex mb-5 align-items-center">
+                              <span class="fw-bold jd_text mb-0 me-2">
+                                ஆண்டு
+                              </span>
+                              <span style={{ color: "black" }}>
+                                : {data.year}
+                              </span>
+                            </div>
+                            <div className="col-lg-3 d-flex mb-5 align-items-center">
+                              <span class="fw-bold jd_text mb-0 me-2">
+                                மாதம்
+                              </span>
+                              <span style={{ color: "black" }}>
+                                : {data.month}
+                              </span>
+                            </div>
+                            <div className="col-lg-3 d-flex mb-5 align-items-center">
+                              <span class="fw-bold jd_text mb-0 me-2">
+                                நாள்
+                              </span>
+                              <span style={{ color: "black" }}>
+                                : {data.days}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-lg-6 mt-5 mb-2">
+                          <table class="table table-bordered table_jadh">
+                            <tbody>
+                              <tr>
+                                <td className="j_dd">
+                                  {data.rasi1}
+                                </td>
+                                <td className="j_dd">
+                                  {data.rasi2}
+                                </td>
+                                <td className="j_dd">
+                                  {data.rasi3}
+                                </td>
+                                <td className="j_dd">
+                                  {data.rasi4}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="j_dd">
+                                  {data.rasi5}
+                                </td>
+                                <td
+                                  colspan="2"
+                                  className="j_dd"
+                                  rowSpan={2}
+                                >
+                                  ராசி
+                                </td>
+                                <td className="j_dd">
+                                  {data.rasi6}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="j_dd">
+                                  {data.rasi7}
+                                </td>
+                                <td className="j_dd">
+                                  {data.rasi8}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="j_dd">
+                                  {data.rasi9}
+                                </td>
+                                <td className="j_dd">
+                                  {data.rasi10}
+                                </td>
+                                <td className="j_dd">
+                                  {data.rasi11}
+                                </td>
+                                <td className="j_dd">
+                                  {data.rasi12}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div className="col-lg-6 mt-5 mb-2">
+                          <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <td className="j_dd">
+                                  {data.amsam1}
+                                </td>
+                                <td className="j_dd">
+                                  {data.amsam2}
+                                </td>
+                                <td className="j_dd">
+                                  {data.amsam3}
+                                </td>
+                                <td className="j_dd">
+                                  {data.amsam4}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="j_dd">
+                                  {data.amsam5}
+                                </td>
+                                <td
+                                  colspan="2"
+                                  className="j_dd"
+                                  rowSpan={2}
+                                >
+                                  அம்சம்
+                                </td>
+                                <td className="j_dd">
+                                  {data.amsam6}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="j_dd">
+                                  {data.amsam7}
+                                </td>
+                                <td className="j_dd">
+                                  {data.amsam8}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td className="j_dd">
+                                  {data.amsam9}
+                                </td>
+                                <td className="j_dd">
+                                  {data.amsam10}
+                                </td>
+                                <td className="j_dd">
+                                  {data.amsam11}
+                                </td>
+                                <td className="j_dd">
+                                  {data.amsam12}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      
+                      </>
+                    ) : (
+                      <p>Loading...</p>
+                    )}
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
             </Button>
-            <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Horoscope</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div>
-          {data ? (
-                                    <>
-                                      <div className="row">
-                                        <div className="col-lg-10 mt-5 m-auto mb-2 row">
-                                          <div className="col-lg-3 d-flex mb-5 align-items-center">
-                                            <span className="fw-bold jd_text mb-0 me-2">
-                                              திசை இருப்பு
-                                            </span>
-                                            <span style={{ color: "black" }}>
-                                              : {data.thisaiirupu}
-                                            </span>
-                                          </div>
-                                          <div className="col-lg-3 d-flex mb-5 align-items-center">
-                                            <span class="fw-bold jd_text mb-0 me-2">
-                                              ஆண்டு
-                                            </span>
-                                            <span style={{ color: "black" }}>
-                                              : {data.year}
-                                            </span>
-                                          </div>
-                                          <div className="col-lg-3 d-flex mb-5 align-items-center">
-                                            <span class="fw-bold jd_text mb-0 me-2">
-                                              மாதம்
-                                            </span>
-                                            <span style={{ color: "black" }}>
-                                              : {data.month}
-                                            </span>
-                                          </div>
-                                          <div className="col-lg-3 d-flex mb-5 align-items-center">
-                                            <span class="fw-bold jd_text mb-0 me-2">
-                                              நாள்
-                                            </span>
-                                            <span style={{ color: "black" }}>
-                                              : {data.days}
-                                            </span>
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                      <div className="col-lg-6 mt-5 mb-2">
-                                        <table class="table table-bordered table_jadh">
-                                          <tbody>
-                                            <tr>
-                                              <td className="j_dd">
-                                                {data.rasi1}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.rasi2}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.rasi3}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.rasi4}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td className="j_dd">
-                                                {data.rasi5}
-                                              </td>
-                                              <td
-                                                colspan="2"
-                                                className="j_dd"
-                                                rowSpan={2}
-                                              >
-                                                ராசி
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.rasi6}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td className="j_dd">
-                                                {data.rasi7}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.rasi8}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td className="j_dd">
-                                                {data.rasi9}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.rasi10}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.rasi11}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.rasi12}
-                                              </td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                      <div className="col-lg-6 mt-5 mb-2">
-                                        <table class="table table-bordered">
-                                          <tbody>
-                                            <tr>
-                                              <td className="j_dd">
-                                                {data.amsam1}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.amsam2}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.amsam3}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.amsam4}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td className="j_dd">
-                                                {data.amsam5}
-                                              </td>
-                                              <td
-                                                colspan="2"
-                                                className="j_dd"
-                                                rowSpan={2}
-                                              >
-                                                அம்சம்
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.amsam6}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td className="j_dd">
-                                                {data.amsam7}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.amsam8}
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td className="j_dd">
-                                                {data.amsam9}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.amsam10}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.amsam11}
-                                              </td>
-                                              <td className="j_dd">
-                                                {data.amsam12}
-                                              </td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                     
-                                    </>
-                                  ) : (
-                                    <p>Loading...</p>
-                                  )}
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          {/* <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button> */}
-        </Modal.Footer>
-      </Modal>
-
+            {/* <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button> */}
+          </Modal.Footer>
+                </Modal>
               </div>
             ) : (
               <p>Loading...</p>

@@ -44,3 +44,9 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+@media only screen and (max-width: 768px) {
+    .j_dd{
+        padding: 10px !important;
+    }
+}

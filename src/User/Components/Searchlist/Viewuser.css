@@ -4,6 +4,7 @@
     border-radius: 10px;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .15);
     text-align: center;
+    list-style-type: none;
 }
 
 .pro-info4 {
@@ -42,6 +43,10 @@
     border-radius: 10px;
 }
 
+.ul-pro li {
+    list-style-type: none !important;
+}
+
 .ul-pro td {
     padding: 4px 15px;
 }
@@ -54,6 +59,12 @@
 .w-100 {
     width: 100%;
     border-radius: 10px;
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 1000px !important;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -72,9 +83,11 @@
 
     .tbl-pro {
         width: 100% !important;
+        table-layout: fixed;
     }
 
     .tbl-pro td {
         width: 50% !important;
+        word-wrap: break-word;
     }
 }
