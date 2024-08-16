@@ -4,17 +4,19 @@ import Navbar from "../Navbar/Navbar";
 import Select from "react-select";
 import Footer from "../Footer/Footer";
 import loaderGif from "../loader-spin.gif";
+import "../Spinner/Spinner.css";
 
 function Searchform() {
   const { userid } = useAuth();
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [ages, setAges] = useState([]);
   const [educationList, setEducationList] = useState([]);
-  const [occupationList, setOccupationList] = useState([]);
+  const [occupactionList, setOccupactionList] = useState([]);
   const [districtList, setDistrictList] = useState([]);
   const [starOptions, setStarOptions] = useState([]);
   const [searchResults, setSearchResults] = useState(null); // State for storing search results
   const [loading, setLoading] = useState(false); // State for loading status
+  const [defaultMessage, setDefaultMessage] = useState(true); // New state for default message
 
   useEffect(() => {
     // Populate age dropdowns
@@ -40,7 +42,7 @@ function Searchform() {
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data.body)) {
-          setOccupationList(
+          setOccupactionList(
             data.body.map((item) => ({ value: item.name, label: item.name }))
           );
         }
@@ -82,15 +84,16 @@ function Searchform() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Set loading state to true
+    setDefaultMessage(false); // Remove default message when search is initiated
 
     const selectedValues = {
       user_id: `${userid}`,
       fromage: document.querySelector("#fromAge").value,
       toage: document.querySelector("#toAge").value,
       education: document.querySelector("#education").value,
-      occupation: document.querySelector("#job").value,
+      occupaction: document.querySelector("#job").value,
       district: document.querySelector("#district").value,
-      star: selectedOptions.map((option) => option.value),
+      star: selectedOptions.length > 0 ? selectedOptions.map((option) => option.value) : "" 
     };
 
     try {
@@ -101,14 +104,18 @@ function Searchform() {
         },
         body: JSON.stringify(selectedValues),
       });
-
+       
+      console.log("Selected data:", selectedValues);
       const responseData = await response.json();
       console.log("Response data:", responseData);
 
-      if (responseData.head.code === 200) {
-        setSearchResults(responseData.profiles); // Assuming profiles are in the response
-      } else if (responseData.head.code === 600) {
-        setSearchResults([]); // No profiles found
+      // Check for success code (200) and valid body array
+      if (responseData.head.code === 200 && Array.isArray(responseData.body)) {
+        setSearchResults(responseData.body); // Populate with profiles
+      } else if (responseData.head.code === 600 && responseData.head.msg === "Data not exists") {
+        setSearchResults([]); // Set empty array if no profiles found
+      } else {
+        setSearchResults(null); // Handle any other cases
       }
 
     } catch (error) {
@@ -127,7 +134,7 @@ function Searchform() {
             <div className="col-lg-2 col-6 mb-2">
               <label className="form-label">வயது (முதல்)</label>
               <select className="form-select" id="fromAge">
-                <option>Select</option>
+                <option value="">Select</option>
                 {ages.map((age) => (
                   <option key={age.value} value={age.value}>
                     {age.label}
@@ -138,7 +145,7 @@ function Searchform() {
             <div className="col-lg-2 col-6 mb-2">
               <label className="form-label">வயது (முதல்)</label>
               <select className="form-select" id="toAge">
-                <option>Select</option>
+                <option value="">Select</option>
                 {ages.map((age) => (
                   <option key={age.value} value={age.value}>
                     {age.label}
@@ -149,7 +156,7 @@ function Searchform() {
             <div className="col-lg-2 col-6 mb-2">
               <label className="form-label">கல்வி</label>
               <select className="form-select" id="education">
-                <option>Select</option>
+                <option value="">Select</option>
                 {educationList.map((edu) => (
                   <option key={edu.value} value={edu.value}>
                     {edu.label}
@@ -160,8 +167,8 @@ function Searchform() {
             <div className="col-lg-2 col-6 mb-2">
               <label className="form-label">வேலை</label>
               <select className="form-select" id="job">
-                <option>Select</option>
-                {occupationList.map((job) => (
+                <option value="">Select</option>
+                {occupactionList.map((job) => (
                   <option key={job.value} value={job.value}>
                     {job.label}
                   </option>
@@ -171,7 +178,7 @@ function Searchform() {
             <div className="col-lg-2 mb-2">
               <label className="form-label">பிறந்த மாவட்டம்</label>
               <select className="form-select" id="district">
-                <option>Select</option>
+                <option value="">Select</option>
                 {districtList.map((district) => (
                   <option key={district.value} value={district.value}>
                     {district.label}
@@ -230,30 +237,39 @@ function Searchform() {
       </section>
 
       <section className="search-body">
-        {loading ? (
-          <div className="text-center">
-            <img src={loaderGif} alt="Loading..." />
+  {loading ? (
+    <div className="text-center">
+      <img src={loaderGif} alt="Loading..." />
+    </div>
+  ) : (
+    <>
+      {defaultMessage && (
+        <div className="text-center">
+          <p>Find your matches here</p>
+        </div>
+      )}
+
+      {searchResults !== null && !loading && (
+        searchResults.length > 0 ? (
+          <div className="profile-cards">
+            {searchResults.map((profile, index) => (
+              <div key={index} className="card">
+                <h5>{profile.name}</h5>
+                <p>{profile.age} years old</p>
+                {/* Add more profile details here */}
+              </div>
+            ))}
           </div>
         ) : (
-          searchResults && (
-            searchResults.length > 0 ? (
-              <div className="profile-cards">
-                {searchResults.map((profile, index) => (
-                  <div key={index} className="card">
-                    <h5>{profile.name}</h5>
-                    <p>{profile.age} years old</p>
-                    {/* Add more profile details here */}
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center">
-                <p>No profiles found matching your criteria.</p>
-              </div>
-            )
-          )
-        )}
-      </section>
+          <div className="text-center">
+            <p>No profiles found matching your criteria.</p>
+          </div>
+        )
+      )}
+    </>
+  )}
+</section>
+
       <Footer />
     </>
   );

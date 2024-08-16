@@ -15,80 +15,59 @@ import "../../../Admin/Components/Member/member.css"
 import Footer from '../Footer/Footer';
 import { useLocation } from "react-router-dom";
 import { useAuth } from '../../../AuthContext'
+import loaderGif from "../loader-spin.gif";
+import "../Spinner/Spinner.css";
 
 
 const Profile = () => {
   const location = useLocation();
-  const query = new URLSearchParams(location.search);
-  const { userid } = useAuth();
-  const { id } = useParams();
-  //http://localhost:8000/fetchmember
-  //https://tulirmatrimony.com/controlapi/singlecustomer.php?id=239
- 
-
-  console.log("User Id From Profile", userid);
-  // (`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`);
+  const { userid, loading } = useAuth();
   const [profileData, setProfileData] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${userid}`
-        );
-        const res = await response.json();
-        setProfileData(res);
-        console.log(res);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   const [data, setData] = useState(null);
 
+  // Wait until loading is finished and userid is available before fetching data
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        //https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
-        //http://localhost:8000/api/singlejathagam
-        const response = await axios.get(
-          `https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${userid}`
-        );
-        setData(response.data.body);
-        console.log(data);
-      } catch (error) {
-        console.error("Error fetching data", error);
-      }
-    };
+    if (!loading && userid) {
+      const fetchProfileData = async () => {
+        try {
+          const response = await fetch(
+            `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${userid}`
+          );
+          const res = await response.json();
+          setProfileData(res);
+          console.log("Profile Data:", res);
+        } catch (error) {
+          console.error("Error fetching profile data:", error);
+        }
+      };
 
-    fetchData();
-  }, [userid]);
+      fetchProfileData();
+    }
+  }, [loading, userid]);
+
+  useEffect(() => {
+    if (!loading && userid) {
+      const fetchJathagamData = async () => {
+        try {
+          const response = await axios.get(
+            `https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${userid}`
+          );
+          setData(response.data.body);
+          console.log("Jathagam Data:", response.data.body);
+        } catch (error) {
+          console.error("Error fetching jathagam data:", error);
+        }
+      };
+
+      fetchJathagamData();
+    }
+  }, [loading, userid]);
+
   const formatDate = (dateStr) => {
     if (!dateStr) return "";
     const [year, month, day] = dateStr.split("-");
     return `${day}/${month}/${year}`;
   };
-
-  useEffect(() => {
-    const fetchDataa = async () => {
-      try {
-        //https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
-        //http://localhost:8000//api/singlejathagam/${id}
-        const response = await axios.get(
-          `https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${userid}`
-        );
-        setData(response.data.body);
-        console.log(response);
-      } catch (error) {
-        console.error("Error fetching data", error);
-      }
-    };
-
-    fetchDataa();
-  }, [userid]);
 
   const formatTime = (timeStr) => {
     if (!timeStr) return "";
@@ -104,6 +83,16 @@ const Profile = () => {
   const handleBackClick = () => {
     window.location.href = "/Searchlist";
   };
+
+  if (loading) {
+    return <div className="d-flex justify-content-center back-spin" style={{ height: "100vh", alignItems: "center" }}>
+    <img src={loaderGif} alt="Loading..." className="load-spin" />
+  </div>; // You can display a loading spinner here
+  }
+
+  if (!userid) {
+    return <div>User is not logged in. Please Login Again!</div>;
+  }
 
   // const displayField = (field, fallback = "No Data Available") => {
   //   return field !== null && field !== undefined && field !== "" ? field : fallback;

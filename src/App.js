@@ -170,8 +170,8 @@ function App() {
               <Route path="/Viewuser1" element={<Viewuser1 />} />
               <Route path="/Edituserjathagam" element={<Edituserjathagam />} />
               <Route path="/Test" element={<Test />} />
-              <Route path="/Searchform" element={<Searchform />} />
-              <Route path="/Selectedplan" element={<Selectedplan />} />
+              {/* <Route path="/Searchform" element={<Searchform />} /> */}
+              {/* <Route path="/Selectedplan" element={<Selectedplan />} /> */}
               <Route
                 path="/Searchform"
                 element={
