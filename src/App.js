@@ -80,6 +80,7 @@ import Viewuser1 from "./User/Components/Searchlist/Viewuser1";
 import Test from './User/Components/Searchlist/Test';
 import Selectedplan from './User/Components/Profile/Selectedplan';
 import {ProfileProvider} from './User/Components/ProfileContext';
+import Freeplan from './User/Components/Home/Freeplan';
 
 
 
@@ -159,17 +160,18 @@ function App() {
               <Route path="/Genprint" element={<Genprint />} />
               <Route path="/" element={<Home />} />
               {/* <Route path="/Searchlist" element={<Searchlist />} /> */}
-              <Route path="/Profile" element={<Profile />} />
-              <Route path="/Editprofile" element={<Editprofile />} />
+              {/* <Route path="/Profile" element={<Profile />} />
+              <Route path="/Editprofile" element={<Editprofile />} /> */}
               <Route path="/Login" element={<Login />} />
               <Route path="/Addjathagam/:id" element={<Addjathagam />} />
               <Route path="/Searchform" element={<Searchform />} />
               <Route path="/Searchform/:id" element={<Searchform />} />
-              <Route path="/Viewuser/:id" element={<Viewuser />} />
-              <Route path="/Viewuser" element={<Viewuser />} />
+              {/* <Route path="/Viewuser/:id" element={<Viewuser />} />
+              <Route path="/Viewuser" element={<Viewuser />} /> */}
               <Route path="/Viewuser1" element={<Viewuser1 />} />
-              <Route path="/Edituserjathagam" element={<Edituserjathagam />} />
+              {/* <Route path="/Edituserjathagam" element={<Edituserjathagam />} /> */}
               <Route path="/Test" element={<Test />} />
+              <Route path="/Freeplan" element={<Freeplan />} />
               {/* <Route path="/Searchform" element={<Searchform />} /> */}
               {/* <Route path="/Selectedplan" element={<Selectedplan />} /> */}
               <Route
@@ -197,7 +199,7 @@ function App() {
                 }
               /> 
               <Route
-                path="/Edituserjathagam/:id"
+                path="/Edituserjathagam"
                 element={
                   <ProtectedRoute>
                     <Edituserjathagam />
@@ -229,10 +231,10 @@ function App() {
                 }
               />
               <Route
-                path="/Profile"
+                path="/Editprofile"
                 element={
                   <ProtectedRoute>
-                    <Profile />
+                    <Editprofile />
                   </ProtectedRoute>
                 }
               />

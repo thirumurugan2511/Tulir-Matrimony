@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Thankyou = () => {
@@ -16,7 +17,8 @@ const Thankyou = () => {
                 </div>
                 <div class="text-center">
                     <h1>Thank You !</h1>
-                    <p>Let's find your patner here! </p>
+                    {/* <p>Let's find your patner here! </p> */}
+                    <Link to="/Login">Click here to login and Find your partner!</Link>
                     
                 </div>
             </div>

@@ -112,7 +112,7 @@ function Searchform() {
       // Check for success code (200) and valid body array
       if (responseData.head.code === 200 && Array.isArray(responseData.body)) {
         setSearchResults(responseData.body); // Populate with profiles
-      } else if (responseData.head.code === 600 && responseData.head.msg === "Data not exists") {
+      } else if (responseData.head.code === 600 && responseData.head.msg === "Data Not Exist") {
         setSearchResults([]); // Set empty array if no profiles found
       } else {
         setSearchResults(null); // Handle any other cases
@@ -245,7 +245,7 @@ function Searchform() {
     <>
       {defaultMessage && (
         <div className="text-center">
-          <p>Find your matches here</p>
+          <h1>Find your matches here</h1>
         </div>
       )}
 
@@ -254,6 +254,7 @@ function Searchform() {
           <div className="profile-cards">
             {searchResults.map((profile, index) => (
               <div key={index} className="card">
+                
                 <h5>{profile.name}</h5>
                 <p>{profile.age} years old</p>
                 {/* Add more profile details here */}
@@ -269,7 +270,6 @@ function Searchform() {
     </>
   )}
 </section>
-
       <Footer />
     </>
   );

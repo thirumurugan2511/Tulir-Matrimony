@@ -56,14 +56,15 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    window.confirm("Are you sure you want to Log out?")
     setIsLoggedIn(false);
     setUser(null);
     setUserid(null);
     setSessionExpiration(null);
-
     localStorage.removeItem("sessionExpiration");
     localStorage.removeItem("user");
     localStorage.removeItem("userid");
+    window.location.href = '/Login';
   };
 
   return (
