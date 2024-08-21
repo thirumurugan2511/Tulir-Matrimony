@@ -147,7 +147,7 @@ const Viewuser = (props) => {
                     className={`thumbnail ${selectedImage === imgUrl ? 'selected' : ''}`}
                     alt={`Thumbnail ${index + 1}`}
                     onClick={() => handleImageClick(imgUrl)}
-                    style={{ width: '80px', height: '80px', borderRadius:'20px', margin: '5px', cursor: 'pointer' }}
+                    style={{ width: '80px', height: '80px', margin: '5px', cursor: 'pointer' }}
                   />
                 ))}
           </div>

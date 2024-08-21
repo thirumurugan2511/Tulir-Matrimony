@@ -418,7 +418,6 @@ const Basicdetails = () => {
             partner_from_age: userData.body.partner_from_age || "",
             partner_to_age: userData.body.partner_to_age || "",
             partner_height: userData.body.partner_height || "",
-
             partner_religion: userData.body.partner_religion || "",
             partner_caste: userData.body.partner_caste || "",
             partner_matrial_status: userData.body.partner_matrial_status || "",
@@ -1108,7 +1107,7 @@ const Basicdetails = () => {
         if (responseData.head.code === 200) {
           // Handle the success scenario, such as updating the UI or moving to another section
           alert("Successfully updated");
-          window.location.href = "/Searchlist";
+          window.location.href = "/Profile";
         } else {
           // Handle the case where code is not 200
           alert("Try Again");
@@ -1155,6 +1154,7 @@ const Basicdetails = () => {
             <div>
               <div className="">
                 <h2 className="mt-4">{sectionNames[currentSection]}</h2>
+                <p>Please give your details to find your match!</p>
               </div>
               <div className="card-body m-5 edit_memberSections_mainsdsd ">
                 <div className="edit_inputMain-sltr row">

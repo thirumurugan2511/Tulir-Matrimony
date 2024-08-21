@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [userid, setUserid] = useState(null);
   const [sessionExpiration, setSessionExpiration] = useState(null);
+  const [loading, setLoading] = useState(true); // NEW
 
   useEffect(() => {
     const storedExpiration = localStorage.getItem("sessionExpiration");
@@ -26,6 +27,7 @@ export const AuthProvider = ({ children }) => {
         logout();
       }
     }
+    setLoading(false); // NEW - ensure this runs after session check
   }, []);
 
   useEffect(() => {
@@ -54,18 +56,19 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    window.confirm("Are you sure you want to Log out?")
     setIsLoggedIn(false);
     setUser(null);
     setUserid(null);
     setSessionExpiration(null);
-
     localStorage.removeItem("sessionExpiration");
     localStorage.removeItem("user");
     localStorage.removeItem("userid");
+    window.location.href = '/Login';
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, user, userid, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, user, userid, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

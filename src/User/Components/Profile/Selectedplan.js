@@ -14,6 +14,8 @@ function Selectedplan() {
   const [loading, setLoading] = useState(true);
   const [fetchComplete, setFetchComplete] = useState(false);
   const [noPlan, setNoPlan] = useState();
+  const [checkPlan, setCheckPlan] = useState("");
+
 
   const { profileCount, setProfileCount, validityDate, setValidityDate } = useContext(ProfileContext);
 
@@ -43,8 +45,7 @@ function Selectedplan() {
         const result = await response.json();
         console.log("For Plan", result);
         setData(result.body);
-        
-
+        setCheckPlan(result.body.plan_name)
         setFetchComplete(true);
       } catch (error) {
         console.error("Error fetching data:", error);
