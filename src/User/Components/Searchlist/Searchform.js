@@ -237,7 +237,7 @@ function Searchform() {
         ) : (
           searchResults && (
             searchResults.length > 0 ? (
-              <div className="profile-cards">
+              <div className="profile-cardszzz">
                 {searchResults.map((profile, index) => (
                   <div key={index} className="card">
                     <h5>{profile.name}</h5>
