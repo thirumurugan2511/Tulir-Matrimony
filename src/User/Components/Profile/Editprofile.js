@@ -283,8 +283,8 @@ const Basicdetails = () => {
       "joblocation":"",
       "annual_income":"",
       "kuladeivam":"",
-      "plan_name": "",
-      "plan_register_date": ""
+      // "plan_name": "",
+      // "plan_register_date": ""
 
     },
     "section2": {
@@ -379,8 +379,8 @@ const Basicdetails = () => {
             jobdetails: userData.body.jobdetails || "",
             joblocation: userData.body.joblocation || "",
             annual_income: userData.body.annual_income || "",
-            plan_name: userData.body.plan_name || "",
-            plan_register_date: userData.body.plan_register_date || "",
+            // plan_name: userData.body.plan_name || "",
+            // plan_register_date: userData.body.plan_register_date || "",
           },
           section2: {
             ...formData.section2,
@@ -450,8 +450,8 @@ const Basicdetails = () => {
 
   const labelTranslations = {
     reg_id: "பதிவு ஐடி",
-    plan_name: "உறுப்பினர் திட்டம்",
-    plan_register_date: "உறுப்பினர் திட்ட தேதி",
+    // plan_name: "உறுப்பினர் திட்டம்",
+    // plan_register_date: "உறுப்பினர் திட்ட தேதி",
     name: "பெயர்",
     image: "படம்",
     gender: "பாலினம்",
@@ -581,7 +581,7 @@ const Basicdetails = () => {
     dob: "date",
     birthtime: "time",
     address: "textarea",
-    plan_register_date:"date"
+    // plan_register_date:"date"
 
     // Add more field names and their corresponding input types as needed
   };
@@ -909,10 +909,10 @@ const Basicdetails = () => {
           // Set the appropriate endpoint for fetching caste list based on currentSection
           endpoint = "https://tulirmatrimony.com/controlapi/castelist.php";
           break;
-        case "plan_name":
-          // Fetch options from different API for zodiacsign
-          endpoint = "https://tulirmatrimony.com/controlapi/planlist.php";
-          break;
+        // case "plan_name":
+        //   // Fetch options from different API for zodiacsign
+        //   endpoint = "https://tulirmatrimony.com/controlapi/planlist.php";
+        //   break;
         case "caste":
           // Set the appropriate endpoint for fetching caste list based on currentSection
           endpoint = "https://tulirmatrimony.com/controlapi/castelist.php";
@@ -1199,6 +1199,7 @@ const Basicdetails = () => {
                       "family_status",
                       "partner_from_age",
                       "partner_to_age",
+                      "plan_name",
                       "residece",
                     ].includes(fieldName) ? (
                       <div

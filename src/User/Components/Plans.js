@@ -8,6 +8,7 @@ import Navbar from "./Navbar/Navbar";
 import "./Plans.css";
 import Footer from "./Footer/Footer";
 import Pay from "./Pay.jpeg";
+import { Link } from "react-router-dom";
 
 const Plans = () => {
   const [data, setData] = useState([]);
@@ -73,7 +74,7 @@ const Plans = () => {
                             </h2>
                           </div>
                           <div className="text-center">
-                            <button
+                            <Link to="#pay"
                               className="btn btn-md"
                               style={{
                                 backgroundColor: "rgb(231, 1, 138)",
@@ -81,7 +82,7 @@ const Plans = () => {
                               }}
                             >
                               Select Plan
-                            </button>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -224,8 +225,10 @@ const Plans = () => {
               </div> */}
             </div>
             <div className="row">
-               <div className="text-center align-items-center justify-content-center">
+               <div className="text-center align-items-center justify-content-center mb-4 " id="pay">
                 <img src={Pay} className="Pay-image"/>
+                <h5 className="mb-2">பணம் செலுத்திய பிறகு, அட்மின் Whats App எண்ணுக்கு ஸ்கிரீன்ஷாட்டை அனுப்பவும். அட்மின் உங்கள் திட்டத்தை மேம்படுத்துவார்.</h5>
+                <h5>What'sApp No : 9443052440</h5>
                </div>
             </div>
           </div>
