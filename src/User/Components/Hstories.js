@@ -122,11 +122,12 @@ const Hstories = () => {
                 <Card key={index}>
                   <div className="mx-auto container row p-5 bg-white">
                     <div className="col-lg-8 text-start mb-2">
-                      <p className="mb-3">{card.Message}</p>
+                     
                       <h3>
                         {card.bridename} &amp; {card.groom_name}
                       </h3>
                       <h3> {card.marriage_date}</h3>
+                      <p className="mt-3">{card.Message}</p>
                     </div>
                     <div className="col-lg-4">
                       <img

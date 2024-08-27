@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Logo from './rgt-matrimony-logo.png';
 import Navbar from '../Navbar/Navbar';
+import './CardSlider.css'
 
 const Freereg = () => {
   const [regId, setRegId] = useState('');
@@ -8,13 +9,13 @@ const Freereg = () => {
   const [data, setData] = useState([]); // For caste data
   const [formData, setFormData] = useState({
     reg_id: '',
-    gender: 'male',
+    gender: '',
     name: '',
     email: '',
     phonenumber: '',
     password: '',
     dob: '',
-    cast: '',
+    caste: '',
     image: ''
   });
 
@@ -25,6 +26,7 @@ const Freereg = () => {
         const response = await fetch('https://tulirmatrimony.com/controlapi/castelist.php');
         const result = await response.json();
         setData(result.body);
+        console.log(result.body);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -83,10 +85,6 @@ const Freereg = () => {
           window.location.href = '/Thankyou';
         }, 2000); // 3 seconds delay before redirecting to Thankyou
 
-        // setTimeout(() => {
-        //   window.location.href = '/Searchlist';
-        // }, 3000); // 6 seconds delay (additional 3 seconds after Thankyou)
-
         resetForm();
       } else {
         console.error('Registration failed, Please try again');
@@ -101,7 +99,7 @@ const Freereg = () => {
   const resetForm = () => {
     setFormData({
       reg_id: '',
-      gender: 'male',
+      gender: '',
       name: '',
       email: '',
       phonenumber: '',
@@ -124,8 +122,8 @@ const Freereg = () => {
       <section className="vh-100 gradient-custom">
         <div className="container h-100">
           <div className="row justify-content-center align-items-center h-100">
-            <div className="col-12 col-lg-9 col-xl-7">
-              <div className="card shadow-2-strong card-registration">
+            <div className="col-12 col-lg-9 col-xl-7 col-sm-12 col-12">
+              <div className="card shadow-2-strong card-registration card-register">
                 <img src={Logo} alt="" width={250} className="mt-3 mx-auto" />
                 <div className="card-body p-4 p-md-5 bg-grey">
                   <h3 className="mb-4 pb-2 pb-md-0 mb-md-5">இலவச பதிவு</h3>
@@ -140,11 +138,11 @@ const Freereg = () => {
                       <div className="col-md-6 mb-4 text-start">
                         <h6 className="mb-3 mt-1 pb-1">பாலினம்:</h6>
                         <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="radio" name="gender" value="male" checked={formData.gender === 'male'} onChange={handleInputChange} />
+                          <input className="form-check-input" type="radio" name="gender" value="Male" checked={formData.gender === 'Male'} onChange={handleInputChange} />
                           <label className="form-label" htmlFor="maleGender">ஆண்</label>
                         </div>
                         <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="radio" name="gender" value="female" checked={formData.gender === 'female'} onChange={handleInputChange} />
+                          <input className="form-check-input" type="radio" name="gender" value="Female" checked={formData.gender === 'Female'} onChange={handleInputChange} />
                           <label className="form-label" htmlFor="femaleGender">பெண்</label>
                         </div>
                       </div>
@@ -183,7 +181,7 @@ const Freereg = () => {
                     <div className="row">
                       <div className="col-md-6 mb-4 text-start">
                         <label className="form-label" htmlFor="cast">இனம்</label>
-                        <select className="form-select" name="caste" value={formData.cast} onChange={handleInputChange} required>
+                        <select className="form-select" name="caste" value={formData.caste} onChange={handleInputChange} required>
                           <option value="">Select your caste</option>
                           {data.map((caste) => (
                             <option key={caste.id} value={caste.caste_name}>{caste.caste_name}</option>

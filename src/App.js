@@ -31,6 +31,7 @@ import Mothertongueadd from './Admin/Components/Newdetails/Addnew/Mothertonguead
 import Staradd from './Admin/Components/Newdetails/Addnew/Staradd';
 import Addmember from './Admin/Components/Member/Addmember';
 import Sitesettings from './Admin/Components/Sitesettings/Sitesettings';
+import Sitesettingsedit from './Admin/Components/Sitesettings/Sitesettingsedit';
 import Signin from './Admin/Components/Regform/Signin';
 import Member from './Admin/Components/Member/Member';
 import Signup from './Admin/Components/Regform/Signup';
@@ -117,6 +118,7 @@ function App() {
               <Route path="/Staradd" element={<Staradd />} />
               <Route path="/Addmember" element={<Addmember />} />
               <Route path="/Sitesettings" element={<Sitesettings />} />
+              <Route path="/Sitesettingsedit/:id" element={<Sitesettingsedit />} />
               <Route path="/Signin" element={<Signin />} />
               <Route path="/Signup" element={<Signup />} />
               <Route path="/Member" element={<Member />} />

@@ -118,12 +118,12 @@ nav {
 
 @media only screen and (max-width: 768px) {
 	.top-text{
-        font-size: 9px;
+        font-size: 10px;
     }
 }
 @media only screen and (max-width: 480px) {
 	.top-text{
-        font-size: 8px;
+        font-size: 10px;
     }
 	.navbar-logo{
 		height: 50px;

@@ -53,7 +53,7 @@ const Login = () => {
       <div className="container">
         <div className="authentication-wrapper authentication-basic container-p-y">
           <div className="authentication-inner">
-            <div className="card login-div col-md-4 mt-5 mx-auto">
+            <div className="card login-div col-lg-6 col-sm-12 mt-5 mx-auto">
               <div className="card-body">
                 <div className="app-brand justify-content-center">
                   <a href="#" className="app-brand-link gap-2">

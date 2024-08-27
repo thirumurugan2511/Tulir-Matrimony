@@ -38,3 +38,11 @@
 .cus_name {
     word-wrap: break-word;
 }
+@media only screen and (max-width: 768px) {
+    .card-searchh {
+        width: 100%!important;
+    }
+ }
+ .search-profile-div{
+    z-index: 0;
+ }

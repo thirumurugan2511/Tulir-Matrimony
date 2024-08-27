@@ -261,7 +261,7 @@ function Searchform() {
     <>
       <Navbar />
       <section className="pt-4 pb-4 bg-white">
-        <form className="container card my-0 py-4" onSubmit={handleSubmit}>
+        <form className="container card card-searchh my-0 py-4" onSubmit={handleSubmit}>
           <div className="row justify-content-center text-start">
             <div className="col-lg-2 col-6 mb-2">
               <label className="form-label">வயது (முதல்)</label>
@@ -387,7 +387,7 @@ function Searchform() {
             {searchResults.map((profile, index) => (
               <div key={index} className="speaker-block-three col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInUp animated">
               <div className="inner-box">
-                <div className="image-box">
+                <div className="image-box search-profile-div">
                   <figure className="image">
                     <a href="#" target="_blank">
                       <img src={`data:image/jpeg;base64,${profile.image}`} alt="Profile Loading.." />
