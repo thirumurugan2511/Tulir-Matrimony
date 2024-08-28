@@ -83,6 +83,7 @@ import Selectedplan from './User/Components/Profile/Selectedplan';
 import {ProfileProvider} from './User/Components/ProfileContext';
 import Freeplan from './User/Components/Home/Freeplan';
 import Editadmin from './Admin/Components/Editadmin/Editadmin';
+import FirstLogin from './User/Components/Login/FirstLogin';
 
 
 
@@ -166,7 +167,8 @@ function App() {
               {/* <Route path="/Searchlist" element={<Searchlist />} /> */}
               {/* <Route path="/Profile" element={<Profile />} />
               <Route path="/Editprofile" element={<Editprofile />} /> */}
-              <Route path="/Login" element={<Login />} />
+              <Route path="/Login" element={<Login />} /> 
+              <Route path="/FirstLogin" element={<FirstLogin />} />
               <Route path="/Addjathagam/:id" element={<Addjathagam />} />
               <Route path="/Searchform" element={<Searchform />} />
               <Route path="/Searchform/:id" element={<Searchform />} />
@@ -242,6 +244,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+             
             </Routes>
           </Router>
         </ProfileProvider>

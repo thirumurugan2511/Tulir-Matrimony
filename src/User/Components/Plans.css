@@ -19,4 +19,8 @@
     .Pay-image {
         height: 450px;
     }
+
+    .mbl-pad {
+        padding: 0.5rem !important;
+    }
  }

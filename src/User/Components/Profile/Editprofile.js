@@ -92,7 +92,7 @@ const Basicdetails = () => {
     //   { value: 'Bachelor', label: 'Bachelor' },
     //   { value: 'Master', label: 'Master' },
     // ],
-    resideceOptions: [
+    residenceOptions: [
       { value: "Citizen", label: "Citizen" },
       { value: "Permanent Resident", label: "Permanent Resident" },
       { value: "Temporary Visa", label: "Temporary Visa" },
@@ -385,7 +385,7 @@ const Basicdetails = () => {
           section2: {
             ...formData.section2,
             city: userData.body.city || "",
-            residece: userData.body.residece || "",
+            residence: userData.body.residence || "",
             alternatenumber: userData.body.alternatenumber || "",
             mothercountry: userData.body.mothercountry || "",
             address: userData.body.address || "",
@@ -486,7 +486,7 @@ const Basicdetails = () => {
     country: "நாடு",
     state: "மாநிலம்",
     city: "பிறந்த மாவட்டம்",
-    residece: "குடியிருப்பு வகை",
+    residence: "குடியிருப்பு வகை",
     alternatenumber: "தொலைபேசி மாற்று எண்",
     mothercountry: "தாய்நாடு",
     address: "தற்போதைய முகவரி",
@@ -587,7 +587,7 @@ const Basicdetails = () => {
   };
   const sectionNames = {
     section1: "Basic Details",
-    section2: "Residece",
+    section2: "residence",
     section3: "Physical Info",
     section4: "Family Details",
     section5: "Partner Preferences",
@@ -783,7 +783,7 @@ const Basicdetails = () => {
             ],
           }));
           break;
-        case "residece":
+        case "residence":
           // Options for marriage type dropdown
           setOptions((prevOptions) => ({
             ...prevOptions,
@@ -1200,7 +1200,7 @@ const Basicdetails = () => {
                       "partner_from_age",
                       "partner_to_age",
                       "plan_name",
-                      "residece",
+                      "residence",
                     ].includes(fieldName) ? (
                       <div
                         key={fieldName}

@@ -51,13 +51,12 @@ const Plans = () => {
         <div className="container">
           <div className="page-content">
             <div className="row"></div>
-            <div className="row p-4">
+            <div className="row p-4 mbl-pad">
               {data.map((item) => (
                 <div className="col-lg-12 mb-4" style={{ textAlign: "center" }} key={item.id}>
                   <div
                     className="card-plan mb-3"
                     style={{
-                      padding: "20px",
                       backgroundColor: getBackgroundColor(item.name),
                       color: "white"
                     }}
