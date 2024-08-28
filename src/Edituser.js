@@ -251,7 +251,14 @@ const Edituser = () => {
     fetchUserData(id);
   }, [id]);
 
-
+  const getCurrentDate = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so add 1
+    const day = String(date.getDate()).padStart(2, '0');
+    
+    return `${year}-${month}-${day}`;
+  };
 
 
   const [formData, setFormData] = useState({
@@ -284,7 +291,7 @@ const Edituser = () => {
       "annual_income":"",
       "kuladeivam":"",
       "plan_name": "",
-      "plan_register_date": ""
+      "plan_register_date": getCurrentDate() 
 
     },
     "section2": {
@@ -340,19 +347,24 @@ const Edituser = () => {
 );
 //https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}
 //http://localhost:8000/fetchmember/${id}
+
 const fetchUserData = async () => {
   try {
     const response = await fetch(`https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${id}`);
     if (response.ok) {
       const userData = await response.json();
       console.log(userData); 
+      
+      const planRegisterDate = userData.body.plan_register_date;
+      const formattedDate = (!planRegisterDate || planRegisterDate === "0000-00-00") ? getCurrentDate() : planRegisterDate;
+
       const updatedFormData = {
         ...formData,
         section1: {
           ...formData.section1,
           reg_id: userData.body.reg_id,
           plan_name: userData.body.plan_name || "",
-          plan_register_date: userData.body.plan_register_date || "",
+          plan_register_date: formattedDate, // Use the formatted date
           name: userData.body.name || "",
           gender: userData.body.gender || "",   
           email: userData.body.email || "",
@@ -416,7 +428,6 @@ const fetchUserData = async () => {
           partner_from_age: userData.body.partner_from_age || "",
           partner_to_age: userData.body.partner_to_age || "",
           partner_height: userData.body.partner_height || "",
-          
           partner_religion: userData.body.partner_religion || "",
           partner_caste: userData.body.partner_caste || "",
           partner_matrial_status: userData.body.partner_matrial_status || "",
@@ -425,18 +436,17 @@ const fetchUserData = async () => {
           partner_mother_tongue: userData.body.partner_mother_tongue || "",
           partner_manglik: userData.body.partner_manglik || "",
           partner_salary: userData.body.partner_salary || ""
-          
-        }
-        ,
+        },
         section6: {
           ...formData.section6,
-          image:  "",
+          image: "",
           image1: "",
           id_image: "",
-          id_image1:  "",
+          id_image1: "",
           rasiimage: ""
         }
       };
+
       setFormData(updatedFormData); // Set form data state with fetched user data
       console.log(updatedFormData);
     } else {
@@ -446,6 +456,7 @@ const fetchUserData = async () => {
     console.error('Error fetching user data:', error);
   }
 };
+
 
   const labelTranslations = {
     "reg_id": "பதிவு ஐடி",

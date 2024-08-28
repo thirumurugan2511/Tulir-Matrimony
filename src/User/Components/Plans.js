@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaPaperPlane } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { AiFillDollarCircle } from "react-icons/ai";
 import { GiGoldBar } from "react-icons/gi";
 import { FaCheck } from "react-icons/fa6";
@@ -50,7 +51,7 @@ const Plans = () => {
         <div className="container">
           <div className="page-content">
             <div className="row"></div>
-            <div className="row">
+            <div className="row p-4">
               {data.map((item) => (
                 <div className="col-lg-12 mb-4" style={{ textAlign: "center" }} key={item.id}>
                   <div
@@ -58,6 +59,7 @@ const Plans = () => {
                     style={{
                       padding: "20px",
                       backgroundColor: getBackgroundColor(item.name),
+                      color: "white"
                     }}
                   >
                     <div className="card-body">
@@ -89,15 +91,15 @@ const Plans = () => {
                             </h2>
                           </div>
                           <div className="text-center">
-                            <button
+                            <Link to="#pay"
                               className="btn btn-md"
                               style={{
                                 backgroundColor: "rgb(231, 1, 138)",
                                 color: "white",
-                              }}
+                              }} 
                             >
                               Select Plan
-                            </button>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -108,7 +110,7 @@ const Plans = () => {
             </div>
             <div className="row">
               <div className="text-center align-items-center justify-content-center">
-                <img src={Pay} className="Pay-image" alt="Payment" />
+                <img src={Pay} id="pay" className="Pay-image" alt="Payment" />
               </div>
             </div>
           </div>

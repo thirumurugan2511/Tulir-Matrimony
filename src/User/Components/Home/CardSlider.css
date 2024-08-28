@@ -96,3 +96,8 @@
       width: 13rem;
    }
 }
+@media only screen and (max-width: 768px) {
+   .card-register {
+       width: 100%!important;
+   }
+}

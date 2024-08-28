@@ -210,7 +210,7 @@ const Searchlist = () => {
             <section className="speakers-section-three pt-5">
               <div className="auto-container">
                 <h4 className="mb-3">
-                  உங்களிடம் <p>Profile Count: {remainingCount}</p> சுயவிவரங்களை பார்க்கும் வாய்ப்பு
+                  உங்களிடம் <h3 className="text-danger">Profile Count: {remainingCount}</h3> சுயவிவரங்களை பார்க்கும் வாய்ப்பு
                   உள்ளது. 
                 </h4>
               </div>

@@ -18,7 +18,7 @@ const Thankyou = () => {
                 <div class="text-center">
                     <h1>Thank You !</h1>
                     {/* <p>Let's find your patner here! </p> */}
-                    <Link to="/Login">Click here to login and Find your partner!</Link>
+                    <Link to="/Login" className='btn btn-primary mt-4'>Click here to login and Find your partner!</Link>
                     
                 </div>
             </div>

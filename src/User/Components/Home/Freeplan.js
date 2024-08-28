@@ -52,7 +52,7 @@ const Freeplan = () => {
           <div className="auto-container">
             <div className="row">
               {data.map((item, index) => (
-                <div key={index} className="profile-block col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                <div key={index} className="speaker-block-three col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInUp animated">
                   <div className="inner-box">
                     <div className="image-box">
                       <figure className="image">
@@ -67,9 +67,6 @@ const Freeplan = () => {
                           {item.name}
                         </a>
                       </h4>
-                      <span className="designation">Age: {item.age}</span>
-                      <span className="designation">{item.education}</span>
-                      <span className="designation">{item.occupation}</span>
                       {/* <Link
                         className="btn py-2 mt-2 view-pro"
                         to={`/Viewuser/${item.user_id}`}
@@ -81,10 +78,11 @@ const Freeplan = () => {
                 </Button>
                 <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Please Upgrade Your Plan</Modal.Title>
+            <Modal.Title> </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-                <h4>Kindly Please Upgrade your plan and find your match here!</h4>
+              <h4 className="text-center mb-4">தயவுசெய்து உங்கள் திட்டத்தை மேம்படுத்தவும்</h4>
+                <h4 className="text-center">தயவுசெய்து உங்கள் திட்டத்தை மேம்படுத்தி, உங்கள் பொருத்தத்தை இங்கே கண்டறியவும்!</h4>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
