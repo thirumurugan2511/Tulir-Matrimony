@@ -17,9 +17,8 @@ function Navbar({ userid }) {
   return (
     <>
       <div className="text-end top-nav d-flex gap-3 justify-content-end">
-        <p className="text-white top-text">+91 9443052440</p>
         <p className="text-white me-4 top-text">
-          எட்டயபுரம் வளைவு ரோடு, படித்துறை எதிரில், கோவில்பட்டி - 628501
+        +91 9443052440 எட்டயபுரம் வளைவு ரோடு, படித்துறை எதிரில், கோவில்பட்டி - 628501
         </p>
       </div>
       <header>

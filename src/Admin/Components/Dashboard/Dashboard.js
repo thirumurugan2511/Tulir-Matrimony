@@ -76,6 +76,12 @@ const Dashoard = () => {
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
+                                    <Link class="dropdown-item" to="/Editadmin">
+                                        <IoMdSettings class="bx bx-cog me-2" />
+                                        <span class="align-middle">Edit</span>
+                                    </Link>
+                                </li>
+                                <li>
                                     <Link class="dropdown-item" to="/Sitesettings">
                                         <IoMdSettings class="bx bx-cog me-2" />
                                         <span class="align-middle">Settings</span>

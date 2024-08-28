@@ -4,7 +4,6 @@ import { AiFillDollarCircle } from "react-icons/ai";
 import { GiGoldBar } from "react-icons/gi";
 import { FaCheck } from "react-icons/fa6";
 import Navbar from "./Navbar/Navbar";
-
 import "./Plans.css";
 import Footer from "./Footer/Footer";
 import Pay from "./Pay.jpeg";
@@ -29,10 +28,21 @@ const Plans = () => {
     fetchData();
   }, []);
 
-  const pageStyle = {
-    backgroundImage:
-      'url("https://www.matrimonysoftware.in/images/background/5.jpg")',
+  const getBackgroundColor = (planName) => {
+    switch (planName.toLowerCase()) {
+      case "silver":
+        return "#5d615978";
+      case "gold":
+        return "#ffba00c9";
+      case "platinum":
+        return "#006a9b85";
+      case "freeplan":
+        return "#11b60796";
+      default:
+        return "#ffffff"; // Default background color
+    }
   };
+
   return (
     <>
       <Navbar />
@@ -42,8 +52,14 @@ const Plans = () => {
             <div className="row"></div>
             <div className="row">
               {data.map((item) => (
-                <div className="col-lg-12" style={{ textAlign: "center" }}>
-                  <div className="card-plan" style={{ padding: "20px" }}>
+                <div className="col-lg-12 mb-4" style={{ textAlign: "center" }} key={item.id}>
+                  <div
+                    className="card-plan mb-3"
+                    style={{
+                      padding: "20px",
+                      backgroundColor: getBackgroundColor(item.name),
+                    }}
+                  >
                     <div className="card-body">
                       <div className="p-4 card-body">
                         <div className="media">
@@ -89,144 +105,11 @@ const Plans = () => {
                   </div>
                 </div>
               ))}
-
-              {/* <div className="col-lg-12" style={{ textAlign: "center" }}>
-                <div className="card" style={{ padding: "20px" }}>
-                  <div className="card-body">
-                    <div className="p-4 card-body">
-                      <div className="media">
-                        <div className="media-body">
-                          <h2 style={{ color: "rgb(231, 1, 138)" }}>
-                            Plan 2: Diamond
-                          </h2>
-                        </div>
-                      </div>
-                      <div
-                        className="plan-features mt-5"
-                        style={{ textAlign: "left" }}
-                      >
-                        <h5>
-                          <FaCheck
-                            className="fas fa-check me-2"
-                            style={{ color: "rgb(231, 1, 138)" }}
-                          />
-                          தாங்கள் online மூலமாக பயோடேட்டா, ஜாதகம், போட்டோ
-                          முழுவதுமாக பார்த்து கொள்ளலாம். உங்களுக்கு பொருத்தமான
-                          120 வரன்களின் தொலைபேசி எண்களை 12 மாதத்திற்கு எடுத்து
-                          கொள்ளலாம்
-                        </h5>
-                        <h5 style={{ lineHeight: "30px" }}>
-                          <FaCheck
-                            className="fas fa-check me-2"
-                            style={{ color: "rgb(231, 1, 138)" }}
-                          />
-                          Like SMS unlimited ஆக அனுப்பி கொள்ளலாம்
-                        </h5>
-                      </div>
-                      <div className="py-4">
-                        <h2>
-                          Rs: 5000/{" "}
-                          <span className="font-size-13">12 months</span>
-                        </h2>
-                      </div>
-                      <div className="text-center">
-                        <button
-                          className="btn btn-md"
-                          style={{
-                            backgroundColor: "rgb(231, 1, 138)",
-                            color: "white",
-                          }}
-                        >
-                          Select Plan 2
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-12" style={{ textAlign: "center" }}>
-                <div className="card" style={{ padding: "20px" }}>
-                  <div className="card-body">
-                    <div className="p-4 card-body">
-                      <div className="media">
-                        <div className="media-body">
-                          <h2 style={{ color: "rgb(231, 1, 138)" }}>
-                            Plan 3: Assisted Service
-                          </h2>
-                        </div>
-                        <div className="ms-3"></div>
-                      </div>
-                      <div className="text-center">
-                        <div
-                          className="plan-features mt-4"
-                          style={{ textAlign: "left" }}
-                        >
-                          <h5 style={{ lineHeight: "30px" }}>
-                            <FaCheck
-                              className="fas fa-check me-2"
-                              style={{ color: "rgb(231, 1, 138)" }}
-                            />
-                            தாங்கள் online மூலமாக பயோடேட்டா, ஜாதகம், போட்டோ
-                            முழுவதுமாக பார்த்து கொள்ளலாம். உங்களுக்கு பொருத்தமான
-                            120 வரன்களின் தொலைபேசி எண்களை 6 மாதத்திற்கு எடுத்து
-                            கொள்ளலாம்
-                          </h5>
-                          <h5 style={{ lineHeight: "30px" }}>
-                            <FaCheck
-                              className="fas fa-check me-2"
-                              style={{ color: "rgb(231, 1, 138)" }}
-                            />
-                            Like SMS unlimited ஆக அனுப்பி கொள்ளலாம்
-                          </h5>
-                          <h5 style={{ lineHeight: "30px" }}>
-                            <FaCheck
-                              className="fas fa-check me-2"
-                              style={{ color: "rgb(231, 1, 138)" }}
-                            />
-                            உங்களுக்கு பொருத்தமான வரன்கள் வாரம் ஒருமுறை
-                            போட்டோவுடன் WhatsApp-ல் அனுப்பி வைக்கப்படும்
-                          </h5>
-                          <h5 style={{ lineHeight: "30px" }}>
-                            <FaCheck
-                              className="fas fa-check me-2"
-                              style={{ color: "rgb(231, 1, 138)" }}
-                            />
-                            எங்கள் நிறுவனத்தில் தனியாக ஒரு நபர் நியமித்து
-                            உங்களுக்கு உதவி செய்வார்
-                          </h5>
-                          <h5 style={{ lineHeight: "30px" }}>
-                            <FaCheck
-                              className="fas fa-check me-2"
-                              style={{ color: "rgb(231, 1, 138)" }}
-                            />
-                            ஜாதகம் பொருத்தமாக இருந்தால் அவர்களே பேசி தருவார்கள்
-                          </h5>
-                        </div>
-                        <div className="py-4">
-                          <h2>
-                            Rs: 10000/{" "}
-                            <span className="font-size-13">6 months</span>
-                          </h2>
-                        </div>
-                        <button
-                          className="btn btn-md"
-                          style={{
-                            backgroundColor: "rgb(231, 1, 138)",
-                            color: "white",
-                          }}
-                        >
-                          Select Plan 3
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
             <div className="row">
-               <div className="text-center align-items-center justify-content-center">
-                <img src={Pay} className="Pay-image"/>
-               </div>
+              <div className="text-center align-items-center justify-content-center">
+                <img src={Pay} className="Pay-image" alt="Payment" />
+              </div>
             </div>
           </div>
         </div>

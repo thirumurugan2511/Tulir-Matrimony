@@ -81,6 +81,7 @@ import Test from './User/Components/Searchlist/Test';
 import Selectedplan from './User/Components/Profile/Selectedplan';
 import {ProfileProvider} from './User/Components/ProfileContext';
 import Freeplan from './User/Components/Home/Freeplan';
+import Editadmin from './Admin/Components/Editadmin/Editadmin';
 
 
 
@@ -158,6 +159,7 @@ function App() {
               <Route path="/Editjathagam/:id" element={<Editjathagam />} />
               <Route path="/Textform" element={<Textform />} />
               <Route path="/Genprint" element={<Genprint />} />
+              <Route path="/Editadmin" element={<Editadmin />} />
               <Route path="/" element={<Home />} />
               {/* <Route path="/Searchlist" element={<Searchlist />} /> */}
               {/* <Route path="/Profile" element={<Profile />} />

@@ -6,26 +6,34 @@ import About from "./About";
 import './Home.css';
 import Hstories from "../Hstories";
 import Footer from "../Footer/Footer";
+import axios from 'axios'; // Make sure axios is installed and imported
 import loaderGif from "../loader-spin.gif"; // Adjust the path as necessary
 
 const Home = () => {
   const [click, setClick] = useState(false);
   const [loading, setLoading] = useState(true);
   const [cards, setCards] = useState([]);
+  const [bannerList, setBannerList] = useState([]); // New state for banners
 
   const handleClick = () => setClick(!click);
   const Close = () => setClick(false);
 
   useEffect(() => {
-    // Simulate a network request
-    setTimeout(() => {
-      setLoading(false);
-    }, 4000); // Adjust the time as needed
+    const fetchBannerList = async () => {
+      try {
+        const response = await axios.get('https://tulirmatrimony.com/controlapi/bannerlist.php');
+        setBannerList(response.data.body); // Set bannerList to response.data.body
+        setLoading(false); // Stop loading after fetching data
+      } catch (error) {
+        console.error('Error fetching banner list', error);
+        setLoading(false); // Stop loading even if there's an error
+      }
+    };
+    fetchBannerList(); // Call the function to fetch banner images
   }, []);
 
   return (
     <>
-     
       <Navbar />
       {loading ? (
         <div
@@ -36,70 +44,42 @@ const Home = () => {
         </div>
       ) : (
         <>
-          <section className="bg-grey pb-5">
+          <section className="bg-grey pb-5 home-banner">
             <div
               id="carouselExampleIndicators"
               className="carousel slide"
               data-bs-ride="carousel"
             >
               <ol className="carousel-indicators">
-                <li
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="0"
-                  className="active"
-                ></li>
-                <li
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="1"
-                ></li>
-                <li
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="2"
-                ></li>
+                {bannerList.map((banner, index) => (
+                  <li
+                    key={banner.id}
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to={index}
+                    className={index === 0 ? "active" : ""}
+                  ></li>
+                ))}
               </ol>
               <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img
-                    className="d-block w-100"
-                    style={{ height: "600px", objectFit: "cover" }}
-                    src="https://attune.in/img/slider/slide1.jpg"
-                    alt="First slide"
-                  />
+                {bannerList.map((banner, index) => (
                   <div
-                    className="carousel-caption d-flex flex-column justify-content-center align-items-center"
-                    style={{ height: "100%" }}
+                    key={banner.id}
+                    className={`carousel-item ${index === 0 ? "active" : ""}`}
                   >
-                    <h1 className="fw-bold">Find Your Perfect Match Here!!!</h1>
+                    <img
+                      className="d-block w-100"
+                      style={{ height: "600px", objectFit: "cover" }}
+                      src={banner.image}
+                      alt={`Banner ${banner.id}`}
+                    />
+                    <div
+                      className="carousel-caption d-flex flex-column justify-content-center align-items-center"
+                      style={{ height: "100%" }}
+                    >
+                      <h1 className="fw-bold">Find Your Perfect Match Here!!!</h1>
+                    </div>
                   </div>
-                </div>
-                <div className="carousel-item">
-                  <img
-                    className="d-block w-100"
-                    style={{ height: "600px", objectFit: "cover" }}
-                    src="https://attune.in/img/slider/slide2.jpg"
-                    alt="Second slide"
-                  />
-                  <div
-                    className="carousel-caption d-flex flex-column justify-content-center align-items-center"
-                    style={{ height: "100%" }}
-                  >
-                    <h1 className="fw-bold">Find Your Perfect Match Here!!!</h1>
-                  </div>
-                </div>
-                <div className="carousel-item">
-                  <img
-                    className="d-block w-100"
-                    style={{ height: "600px", objectFit: "cover" }}
-                    src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*RC6B19aAIwugxbtWNJ7QvQ.jpeg"
-                    alt="Third slide"
-                  />
-                  <div
-                    className="carousel-caption d-flex flex-column justify-content-center align-items-center"
-                    style={{ height: "100%" }}
-                  >
-                    <h1 className="fw-bold">Find Your Perfect Match Here!!!</h1>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             <div className="search-form-btn mt-4 mx-auto">
