@@ -16,6 +16,8 @@ const Freereg = () => {
     password: '',
     dob: '',
     caste: '',
+    plan_name: '', 
+    plan_register_date: '', // Will be set to current date on submit
     image: ''
   });
 
@@ -63,7 +65,14 @@ const Freereg = () => {
     const newRegId = `TULR${year}${month}${day}${randomNum}`;
     setRegId(newRegId);
 
-    const requestData = { ...formData, reg_id: newRegId };
+    // Set current date for plan_register_date
+    const currentDate = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+    const requestData = { 
+      ...formData, 
+      reg_id: newRegId, 
+      plan_name: 'FreePlan',
+      plan_register_date: currentDate // Set current date here
+    };
 
     try {
       const response = await fetch('https://tulirmatrimony.com/controlapi/addcustomer.php', {
@@ -106,6 +115,8 @@ const Freereg = () => {
       password: '',
       dob: '',
       caste: '',
+      plan_name: 'FreePlan',
+      plan_register_date: '',
       image: ''
     });
   };
