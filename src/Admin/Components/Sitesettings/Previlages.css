@@ -1,0 +1,83 @@
+/* General form styling */
+.form123 {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Input box styling */
+  .input-box {
+    margin-bottom: 15px;
+  }
+  
+  /* Label styling */
+  .control-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Radio button label styling */
+  .form-radio-label {
+    margin-right: 15px;
+    font-size: 14px;
+  }
+  
+  /* Row styling */
+  .row {
+    margin-bottom: 10px;
+  }
+  
+  /* Submit and Cancel button styling */
+  .mt-4 {
+    margin-top: 20px;
+  }
+  
+  .btn123, .btn12 {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn123 {
+    background-color:#696cff; /* Green for submit */
+    margin-right: 10px;
+  }
+  
+  .btn12 {
+    background-color: #dc3545; /* Red for cancel */
+  }
+  
+  /* Button hover effects */
+  .btn123:hover {
+    background-color: #3235ce;
+  }
+  
+  .btn12:hover {
+    background-color: #c82333;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .control-label {
+      text-align: left;
+    }
+  
+    .col-md-3, .col-md-9 {
+      width: 100%;
+      padding: 0;
+    }
+  
+    .input-box {
+      margin-bottom: 20px;
+    }
+  }
+  .labelname{
+    display: flex;
+    align-items: flex-start;
+    color:#697a8d;
+  }

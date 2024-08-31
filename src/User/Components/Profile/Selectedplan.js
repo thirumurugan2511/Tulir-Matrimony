@@ -33,7 +33,9 @@ function Selectedplan() {
     }
 
     date.setDate(date.getDate() + validityDays);
+    console.log ("line37" + date);
     return date;
+    
   };
 
   useEffect(() => {
@@ -78,11 +80,17 @@ function Selectedplan() {
           console.log("Selected plan name:", data.plan_name);
           const result = await response.json();
           setProfileCount(result.body.plan_profile_count);
+
+       //console.log("line83"+ result.body[0].plan_expired_date)
+
           if (result.body && result.body.length > 0) {
             setPlan(result.body[0]);
+
             const expiryDate = calculateExpiryDate(data.plan_register_date, result.body[0].plan_validity);
+              
             if (expiryDate) {
               setValidityDate(expiryDate);
+              console.log ("line 90" + expiryDate)
             }
           }
           console.log("Selected plan result:", result);
@@ -125,7 +133,7 @@ function Selectedplan() {
                           <div className="media">
                             <div className="media-body">
                               <h2 style={{ color: "rgb(231, 1, 138)" }}>
-                               Plan Name: {data.plan_name}
+                               Plan Name: {plan.plan_name}
                               </h2>
                             </div>
                           </div>
@@ -138,11 +146,11 @@ function Selectedplan() {
                             <div className="text-center">
                               <h2 className="mb-2">
                                 <span className="font-size-13">
-                                 Plan Registered Date: {data.plan_register_date}
+                                 Plan Registered Date: {plan.plan_register_date}
                                 </span>
                               </h2>
                               <h2 className="mb-4">
-                                Expiry Date: {calculateExpiryDate(data.plan_register_date, plan.plan_validity)?.toISOString().split('T')[0]}
+                                Expiry Date: {plan.plan_expired_date}
                               </h2>
                             </div>
                             <div className="text-center">

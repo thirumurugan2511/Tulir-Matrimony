@@ -1040,28 +1040,28 @@ const Basicdetails = () => {
 
   const handleSubmit = async (sectionName, sectionData, userid) => {
     setId(userid);
+  
+    // List of sections
+    const sections = [
+      "section1",
+      "section2",
+      "section3",
+      "section4",
+      "section5",
+      "section6",
+    ];
+  
     try {
       // Ensure sectionName is valid
-      if (
-        ![
-          "section1",
-          "section2",
-          "section3",
-          "section4",
-          "section5",
-          "section6",
-        ].includes(sectionName)
-      ) {
+      if (!sections.includes(sectionName)) {
         throw new Error("Invalid section name");
       }
-      //http://localhost:8000/editcustomer
-      //https://tulirmatrimony.com/controlapi/editcustomerbasic.php
+  
       // Construct the API URL based on the section
       let apiUrl;
       switch (sectionName) {
         case "section1":
-          apiUrl =
-            "https://tulirmatrimony.com/controlapi/editcustomerbasic.php";
+          apiUrl = "https://tulirmatrimony.com/controlapi/editcustomerbasic.php";
           break;
         case "section2":
           apiUrl =
@@ -1086,10 +1086,10 @@ const Basicdetails = () => {
         default:
           throw new Error("Invalid section name");
       }
-
+  
       // Add the id to sectionData
       const dataToSend = { ...sectionData, id };
-
+  
       // Send a PUT request to the API
       const response = await fetch(apiUrl, {
         method: "PUT",
@@ -1098,31 +1098,39 @@ const Basicdetails = () => {
         },
         body: JSON.stringify(dataToSend), // Send the data with the id field
       });
+  
       console.log(dataToSend);
+  
       // Handle the response from the server
       if (response.ok) {
         const responseData = await response.json();
         console.log("Data sent successfully for section:", responseData);
-
+  
         if (responseData.head.code === 200) {
-          // Handle the success scenario, such as updating the UI or moving to another section
-          alert("Successfully updated");
-          window.location.href = "/Profile";
+          // Find the index of the current section
+          const currentIndex = sections.indexOf(sectionName);
+  
+          if (currentIndex < sections.length - 1) {
+            // If not the last section, move to the next section
+            const nextSection = sections[currentIndex + 1];
+            setCurrentSection(nextSection);
+          } else {
+            // If the last section, move to the profile page
+            alert("Successfully updated");
+            window.location.href = "/Profile";
+          }
         } else {
           // Handle the case where code is not 200
           alert("Try Again");
           console.error("Error:", responseData.head.msg);
         }
-        return true; // Success
       } else {
         console.error("Failed to send data for section:", sectionName);
-        return false; // Failure
       }
     } catch (error) {
       console.error("Error submitting data:", error);
-      return false; // Failure
     }
-  };
+  };;
 
   const handleBack = () => {
     const sections = Object.keys(formData);
