@@ -32,7 +32,7 @@ const Member = () => {
     const fetchData = async () => {
       //('https://tulirmatrimony.com/controlapi/customerlist.php');
       //http://localhost:8000/data/memlist
-      //test
+      //test2
       try {
         const response = await fetch(
           "https://tulirmatrimony.com/controlapi/customerlist.php"
