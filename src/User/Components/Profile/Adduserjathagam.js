@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
-import { IoMdSettings } from "react-icons/io";
-import { LuLogOut } from "react-icons/lu";
-import axios from 'axios';
-import Navbar from '../Navbar/Navbar';
-import Smallicon from '../rgt-matrimony-logo.png';
-import { useAuth } from '../../../AuthContext'
+import { MdPostAdd } from "react-icons/md";
+import Navbar from "../Navbar/Navbar";
 
-
-const Edituserjathagam = () => {
-  const { userid } = useAuth();
+const Adduserjathagam = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [formData, setFormData] = useState({
@@ -47,43 +41,32 @@ const Edituserjathagam = () => {
     amsam12: "",
   });
   const [profileData, setProfileData] = useState(null);
-
+  
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        //http://localhost:8000/api/singlejathagam
-        //https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}
-        const response = await axios.get(
-          `https://tulirmatrimony.com/controlapi/singleuserjathagam.php?user_id=${id}`
-        );
-        const res = response.data.body;
-        console.log(res);
-        setProfileData(res);
-        setData(res);
-        setFormData({ ...res, user_id: id });
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
+    if (id) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        user_id: id,
+      }));
+    }
   }, [id]);
 
   const handleChange = (e) => {
-    // setFormData({ ...formData, [e.target.name]: e.target.value });
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const handleSubmit = async (e) => {
+  
+  const handleSubmit = async (e, id) => {
+    
+    
     e.preventDefault();
     try {
+        
+         
+
       //https://tulirmatrimony.com/controlapi/addjathagam.php
       //http://localhost:8000/addjathagam
       const response = await fetch(
-        "https://tulirmatrimony.com/controlapi/editjathagam.php",
+        "https://tulirmatrimony.com/controlapi/addjathagam.php",
         {
           method: "POST",
           headers: {
@@ -93,12 +76,15 @@ const Edituserjathagam = () => {
         }
       );
       console.log(formData);
+
       if (response.ok) {
+        // Handle success, maybe show a success message
         const responseData = await response.json();
         console.log("Jathagam added successfully!", responseData);
-        alert("Jathagam added successsfully");
-        window.location.href = `/Profile`;
+         alert("Jathagam added successsfully");
+        // window.location.href = "/Member";
       } else {
+        // Handle error, maybe show an error message
         console.error("Failed to add Jathagam");
       }
     } catch (error) {
@@ -108,11 +94,13 @@ const Edituserjathagam = () => {
 
   return (
     <>
-      <Navbar />
-           
+     <Navbar />
+     
             <div className="container mx-auto justify-content-center mt-5 mb-3 row">
               {profileData ? (
-                <h2 className="mb-4">Jathagam Details - {profileData.name}</h2>
+                <h2 className="mb-4">
+                  Jathagam Details - {profileData.body.name}
+                </h2>
               ) : (
                 <p>Loading...</p>
               )}
@@ -166,6 +154,8 @@ const Edituserjathagam = () => {
                 </div>
               </div>
 
+              {/* Add your form fields here */}
+              {/* For simplicity, I'm adding only one field. You can repeat this for other fields */}
               <form className="row" onSubmit={handleSubmit}>
                 <div className="col-lg-3 d-flex mb-5 align-items-center">
                   <label className="form-label mb-0 me-2">திசை இருப்பு</label>
@@ -197,7 +187,6 @@ const Edituserjathagam = () => {
                     maxlength="2"
                     class="form-control"
                     name="year"
-                    value={formData.year}
                     onChange={handleChange}
                   />
                 </div>
@@ -208,7 +197,6 @@ const Edituserjathagam = () => {
                     maxlength="2"
                     class="form-control"
                     name="month"
-                    value={formData.month}
                     onChange={handleChange}
                   />
                 </div>
@@ -219,7 +207,6 @@ const Edituserjathagam = () => {
                     maxlength="2"
                     class="form-control"
                     name="days"
-                    value={formData.days}
                     onChange={handleChange}
                   />
                 </div>
@@ -231,7 +218,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi1}
                         name="rasi1"
                         onChange={handleChange}
                       />
@@ -241,7 +227,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi2}
                         name="rasi2"
                         onChange={handleChange}
                       />
@@ -251,7 +236,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi3}
                         name="rasi3"
                         onChange={handleChange}
                       />
@@ -261,7 +245,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi4}
                         name="rasi4"
                         onChange={handleChange}
                       />
@@ -273,7 +256,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi5}
                         name="rasi5"
                         onChange={handleChange}
                       />
@@ -286,7 +268,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi6}
                         name="rasi6"
                         onChange={handleChange}
                       />
@@ -299,7 +280,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi7}
                         name="rasi7"
                         onChange={handleChange}
                       />
@@ -310,7 +290,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi8}
                         name="rasi8"
                         onChange={handleChange}
                       />
@@ -322,7 +301,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi9}
                         name="rasi9"
                         onChange={handleChange}
                       />
@@ -332,7 +310,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi10}
                         name="rasi10"
                         onChange={handleChange}
                       />
@@ -342,7 +319,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi11}
                         name="rasi11"
                         onChange={handleChange}
                       />
@@ -352,7 +328,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.rasi12}
                         name="rasi12"
                         onChange={handleChange}
                       />
@@ -369,7 +344,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam1}
                         name="amsam1"
                         onChange={handleChange}
                       />
@@ -379,7 +353,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam2}
                         name="amsam2"
                         onChange={handleChange}
                       />
@@ -389,7 +362,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam3}
                         name="amsam3"
                         onChange={handleChange}
                       />
@@ -399,7 +371,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam4}
                         name="amsam4"
                         onChange={handleChange}
                       />
@@ -411,7 +382,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam5}
                         name="amsam5"
                         onChange={handleChange}
                       />
@@ -424,7 +394,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam6}
                         name="amsam6"
                         onChange={handleChange}
                       />
@@ -437,7 +406,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam7}
                         name="amsam7"
                         onChange={handleChange}
                       />
@@ -448,7 +416,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam8}
                         name="amsam8"
                         onChange={handleChange}
                       />
@@ -460,7 +427,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam9}
                         name="amsam9"
                         onChange={handleChange}
                       />
@@ -470,7 +436,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam10}
                         name="amsam10"
                         onChange={handleChange}
                       />
@@ -480,7 +445,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam11}
                         name="amsam11"
                         onChange={handleChange}
                       />
@@ -490,7 +454,6 @@ const Edituserjathagam = () => {
                         type="text"
                         class="form-control border border-dark"
                         style={{ height: "100px" }}
-                        value={formData.amsam12}
                         name="amsam12"
                         onChange={handleChange}
                       />
@@ -508,9 +471,9 @@ const Edituserjathagam = () => {
                 </div>
               </form>
             </div>
-          
+         
     </>
   );
 };
 
-export default Edituserjathagam;
+export default Adduserjathagam;

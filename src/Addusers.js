@@ -1101,7 +1101,7 @@ const Addusers = () => {
   {/* Render input fields for the current section */}
   {Object.keys(formData[currentSection]).map(fieldName => (
         ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste','plan_name','plan_status', 'patham_number','bloodgroup', 'zodiacsign', 'mother_tongue', 'star', 'education', 'occupation', 
-          'smoking', 'drinking', 'status_children','country', 'state', 'city','father_occupation', 'mother_occupation', 'partner_religion',
+          'smoking', 'drinking', 'status_children','country', 'state', 'city', 'partner_religion',
            'partner_country', 'partner_state', 'partner_matrial_status', 'partner_education', 'partner_occupation', 'partner_mother_tongue',
           'partner_caste', 'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
           'partner_to_age','residence'

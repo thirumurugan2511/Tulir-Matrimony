@@ -213,6 +213,9 @@ const Stories = () => {
                             <td>{item.marriage_date}</td>
                             <td>{item.Message}</td>
                             <td>
+                            <Link to={`/Editstory/${item.id}`}>
+                                  <MdModeEdit className="bx bxs-edit" /> Edit
+                                </Link>
                               <Link
                                 to="#"
                                 onClick={() => handleDelete(item.id)}
