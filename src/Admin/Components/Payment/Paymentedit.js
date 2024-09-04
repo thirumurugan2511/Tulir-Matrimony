@@ -9,6 +9,19 @@ import { IoMdSettings } from "react-icons/io";
 import Smallicon from '../rgt-matrimony-logo.png';
 
 function Paymentedit() {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
+  const [dashboardData, setDashboardData] = useState({
+    total_member: 0,
+    male_member: 0,
+    female_member: 0,
+    paid_member: 0,
+    notpaid_member: 0,
+    expired_member: 0,
+  });
     const { id } = useParams();
     const [paymentData, setPaymentData] = useState({});
     const [formData, setFormData] = useState({
@@ -130,7 +143,7 @@ function Paymentedit() {
                       <a
                         className="nav-link dropdown-toggle hide-arrow"
                         href="javascript:void(0);"
-                        data-bs-toggle="dropdown"
+                        onClick={toggleDropdown}
                       >
                         <div className="avatar avatar-online">
                           <img
@@ -140,7 +153,9 @@ function Paymentedit() {
                           />
                         </div>
                       </a>
-                      <ul className="dropdown-menu dropdown-menu-end">
+                      <ul
+                      className={`dropdown-menu dropdown-menu-end dropset
+                        ${ isDropdownOpen ? "show" : ""}`}>
                         <li>
                           <a className="dropdown-item" href="#">
                             <div className="d-flex">
