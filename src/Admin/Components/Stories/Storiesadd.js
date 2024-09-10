@@ -12,7 +12,7 @@ const Storiesadd = () => {
   const [formData, setFormData] = useState({
     image: "",
     bridename: "",
-    brid_id: "",
+    bride_id: "",
     groom_name: "",
     groom_id: "",
     marriage_date: "",

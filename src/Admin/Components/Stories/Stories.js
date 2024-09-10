@@ -222,7 +222,7 @@ const Stories = () => {
                                 className="w-px-40 rounded"
                               />
                             </td>
-                            <td>{item.brid_id}</td>
+                            <td>{item.bride_id}</td>
                             <td>{item.bridename}</td>
                             <td>{item.groom_id}</td>
                             <td>{item.groom_name}</td>

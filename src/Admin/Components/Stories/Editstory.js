@@ -11,21 +11,7 @@ import { LuLogOut } from "react-icons/lu";
 const Editstory = () => {
   const { id } = useParams(); // Get the story ID from the URL parameters
   const [initialData, setInitialData] = useState(null);
-
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
-  };
-  const [dashboardData, setDashboardData] = useState({
-    total_member: 0,
-    male_member: 0,
-    female_member: 0,
-    paid_member: 0,
-    notpaid_member: 0,
-    expired_member: 0,
-  });
-
   const [formData, setFormData] = useState({
     image: "",
     bridename: "",
@@ -37,6 +23,8 @@ const Editstory = () => {
   });
   const [showAlert, setShowAlert] = useState(false);
 
+  const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,15 +33,17 @@ const Editstory = () => {
 
         const story = result.body.find((story) => story.id === id);
         if (story) {
-          // Convert the date format from DD-MM-YYYY to YYYY-MM-DD
-          const [day, month, year] = story.marriage_date.split("-");
-          const formattedDate = `${year}-${month}-${day}`;
+          // Convert the date format from DD-MM-YYYY to YYYY-MM-DD if marriage_date exists
+          let formattedDate = "";
+          if (story.marriage_date) {
+            const [day, month, year] = story.marriage_date.split("-");
+            formattedDate = `${year}-${month}-${day}`;
+          }
 
           setInitialData(story);
-
           setFormData({
             ...story,
-            marriage_date: formattedDate, // Use the formatted date
+            marriage_date: formattedDate, // Use the formatted date or empty if null
           });
         }
       } catch (error) {
@@ -87,11 +77,16 @@ const Editstory = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Convert the marriage_date back to DD-MM-YYYY format for the request
+    const [year, month, day] = formData.marriage_date.split("-");
+    const formattedDate = `${day}-${month}-${year}`;
+
     const updatedData = {
-        ...initialData,
-        ...formData,
-        id
-      };
+      id,
+      ...formData,
+      marriage_date: formattedDate, // Ensure date is in the required format
+    };
 
     try {
       const response = await fetch(
@@ -101,10 +96,10 @@ const Editstory = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ updatedData }),
+          body: JSON.stringify(updatedData), // Send the updatedData directly
         }
       );
-      console.log(formData);
+
       const data = await response.json();
       console.log(data);
 
@@ -120,6 +115,7 @@ const Editstory = () => {
       console.error("Error:", error);
     }
   };
+
 
   return (
     <>
@@ -273,9 +269,9 @@ const Editstory = () => {
                               type="text"
                               required
                               className="form-control required"
-                              id="bridid"
-                              name="brid_id"
-                              value={formData.brid_id}
+                              id="bride_id"
+                              name="bride_id"
+                              value={formData.bride_id}
                               placeholder="Bride's ID"
                               onChange={handleChange}
                             />
@@ -344,7 +340,7 @@ const Editstory = () => {
                               onChange={handleChange}
                             ></textarea>
                           </div>
-                          <button type="submit" onClick={handleSubmit} className="btn btn-primary">
+                          <button type="submit"  className="btn btn-primary">
                             Submit
                           </button>
                         </form>
