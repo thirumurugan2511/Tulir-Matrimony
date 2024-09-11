@@ -30,29 +30,37 @@ const Editstory = () => {
       try {
         const response = await fetch("https://tulirmatrimony.com/controlapi/successlist.php");
         const result = await response.json();
-
+  
         const story = result.body.find((story) => story.id === id);
+        console.log("Fetched story:", story);
+  
         if (story) {
-          // Convert the date format from DD-MM-YYYY to YYYY-MM-DD if marriage_date exists
-          let formattedDate = "";
-          if (story.marriage_date) {
-            const [day, month, year] = story.marriage_date.split("-");
-            formattedDate = `${year}-${month}-${day}`;
-          }
-
+          const rawDate = story.marriage_date;
+          console.log("Raw marriage_date:", rawDate);
+  
+          // Convert 'DD-MM-YYYY' to 'YYYY-MM-DD'
+          const [day, month, year] = rawDate.split("-");
+          const formattedDate = year && month && day
+            ? `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+            : "";
+  
+          console.log("Formatted marriage_date:", formattedDate);
+  
           setInitialData(story);
           setFormData({
             ...story,
-            marriage_date: formattedDate, // Use the formatted date or empty if null
+            marriage_date: formattedDate,
           });
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
+  
     fetchData();
   }, [id]);
+  
+  
 
   const handleChange = (e) => {
     const { name, files, value } = e.target;
@@ -78,14 +86,9 @@ const Editstory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Convert the marriage_date back to DD-MM-YYYY format for the request
-    const [year, month, day] = formData.marriage_date.split("-");
-    const formattedDate = `${day}-${month}-${year}`;
-
     const updatedData = {
       id,
       ...formData,
-      marriage_date: formattedDate, // Ensure date is in the required format
     };
 
     try {
@@ -110,12 +113,11 @@ const Editstory = () => {
         console.log("Success Stories edited successfully!");
         alert("Success Stories edited successfully!");
         window.location.href = "/Stories";
-      }, 2000);
+      }, 1000);
     } catch (error) {
       console.error("Error:", error);
     }
   };
-
 
   return (
     <>
@@ -123,29 +125,18 @@ const Editstory = () => {
         <div className="layout-container">
           <Aside />
           <div className="layout-page">
-            <nav
-              className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-              id="layout-navbar"
-            >
+            <nav className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
               <div className="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                <Link
-                  className="nav-item nav-link px-0 me-xl-4"
-                  to="javascript:void(0)"
-                >
+                <Link className="nav-item nav-link px-0 me-xl-4" to="javascript:void(0)">
                   <i className="bx bx-menu bx-sm"></i>
                 </Link>
               </div>
-              <div
-                className="navbar-nav-right d-flex align-items-center"
-                id="navbar-collapse"
-              >
+              <div className="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                 <ol className="breadcrumb breadcrumb-style2 mb-0">
                   <li>
                     <MdManageHistory className="breadcrumb-item " />
                   </li>
-                  <li style={{ padding: "2px 10px" }}>
-                    Edit Success Story
-                  </li>
+                  <li style={{ padding: "2px 10px" }}>Edit Success Story</li>
                 </ol>
                 <ul className="navbar-nav flex-row align-items-center ms-auto">
                   <li className="nav-item lh-1 me-3">
@@ -153,38 +144,22 @@ const Editstory = () => {
                     <span className="align-middle">Administrator</span>
                   </li>
                   <li className="nav-item navbar-dropdown dropdown-user dropdown">
-                    <a
-                      className="nav-link dropdown-toggle hide-arrow"
-                      href="javascript:void(0);"
-                      onClick={toggleDropdown}
-                    >
+                    <a className="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" onClick={toggleDropdown}>
                       <div className="avatar avatar-online">
-                        <img
-                          src={Smallicon}
-                          alt=""
-                          className="w-px-40 h-auto rounded-circle"
-                        />
+                        <img src={Smallicon} alt="" className="w-px-40 h-auto rounded-circle" />
                       </div>
                     </a>
-                    <ul
-                      className={`dropdown-menu dropdown-menu-end dropset
-                        ${ isDropdownOpen ? "show" : ""}`}>
+                    <ul className={`dropdown-menu dropdown-menu-end dropset ${isDropdownOpen ? "show" : ""}`}>
                       <li>
                         <a className="dropdown-item" href="#">
                           <div className="d-flex">
                             <div className="flex-shrink-0 me-3">
                               <div className="avatar avatar-online">
-                                <img
-                                  src={Smallicon}
-                                  alt=""
-                                  className="w-px-40 h-auto rounded-circle"
-                                />
+                                <img src={Smallicon} alt="" className="w-px-40 h-auto rounded-circle" />
                               </div>
                             </div>
                             <div className="flex-grow-1">
-                              <span className="fw-semibold d-block mt-2">
-                                Admin
-                              </span>
+                              <span className="fw-semibold d-block mt-2">Admin</span>
                             </div>
                           </div>
                         </a>
@@ -220,17 +195,12 @@ const Editstory = () => {
                       <div className="card-body">
                         <form onSubmit={handleSubmit}>
                           <div className="mb-3 text-start">
-                            <label
-                              className="form-label"
-                              htmlFor="weddingphoto"
-                            >
-                              Upload Your Wedding Photo{" "}
-                              <span className="Form__Error">*</span>
+                            <label className="form-label" htmlFor="weddingphoto">
+                              Upload Your Wedding Photo <span className="Form__Error">*</span>
                             </label>
                             <input
-                              required
                               name="image"
-                              className="form-control required"
+                              className="form-control"
                               placeholder="Upload Your Wedding Photo"
                               type="file"
                               id="image"
@@ -247,12 +217,11 @@ const Editstory = () => {
                           </div>
                           <div className="mb-3 text-start">
                             <label className="form-label" htmlFor="bridename">
-                              Bride's Name{" "}
-                              <span className="Form__Error">*</span>
+                              Bride's Name <span className="Form__Error">*</span>
                             </label>
                             <input
                               type="text"
-                              required
+                              
                               className="form-control required"
                               id="bridename"
                               name="bridename"
@@ -267,7 +236,7 @@ const Editstory = () => {
                             </label>
                             <input
                               type="text"
-                              required
+                              
                               className="form-control required"
                               id="bride_id"
                               name="bride_id"
@@ -277,15 +246,14 @@ const Editstory = () => {
                             />
                           </div>
                           <div className="mb-3 text-start">
-                            <label className="form-label" htmlFor="groomname">
-                              Groom's Name{" "}
-                              <span className="Form__Error">*</span>
+                            <label className="form-label" htmlFor="groom_name">
+                              Groom's Name <span className="Form__Error">*</span>
                             </label>
                             <input
                               type="text"
-                              required
+                              
                               className="form-control required"
-                              id="groomname"
+                              id="groom_name"
                               name="groom_name"
                               value={formData.groom_name}
                               placeholder="Groom's Name"
@@ -293,14 +261,14 @@ const Editstory = () => {
                             />
                           </div>
                           <div className="mb-3 text-start">
-                            <label className="form-label" htmlFor="groomid">
+                            <label className="form-label" htmlFor="groom_id">
                               Groom's ID <span className="Form__Error">*</span>
                             </label>
                             <input
                               type="text"
-                              required
+                              
                               className="form-control required"
-                              id="groomid"
+                              id="groom_id"
                               name="groom_id"
                               value={formData.groom_id}
                               placeholder="Groom's ID"
@@ -308,72 +276,49 @@ const Editstory = () => {
                             />
                           </div>
                           <div className="mb-3 text-start">
-                            <label
-                              className="form-label"
-                              htmlFor="marriagedate"
-                            >
-                              Your Marriage Date{" "}
-                              <span className="Form__Error">*</span>
+                            <label className="form-label" htmlFor="marriage_date">
+                              Marriage Date <span className="Form__Error">*</span>
                             </label>
                             <input
-                              className="form-control required"
                               type="date"
-                              id="marriagedate"
+                              required
+                              className="form-control required"
+                              id="marriage_date"
                               name="marriage_date"
-                              value={formData.marriage_date.split('T')[0]} // Ensures correct format for date input
+                              value={formData.marriage_date || ""}
                               onChange={handleChange}
                             />
                           </div>
                           <div className="mb-3 text-start">
-                            <label
-                              className="form-label"
-                              htmlFor="successmessage"
-                            >
-                              Success Message
+                            <label className="form-label" htmlFor="Message">
+                              Message <span className="Form__Error">*</span>
                             </label>
                             <textarea
+                              rows={3}
+                              
+                              className="form-control required"
                               id="Message"
                               name="Message"
-                              className="form-control"
                               value={formData.Message}
-                              placeholder="Success Message"
+                              placeholder="Message"
                               onChange={handleChange}
-                            ></textarea>
+                            />
                           </div>
-                          <button type="submit"  className="btn btn-primary">
-                            Submit
+                          <button type="submit" className="btn btn-primary">
+                            Save Story
                           </button>
                         </form>
                         {showAlert && (
-                          <div
-                            id="success-alert"
-                            className="alert m-4 alert-success"
-                            style={{
-                              backgroundColor: "#28a745",
-                              color: "white",
-                            }}
-                            role="alert"
-                          >
-                            Record updated successfully.
+                          <div className="alert alert-success mt-3" role="alert">
+                            Successfully Updated!
                           </div>
                         )}
                       </div>
                     </div>
-                    <div
-                      id="success-alert"
-                      className="alert m-4 alert-success"
-                      style={{
-                        display: "none",
-                        backgroundColor: "#28a745",
-                        color: "white",
-                      }}
-                      role="alert"
-                    >
-                      Record updated successfully.
-                    </div>
                   </div>
                 </div>
               </div>
+              <div className="content-backdrop fade"></div>
             </div>
           </div>
         </div>
