@@ -12,6 +12,7 @@ import { AuthProvider, useAuth } from "./AuthContext";
 import Stories from './Admin/Components/Stories/Stories';
 import Dashboard from './Admin/Components/Dashboard/Dashboard';
 import Storiesadd from './Admin/Components/Stories/Storiesadd';
+import Editstory from './Admin/Components/Stories/Editstory';
 import Religion from './Admin/Components/Newdetails/Religion';
 import Payment from './Admin/Components/Payment/Payment';
 import Caste from './Admin/Components/Newdetails/Caste';
@@ -85,6 +86,7 @@ import {ProfileProvider} from './User/Components/ProfileContext';
 import Freeplan from './User/Components/Home/Freeplan';
 import Editadmin from './Admin/Components/Editadmin/Editadmin';
 import FirstLogin from './User/Components/Login/FirstLogin';
+import Adduserjathagam from './User/Components/Profile/Adduserjathagam';
 
 
 
@@ -102,6 +104,7 @@ function App() {
               <Route path="/Stories" element={<Stories />} />
               <Route path="/Dashboard" element={<Dashboard />} />
               <Route path="/Storiesadd" element={<Storiesadd />} />
+              <Route path="/Editstory/:id" element={<Editstory />} />
               <Route path="/Payment" element={<Payment />} />
               <Route path="/Religion" element={<Religion />} />
               <Route path="/Caste" element={<Caste />} />
@@ -208,7 +211,15 @@ function App() {
                 }
               /> 
               <Route
-                path="/Edituserjathagam"
+                path="/Adduserjathagam"
+                element={
+                  <ProtectedRoute>
+                    <Adduserjathagam />
+                  </ProtectedRoute>
+                }
+              /> 
+              <Route
+                path="/Edituserjathagam/:id"
                 element={
                   <ProtectedRoute>
                     <Edituserjathagam />
