@@ -27,7 +27,7 @@ import { IoMenu } from "react-icons/io5";
 
 const Dashoard = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
+  const [permissions, setPermissions] = useState(null); // State to store API permissions
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
@@ -39,6 +39,30 @@ const Dashoard = () => {
     notpaid_member: 0,
     expired_member: 0,
   });
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId'); // Get user ID from local storage
+    //console.log(userId)
+    if (userId) {
+        const fetchPermissions = async () => {
+            try {
+                const response = await axios.post('https://tulirmatrimony.com/controlapi/previlagelist.php', {id: userId });
+
+                //console.log("===========>"+id);
+
+                if (response.data.head.code === 200) {
+                    setPermissions(response.data.body); // Set permissions if successful
+                } else {
+                    console.error('Error fetching permissions:', response.data.head.msg);
+                }
+            } catch (error) {
+                console.error('API error:', error);
+            }
+        };
+        fetchPermissions();
+    }
+}, []);
+
 
   useEffect(() => {
     axios
@@ -60,6 +84,10 @@ const Dashoard = () => {
         console.error("Error fetching the dashboard data", error);
       });
   }, []);
+
+  if (!permissions) {
+    return null;
+  }
 
   return (
     <>
@@ -135,12 +163,14 @@ const Dashoard = () => {
                       <li>
                         <div className="dropdown-divider"></div>
                       </li>
+                      {permissions?.settings === "1" && (
                       <li>
                         <Link className="dropdown-item" to="/Sitesettings">
                           <IoMdSettings className="bx bx-cog me-2" />
                           <span className="align-middle">Settings</span>
                         </Link>
                       </li>
+                      )}
                       <li>
                         <div className="dropdown-divider"></div>
                       </li>
@@ -180,7 +210,7 @@ const Dashoard = () => {
                                   <h6 class="mb-0 text-white">Total Member</h6>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                  <span class="text-muted badge bg-label-primary rounded-pill" style={{fontSize:"1.4rem"}}>
+                                  <span class="text-muted badge bg-label-primary rounded-pill" style={{fontSize:"1.0rem"}}>
                                   {dashboardData.total_member}
                                   </span>
                                 </div>
@@ -214,7 +244,7 @@ const Dashoard = () => {
                                   <h6 class="mb-0 text-white">Male Member</h6>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                  <span class="text-muted badge bg-label-primary rounded-pill">
+                                  <span class="text-muted badge bg-label-primary rounded-pill" style={{fontSize:"1.0rem"}}>
                                   {dashboardData.male_member}
                                   </span>
                                 </div>
@@ -248,7 +278,7 @@ const Dashoard = () => {
                                   <h6 class="mb-0 text-white">Female Member</h6>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                  <span class="text-muted badge bg-label-primary rounded-pill">
+                                  <span class="text-muted badge bg-label-primary rounded-pill" style={{fontSize:"1.0rem"}}>
                                   {dashboardData.female_member}
                                   </span>
                                 </div>
@@ -282,7 +312,7 @@ const Dashoard = () => {
                                   <h6 class="mb-0 text-white">Paid Member</h6>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                  <span class="text-muted badge bg-label-primary rounded-pill">
+                                  <span class="text-muted badge bg-label-primary rounded-pill" style={{fontSize:"1.0rem"}}>
                                   {dashboardData.paid_member}
                                   </span>
                                 </div>
@@ -318,7 +348,7 @@ const Dashoard = () => {
                                   </h6>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                  <span class="text-muted badge bg-label-primary rounded-pill">
+                                  <span class="text-muted badge bg-label-primary rounded-pill" style={{fontSize:"1.0rem"}}>
                                   {dashboardData.notpaid_member}
                                   </span>
                                 </div>
@@ -354,7 +384,7 @@ const Dashoard = () => {
                                   </h6>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                  <span class="text-muted badge bg-label-primary rounded-pill">
+                                  <span class="text-muted badge bg-label-primary rounded-pill" style={{fontSize:"1.0rem"}}>
                                   {dashboardData.expired_member}
                                   </span>
                                 </div>

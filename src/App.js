@@ -122,7 +122,7 @@ function App() {
               <Route path="/Addmember" element={<Addmember />} />
               <Route path="/Sitesettings" element={<Sitesettings />} />
               <Route path="/Sitesettingsedit/:id" element={<Sitesettingsedit />} />
-              <Route path="/Previlages" element={<Previlages />} />
+              {/* <Route path="/Previlages" element={<Previlages />} /> */}
               <Route path="/Previlages/:id" element={<Previlages />} />
               <Route path="/Signin" element={<Signin />} />
               <Route path="/Signup" element={<Signup />} />
