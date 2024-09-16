@@ -134,11 +134,11 @@ const Printformwop = () => {
                     <td className="fw-bold">பெயர்</td>
                     <td>: {profileData.body.name}</td>
                     <td className="fw-bold">பணி</td>
-                    <td>: {profileData.body.occupation}</td>
+                    <td>: {profileData.body.jobdetails}</td>
                   </tr>
                   <tr>
                     <td className="fw-bold">கல்வி</td>
-                    <td>: {profileData.body.education}</td>
+                    <td>: {profileData.body.education_details}</td>
                     <td className="fw-bold">பணிபுரியும் இடம்</td>
                     <td>: {profileData.body.joblocation}</td>
                   </tr>

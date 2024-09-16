@@ -15,6 +15,19 @@ import Smallicon from '../../Components/heart-icon.png'
 
 const Payment = () => {
     const [data, setData] = useState([]);
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+      setDropdownOpen(!isDropdownOpen);
+    };
+    const [dashboardData, setDashboardData] = useState({
+      total_member: 0,
+      male_member: 0,
+      female_member: 0,
+      paid_member: 0,
+      notpaid_member: 0,
+      expired_member: 0,
+    });
 
     useEffect(() => {
       const fetchData = async () => {
@@ -90,7 +103,7 @@ const Payment = () => {
                     <Link
                       class="nav-link dropdown-toggle hide-arrow"
                       to="javascript:void(0);"
-                      data-bs-toggle="dropdown"
+                      onClick={toggleDropdown}
                     >
                       <div class="avatar avatar-online">
                         <img
@@ -100,7 +113,9 @@ const Payment = () => {
                         />
                       </div>
                     </Link>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                    <ul
+                      className={`dropdown-menu dropdown-menu-end dropset
+                        ${ isDropdownOpen ? "show" : ""}`}>
                       <li>
                         <a class="dropdown-item" href="#">
                           <div class="d-flex">

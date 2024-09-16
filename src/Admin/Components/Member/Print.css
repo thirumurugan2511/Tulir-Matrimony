@@ -7,6 +7,7 @@
 
 .print-table tbody tr td {
     padding-bottom: 15px;
+    color: black;
 }
 
 .print-table2 {
@@ -22,7 +23,11 @@
       height: 60px;
       width: 60px;
       word-wrap: break-word;
+      color: black;
       padding: 15px;
+}
+.print-table2 tr td{
+    color: black;
 }
 
 .print-table3 {
@@ -32,7 +37,12 @@
     text-align: center!important;
     margin-top: 20px;
     margin-bottom: 20px;
+    
 }
+.head-text p { 
+    color: black;
+}
+
 .com_text {
     position: relative;
     top: -350px;

@@ -121,12 +121,14 @@ nav {
         font-size: 10px;
     }
 }
-@media only screen and (max-width: 480px) {
-	.top-text{
-        font-size: 10px;
-    }
+@media only screen and (max-width: 488px) {
+
 	.navbar-logo{
 		height: 50px;
+	}
+
+	.top-nav{
+		height: 55px;
 	}
 
 }

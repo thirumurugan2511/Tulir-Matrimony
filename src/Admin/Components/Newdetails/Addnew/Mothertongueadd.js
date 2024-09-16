@@ -9,6 +9,21 @@ import { GrUserAdmin } from "react-icons/gr";
 
 
 const Mothertongueadd = () => {
+
+    const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
+  const [dashboardData, setDashboardData] = useState({
+    total_member: 0,
+    male_member: 0,
+    female_member: 0,
+    paid_member: 0,
+    notpaid_member: 0,
+    expired_member: 0,
+  });
+  
     const [mothertongue, setMothertongue] = useState('');
     const formRef = useRef(null);
 
@@ -66,12 +81,14 @@ const Mothertongueadd = () => {
                        <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
                         </li>
                                                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                           <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                           <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" onClick={toggleDropdown}>
                                <div class="avatar avatar-online">
                                    <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
                                </div>
                            </a>
-                           <ul class="dropdown-menu dropdown-menu-end">
+                           <ul
+                      className={`dropdown-menu dropdown-menu-end dropset
+                        ${ isDropdownOpen ? "show" : ""}`}>
                                 <li>
                                     <a class="dropdown-item" href="#">
                                         <div class="d-flex">

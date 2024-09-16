@@ -8,6 +8,19 @@ import { IoMdSettings } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 
 const Paymentadd = () => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
+  const [dashboardData, setDashboardData] = useState({
+    total_member: 0,
+    male_member: 0,
+    female_member: 0,
+    paid_member: 0,
+    notpaid_member: 0,
+    expired_member: 0,
+  });
     const [formData, setFormData] = useState({
       name: "",
       amount: "",
@@ -93,7 +106,7 @@ const Paymentadd = () => {
                     <a
                       class="nav-link dropdown-toggle hide-arrow"
                       href="javascript:void(0);"
-                      data-bs-toggle="dropdown"
+                      onClick={toggleDropdown}
                     >
                       <div class="avatar avatar-online">
                         <img
@@ -103,7 +116,9 @@ const Paymentadd = () => {
                         />
                       </div>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                    <ul
+                      className={`dropdown-menu dropdown-menu-end dropset
+                        ${ isDropdownOpen ? "show" : ""}`}>
                       <li>
                         <a class="dropdown-item" href="#">
                           <div class="d-flex">

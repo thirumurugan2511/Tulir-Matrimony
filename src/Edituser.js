@@ -11,6 +11,19 @@ import Smallicon from './Admin/Components/heart-icon.png'
 
 
 const Edituser = () => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
+  const [dashboardData, setDashboardData] = useState({
+    total_member: 0,
+    male_member: 0,
+    female_member: 0,
+    paid_member: 0,
+    notpaid_member: 0,
+    expired_member: 0,
+  });
  
   const [showAlert, setShowAlert] = useState(false);
 
@@ -1134,12 +1147,14 @@ const handleSubmit = async (sectionName, sectionData, id) => {
                          <GrUserAdmin class="bx bx-user me-2" /><span class="align-middle">Administrator</span>
                                                      </li>
                                                  <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" onClick={toggleDropdown}>
                                  <div class="avatar avatar-online">
                                      <img src={Smallicon} alt="" class="w-px-40 h-auto rounded-circle"/>
                                  </div>
                              </a>
-                             <ul class="dropdown-menu dropdown-menu-end">
+                             <ul
+                      className={`dropdown-menu dropdown-menu-end dropset
+                        ${ isDropdownOpen ? "show" : ""}`}>
                                  <li>
                                      <a class="dropdown-item" href="#">
                                          <div class="d-flex">
@@ -1191,7 +1206,7 @@ const handleSubmit = async (sectionName, sectionData, id) => {
   {Object.keys(formData[currentSection]).map(fieldName => (
         ['gender', 'marriage_type', 'sevaikiragam', 'religion','caste',  'bloodgroup', 'zodiacsign',
          'mother_tongue', 'star', 'education', 'occupation', 'patham_number',"plan_name",
-          'smoking', 'drinking', 'status_children','country', 'state','city', 'partner_caste','father_occupation', 'mother_occupation', 'partner_religion',
+          'smoking', 'drinking', 'status_children','country', 'state','city', 'partner_caste', 'partner_religion',
            'partner_country', 'partner_state', 'partner_matrial_status', 'partner_education', 'partner_occupation', 'partner_mother_tongue',
            'partner_child_gender', 'partner_manglik', 'food_habits', 'body_type', 'skin_tone', 'profile_by', 'family_type', 'family_status', 'partner_from_age',
           'partner_to_age','residence'
