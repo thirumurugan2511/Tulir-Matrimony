@@ -121,8 +121,8 @@ const CardSlider = () => {
               />
               <div className="card-body info-box-div mt-2">
                 <h5 className="card-title text-white">{card.name}</h5>
-                <p className="card-text">{card.age}Age : 22</p>
-                <p className="card-text mb-1">{card.age}Software Engineer</p>
+                <p className="card-text">{card.age}</p>
+                <p className="card-text mb-1">{card.occupation}</p>
                 <Link to="/Login" className="btn view-pro">View Profile</Link>
               </div>
             </div>
