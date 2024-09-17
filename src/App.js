@@ -92,8 +92,7 @@ import Adduserjathagam from './User/Components/Profile/Adduserjathagam';
 
 
 function App() {
-  /* right click disable function */
-  /* useEffect(() => {
+  useEffect(() => {
     
     const handleContextMenu = (e) => {
       e.preventDefault();
@@ -121,7 +120,7 @@ function App() {
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []); */
+  }, []);
 
   return (
     <div className="App">
