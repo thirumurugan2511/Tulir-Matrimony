@@ -12,9 +12,15 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} Tulir Matrimony. All Rights
             Reserved. Developed by Aatheshsoft
           </p>
-          <Link className="mb-0 text-white foot-text text-end col-lg-6 col-md-6 col-sm-12 col-12">
-            Terms and condition | Privacy policy
+          <div className='col-lg-6 col-md-6 col-sm-12 col-12 text-end'>
+          <Link to="/TermsandConditions" className="mb-0 text-white foot-text text-end">
+            Terms and condition |
+          </Link> &nbsp;
+          <Link to='/PrivacyPolicy' className="mb-0 text-white foot-text text-end">
+           Privacy policy
           </Link>
+          </div>
+          
         </div>
       </footer>
     </div>

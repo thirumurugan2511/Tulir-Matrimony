@@ -87,6 +87,8 @@ import Freeplan from './User/Components/Home/Freeplan';
 import Editadmin from './Admin/Components/Editadmin/Editadmin';
 import FirstLogin from './User/Components/Login/FirstLogin';
 import Adduserjathagam from './User/Components/Profile/Adduserjathagam';
+import TermsandConditions from './Admin/Components/Content/TermsandConditions';
+import PrivacyPolicy from './Admin/Components/Content/PrivacyPolicy';
 
 
 
@@ -133,6 +135,9 @@ function App() {
               <Route path="/Viewmember/:id" element={<Viewmember />} />
               <Route path="/Paymentadd" element={<Paymentadd />} />
               <Route path="/Banner" element={<Banner />} />
+              <Route path="/Aboutus" element={<Aboutus />} />
+              <Route path="/TermsandConditions" element={<TermsandConditions />} />
+              <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
               <Route path="/Aboutus" element={<Aboutus />} />
               <Route path="/Sresult" element={<Sresult />} />
               <Route path="/Plans" element={<Plans />} />

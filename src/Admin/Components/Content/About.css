@@ -1,0 +1,48 @@
+/* Card Container */
+.card {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Card Header */
+  .card-header {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .card-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  
+  /* Card Body */
+  .card-body {
+    padding: 20px;
+    font-size: 1.1em;
+    background-color: #fff;
+    border-radius: 0 0 8px 8px;
+    text-align: left;
+  }
+  
+  /* Unordered List */
+  ul {
+    
+    padding-left: 20px;
+    margin: 0;
+  }
+  .content-list li{
+    list-style-type: disc!important;
+  }
+  
+  /* List Items */
+  li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  

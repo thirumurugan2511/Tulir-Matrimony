@@ -222,6 +222,11 @@ function Searchform() {
   };
 
   const handleProfileClick = async () => {
+    if (!canViewProfile()) {
+      alert("You cannot view this profile. Either your profile view limit has been reached or your plan has expired.");
+      window.location.href = '/Plans';
+      return;
+    }
     try {
       const response = await fetch(
         "https://tulirmatrimony.com/controlapi/userprofilecount.php",
