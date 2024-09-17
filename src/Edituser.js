@@ -340,7 +340,7 @@ const Edituser = () => {
       "partner_to_age": "",
       "partner_height": "",
       "partner_religion": "",
-      "partner_caste": "",
+      "partner_caste": "", 
       "partner_matrial_status": "",
       "partner_education": "",
       "partner_occupation": "",
@@ -657,10 +657,29 @@ const fetchUserData = async () => {
           [name]: value
         }
       }));
+      if (name === 'dob') {
+        const dob = new Date(value);
+        const age = calculateAge(dob);
+  
+        // Update the age field in the form data
+        setFormData((prevState) => ({
+          ...prevState,
+          [currentSection]: {
+            ...prevState[currentSection],
+            dob: value, // Keep the dob field updated
+            age: age.toString(), // Set the calculated age in the 'age' field
+          },
+        }));
+      }
     }
   };
   
+  const calculateAge = (dob) => {
+    const diffMs = Date.now() - dob.getTime();
+    const ageDt = new Date(diffMs);
   
+    return Math.abs(ageDt.getUTCFullYear() - 1970);
+  };
 
   const handleNext = () => {
     const sections = Object.keys(formData);

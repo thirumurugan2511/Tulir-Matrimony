@@ -103,6 +103,7 @@ const Sitesettings = () => {
           password: "",
           email: "",
           description: "",
+          district: "",
         });
         const successAlert = document.getElementById("success-alert");
         successAlert.style.display = "block";
@@ -224,6 +225,7 @@ const Sitesettings = () => {
                   <div class="col-xl">
                     <div class="card mb-4">
                       <div class="card-body">
+                      <h5>Add User</h5>
                         <form
                           id="addEditForm"
                           name="addEditForm"
@@ -320,7 +322,7 @@ const Sitesettings = () => {
                               ) : (
                                 districts.length > 0 &&
                                 districts.map((district) => (
-                                  <option key={district.id} value={district.id}>
+                                  <option key={district.id} value={district.name}>
                                     {district.district_name}
                                   </option>
                                 ))
@@ -374,6 +376,7 @@ const Sitesettings = () => {
                           <th scope="col">Email</th>
 
                           <th scope="col">Description</th>
+                          <th scope="col">District</th>
                           <th scope="col">Previlages</th>
                           <th scope="col">Action</th>
                         </tr>
@@ -384,8 +387,9 @@ const Sitesettings = () => {
                             <td>{item.username}</td>
                             <td>{item.email}</td>
                             <td>{item.description}</td>
+                            <td>{item.district}</td>
                             <td>
-                            <Link to="/Previlages">
+                            <Link to={`/Previlages/${item.id}`}>
                               {" "}
                                 <GoProjectRoadmap />
                               </Link>

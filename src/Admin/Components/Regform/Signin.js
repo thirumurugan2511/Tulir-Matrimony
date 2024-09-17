@@ -32,13 +32,18 @@ const handleSubmit = async (e) => {
       user_name: formData.user_name,
       password: formData.password,
     });
-    console.log(response);
+    //console.log(response);
     if (response.data && response.data.head && response.data.head.code === 200) {
-      const responseData = response.data.body;
-      console.log(responseData)
+      //const responseData = response.data.body;
+      const userId = response.data.body.id;
+                const responseData = response.data.body;
+
+                // Store the user ID in local storage
+                localStorage.setItem('userId', userId);
+      console.log("=====>" + userId)
       if (responseData && responseData.username === formData.user_name) {
         // Redirect to admin page upon successful login
-        window.location.href = '/Dashboard';
+       window.location.href = '/Dashboard';
       } else {
         // Display error message if username does not match
         setErrorMessage('Invalid username or password.');

@@ -7,7 +7,7 @@ import { FaCheck } from "react-icons/fa6";
 import Navbar from "./Navbar/Navbar";
 import "./Plans.css";
 import Footer from "./Footer/Footer";
-import Pay from "./Pay.jpeg";
+import Pay from "./Pay.jpg";
 
 const Plans = () => {
   const [data, setData] = useState([]);

@@ -601,27 +601,25 @@ const Basicdetails = () => {
 
   const handleChange = (e) => {
     const { name, files } = e.target;
-
-    if (
-      ["image", "image1", "id_image", "id_image1", "rasiimage"].includes(name)
-    ) {
+  
+    if (['image', 'image1', 'id_image', 'id_image1', 'rasiimage'].includes(name)) {
       const file = files[0];
       const reader = new FileReader();
       reader.onloadend = () => {
         let base64String = reader.result;
         // Strip the prefix if it exists
-        if (base64String.startsWith("data:image/jpeg;base64,")) {
-          base64String = base64String.replace("data:image/jpeg;base64,", "");
-        } else if (base64String.startsWith("data:image/png;base64,")) {
-          base64String = base64String.replace("data:image/png;base64,", "");
+        if (base64String.startsWith('data:image/jpeg;base64,')) {
+          base64String = base64String.replace('data:image/jpeg;base64,', '');
+        } else if (base64String.startsWith('data:image/png;base64,')) {
+          base64String = base64String.replace('data:image/png;base64,', '');
         }
-
-        setFormData((prevState) => ({
+  
+        setFormData(prevState => ({
           ...prevState,
           [currentSection]: {
             ...prevState[currentSection],
-            [name]: base64String, // Store the stripped file contents
-          },
+            [name]: base64String // Store the stripped file contents
+          }
         }));
       };
       if (file) {
@@ -629,14 +627,35 @@ const Basicdetails = () => {
       }
     } else {
       const { value } = e.target;
-      setFormData((prevState) => ({
+      setFormData(prevState => ({
         ...prevState,
         [currentSection]: {
           ...prevState[currentSection],
-          [name]: value,
-        },
+          [name]: value
+        }
       }));
+      if (name === 'dob') {
+        const dob = new Date(value);
+        const age = calculateAge(dob);
+  
+        // Update the age field in the form data
+        setFormData((prevState) => ({
+          ...prevState,
+          [currentSection]: {
+            ...prevState[currentSection],
+            dob: value, // Keep the dob field updated
+            age: age.toString(), // Set the calculated age in the 'age' field
+          },
+        }));
+      }
     }
+  };
+  
+  const calculateAge = (dob) => {
+    const diffMs = Date.now() - dob.getTime();
+    const ageDt = new Date(diffMs);
+  
+    return Math.abs(ageDt.getUTCFullYear() - 1970);
   };
 
   const handleNext = () => {
@@ -1344,6 +1363,7 @@ const Basicdetails = () => {
                             value={formData[currentSection][fieldName] || ""}
                             autoSave="off"
                             onChange={handleChange}
+                            readOnly
                           />
                         ) : (
                           <input
