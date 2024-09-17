@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   MdManageHistory,
   MdPostAdd,
@@ -16,10 +16,15 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import loaderGif from "./loader-spin.gif";
 import backspin from "./back-spin.gif";
+import axios from "axios";
+
 
 const Member = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const category = query.get("category");
+  const value = query.get("value");
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
@@ -43,25 +48,24 @@ const Member = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      //('https://tulirmatrimony.com/controlapi/customerlist.php');
-      //http://localhost:8000/data/memlist
-      //test2
       try {
-        const response = await fetch(
-          "https://tulirmatrimony.com/controlapi/customerlist.php"
-        );
-        const result = await response.json();
-        console.log(result);
-        setData(result.body);
+        const response = await axios.post("https://tulirmatrimony.com/controlapi/customerlist.php", {
+          member: category
+          
+        });
+        setData(response.data.body);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false); // Set loading to false after data is fetched
+        setLoading(false);
       }
     };
-
+    
     fetchData();
-  }, []);
+  }, [category]);
+  
+  console.log(category);
+  
 
   // Calculate the profiles to display based on the current page
   const indexOfLastProfile = currentPage * profilesPerPage;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Admin from './Admin/Components/Admin';
 import {
@@ -92,6 +92,37 @@ import Adduserjathagam from './User/Components/Profile/Adduserjathagam';
 
 
 function App() {
+  /* right click disable function */
+  /* useEffect(() => {
+    
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+    };
+
+    // Disable F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+U
+    const handleKeyDown = (e) => {
+      // F12
+      if (e.keyCode === 123) {
+        e.preventDefault();
+      }
+      // Ctrl+Shift+I or Ctrl+Shift+C or Ctrl+Shift+J (DevTools shortcuts)
+      if ((e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) ||
+          // Ctrl+U (View Source)
+          (e.ctrlKey && e.keyCode === 85)) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+
+   
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []); */
+
   return (
     <div className="App">
       <AuthProvider>

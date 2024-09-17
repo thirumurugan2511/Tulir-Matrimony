@@ -1264,9 +1264,8 @@ const Viewmember = () => {
                                   <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
                                     <div class="detalistsleg">
                                       <h5 class="py-2">
-                                        <span>Partner From Height :</span>{" "}
-                                        {profileData.body.partner_height}cm -
-                                        4ft 4in
+                                        <span>Partner Height :</span>{" "}
+                                         {profileData.body.partner_height}-cm 
                                       </h5>
                                     </div>
                                   </div>

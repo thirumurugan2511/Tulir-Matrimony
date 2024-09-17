@@ -340,7 +340,7 @@ const Edituser = () => {
       "partner_to_age": "",
       "partner_height": "",
       "partner_religion": "",
-      "partner_caste": "",
+      "partner_caste": "", 
       "partner_matrial_status": "",
       "partner_education": "",
       "partner_occupation": "",
