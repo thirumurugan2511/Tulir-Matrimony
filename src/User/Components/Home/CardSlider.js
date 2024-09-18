@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./CardSlider.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import loaderGif from "../loader-spin.gif";
+import axios from "axios";
+
 
 const CardSliderContainer = styled.div`
   .slick-slide {
@@ -35,27 +37,33 @@ const shuffleArray = (array) => {
 const CardSlider = () => {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const category = query.get("category");
+  const [data, setData] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //https://tulirmatrimony.com/controlapi/customerlist.php
-        //http://localhost:8000/data/memlist
-        const response = await fetch(
-          "https://tulirmatrimony.com/controlapi/customerlist.php"
-        );
-        const result = await response.json();
-        const shuffledCards = shuffleArray(result.body).slice(0, 8);
+        const response = await axios.post("https://tulirmatrimony.com/controlapi/customerlist.php", {
+          member: category
+          
+        });
+        setCards(response.data.body);
+        const shuffledCards = shuffleArray(response.data.body).slice(0, 8);
         setCards(shuffledCards);
+        console.log(shuffledCards);
+        console.log(cards);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
     };
-
+      
     fetchData();
-  }, []);
+  }, [category]);
 
   const settings = {
     dots: true,
@@ -134,3 +142,6 @@ const CardSlider = () => {
 };
 
 export default CardSlider;
+
+
+

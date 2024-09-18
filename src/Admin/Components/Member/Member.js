@@ -54,6 +54,7 @@ const Member = () => {
           
         });
         setData(response.data.body);
+        console.log(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {

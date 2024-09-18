@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
+import { Link, useLocation } from "react-router-dom";
 import "./CardSlider.css";
-import '../Searchlist/Searchlist.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import loaderGif from "../loader-spin.gif";
+import axios from "axios";
+
 
 const CardSliderContainer = styled.div`
   .slick-slide {
@@ -34,23 +37,30 @@ const shuffleArray = (array) => {
 const CardSlider = () => {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const category = query.get("category");
+  const [data, setData] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/data/memlist");
-        const result = await response.json();
-        const shuffledCards = shuffleArray(result.body).slice(0, 8);
-        setCards(shuffledCards);
+        const response = await axios.post("https://tulirmatrimony.com/controlapi/customerlist.php", {
+          member: category
+          
+        });
+        setCards(response.data.body);
+        console.log(cards);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }
     };
-
+      
     fetchData();
-  }, []);
+  }, [category]);
 
   const settings = {
     dots: true,
@@ -94,56 +104,31 @@ const CardSlider = () => {
 
   if (loading) {
     return (
-      
-        <div className="spinner-container">
-          <div className="d-flex align-items-center">
-            <div
-              className="spinner-grow"
-              style={{ width: "3rem", height: "3rem" }}
-              role="status"
-            >
-              <span className="sr-only"></span>
-            </div>
-          </div>
-        </div>
-     
+      <div
+        className="d-flex justify-content-center back-spin"
+        style={{ height: "100vh", alignItems: "center" }}
+      >
+        <img src={loaderGif} alt="Loading..." className="load-spin" />
+      </div>
     );
   }
 
   return (
     <CardSliderContainer>
       <Slider {...settings}>
-        {cards.map((item, index) => (
+        {cards.map((card, index) => (
           <Card key={index}>
-            <div className="inner-box">
-              <div className="image-box">
-                <figure className="image">
-                  <a href="#" target="_blank">
-                    <img
-                      src={`data:image/jpeg;base64,${item.image}`}
-                      alt="Profile Loading.." className="user-img"
-                    />
-                  </a>
-                </figure>
-              </div>
-              <div className="info-box">
-                <h4 className="name">                
-                    {item.name}
-                </h4>
-                <a href="#" target="_blank" >
-                  <p className="designation mb-0">{item.age} Age : 22</p>
-                  <p className="designation mb-0">
-                    {item.education} Bachelor of computer applications
-                  </p>
-                  <p className="designation mb-0">
-                    {item.occupaction} Software engineer trainee
-                  </p>
-                </a>
-                <button
-                  className="btn py-2 mt-2 view-pro"
-                >
-                  View Profile
-                </button>
+            <div className="card pro-border" style={{ width: "18rem" }}>
+              <img
+                src={`data:image/jpeg;base64,${card.image}`}
+                alt=""
+                className="card-img-top"
+              />
+              <div className="card-body info-box-div mt-2">
+                <h5 className="card-title text-white">{card.name}</h5>
+                <p className="card-text">{card.age}</p>
+                <p className="card-text mb-1">{card.occupation}</p>
+                <Link to="/Login" className="btn view-pro">View Profile</Link>
               </div>
             </div>
           </Card>
@@ -154,3 +139,9 @@ const CardSlider = () => {
 };
 
 export default CardSlider;
+
+
+
+const shuffledCards = shuffleArray(result.body).slice(0, 8);
+        setCards(shuffledCards);
+        console.log(shuffledCards);
