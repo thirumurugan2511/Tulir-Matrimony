@@ -102,7 +102,7 @@ const Aside = (props) => {
                     )}
 
                     {/* Content Management */}
-                    {permissions?.content === "1" && (
+                    {/* {permissions?.content === "1" && (
                         <li className={`menu-item ${subMenuStates['contactUs'] ? 'active open' : ''}`}>
                             <Link to="#" className="menu-link p-3 menu-toggle" onClick={() => toggleSubMenu('contactUs')}>
                                 <RiContactsFill className="menu-icon tf-icons bx bxs-book-content" />
@@ -121,7 +121,7 @@ const Aside = (props) => {
                                         </NavLink>
                                     </li>
                                     <li className="menu-item">
-                                        <NavLink to="/PrivacyPolicy" className="menu-link">
+                                        <NavLink to="/PrivacyPolicy1" className="menu-link">
                                             <div>Privacy Policy</div>
                                         </NavLink>
                                     </li>
@@ -133,7 +133,7 @@ const Aside = (props) => {
                                 </ul>
                             )}
                         </li>
-                    )}
+                    )} */}
 
                     {/* Add New Details */}
                     {permissions?.add_new === "1" && (

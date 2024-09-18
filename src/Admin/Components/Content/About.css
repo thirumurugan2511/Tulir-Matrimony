@@ -1,4 +1,4 @@
-/* Card Container */
+/* Card Container 
 .card {
     width: 80%;
     margin: 20px auto;
@@ -7,7 +7,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
-  /* Card Header */
+  
   .card-header {
     background-color: #f8f9fa;
     padding: 15px;
@@ -21,7 +21,7 @@
     text-align: center;
   }
   
-  /* Card Body */
+  
   .card-body {
     padding: 20px;
     font-size: 1.1em;
@@ -30,7 +30,7 @@
     text-align: left;
   }
   
-  /* Unordered List */
+  
   ul {
     
     padding-left: 20px;
@@ -40,9 +40,67 @@
     list-style-type: disc!important;
   }
   
-  /* List Items */
+  
   li {
     margin-bottom: 10px;
     line-height: 1.6;
+  }    */
+/* Style for the card container */
+.privacy-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px;
+  background-color: #f9f9f9;
+  text-align: left; /* Align all text to the left */
+}
+
+/* Style for the card header */
+.privacy-card-header {
+  background-color: #ffffff;
+  color: #fff;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.privacy-card-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Style for the card body */
+.privacy-card-body {
+  padding: 15px;
+  font-size: 1rem;
+  line-height: 1.6; /* Adjust line height for better readability */
+  color: #333;
+}
+
+/* Style for the list */
+.privacy-content-list {
+  list-style-type: disc; /* Use a disc as the bullet point */
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.privacy-content-list li {
+  margin-bottom: 10px; /* Space between list items */
+}
+
+/* Add responsive adjustments if needed */
+@media (max-width: 768px) {
+  .privacy-card {
+    padding: 15px;
+    margin: 10px;
   }
-  
+
+  .privacy-card-header {
+    padding: 10px;
+  }
+
+  .privacy-card-body {
+    padding: 10px;
+  }
+}

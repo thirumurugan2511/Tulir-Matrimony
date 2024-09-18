@@ -6,16 +6,16 @@ function PrivacyPolicy() {
   return (
     <>
       <Navbar />
-      <div className="card">
-        <div className="card-header">
+      <div className="privacy-card">
+        <div className="privacy-card-header">
           <h3>Privacy Policy</h3>
         </div>
-        <div className="card-body  mt-3">
+        <div className="privacy-card-body mt-3">
           <p>
             tulirmatrimony.com is an online matrimonial portal endeavoring to provide you with matrimonial services.
             This privacy statement is common to all websites/apps operated under tulirmatrimony.com. We are strongly committed to your right to privacy and have created this privacy statement to explain the information we collect and how it is used.
           </p>
-          <ul className=' content-list mt-3 '>
+          <ul className="privacy-content-list mt-3">
             <li>
               You acknowledge that you are disclosing information voluntarily. By using the website/apps, you consent to the collection, use, and processing of the info you disclose in accordance with this Privacy Policy.
             </li>

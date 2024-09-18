@@ -6,12 +6,12 @@ function TermsandConditions() {
   return (
     <>
       <Navbar />
-      <div className="card">
-        <div className="card-header">
+      <div className="privacy-card">
+        <div className="privacy-card-header">
           <h3>Terms and Conditions</h3>
         </div>
-        <div className="card-body">
-          <ul className='content-list mt-3'>
+        <div className="privacy-card-body mt-3">
+          <ul className='privacy-content-list mt-3'>
             <li>You must be at least 18 years old for women and 21 years old for men.</li>
             <li>Any law from entering into a contract does not disable you.</li>
             <li>All correspondence with other members should take place according to these guidelines and for the purposes of marriage only. Any individual found attempting to act outside of these boundaries will have their membership terminated.</li>

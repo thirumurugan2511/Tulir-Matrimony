@@ -7,6 +7,8 @@ import { IoMdSettings } from "react-icons/io";
 import { MdManageHistory } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
 import { LuLogOut } from "react-icons/lu";
+import Navbar from "../Navbar/Navbar";
+
 
 const Storiesadd = () => {
   const [formData, setFormData] = useState({
@@ -20,11 +22,11 @@ const Storiesadd = () => {
   });
   const [showAlert, setShowAlert] = useState(false);
 
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  // const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
-  };
+  // const toggleDropdown = () => {
+  //   setDropdownOpen(!isDropdownOpen);
+  // };
   const [dashboardData, setDashboardData] = useState({
     total_member: 0,
     male_member: 0,
@@ -92,95 +94,7 @@ const Storiesadd = () => {
         <div className="layout-container">
           <Aside />
           <div className="layout-page">
-            <nav
-              className="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-              id="layout-navbar"
-            >
-              <div className="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                <Link
-                  className="nav-item nav-link px-0 me-xl-4"
-                  to="javascript:void(0)"
-                >
-                  <i className="bx bx-menu bx-sm"></i>
-                </Link>
-              </div>
-              <div
-                className="navbar-nav-right d-flex align-items-center"
-                id="navbar-collapse"
-              >
-                <ol className="breadcrumb breadcrumb-style2 mb-0">
-                  <li>
-                    <MdManageHistory className="breadcrumb-item " />
-                  </li>
-                  <li style={{ padding: "2px 10px" }}>
-                    Manage Success Stories
-                  </li>
-                </ol>
-                <ul className="navbar-nav flex-row align-items-center ms-auto">
-                  <li className="nav-item lh-1 me-3">
-                    <GrUserAdmin className="bx bx-user me-2" />
-                    <span className="align-middle">Administrator</span>
-                  </li>
-                  <li className="nav-item navbar-dropdown dropdown-user dropdown">
-                    <a
-                      className="nav-link dropdown-toggle hide-arrow"
-                      href="javascript:void(0);"
-                      onClick={toggleDropdown}
-                    >
-                      <div className="avatar avatar-online">
-                        <img
-                          src={Smallicon}
-                          alt=""
-                          className="w-px-40 h-auto rounded-circle"
-                        />
-                      </div>
-                    </a>
-                    <ul
-                      className={`dropdown-menu dropdown-menu-end dropset
-                        ${ isDropdownOpen ? "show" : ""}`}>
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          <div className="d-flex">
-                            <div className="flex-shrink-0 me-3">
-                              <div className="avatar avatar-online">
-                                <img
-                                  src={Smallicon}
-                                  alt=""
-                                  className="w-px-40 h-auto rounded-circle"
-                                />
-                              </div>
-                            </div>
-                            <div className="flex-grow-1">
-                              <span className="fw-semibold d-block mt-2">
-                                Admin
-                              </span>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <div className="dropdown-divider"></div>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/Sitesettings">
-                          <IoMdSettings className="bx bx-cog me-2" />
-                          <span className="align-middle">Settings</span>
-                        </Link>
-                      </li>
-                      <li>
-                        <div className="dropdown-divider"></div>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/Signin">
-                          <LuLogOut className="bx bx-power-off me-2" />
-                          <span className="align-middle">Log Out</span>
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </nav>
+            <Navbar />
             <div className="content-wrapper">
               <div className="container-xxl flex-grow-1 container-p-y">
                 <div className="row">
