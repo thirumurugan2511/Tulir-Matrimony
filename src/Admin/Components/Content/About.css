@@ -81,7 +81,7 @@
 /* Style for the list */
 .privacy-content-list {
   list-style-type: disc; /* Use a disc as the bullet point */
-  padding-left: 20px;
+  padding-left: 10px;
   margin-top: 10px;
 }
 
@@ -92,8 +92,8 @@
 /* Add responsive adjustments if needed */
 @media (max-width: 768px) {
   .privacy-card {
-    padding: 15px;
-    margin: 10px;
+    padding: 5px;
+    margin: 5px;
   }
 
   .privacy-card-header {
@@ -101,6 +101,6 @@
   }
 
   .privacy-card-body {
-    padding: 10px;
+    padding: 5px;
   }
 }
