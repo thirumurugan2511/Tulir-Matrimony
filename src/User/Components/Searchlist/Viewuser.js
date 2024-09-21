@@ -171,12 +171,14 @@ const Viewuser = (props) => {
                     
                   </div>
                   <ul className="row pro-info4">
-                    <li className="col-lg-3 col-md-3 col-sm-6 col-6 mb-2">
-                      <img src={proCity} className="proImg" />
-                      <p>
-                        City <b>: {displayField(profileData.body.city, "Not Mentioned")} </b>
-                      </p>
-                    </li>
+                  {profileData.body.plan_name !== "Free Plan" && (
+                      <li className="col-lg-3 col-md-3 col-sm-6 col-6 mb-2">
+                        <img src={proCity} className="proImg" />
+                        <p>
+                          City <b>: {displayField(profileData.body.city, "Not Mentioned")} </b>
+                        </p>
+                      </li>
+                    )}
                     <li className="col-lg-3 col-md-3 col-sm-6 col-6 mb-2">
                       <img src={proAge} className="proImg" />
                       <p>
@@ -198,9 +200,11 @@ const Viewuser = (props) => {
                   </ul>
                 </div>
                 {/* CONTACT INFO SECTION */}
+                {profileData.body.plan_name !== "FreePlan" && (
                 <div className="mb-4">
                   <h3 className="mb-3 headsmain">Contact Infomation</h3>
                   <ul className="ul-pro">
+                    
                     <li className="mb-1">
                       <span>
                         <AiOutlineMobile className="bx bx-power-off me-2 prouser-icon" />
@@ -224,6 +228,7 @@ const Viewuser = (props) => {
                     </li>
                   </ul>
                 </div>
+                )}
                 {/* PERSONAL INFO SECTION */}
                 <div className="mb-4">
                   <h3 className="mb-3 headsmain">Personal Infomation</h3>
