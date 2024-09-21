@@ -25,10 +25,14 @@ import proEducation from "./education.png";
 import proJob from "./job.png";
 import Modal from 'react-bootstrap/Modal'
 import { Button } from 'react-bootstrap';
+import { useAuth } from '../../../AuthContext';
+import { ProfileContext } from '../ProfileContext';
 
 
 const Viewuser = (props) => {
       const { id } = useParams();
+      const { userid } = useAuth();
+
       // const [viewProfile, setViewProfile] = useState(false);
       // const [selectedprofileid, setSelectedprofileid] = useState(0);
       // const [planData, setPlanData] = useState(null);
@@ -39,6 +43,16 @@ const Viewuser = (props) => {
   const [profileData, setProfileData] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null); 
   const [data, setData] = useState(null);
+  const [plan, setPlan] = useState(null);
+  const [singleData, setSingleData] = useState([]);
+  const [fetchComplete, setFetchComplete] = useState(false);
+  const [checkPlan, setCheckPlan] = useState("");
+  const [loading, setLoading] = useState(true);
+
+
+
+
+
 
 
 
@@ -50,7 +64,7 @@ const Viewuser = (props) => {
         );
         const res = await response.json();
         setProfileData(res);
-        console.log(res);
+        console.log(profileData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -58,6 +72,36 @@ const Viewuser = (props) => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const singlefetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://tulirmatrimony.com/controlapi/singlecustomer.php?id=${userid}`
+        );
+        const result = await response.json();
+        setSingleData(result.body);
+        setFetchComplete(true);
+        const planName = result.body.plan_name;
+        console.log("Logged User Plan Name", planName);
+        setCheckPlan(planName);
+  
+        if (!planName) {
+          // If plan_name is empty, redirect to Freeplan page using window.location.href
+          window.location.href = '/Freeplan';
+        }
+  
+        console.log("Logged User Data", result);
+        console.log("Logged User Plan name", planName);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    singlefetchData();
+  }, [userid]);
   
   useEffect(() => {
     const fetchDataa = async () => {
@@ -200,7 +244,7 @@ const Viewuser = (props) => {
                   </ul>
                 </div>
                 {/* CONTACT INFO SECTION */}
-                {profileData.body.plan_name !== "FreePlan" && (
+                {singleData.plan_name !== "FreePlan" && (
                 <div className="mb-4">
                   <h3 className="mb-3 headsmain">Contact Infomation</h3>
                   <ul className="ul-pro">
