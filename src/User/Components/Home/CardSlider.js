@@ -46,7 +46,7 @@ const CardSlider = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post("https://tulirmatrimony.com/controlapi/customerlist.php", {
+        const response = await axios.get("https://tulirmatrimony.com/controlapi/customerlisthome.php", {
           member: category
           
         });

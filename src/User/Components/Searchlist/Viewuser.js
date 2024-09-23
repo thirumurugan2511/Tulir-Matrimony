@@ -374,6 +374,7 @@ const Viewuser = (props) => {
                           </td>
                           <td> {displayField(profileData.body.zodiacsign, "Not Mentioned")}</td>
                         </tr>
+                        {singleData.plan_name !== "FreePlan" && (
                         <tr>
                           <td>
                             <IoIosArrowForward className="bx bx-power-off me-2" />
@@ -381,6 +382,7 @@ const Viewuser = (props) => {
                           </td>
                           <td> {displayField(profileData.body.birthplace, "Not Mentioned")}</td>
                         </tr>
+                        )}
                         <tr>
                           <td>
                             <IoIosArrowForward className="bx bx-power-off me-2" />
@@ -458,6 +460,7 @@ const Viewuser = (props) => {
                           </td>
                           <td> {displayField(profileData.body.mothercountry, "Not Mentioned")}</td>
                         </tr>
+                        {singleData.plan_name !== "FreePlan" && (
                         <tr>
                           <td>
                             <IoIosArrowForward className="bx bx-power-off me-2" />
@@ -465,6 +468,7 @@ const Viewuser = (props) => {
                           </td>
                           <td> {displayField(profileData.body.address, "Not Mentioned")}</td>
                         </tr>
+                        )}
                       </tbody>
                     </table>
                   </div>
