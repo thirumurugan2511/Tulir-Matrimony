@@ -20,10 +20,14 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 
 const Member = () => {
+  // const [isDropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const category = query.get("category");
-
+  const value = query.get("value");
+  // const toggleDropdown = () => {
+  //   setDropdownOpen(!isDropdownOpen);
+  // };
   const [dashboardData, setDashboardData] = useState({
     total_member: 0,
     male_member: 0,
@@ -37,30 +41,18 @@ const Member = () => {
   const [selectedPlans, setSelectedPlans] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  const [clickCount, setClickCount] = useState(0);
-  const [remainingLimit, setRemainingLimit] = useState(10);
-  const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState(""); // State for search query
-
+  const [clickCount, setClickCount] = useState(0); // State variable to track the number of clicks
+  const [remainingLimit, setRemainingLimit] = useState(10); // State variable to track the remaining limit
+  const [loading, setLoading] = useState(true); // State variable for loading status
   const profilesPerPage = 5;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let response;
-        if (searchQuery) {
-          // If there's a search query, call the search API
-          response = await axios.post(
-            "https://tulirmatrimony.com/controlapi/adminsearch.php",
-            { search: searchQuery }
-          );
-        } else {
-          // Otherwise, call the default customer list API
-          response = await axios.post(
-            "https://tulirmatrimony.com/controlapi/customerlist.php",
-            { member: category }
-          );
-        }
+        const response = await axios.post("https://tulirmatrimony.com/controlapi/customerlist.php", {
+          member: category
+          
+        });
         setData(response.data.body);
         console.log(data);
       } catch (error) {
@@ -69,11 +61,12 @@ const Member = () => {
         setLoading(false);
       }
     };
-
+    
     fetchData();
-  }, [category, searchQuery]);
-
+  }, [category]);
+  
   console.log(category);
+  
 
   // Calculate the profiles to display based on the current page
   const indexOfLastProfile = currentPage * profilesPerPage;
@@ -124,11 +117,6 @@ const Member = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearchQuery(e.target.search.value); // Set the search query from input
-  };
-
   return (
     <>
       <div className="layout-wrapper layout-content-navbar">
@@ -146,26 +134,12 @@ const Member = () => {
                   </div>
 
                   <div className="col-md-4">
-                    <form onSubmit={handleSearch}>
-                      <div class="input-group">
-                        <input
-                          type="search"
-                          name="search"
-                          class="form-control rounded"
-                          placeholder="Search by Name, Phone or DOB"
-                          aria-label="Search"
-                          aria-describedby="search-addon"
-                        />
-                        <button
-                          type="submit"
-                          class="btn btn-outline-primary"
-                          data-mdb-ripple-init
-                        >
-                          <FaSearch /> Search
-                        </button>
-                      </div>
-                    </form>
+                    <div class="input-group">
+                      <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                      <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
+                    </div>
                   </div>
+               
                 </div>
 
                 <div className="card">
