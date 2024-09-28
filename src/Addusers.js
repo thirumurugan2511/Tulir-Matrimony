@@ -491,7 +491,7 @@ const Addusers = () => {
     password: "password",
     dob: "date",
     plan_register_date: "date",
-    birthtime: "time",
+    // birthtime: "time",
     address: "textarea",
 
     // Add more field names and their corresponding input types as needed
