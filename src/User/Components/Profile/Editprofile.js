@@ -579,7 +579,7 @@ const Basicdetails = () => {
     phonenumber: "tel",
     password: "password",
     dob: "date",
-    birthtime: "time",
+   // birthtime: "time",
     address: "textarea",
     // plan_register_date:"date"
 

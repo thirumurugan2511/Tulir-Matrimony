@@ -195,7 +195,7 @@ const PrintForm = () => {
                     <td>: {profileData.body.zodiacsign}</td>
 
                     <td className="fw-bold">பிறந்த நேரம்</td>
-                    <td>: {formatTime(profileData.body.birthtime)}</td>
+                    <td>: {(profileData.body.birthtime)}</td>
                   </tr>
                   <tr>
                     <td className="fw-bold">தொலைபேசி எண்</td>

@@ -868,7 +868,7 @@ const Viewmember = () => {
                                     <div class="detalistsleg">
                                       <h5 class="py-2">
                                         <span>Birth Time :</span>
-                                        {formatTime(profileData.body.birthtime)}
+                                        {(profileData.body.birthtime)}
                                       </h5>
                                     </div>
                                   </div>
@@ -1267,7 +1267,7 @@ const Viewmember = () => {
                                         <span>Partner Height :</span>{" "}
                                          {profileData.body.partner_height}-cm 
                                       </h5>
-                                    </div>
+                                    </div>  
                                   </div>
                                   {/* <div class="col-lg-3 mb-lg-4 col-md-3 mb-md-4 col-sm-6 mb-sm-3 col-6 mb-3">
              <div class="detalistsleg">

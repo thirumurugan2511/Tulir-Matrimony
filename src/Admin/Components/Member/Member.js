@@ -54,7 +54,10 @@ const Member = () => {
             "https://tulirmatrimony.com/controlapi/adminsearch.php",
             { search: searchQuery }
           );
-        } else {
+          
+        } 
+        
+        else {
           // Otherwise, call the default customer list API
           response = await axios.post(
             "https://tulirmatrimony.com/controlapi/customerlist.php",
@@ -62,7 +65,9 @@ const Member = () => {
           );
         }
         setData(response.data.body);
-        console.log(data);
+
+        console.log(response.data.body); 
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {

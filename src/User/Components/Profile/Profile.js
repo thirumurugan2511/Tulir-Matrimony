@@ -716,7 +716,7 @@ const Profile = () => {
                                     <div class="detalistsleg">
                                       <h5 class="py-2">
                                         <span>Birth Time :</span>
-                                        {formatTime(profileData.body.birthtime)}
+                                        {(profileData.body.birthtime)}
                                       </h5>
                                     </div>
                                   </div>
